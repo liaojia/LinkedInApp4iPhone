@@ -48,39 +48,9 @@
 }
 
 -(IBAction)loginAction:(id)sender{
-//   
-//    LoginViewController *vc = [[LoginViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
+    LoginViewController *vc = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
     
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] TransferWithRequestDic:nil
-                                                                                   prompt:nil
-                                                                                  success:^(id obj) {
-                                                                                      
-                                                                                  }
-                                                                                  failure:^(NSString *errMsg) {
-                                                                                      
-                                                                                  }];
-    
-    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil] prompt:@"正在检查更新" completeBlock:^(NSArray *operations) {
-//        NSString *version = [respDic objectForKey:@"VERSION"];
-//        if ([version isEqualToString:kVERSION]) {
-//            // 无需更新
-//            //[SVProgressHUD showSuccessWithStatus:@"已是最新版本"];
-//            [[LKTipCenter defaultCenter] postDownTipWithMessage:@"您的程序已是最新版本" time:2];
-//            
-//            if ([UserDefaults boolForKey:kAUTOLOGIN]) {
-//                [self loginAction:nil];
-//            }
-//            
-//        } else {
-            // 启动浏览器去更新程序
-            
-            // 注：这种机制也没有完全要求用户一定要更新程序，完全可以从浏览器切换回项目再登录。
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[respDic objectForKey:@"URL"]]];
-            
-//        }
-        
-    }];
 }
 
 -(IBAction)registerAction:(id)sender

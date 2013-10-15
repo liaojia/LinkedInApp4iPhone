@@ -48,9 +48,11 @@
     [self.view addSubview:btn_confirm];
     
     _tf_username = [[ClearTextField alloc] initWithFrame:CGRectMake(10, 120, 300, 40)];
+    [_tf_username.tf_input setText:@"20131014001@qq.com"];
     [self.view addSubview:_tf_username];
     
     _tf_pwd = [[ClearTextField alloc] initWithFrame:CGRectMake(10, 200, 300, 40)];
+    [_tf_pwd.tf_input setText:@"123"];
     [self.view addSubview:_tf_pwd];
     
 }
@@ -66,7 +68,37 @@
 }
 
 -(IBAction)confirmAction:(id)sender{
+    NSDictionary *requestDic = [[NSDictionary alloc] initWithObjectsAndKeys:_tf_username.getText, @"name", _tf_pwd.getText, @"password", nil];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] TransferWithRequestDic:requestDic
+                                                                                 requesId:@"LOGIN"
+                                                                                   prompt:@"hell"
+                                                                                  success:^(id obj) {
+                                                                                      
+                                                                                  }
+                                                                                  failure:^(NSString *errMsg) {
+                                                                                      
+                                                                                  }];
     
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil] prompt:@"正在检查更新" completeBlock:^(NSArray *operations) {
+        //        NSString *version = [respDic objectForKey:@"VERSION"];
+        //        if ([version isEqualToString:kVERSION]) {
+        //            // 无需更新
+        //            //[SVProgressHUD showSuccessWithStatus:@"已是最新版本"];
+        //            [[LKTipCenter defaultCenter] postDownTipWithMessage:@"您的程序已是最新版本" time:2];
+        //
+        //            if ([UserDefaults boolForKey:kAUTOLOGIN]) {
+        //                [self loginAction:nil];
+        //            }
+        //
+        //        } else {
+        // 启动浏览器去更新程序
+        
+        // 注：这种机制也没有完全要求用户一定要更新程序，完全可以从浏览器切换回项目再登录。
+        //            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[respDic objectForKey:@"URL"]]];
+        
+        //        }
+        
+    }];
 }
 
 

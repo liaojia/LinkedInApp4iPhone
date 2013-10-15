@@ -12,4 +12,6 @@
 
 @property(nonatomic, strong)UITextField *tf_input;
 @property(nonatomic, strong)UIButton    *btn_clear;
+
+-(NSString*)getText;
 @end

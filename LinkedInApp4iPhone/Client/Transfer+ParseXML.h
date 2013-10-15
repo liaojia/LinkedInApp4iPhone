@@ -15,6 +15,7 @@
                            xmlString:(NSString *) xml;
 
 - (id) DemoParse:(NSString *) reqName;
++(NSArray* )paseRequestParamXML;
 
 @end
 
