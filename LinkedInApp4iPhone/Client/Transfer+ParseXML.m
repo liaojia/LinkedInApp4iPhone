@@ -8,7 +8,6 @@
 
 #import "Transfer+ParseXML.h"
 #import "TBXML.h"
-#import "FileOperatorUtil.h"
 #import "RequestModel.h"
 @interface Transfer (private)
 
