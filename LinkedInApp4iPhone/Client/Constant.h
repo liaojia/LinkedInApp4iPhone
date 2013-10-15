@@ -57,3 +57,10 @@
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 #define STRETCH                                5
 
+// 公共参数
+#define VERSION                         @"1"
+#define CLIENT_ID                       @"2"//1、网站 2、Android 3、IOS
+#define SESSION_ID                      @"-1"// sessionId
+
+
+

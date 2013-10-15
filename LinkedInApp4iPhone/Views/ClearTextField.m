@@ -38,4 +38,7 @@
     [_tf_input setText:@""];
 }
 
+-(NSString*)getText{
+    return _tf_input.text;
+}
 @end

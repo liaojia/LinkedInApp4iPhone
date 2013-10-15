@@ -135,12 +135,14 @@ static NSString *totalSize = nil;
  **/
 
 - (AFHTTPRequestOperation *) TransferWithRequestDic:(NSDictionary *) reqDic
+                                           requesId:(NSString *)requesId
                                              prompt:(NSString *) prompt
                                             success:(SuccessBlock) success
                                             failure:(FailureBlock) failure
 
 {
     return [self TransferWithRequestDic:reqDic
+                               requesId:requesId
                                  prompt:prompt
                              alertError:YES
                                 success:^(id obj) {
@@ -151,6 +153,7 @@ static NSString *totalSize = nil;
 }
 
 - (AFHTTPRequestOperation *) TransferWithRequestDic:(NSDictionary *) reqDic
+                                           requesId:(NSString *) requestId
                                              prompt:(NSString *) prompt
                                          alertError:(BOOL) alertError
                                             success:(SuccessBlock) success
@@ -161,16 +164,16 @@ static NSString *totalSize = nil;
         return nil;
     }
     
+    RequestModel *requestModel = [[AppDataCenter sharedAppDataCenter] getModelWithRequestId:requestId];
     if (prompt && [[Transfer sharedClient].operationQueue.name isEqualToString:@"doQueueByOrder"]) {
-        //[SVProgressHUD showWithStatus:prompt maskType:SVProgressHUDMaskTypeClear];
-        
+        [SVProgressHUD showWithStatus:prompt maskType:SVProgressHUDMaskTypeClear];
         
         [SVProgressHUD showWithStatus:prompt maskType:SVProgressHUDMaskTypeClear cancelBlock:^(id sender){
             NSLog(@"用户取消操作...");
             isCancelAction = YES;
             
             [[Transfer sharedClient].operationQueue cancelAllOperations];
-            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:[UserDefaults stringForKey:kHOSTNAME]];
+            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:requestModel.method path:[UserDefaults stringForKey:kHOSTNAME]];
             
             [SVProgressHUD dismiss];
         }];
@@ -182,14 +185,15 @@ static NSString *totalSize = nil;
     [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"application/json"];
     [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
     
+    
     NSMutableDictionary *dic  = [[NSMutableDictionary alloc] init];
     
     [dic setObject:@"20131014001@qq.com" forKey:@"name"];
     [dic setObject:@"123" forKey:@"password"];
-
     
+    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@?&cid=%@&sid=%@", requestModel.url, VERSION, CLIENT_ID, SESSION_ID];
     
-    NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"/alumni/service/login?v=1&cid=2&sid=-1" parameters:dic];
+    NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:dic];
     NSLog(@"request: %@", dic);
     [request setTimeoutInterval:20];
     

@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
 #import "ViewController.h"
+#import "Transfer+ParseXML.h"
 
 @implementation AppDelegate
 
@@ -26,6 +26,7 @@
     [self.window makeKeyAndVisible];
     
     [UserDefaults setObject:DEFAULTHOST forKey:kHOSTNAME];
+    
     return YES;
 }
 
