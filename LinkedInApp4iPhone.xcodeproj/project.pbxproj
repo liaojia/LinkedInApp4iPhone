@@ -106,7 +106,13 @@
 		8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20818180CE0F300FDEABA /* Transfer+ParseXML.m */; };
 		8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081A180CE0F300FDEABA /* Transfer.m */; };
 		8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081E180CE12900FDEABA /* AppDelegate.m */; };
+		8DF20822180D297D00FDEABA /* FileOperatorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20821180D297D00FDEABA /* FileOperatorUtil.m */; };
+
+		8DF20825180D366300FDEABA /* AppDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20824180D366300FDEABA /* AppDataCenter.m */; };
+		CEAE0BB9180D840B00FDAD19 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE0BB7180D840B00FDAD19 /* HomeViewController.m */; };
+		CEAE0BBA180D840B00FDAD19 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE0BB8180D840B00FDAD19 /* HomeViewController.xib */; };
 		8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2082A180D879300FDEABA /* AppDataCenter.m */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -240,8 +246,17 @@
 		8DF2081A180CE0F300FDEABA /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
 		8DF2081D180CE12900FDEABA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8DF2081E180CE12900FDEABA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8DF20820180D297D00FDEABA /* FileOperatorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileOperatorUtil.h; sourceTree = "<group>"; };
+		8DF20821180D297D00FDEABA /* FileOperatorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileOperatorUtil.m; sourceTree = "<group>"; };
+
+		8DF20823180D366200FDEABA /* AppDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDataCenter.h; sourceTree = "<group>"; };
+		8DF20824180D366300FDEABA /* AppDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataCenter.m; sourceTree = "<group>"; };
+		CEAE0BB6180D840B00FDAD19 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		CEAE0BB7180D840B00FDAD19 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		CEAE0BB8180D840B00FDAD19 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		8DF20829180D879300FDEABA /* AppDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDataCenter.h; sourceTree = "<group>"; };
 		8DF2082A180D879300FDEABA /* AppDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataCenter.m; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +312,8 @@
 			children = (
 				8DD5D3171806E7DC00EB446F /* FileManagerUtil.h */,
 				8DD5D3181806E7DC00EB446F /* FileManagerUtil.m */,
+				8DF20820180D297D00FDEABA /* FileOperatorUtil.h */,
+				8DF20821180D297D00FDEABA /* FileOperatorUtil.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -373,7 +390,6 @@
 		8DEE3E3318044A1B00B4C607 = {
 			isa = PBXGroup;
 			children = (
-				8DD5D34318070CA000EB446F /* libz.dylib */,
 				8DEE3E4518044A1C00B4C607 /* LinkedInApp4iPhone */,
 				8DEE3E3E18044A1C00B4C607 /* Frameworks */,
 				8DEE3E3D18044A1C00B4C607 /* Products */,
@@ -391,6 +407,7 @@
 		8DEE3E3E18044A1C00B4C607 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DD5D34318070CA000EB446F /* libz.dylib */,
 				8DD5D34118070B7D00EB446F /* CoreLocation.framework */,
 				8DD5D33F18070B6700EB446F /* CoreData.framework */,
 				8DD5D33D18070B4F00EB446F /* CoreAudio.framework */,
@@ -517,6 +534,9 @@
 				8DF20807180CE06100FDEABA /* RegisterViewController.m */,
 				8DF20808180CE06100FDEABA /* ViewController.h */,
 				8DF20809180CE06100FDEABA /* ViewController.m */,
+				CEAE0BB6180D840B00FDAD19 /* HomeViewController.h */,
+				CEAE0BB7180D840B00FDAD19 /* HomeViewController.m */,
+				CEAE0BB8180D840B00FDAD19 /* HomeViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -535,9 +555,9 @@
 		8DF20815180CE0F300FDEABA /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				8DF2081D180CE12900FDEABA /* AppDelegate.h */,
 				8DF20829180D879300FDEABA /* AppDataCenter.h */,
 				8DF2082A180D879300FDEABA /* AppDataCenter.m */,
-				8DF2081D180CE12900FDEABA /* AppDelegate.h */,
 				8DF2081E180CE12900FDEABA /* AppDelegate.m */,
 				8DF20816180CE0F300FDEABA /* Constant.h */,
 				8DF20817180CE0F300FDEABA /* Transfer+ParseXML.h */,
@@ -660,6 +680,7 @@
 				8DF207FE180CE05600FDEABA /* img_weibo_userinfo_male_1@2x.png in Resources */,
 				8DF207FF180CE05600FDEABA /* img_weibo_userinfo_male_2@2x.png in Resources */,
 				8DF20800180CE05600FDEABA /* img_weibo_userinfo_verifed@2x.png in Resources */,
+				CEAE0BBA180D840B00FDAD19 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,7 +718,12 @@
 				8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */,
 				8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */,
 				8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */,
+				8DF20822180D297D00FDEABA /* FileOperatorUtil.m in Sources */,
+
+				8DF20825180D366300FDEABA /* AppDataCenter.m in Sources */,
+				CEAE0BB9180D840B00FDAD19 /* HomeViewController.m in Sources */,
 				8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

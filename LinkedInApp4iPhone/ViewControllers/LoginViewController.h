@@ -12,6 +12,7 @@
 
 @interface LoginViewController : BaseViewController
 
+
 @property(nonatomic, strong)ClearTextField *tf_username;
 @property(nonatomic, strong)ClearTextField *tf_pwd;
 
