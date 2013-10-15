@@ -370,14 +370,6 @@
 		8DEE3E3318044A1B00B4C607 = {
 			isa = PBXGroup;
 			children = (
-				8DD5D34318070CA000EB446F /* libz.dylib */,
-				8DD5D34118070B7D00EB446F /* CoreLocation.framework */,
-				8DD5D33F18070B6700EB446F /* CoreData.framework */,
-				8DD5D33D18070B4F00EB446F /* CoreAudio.framework */,
-				8DD5D33B18070AD300EB446F /* QuartzCore.framework */,
-				8DD5D33918070A2500EB446F /* SystemConfiguration.framework */,
-				8DD5D30B1806A1D500EB446F /* CFNetwork.framework */,
-				8DD5D3091806A1C200EB446F /* Security.framework */,
 				8DEE3E4518044A1C00B4C607 /* LinkedInApp4iPhone */,
 				8DEE3E3E18044A1C00B4C607 /* Frameworks */,
 				8DEE3E3D18044A1C00B4C607 /* Products */,
@@ -395,6 +387,14 @@
 		8DEE3E3E18044A1C00B4C607 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DD5D34318070CA000EB446F /* libz.dylib */,
+				8DD5D34118070B7D00EB446F /* CoreLocation.framework */,
+				8DD5D33F18070B6700EB446F /* CoreData.framework */,
+				8DD5D33D18070B4F00EB446F /* CoreAudio.framework */,
+				8DD5D33B18070AD300EB446F /* QuartzCore.framework */,
+				8DD5D33918070A2500EB446F /* SystemConfiguration.framework */,
+				8DD5D30B1806A1D500EB446F /* CFNetwork.framework */,
+				8DD5D3091806A1C200EB446F /* Security.framework */,
 				8DEE3E3F18044A1C00B4C607 /* UIKit.framework */,
 				8DEE3E4118044A1C00B4C607 /* Foundation.framework */,
 				8DEE3E4318044A1C00B4C607 /* CoreGraphics.framework */,
