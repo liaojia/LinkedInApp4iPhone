@@ -106,7 +106,6 @@
 		8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20818180CE0F300FDEABA /* Transfer+ParseXML.m */; };
 		8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081A180CE0F300FDEABA /* Transfer.m */; };
 		8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081E180CE12900FDEABA /* AppDelegate.m */; };
-		8DF20822180D297D00FDEABA /* FileOperatorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20821180D297D00FDEABA /* FileOperatorUtil.m */; };
 		8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2082A180D879300FDEABA /* AppDataCenter.m */; };
 /* End PBXBuildFile section */
 
@@ -241,8 +240,6 @@
 		8DF2081A180CE0F300FDEABA /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
 		8DF2081D180CE12900FDEABA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8DF2081E180CE12900FDEABA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8DF20820180D297D00FDEABA /* FileOperatorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileOperatorUtil.h; sourceTree = "<group>"; };
-		8DF20821180D297D00FDEABA /* FileOperatorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileOperatorUtil.m; sourceTree = "<group>"; };
 		8DF20829180D879300FDEABA /* AppDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDataCenter.h; sourceTree = "<group>"; };
 		8DF2082A180D879300FDEABA /* AppDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataCenter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,8 +297,6 @@
 			children = (
 				8DD5D3171806E7DC00EB446F /* FileManagerUtil.h */,
 				8DD5D3181806E7DC00EB446F /* FileManagerUtil.m */,
-				8DF20820180D297D00FDEABA /* FileOperatorUtil.h */,
-				8DF20821180D297D00FDEABA /* FileOperatorUtil.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -540,9 +535,9 @@
 		8DF20815180CE0F300FDEABA /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				8DF2081D180CE12900FDEABA /* AppDelegate.h */,
 				8DF20829180D879300FDEABA /* AppDataCenter.h */,
 				8DF2082A180D879300FDEABA /* AppDataCenter.m */,
+				8DF2081D180CE12900FDEABA /* AppDelegate.h */,
 				8DF2081E180CE12900FDEABA /* AppDelegate.m */,
 				8DF20816180CE0F300FDEABA /* Constant.h */,
 				8DF20817180CE0F300FDEABA /* Transfer+ParseXML.h */,
@@ -702,7 +697,6 @@
 				8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */,
 				8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */,
 				8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */,
-				8DF20822180D297D00FDEABA /* FileOperatorUtil.m in Sources */,
 				8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
