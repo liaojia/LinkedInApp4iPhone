@@ -295,7 +295,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) //进入相关推荐页面
+    if (indexPath.section == 1&&self.pageType == 0) //进入相关推荐页面
     {
         CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
         AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
