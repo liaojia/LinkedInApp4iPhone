@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "ClearTextField.h"
+#import "HomeViewController.h"
 
 @interface LoginViewController ()
 
@@ -68,6 +69,11 @@
 }
 
 -(IBAction)confirmAction:(id)sender{
+    
+    HomeViewController *homeControlelr = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController pushViewController:homeControlelr animated:YES];
+    
     NSDictionary *requestDic = [[NSDictionary alloc] initWithObjectsAndKeys:_tf_username.getText, @"name", _tf_pwd.getText, @"password", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] TransferWithRequestDic:requestDic
                                                                                  requesId:@"LOGIN"
@@ -97,6 +103,8 @@
         //            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[respDic objectForKey:@"URL"]]];
         
         //        }
+        
+
         
     }];
 }

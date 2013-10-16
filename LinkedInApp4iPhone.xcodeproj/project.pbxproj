@@ -107,8 +107,24 @@
 		8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081A180CE0F300FDEABA /* Transfer.m */; };
 		8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081E180CE12900FDEABA /* AppDelegate.m */; };
 		8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2082A180D879300FDEABA /* AppDataCenter.m */; };
-		CEAE0BB9180D840B00FDAD19 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE0BB7180D840B00FDAD19 /* HomeViewController.m */; };
-		CEAE0BBA180D840B00FDAD19 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE0BB8180D840B00FDAD19 /* HomeViewController.xib */; };
+		CED1AA06180EC4D500A4A1A0 /* PersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1AA01180EC4D500A4A1A0 /* PersonInfoCell.m */; };
+		CED1AA07180EC4D500A4A1A0 /* PersonInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED1AA02180EC4D500A4A1A0 /* PersonInfoCell.xib */; };
+		CED1AA08180EC4D500A4A1A0 /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1AA04180EC4D500A4A1A0 /* PersonInfoViewController.m */; };
+		CED1AA09180EC4D500A4A1A0 /* PersonInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED1AA05180EC4D500A4A1A0 /* PersonInfoViewController.xib */; };
+		CED1AA0D180EC51B00A4A1A0 /* CommendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1AA0B180EC51B00A4A1A0 /* CommendListViewController.m */; };
+		CED1AA0E180EC51B00A4A1A0 /* CommendListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED1AA0C180EC51B00A4A1A0 /* CommendListViewController.xib */; };
+		CED1AA10180ED37E00A4A1A0 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED1AA0F180ED37E00A4A1A0 /* PersonCell.xib */; };
+		CED1AA13180ED39900A4A1A0 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1AA12180ED39900A4A1A0 /* PersonCell.m */; };
+		CEE8EAAC180E23030052E5D8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EAAA180E23030052E5D8 /* HomeViewController.m */; };
+		CEE8EAAD180E23030052E5D8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE8EAAB180E23030052E5D8 /* HomeViewController.xib */; };
+		CEE8EABC180E65C30052E5D8 /* NoticeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EABA180E65C30052E5D8 /* NoticeListViewController.m */; };
+		CEE8EABD180E65C30052E5D8 /* NoticeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE8EABB180E65C30052E5D8 /* NoticeListViewController.xib */; };
+		CEE8EAC3180E6F490052E5D8 /* UINavigationController+UINavigationController_BackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EAC2180E6F490052E5D8 /* UINavigationController+UINavigationController_BackButton.m */; };
+		CEE8EAC8180E71E40052E5D8 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EAC6180E71E40052E5D8 /* ActivityCell.m */; };
+		CEE8EAC9180E71E40052E5D8 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE8EAC7180E71E40052E5D8 /* ActivityCell.xib */; };
+		CEE8EACD180E720D0052E5D8 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EACB180E720D0052E5D8 /* ActivityDetailViewController.m */; };
+		CEE8EACE180E720D0052E5D8 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE8EACC180E720D0052E5D8 /* ActivityDetailViewController.xib */; };
+		CEE8EAD1180E776C0052E5D8 /* PersonHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -246,9 +262,34 @@
 		8DF20821180D297D00FDEABA /* FileOperatorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileOperatorUtil.m; sourceTree = "<group>"; };
 		8DF20829180D879300FDEABA /* AppDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDataCenter.h; sourceTree = "<group>"; };
 		8DF2082A180D879300FDEABA /* AppDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataCenter.m; sourceTree = "<group>"; };
-		CEAE0BB6180D840B00FDAD19 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		CEAE0BB7180D840B00FDAD19 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		CEAE0BB8180D840B00FDAD19 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		CED1AA00180EC4D500A4A1A0 /* PersonInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoCell.h; sourceTree = "<group>"; };
+		CED1AA01180EC4D500A4A1A0 /* PersonInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoCell.m; sourceTree = "<group>"; };
+		CED1AA02180EC4D500A4A1A0 /* PersonInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoCell.xib; sourceTree = "<group>"; };
+		CED1AA03180EC4D500A4A1A0 /* PersonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoViewController.h; sourceTree = "<group>"; };
+		CED1AA04180EC4D500A4A1A0 /* PersonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoViewController.m; sourceTree = "<group>"; };
+		CED1AA05180EC4D500A4A1A0 /* PersonInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoViewController.xib; sourceTree = "<group>"; };
+		CED1AA0A180EC51B00A4A1A0 /* CommendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommendListViewController.h; sourceTree = "<group>"; };
+		CED1AA0B180EC51B00A4A1A0 /* CommendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommendListViewController.m; sourceTree = "<group>"; };
+		CED1AA0C180EC51B00A4A1A0 /* CommendListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommendListViewController.xib; sourceTree = "<group>"; };
+		CED1AA0F180ED37E00A4A1A0 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
+		CED1AA11180ED39900A4A1A0 /* PersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
+		CED1AA12180ED39900A4A1A0 /* PersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
+		CEE8EAA9180E23030052E5D8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		CEE8EAAA180E23030052E5D8 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		CEE8EAAB180E23030052E5D8 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		CEE8EAB9180E65C30052E5D8 /* NoticeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeListViewController.h; sourceTree = "<group>"; };
+		CEE8EABA180E65C30052E5D8 /* NoticeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeListViewController.m; sourceTree = "<group>"; };
+		CEE8EABB180E65C30052E5D8 /* NoticeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeListViewController.xib; sourceTree = "<group>"; };
+		CEE8EAC1180E6F490052E5D8 /* UINavigationController+UINavigationController_BackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+UINavigationController_BackButton.h"; sourceTree = "<group>"; };
+		CEE8EAC2180E6F490052E5D8 /* UINavigationController+UINavigationController_BackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+UINavigationController_BackButton.m"; sourceTree = "<group>"; };
+		CEE8EAC5180E71E40052E5D8 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
+		CEE8EAC6180E71E40052E5D8 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
+		CEE8EAC7180E71E40052E5D8 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
+		CEE8EACA180E720D0052E5D8 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
+		CEE8EACB180E720D0052E5D8 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
+		CEE8EACC180E720D0052E5D8 /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
+		CEE8EACF180E776C0052E5D8 /* PersonHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonHeadView.h; sourceTree = "<group>"; };
+		CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonHeadView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -526,9 +567,10 @@
 				8DF20807180CE06100FDEABA /* RegisterViewController.m */,
 				8DF20808180CE06100FDEABA /* ViewController.h */,
 				8DF20809180CE06100FDEABA /* ViewController.m */,
-				CEAE0BB6180D840B00FDAD19 /* HomeViewController.h */,
-				CEAE0BB7180D840B00FDAD19 /* HomeViewController.m */,
-				CEAE0BB8180D840B00FDAD19 /* HomeViewController.xib */,
+				CEE8EAA8180E23030052E5D8 /* Home */,
+				CED1A9FF180EC4D500A4A1A0 /* PersonInfo */,
+				CEE8EAC4180E71E40052E5D8 /* Activity */,
+				CEE8EAB8180E65990052E5D8 /* Notice */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -540,6 +582,10 @@
 				8DF20813180CE0AF00FDEABA /* UITextField+HideKeyBoard.m */,
 				8DF2080F180CE06E00FDEABA /* ClearTextField.h */,
 				8DF20810180CE06E00FDEABA /* ClearTextField.m */,
+				CEE8EAC1180E6F490052E5D8 /* UINavigationController+UINavigationController_BackButton.h */,
+				CEE8EAC2180E6F490052E5D8 /* UINavigationController+UINavigationController_BackButton.m */,
+				CEE8EACF180E776C0052E5D8 /* PersonHeadView.h */,
+				CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -558,6 +604,58 @@
 				8DF2081A180CE0F300FDEABA /* Transfer.m */,
 			);
 			path = Client;
+			sourceTree = "<group>";
+		};
+		CED1A9FF180EC4D500A4A1A0 /* PersonInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CED1AA00180EC4D500A4A1A0 /* PersonInfoCell.h */,
+				CED1AA01180EC4D500A4A1A0 /* PersonInfoCell.m */,
+				CED1AA02180EC4D500A4A1A0 /* PersonInfoCell.xib */,
+				CED1AA11180ED39900A4A1A0 /* PersonCell.h */,
+				CED1AA12180ED39900A4A1A0 /* PersonCell.m */,
+				CED1AA0F180ED37E00A4A1A0 /* PersonCell.xib */,
+				CED1AA03180EC4D500A4A1A0 /* PersonInfoViewController.h */,
+				CED1AA04180EC4D500A4A1A0 /* PersonInfoViewController.m */,
+				CED1AA05180EC4D500A4A1A0 /* PersonInfoViewController.xib */,
+				CED1AA0A180EC51B00A4A1A0 /* CommendListViewController.h */,
+				CED1AA0B180EC51B00A4A1A0 /* CommendListViewController.m */,
+				CED1AA0C180EC51B00A4A1A0 /* CommendListViewController.xib */,
+			);
+			path = PersonInfo;
+			sourceTree = "<group>";
+		};
+		CEE8EAA8180E23030052E5D8 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CEE8EAA9180E23030052E5D8 /* HomeViewController.h */,
+				CEE8EAAA180E23030052E5D8 /* HomeViewController.m */,
+				CEE8EAAB180E23030052E5D8 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CEE8EAB8180E65990052E5D8 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				CEE8EAB9180E65C30052E5D8 /* NoticeListViewController.h */,
+				CEE8EABA180E65C30052E5D8 /* NoticeListViewController.m */,
+				CEE8EABB180E65C30052E5D8 /* NoticeListViewController.xib */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
+		CEE8EAC4180E71E40052E5D8 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				CEE8EAC5180E71E40052E5D8 /* ActivityCell.h */,
+				CEE8EAC6180E71E40052E5D8 /* ActivityCell.m */,
+				CEE8EAC7180E71E40052E5D8 /* ActivityCell.xib */,
+				CEE8EACA180E720D0052E5D8 /* ActivityDetailViewController.h */,
+				CEE8EACB180E720D0052E5D8 /* ActivityDetailViewController.m */,
+				CEE8EACC180E720D0052E5D8 /* ActivityDetailViewController.xib */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -672,7 +770,14 @@
 				8DF207FE180CE05600FDEABA /* img_weibo_userinfo_male_1@2x.png in Resources */,
 				8DF207FF180CE05600FDEABA /* img_weibo_userinfo_male_2@2x.png in Resources */,
 				8DF20800180CE05600FDEABA /* img_weibo_userinfo_verifed@2x.png in Resources */,
-				CEAE0BBA180D840B00FDAD19 /* HomeViewController.xib in Resources */,
+				CEE8EAAD180E23030052E5D8 /* HomeViewController.xib in Resources */,
+				CEE8EABD180E65C30052E5D8 /* NoticeListViewController.xib in Resources */,
+				CEE8EAC9180E71E40052E5D8 /* ActivityCell.xib in Resources */,
+				CEE8EACE180E720D0052E5D8 /* ActivityDetailViewController.xib in Resources */,
+				CED1AA07180EC4D500A4A1A0 /* PersonInfoCell.xib in Resources */,
+				CED1AA09180EC4D500A4A1A0 /* PersonInfoViewController.xib in Resources */,
+				CED1AA0E180EC51B00A4A1A0 /* CommendListViewController.xib in Resources */,
+				CED1AA10180ED37E00A4A1A0 /* PersonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,8 +815,17 @@
 				8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */,
 				8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */,
 				8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */,
-				CEAE0BB9180D840B00FDAD19 /* HomeViewController.m in Sources */,
 				8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */,
+				CEE8EAAC180E23030052E5D8 /* HomeViewController.m in Sources */,
+				CEE8EABC180E65C30052E5D8 /* NoticeListViewController.m in Sources */,
+				CEE8EAC3180E6F490052E5D8 /* UINavigationController+UINavigationController_BackButton.m in Sources */,
+				CEE8EAC8180E71E40052E5D8 /* ActivityCell.m in Sources */,
+				CEE8EACD180E720D0052E5D8 /* ActivityDetailViewController.m in Sources */,
+				CEE8EAD1180E776C0052E5D8 /* PersonHeadView.m in Sources */,
+				CED1AA06180EC4D500A4A1A0 /* PersonInfoCell.m in Sources */,
+				CED1AA08180EC4D500A4A1A0 /* PersonInfoViewController.m in Sources */,
+				CED1AA0D180EC51B00A4A1A0 /* CommendListViewController.m in Sources */,
+				CED1AA13180ED39900A4A1A0 /* PersonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
