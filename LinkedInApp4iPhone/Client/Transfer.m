@@ -173,7 +173,7 @@ static NSString *totalSize = nil;
             isCancelAction = YES;
             
             [[Transfer sharedClient].operationQueue cancelAllOperations];
-            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:requestModel.method path:[UserDefaults stringForKey:kHOSTNAME]];
+            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:requestModel.method path:kHOSTNAME];
             
             [SVProgressHUD dismiss];
         }];
@@ -186,15 +186,9 @@ static NSString *totalSize = nil;
     [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
     
     
-    NSMutableDictionary *dic  = [[NSMutableDictionary alloc] init];
-    
-    [dic setObject:@"20131014001@qq.com" forKey:@"name"];
-    [dic setObject:@"123" forKey:@"password"];
-    
     NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@?&cid=%@&sid=%@", requestModel.url, VERSION, CLIENT_ID, SESSION_ID];
     
-    NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:dic];
-    NSLog(@"request: %@", dic);
+    NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:reqDic];
     [request setTimeoutInterval:20];
     
     
