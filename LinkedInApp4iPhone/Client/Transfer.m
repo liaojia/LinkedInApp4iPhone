@@ -173,7 +173,7 @@ static NSString *totalSize = nil;
             isCancelAction = YES;
             
             [[Transfer sharedClient].operationQueue cancelAllOperations];
-            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:requestModel.method path:[UserDefaults stringForKey:kHOSTNAME]];
+            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:requestModel.method path:kHOSTNAME];
             
             [SVProgressHUD dismiss];
         }];
@@ -186,30 +186,38 @@ static NSString *totalSize = nil;
     [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
     
     
-    NSMutableDictionary *dic  = [[NSMutableDictionary alloc] init];
+    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", requestModel.url, VERSION, CLIENT_ID, SESSION_ID];
     
-    [dic setObject:@"20131014001@qq.com" forKey:@"name"];
-    [dic setObject:@"123" forKey:@"password"];
-    
-    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@?&cid=%@&sid=%@", requestModel.url, VERSION, CLIENT_ID, SESSION_ID];
-    
-    NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:dic];
-    NSLog(@"request: %@", dic);
+    NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:reqDic];
     [request setTimeoutInterval:20];
-    
-    
+    NSLog(@"request: %@", request.URL);
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                            NSLog(@"respose: %@", JSON);
-                                                                                            NSDictionary *jsonDict = (NSDictionary *) JSON;
-                                                                                            NSArray *products = [jsonDict objectForKey:@"products"];
-                                                                                            [products enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
-                                                                                                NSString *productIconUrl = [obj objectForKey:@"icon_url"];
-                                                                                            }];
+                                                                                        
+                                                                                    
+                                                                                            NSLog(@"respose: %@", JSON);success(JSON);
+                                                                                            
                                                                                             
                                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
                                                                                                     NSError *error, id JSON) {
-                                                                                            NSLog(@"Request Failure Because %@",[error userInfo]); 
+                                                                                            [SVProgressHUD dismiss];
+                                                                                            
+                                                                                            [[Transfer sharedClient].operationQueue cancelAllOperations];
+                                                                                            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:kHOSTNAME];
+                                                                                            
+                                                                                            NSLog(@"--%@", [NSString stringWithFormat:@"%@",error]);
+                                                                                            //[SVProgressHUD showErrorWithStatus:[self getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]];
+                                                                                            
+                                                                                            // 点击取消的时候会报（The operation couldn’t be completed）,但是UserInfo中不存在NSLocalizedDescription属性，说明这不是一个错误，现用一BOOL值进行简单特殊控制,。。。
+                                                                                            NSString *message = [Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                                                                            if (!isCancelAction && message && alertError) {
+                                                                                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                                                                                                [alert show];
+                                                                                            }
+                                                                                            
+                                                                                            
+                                                                                            failure([Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]);
+
                                                                                         }
                                          ];
     

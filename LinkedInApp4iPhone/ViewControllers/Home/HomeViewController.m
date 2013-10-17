@@ -31,12 +31,12 @@
                       ,@"北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细"
                       ,@"公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容"
                       ,@"活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述"
-                      ,@"活动题目活动题目活动题目活动题目活动题目活动题目活动题目"
+                      ,@"活动题目活动题题目活"
                       ,@"2013-12-12 12:24"
-                      ,@"活动地点活动地点活动地点活动地点活动地点活动地点活动地点活动地点活动地点"
-                      ,@"活动类型活动类型活动类型活动类型活动类型活动类型活动类型"
-                      ,@"活动费用活动费用活动费用活动费用活动费用活动费用活动费用"
-                      ,@"主办方主办方主办方主办方主办方主办方主办方主办方主办方主办方"];
+                      ,@"活动地点活动地点活活动地点活活动地点活"
+                      ,@"活动类型"
+                      ,@"活动费用活动"
+                      ,@"主办方主办方主办方办方主办方办方主办方"];
         
         personInfoController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
     }
@@ -222,9 +222,13 @@
     {
 
         float height = 0;
-        for (int i=0; i<7; i++)
+        int desAndTitleHeight; //描述和题目的高度总和 若小于图片的高度 测返回图片的高度
+        desAndTitleHeight = [self getStringHeight:testArray[0+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(135, 1000)]+[self getStringHeight:testArray[1+3] withFont:[UIFont systemFontOfSize:17]consSize:CGSizeMake(135, 1000)];
+        desAndTitleHeight = desAndTitleHeight<185?185:desAndTitleHeight;
+        height+=desAndTitleHeight;
+        for (int i=2; i<7; i++)
         {
-            height+=[self getStringHeight:testArray[i+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(135, 1000)];
+            height+=[self getStringHeight:testArray[i+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(220, 1000)];
         }
         
         return height;

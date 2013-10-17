@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D12D3AE180E36A8003D09CA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12D3AC180E36A8003D09CA /* ProfileViewController.m */; };
+		8D12D3B1180E3E1C003D09CA /* img_content_border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D12D3B0180E3E1C003D09CA /* img_content_border@2x.png */; };
+		8D12D3B4180E7A37003D09CA /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12D3B3180E7A37003D09CA /* ProfileModel.m */; };
 		8DD5D3001806A18A00EB446F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5D2EE1806A18A00EB446F /* AFHTTPClient.m */; };
 		8DD5D3011806A18A00EB446F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5D2F01806A18A00EB446F /* AFHTTPRequestOperation.m */; };
 		8DD5D3021806A18A00EB446F /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5D2F21806A18A00EB446F /* AFImageRequestOperation.m */; };
@@ -130,6 +133,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D12D3AB180E36A8003D09CA /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		8D12D3AC180E36A8003D09CA /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		8D12D3B0180E3E1C003D09CA /* img_content_border@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_content_border@2x.png"; sourceTree = "<group>"; };
+		8D12D3B2180E7A37003D09CA /* ProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileModel.h; sourceTree = "<group>"; };
+		8D12D3B3180E7A37003D09CA /* ProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileModel.m; sourceTree = "<group>"; };
 		8DD5D2ED1806A18A00EB446F /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		8DD5D2EE1806A18A00EB446F /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		8DD5D2EF1806A18A00EB446F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -260,8 +268,6 @@
 		8DF2081A180CE0F300FDEABA /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
 		8DF2081D180CE12900FDEABA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8DF2081E180CE12900FDEABA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8DF20820180D297D00FDEABA /* FileOperatorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileOperatorUtil.h; sourceTree = "<group>"; };
-		8DF20821180D297D00FDEABA /* FileOperatorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileOperatorUtil.m; sourceTree = "<group>"; };
 		8DF20829180D879300FDEABA /* AppDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDataCenter.h; sourceTree = "<group>"; };
 		8DF2082A180D879300FDEABA /* AppDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataCenter.m; sourceTree = "<group>"; };
 		CEAE7A78180FDC1700ECBD5F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -350,8 +356,6 @@
 			children = (
 				8DD5D3171806E7DC00EB446F /* FileManagerUtil.h */,
 				8DD5D3181806E7DC00EB446F /* FileManagerUtil.m */,
-				8DF20820180D297D00FDEABA /* FileOperatorUtil.h */,
-				8DF20821180D297D00FDEABA /* FileOperatorUtil.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -413,6 +417,8 @@
 			children = (
 				8DD5D3461807C41800EB446F /* RequestModel.h */,
 				8DD5D3471807C41800EB446F /* RequestModel.m */,
+				8D12D3B2180E7A37003D09CA /* ProfileModel.h */,
+				8D12D3B3180E7A37003D09CA /* ProfileModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -480,7 +486,6 @@
 		8DEE3E4618044A1C00B4C607 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8DEE3E6218044B6700B4C607 /* Images */,
 				8DEE3E4718044A1C00B4C607 /* LinkedInApp4iPhone-Info.plist */,
 				8DEE3E4818044A1C00B4C607 /* InfoPlist.strings */,
 				8DEE3E4B18044A1C00B4C607 /* main.m */,
@@ -490,13 +495,6 @@
 				8DEE3E5518044A1C00B4C607 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8DEE3E6218044B6700B4C607 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		8DF20792180CE05600FDEABA /* Images */ = {
@@ -556,6 +554,7 @@
 				8DF207C6180CE05600FDEABA /* img_weibo_userinfo_female_2@2x.png */,
 				8DF207C7180CE05600FDEABA /* img_weibo_userinfo_male_1@2x.png */,
 				8DF207C8180CE05600FDEABA /* img_weibo_userinfo_male_2@2x.png */,
+				8D12D3B0180E3E1C003D09CA /* img_content_border@2x.png */,
 				8DF207C9180CE05600FDEABA /* img_weibo_userinfo_verifed@2x.png */,
 			);
 			path = Images;
@@ -572,6 +571,8 @@
 				8DF20807180CE06100FDEABA /* RegisterViewController.m */,
 				8DF20808180CE06100FDEABA /* ViewController.h */,
 				8DF20809180CE06100FDEABA /* ViewController.m */,
+				8D12D3AB180E36A8003D09CA /* ProfileViewController.h */,
+				8D12D3AC180E36A8003D09CA /* ProfileViewController.m */,
 				CEE8EAA8180E23030052E5D8 /* Home */,
 				CED1A9FF180EC4D500A4A1A0 /* PersonInfo */,
 				CEE8EAC4180E71E40052E5D8 /* Activity */,
@@ -598,10 +599,10 @@
 		8DF20815180CE0F300FDEABA /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				8DF2081D180CE12900FDEABA /* AppDelegate.h */,
 				8DF20829180D879300FDEABA /* AppDataCenter.h */,
 				8DF2082A180D879300FDEABA /* AppDataCenter.m */,
 				8DF2081E180CE12900FDEABA /* AppDelegate.m */,
+				8DF2081D180CE12900FDEABA /* AppDelegate.h */,
 				8DF20816180CE0F300FDEABA /* Constant.h */,
 				8DF20817180CE0F300FDEABA /* Transfer+ParseXML.h */,
 				8DF20818180CE0F300FDEABA /* Transfer+ParseXML.m */,
@@ -778,6 +779,7 @@
 				8DF207FE180CE05600FDEABA /* img_weibo_userinfo_male_1@2x.png in Resources */,
 				8DF207FF180CE05600FDEABA /* img_weibo_userinfo_male_2@2x.png in Resources */,
 				8DF20800180CE05600FDEABA /* img_weibo_userinfo_verifed@2x.png in Resources */,
+				8D12D3B1180E3E1C003D09CA /* img_content_border@2x.png in Resources */,
 				CEE8EAAD180E23030052E5D8 /* HomeViewController.xib in Resources */,
 				CEE8EABD180E65C30052E5D8 /* NoticeListViewController.xib in Resources */,
 				CEE8EAC9180E71E40052E5D8 /* ActivityCell.xib in Resources */,
@@ -825,6 +827,8 @@
 				8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */,
 				8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */,
 				8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */,
+				8D12D3AE180E36A8003D09CA /* ProfileViewController.m in Sources */,
+				8D12D3B4180E7A37003D09CA /* ProfileModel.m in Sources */,
 				CEE8EAAC180E23030052E5D8 /* HomeViewController.m in Sources */,
 				CEE8EABC180E65C30052E5D8 /* NoticeListViewController.m in Sources */,
 				CEE8EAC3180E6F490052E5D8 /* UINavigationController_BackButton.m in Sources */,

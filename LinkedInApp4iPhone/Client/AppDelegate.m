@@ -29,9 +29,7 @@
     self.window.rootViewController = self.rootNavigationController;
     //self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    [UserDefaults setObject:DEFAULTHOST forKey:kHOSTNAME];
-    
+        
     return YES;
 }
 
