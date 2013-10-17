@@ -197,11 +197,6 @@ static NSString *totalSize = nil;
                                                                                     
                                                                                             NSLog(@"respose: %@", JSON);success(JSON);
                                                                                             
-//                                                                                            NSDictionary *jsonDict = (NSDictionary *) JSON;
-//                                                                                            NSArray *products = [jsonDict objectForKey:@"products"];
-//                                                                                            [products enumerateObjectsUsingBlock:^(id obj,NSUInteger idx, BOOL *stop){
-//                                                                                                NSString *productIconUrl = [obj objectForKey:@"icon_url"];
-//                                                                                            }];
                                                                                             
                                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
                                                                                                     NSError *error, id JSON) {
