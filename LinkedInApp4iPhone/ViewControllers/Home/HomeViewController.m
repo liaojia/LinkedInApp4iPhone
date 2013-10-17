@@ -11,6 +11,7 @@
 #import "ActivityCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ActivityDetailViewController.h"
+#import "WebViewController.h"
 
 #define Tag_Back_Action 200
 #define Tag_Search_Action 201
@@ -414,7 +415,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section ==2)
+    if (indexPath.section == 0) //进入学校详情
+    {
+        WebViewController *webController = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:[NSBundle mainBundle]];
+        webController.urlStr = @"www.baidu.com";
+        webController.navTitleStr = @"北京师范大学";
+        [self.navigationController pushViewController:webController animated:YES];
+        
+    }
+    else if (indexPath.section ==2)//进入官方活动详情
     {
         ActivityDetailViewController *activityDetailController = [[ActivityDetailViewController alloc]initWithNibName:@"ActivityDetailViewController" bundle:[NSBundle mainBundle]];
         [self.navigationController pushViewController:activityDetailController animated:YES];

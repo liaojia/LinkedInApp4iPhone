@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 liao jia. All rights reserved.
 //
 
-#import "UINavigationController+UINavigationController_BackButton.h"
+#import "UINavigationController_BackButton.h"
 
 @implementation UINavigationController (UINavigationController_BackButton)
 

@@ -70,7 +70,7 @@
         {
             myNoticeListType = myNoticeListType == 0?1:0;
             [button setImage:[UIImage imageNamed:myNoticeListType == 0?@"img_card_list_two":@"img_card_list_one"] forState:UIControlStateNormal];
-            [self.listTableView reloadData];
+            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
             
         }
             break;
@@ -78,7 +78,7 @@
         {
             NoticeMeListType = NoticeMeListType == 0?1:0;
             [button setImage:[UIImage imageNamed:NoticeMeListType == 0?@"img_card_list_two":@"img_card_list_one"] forState:UIControlStateNormal];
-            [self.listTableView reloadData];
+            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
         }
             break;
             
