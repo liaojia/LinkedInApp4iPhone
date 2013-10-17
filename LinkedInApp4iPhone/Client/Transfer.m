@@ -192,35 +192,37 @@ static NSString *totalSize = nil;
     [request setTimeoutInterval:20];
     NSLog(@"request: %@", request.URL);
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                        
-                                                                                    
-                                                                                            NSLog(@"respose: %@", JSON);success(JSON);
-                                                                                            
-                                                                                            
-                                                                                        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
-                                                                                                    NSError *error, id JSON) {
-                                                                                            [SVProgressHUD dismiss];
-                                                                                            
-                                                                                            [[Transfer sharedClient].operationQueue cancelAllOperations];
-                                                                                            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:kHOSTNAME];
-                                                                                            
-                                                                                            NSLog(@"--%@", [NSString stringWithFormat:@"%@",error]);
-                                                                                            //[SVProgressHUD showErrorWithStatus:[self getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]];
-                                                                                            
-                                                                                            // 点击取消的时候会报（The operation couldn’t be completed）,但是UserInfo中不存在NSLocalizedDescription属性，说明这不是一个错误，现用一BOOL值进行简单特殊控制,。。。
-                                                                                            NSString *message = [Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                                                                            if (!isCancelAction && message && alertError) {
-                                                                                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                                                                                                [alert show];
-                                                                                            }
-                                                                                            
-                                                                                            
-                                                                                            failure([Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]);
-
-                                                                                        }
-                                         ];
+        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
     
+            NSLog(@"respose: %@", JSON);success(JSON);
+            
+            
+            
+            
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
+                    NSError *error, id JSON) {
+            [SVProgressHUD dismiss];
+            
+            [[Transfer sharedClient].operationQueue cancelAllOperations];
+            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:kHOSTNAME];
+            
+            NSLog(@"--%@", [NSString stringWithFormat:@"%@",error]);
+            //[SVProgressHUD showErrorWithStatus:[self getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]];
+            
+            // 点击取消的时候会报（The operation couldn’t be completed）,但是UserInfo中不存在NSLocalizedDescription属性，说明这不是一个错误，现用一BOOL值进行简单特殊控制,。。。
+            NSString *message = [Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            if (!isCancelAction && message && alertError) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+            }
+            
+            
+            failure([Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]);
+
+        }
+];
+
 //    [operation start];
     
 //    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
