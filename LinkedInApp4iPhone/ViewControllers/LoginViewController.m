@@ -79,6 +79,7 @@
                                                                                  requesId:@"LOGIN"
                                                                                    prompt:@"hell"
                                                                                   success:^(id obj) {
+                                                                                      NSLog(@"login: %@", obj);
                                                                                       
                                                                                   }
                                                                                   failure:^(NSString *errMsg) {

@@ -59,7 +59,7 @@
 
 // 公共参数
 #define VERSION                         @"1"
-#define CLIENT_ID                       @"2"//1、网站 2、Android 3、IOS
+#define CLIENT_ID                       @"3"//1、网站 2、Android 3、IOS
 #define SESSION_ID                      @"-1"// sessionId
 
 
