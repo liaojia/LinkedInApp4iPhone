@@ -69,17 +69,20 @@
 }
 
 -(IBAction)confirmAction:(id)sender{
-    
-    HomeViewController *homeControlelr = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
-    self.navigationController.navigationBarHidden = NO;
-    [self.navigationController pushViewController:homeControlelr animated:YES];
-    
+        
     NSDictionary *requestDic = [[NSDictionary alloc] initWithObjectsAndKeys:_tf_username.getText, @"name", _tf_pwd.getText, @"password", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] TransferWithRequestDic:requestDic
                                                                                  requesId:@"LOGIN"
                                                                                    prompt:@"hell"
                                                                                   success:^(id obj) {
-                                                                                      NSLog(@"login: %@", obj);
+                                                                                      NSLog(@"login:%@",[obj objectForKey:@"rc"]);
+                                                                                      if ([[obj objectForKey:@"rc"] isEqualToString:@"1"]) {
+                                                                                          HomeViewController *homeControlelr = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
+                                                                                          self.navigationController.navigationBarHidden = NO;
+                                                                                          [self.navigationController pushViewController:homeControlelr animated:YES];
+                                                                                        
+                                                                                      }
+                                                                                      
                                                                                       
                                                                                   }
                                                                                   failure:^(NSString *errMsg) {

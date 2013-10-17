@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
-#import "ProfileViewController.h"
 @interface ViewController ()
 
 @end
@@ -56,11 +55,9 @@
 
 -(IBAction)registerAction:(id)sender
 {
-//    RegisterViewController *vc = [[RegisterViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
-    ProfileViewController *vc = [[ProfileViewController alloc] init];
+    RegisterViewController *vc = [[RegisterViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+    
 
 }
 @end
