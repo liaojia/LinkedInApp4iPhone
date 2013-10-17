@@ -134,11 +134,13 @@ static NSString *totalSize = nil;
  
  **/
 
-- (AFHTTPRequestOperation *) TransferWithRequestDic:(NSDictionary *) reqDic
+
+- (AFHTTPRequestOperation *) TransferWithRequestDic:(NSDictionary *)reqDic
                                            requesId:(NSString *)requesId
                                              prompt:(NSString *) prompt
                                             success:(SuccessBlock) success
                                             failure:(FailureBlock) failure
+
 
 {
     return [self TransferWithRequestDic:reqDic
@@ -195,7 +197,8 @@ static NSString *totalSize = nil;
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
     
-            NSLog(@"respose: %@", JSON);success(JSON);
+            NSLog(@"respose: %@", JSON);
+            success(JSON);
             
             
             

@@ -110,6 +110,11 @@
 		8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081A180CE0F300FDEABA /* Transfer.m */; };
 		8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081E180CE12900FDEABA /* AppDelegate.m */; };
 		8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2082A180D879300FDEABA /* AppDataCenter.m */; };
+		CE586ECA1810351000BE7A62 /* StaticDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC01810351000BE7A62 /* StaticDataTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE586ECB1810351000BE7A62 /* StaticFormatTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC21810351000BE7A62 /* StaticFormatTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE586ECC1810351000BE7A62 /* StaticOtherTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC41810351000BE7A62 /* StaticOtherTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE586ECD1810351000BE7A62 /* StaticTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC61810351000BE7A62 /* StaticTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE586ECE1810351000BE7A62 /* StaticUITools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC91810351000BE7A62 /* StaticUITools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CEAE7A7B180FDC1700ECBD5F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE7A79180FDC1700ECBD5F /* WebViewController.m */; };
 		CEAE7A7C180FDC1700ECBD5F /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */; };
 		CED1AA06180EC4D500A4A1A0 /* PersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1AA01180EC4D500A4A1A0 /* PersonInfoCell.m */; };
@@ -270,6 +275,17 @@
 		8DF2081E180CE12900FDEABA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8DF20829180D879300FDEABA /* AppDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDataCenter.h; sourceTree = "<group>"; };
 		8DF2082A180D879300FDEABA /* AppDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataCenter.m; sourceTree = "<group>"; };
+		CE586EBF1810351000BE7A62 /* StaticDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticDataTools.h; sourceTree = "<group>"; };
+		CE586EC01810351000BE7A62 /* StaticDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticDataTools.m; sourceTree = "<group>"; };
+		CE586EC11810351000BE7A62 /* StaticFormatTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticFormatTools.h; sourceTree = "<group>"; };
+		CE586EC21810351000BE7A62 /* StaticFormatTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticFormatTools.m; sourceTree = "<group>"; };
+		CE586EC31810351000BE7A62 /* StaticOtherTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticOtherTools.h; sourceTree = "<group>"; };
+		CE586EC41810351000BE7A62 /* StaticOtherTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticOtherTools.m; sourceTree = "<group>"; };
+		CE586EC51810351000BE7A62 /* StaticTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticTools.h; sourceTree = "<group>"; };
+		CE586EC61810351000BE7A62 /* StaticTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticTools.m; sourceTree = "<group>"; };
+		CE586EC71810351000BE7A62 /* StaticToolsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticToolsHeader.h; sourceTree = "<group>"; };
+		CE586EC81810351000BE7A62 /* StaticUITools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticUITools.h; sourceTree = "<group>"; };
+		CE586EC91810351000BE7A62 /* StaticUITools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticUITools.m; sourceTree = "<group>"; };
 		CEAE7A78180FDC1700ECBD5F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		CEAE7A79180FDC1700ECBD5F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -363,6 +379,7 @@
 		8DD5D31B1806E83D00EB446F /* External */ = {
 			isa = PBXGroup;
 			children = (
+				CE586EBE1810351000BE7A62 /* StaticTools */,
 				8DD5D32E1806E8F300EB446F /* TBXML */,
 				8DD5D31C1806E83D00EB446F /* MProgressAlertView */,
 				8DD5D31F1806E83D00EB446F /* Reachability */,
@@ -612,6 +629,24 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
+		CE586EBE1810351000BE7A62 /* StaticTools */ = {
+			isa = PBXGroup;
+			children = (
+				CE586EBF1810351000BE7A62 /* StaticDataTools.h */,
+				CE586EC01810351000BE7A62 /* StaticDataTools.m */,
+				CE586EC11810351000BE7A62 /* StaticFormatTools.h */,
+				CE586EC21810351000BE7A62 /* StaticFormatTools.m */,
+				CE586EC31810351000BE7A62 /* StaticOtherTools.h */,
+				CE586EC41810351000BE7A62 /* StaticOtherTools.m */,
+				CE586EC51810351000BE7A62 /* StaticTools.h */,
+				CE586EC61810351000BE7A62 /* StaticTools.m */,
+				CE586EC71810351000BE7A62 /* StaticToolsHeader.h */,
+				CE586EC81810351000BE7A62 /* StaticUITools.h */,
+				CE586EC91810351000BE7A62 /* StaticUITools.m */,
+			);
+			path = StaticTools;
+			sourceTree = "<group>";
+		};
 		CED1A9FF180EC4D500A4A1A0 /* PersonInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -840,6 +875,11 @@
 				CED1AA0D180EC51B00A4A1A0 /* CommendListViewController.m in Sources */,
 				CED1AA13180ED39900A4A1A0 /* PersonCell.m in Sources */,
 				CEAE7A7B180FDC1700ECBD5F /* WebViewController.m in Sources */,
+				CE586ECA1810351000BE7A62 /* StaticDataTools.m in Sources */,
+				CE586ECB1810351000BE7A62 /* StaticFormatTools.m in Sources */,
+				CE586ECC1810351000BE7A62 /* StaticOtherTools.m in Sources */,
+				CE586ECD1810351000BE7A62 /* StaticTools.m in Sources */,
+				CE586ECE1810351000BE7A62 /* StaticUITools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

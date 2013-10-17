@@ -50,6 +50,8 @@
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
     
+    
+    
    
 }
 - (void)viewWillAppear:(BOOL)animated
