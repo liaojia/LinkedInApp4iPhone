@@ -32,6 +32,6 @@
 @property (assign, nonatomic) int pageType;  //页面复用标志
 
 @property (nonatomic, strong)ProfileModel *model;
-@property (nonatomic, strong)NSArray *timeLimeArray;
+@property (nonatomic, strong)NSMutableArray *timeLimeArray;
 
 @end
