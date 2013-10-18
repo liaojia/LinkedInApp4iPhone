@@ -14,7 +14,6 @@
 #import "WebViewController.h"
 
 #define Tag_Back_Action 200
-#define Tag_Search_Action 201
 
 @interface HomeViewController ()
 
@@ -38,10 +37,12 @@
                       ,@"活动费用活动"
                       ,@"主办方主办方主办方办方主办方办方主办方"];
         
+
         self.schollInfoModel  = [[ProfileModel alloc]init];
         self.boadCastModel = [[ProfileModel alloc]init];
         
-        personInfoController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
+       
+
     }
     return self;
 }
@@ -68,6 +69,8 @@
     [self initNavLeftButton];
     [self initNavTitleView];
 
+    [self getSchoolInfo];
+    [self getBroadcastList];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -91,16 +94,9 @@
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     leftBtn.frame = CGRectMake(0, 0, 35, 35);
     leftBtn.tag  = Tag_Back_Action;
-    if (![self.view.subviews containsObject:personInfoController.view])
-    {
-        [leftBtn setImage:[UIImage imageNamed:@"img_list_normal"] forState:UIControlStateNormal];
-        [leftBtn setImage:[UIImage imageNamed:@"img_list_pressed"] forState:UIControlStateHighlighted];
-    }
-    else
-    {
-        [leftBtn setImage:[UIImage imageNamed:@"img_list_right_normal"] forState:UIControlStateNormal];
-        [leftBtn setImage:[UIImage imageNamed:@"img_list_right_pressed"] forState:UIControlStateHighlighted];
-    }
+    
+    [leftBtn setImage:[UIImage imageNamed:@"img_list_right_normal"] forState:UIControlStateNormal];
+    [leftBtn setImage:[UIImage imageNamed:@"img_list_right_pressed"] forState:UIControlStateHighlighted];
  
     [leftBtn addTarget:self action:@selector(buttonClickedHandle:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
@@ -114,16 +110,6 @@
 {
     UIView *titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 250, 44)];
     titleView.backgroundColor = [UIColor clearColor];
-    
-    UITextField *searchTxtField = [[UITextField alloc]initWithFrame:CGRectMake(50, 5, 150, 30)];
-    searchTxtField.backgroundColor = [UIColor whiteColor];
-    [titleView addSubview:searchTxtField];
-    
-    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    searchBtn.frame = CGRectMake(210, 5, 30,30);
-    searchBtn.tag = Tag_Search_Action;
-    [searchBtn addTarget:self action:@selector(buttonClickedHandle:) forControlEvents:UIControlEventTouchUpInside];
-    [titleView addSubview:searchBtn];
     
     self.navigationItem.titleView = titleView;
     
@@ -262,40 +248,13 @@
     switch (button.tag) {
         case Tag_Back_Action: //导航栏左侧按钮
         {
-            //使用addsubview的方式加入viewcontroller  需主动设置其frame  否则系统会默认使用xib里的大小 
-            personInfoController.view.frame = self.view.frame;
             
-            [UIView beginAnimations:@"View Flip" context:nil];
-            [UIView setAnimationDuration:0.5];
-            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-            
-           
-            if (![self.view.subviews containsObject:personInfoController.view])
-            {
-                [self.view addSubview:personInfoController.view];
-                [UIView setAnimationTransition:
-                 UIViewAnimationTransitionFlipFromLeft
-                                       forView:self.navigationController.view cache:YES];
-            }
-            else
-            {
-                [personInfoController.view removeFromSuperview];
-                [UIView setAnimationTransition:
-                 UIViewAnimationTransitionFlipFromRight
-                                       forView:self.navigationController.view cache:YES];
-            }
-            [UIView commitAnimations];
-            [self initNavLeftButton];
+           PersonInfoViewController *vc = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
+            [self.navigationController pushViewController:vc animated:YES];
             
         }
             break;
-        case Tag_Search_Action: //导航栏搜索按钮
-        {
-            UIAlertView *alet = [[UIAlertView alloc]initWithTitle:nil message:@"搜索点击了" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alet show];
-            
-        }
-            break;
+        
         case 101: //官方公告
         {
             

@@ -41,12 +41,13 @@
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
     
-    self.timeLimeArray = [[NSMutableArray alloc] init];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     
+    self.timeLimeArray = [[NSMutableArray alloc] init];
     [self refreshData];
 }
 - (void)viewDidUnload
@@ -105,11 +106,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+
     if (section == 0)
     {
         return 1;
     }else if(section == 1){
-        return [self.timeLimeArray count];
+
+        return [self.timeLimeArray count] + 1;
     }
     else if(section == 2||section == 3)
     {
@@ -133,7 +136,6 @@
         }
         
     }
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,14 +217,7 @@
     }
     else if (indexPath.section == 0) //个人资料
     {
-        NSString *name = nil;
-        NSString *dept = nil;
-        NSString *major = nil;
-        if (_model) {
-            name = _model.mName ? _model.mName:NODATA;
-            dept = _model.mDept ? _model.mDept:NODATA;
-            major = _model.mMajor ? _model.mMajor:NODATA;
-        }
+        
         //头像图片
         UIImageView *headImgView  = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 80, 120)];
         headImgView.backgroundColor = [UIColor grayColor];
@@ -233,7 +228,7 @@
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.font = [UIFont boldSystemFontOfSize:20];
         nameLabel.textColor = RGBACOLOR(0, 140, 207, 1);
-        nameLabel.text = name;
+        nameLabel.text = self.model.mName;
         [cell.contentView addSubview:nameLabel];
         
         //学校名称
@@ -242,7 +237,7 @@
         schoolLabel.numberOfLines = 2;
         schoolLabel.lineBreakMode = UILineBreakModeWordWrap;
         schoolLabel.font = [UIFont boldSystemFontOfSize:20];
-        schoolLabel.text = dept;
+        schoolLabel.text = self.model.mDept;
         [cell.contentView addSubview:schoolLabel];
         
         //专业名称
@@ -251,16 +246,18 @@
         specialityLabel.numberOfLines = 2;
         specialityLabel.lineBreakMode = UILineBreakModeWordWrap;
         specialityLabel.font = [UIFont boldSystemFontOfSize:20];
-        specialityLabel.text = major;
+        specialityLabel.text = self.model.mMajor;
         [cell.contentView addSubview:specialityLabel];
     }
-    else if (indexPath.section == 1&&indexPath!=0) //个人履历
+    else if (indexPath.section == 1&&indexPath.row!=0) //个人履历
     {
 //        cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
-        PersonInfoCell *personInfoCell = [[PersonInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier profileModel:[self.timeLimeArray objectAtIndex:indexPath.row]];
-        cell = personInfoCell;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        PersonInfoCell *personInfoCell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
+        [personInfoCell initWithMode:[self.timeLimeArray objectAtIndex:indexPath.row-1]];
+        personInfoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        personInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell = personInfoCell;
+        return personInfoCell;
     }
     else if(indexPath.section == 2||indexPath.section == 3) //个人关注||//关注我的人
     {
@@ -345,8 +342,8 @@
               [_model setMDept:[basicDic objectForKey:@"dept"]];
               
           }
+        [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
           
-          [self.listTableView performSelectorInBackground:@selector(reloadData) withObject:nil];
         }
         failure:^(NSString *errMsg) {
           
@@ -361,6 +358,7 @@
               
               if ([[obj objectForKey:@"rc"]intValue] == 1) {
                   NSArray *list = [obj objectForKey:@"list"];
+//                  [self.timeLimeArray removeAllObjects];
                   for (id obj2 in list) {
                       ProfileModel *model = [[ProfileModel alloc] init];
                       [model setMCity:[obj2 objectForKey:@"city"]];
@@ -371,17 +369,17 @@
                       [model setMOrg:[obj2 objectForKey:@"org"]];
                       [self.timeLimeArray addObject:model];
                   }
-                  
+                  [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
               }
-              [self.listTableView performSelectorInBackground:@selector(reloadData) withObject:nil];
+             
           }
           failure:^(NSString *errMsg) {
               
           }];
     
-    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation1, operation2, nil] prompt:@"正在获取数据..." completeBlock:^(NSArray *operations) {
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation2, operation1, nil] prompt:@"正在获取数据..." completeBlock:^(NSArray *operations) {
         
-        
+//         [self.listTableView performSelectorInBackground:@selector(reloadData) withObject:nil];
         
     }];
 }

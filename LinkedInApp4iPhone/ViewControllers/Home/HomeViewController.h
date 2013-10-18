@@ -25,7 +25,6 @@
 {
     NSArray *testArray; //测试数据
     
-    PersonInfoViewController *personInfoController;
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (strong, nonatomic) ProfileModel *schollInfoModel; //保存母校信息
