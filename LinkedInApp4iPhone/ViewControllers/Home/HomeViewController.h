@@ -28,9 +28,10 @@
     PersonInfoViewController *personInfoController;
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
-
 @property (strong, nonatomic) ProfileModel *schollInfoModel; //保存母校信息
 @property (strong, nonatomic) ProfileModel *boadCastModel;   //保存公告板
+@property (strong, nonatomic) NSMutableArray *actMtbArray;   //保存官方活动
 
 - (IBAction)buttonClickedHandle:(id)sender;
+
 @end

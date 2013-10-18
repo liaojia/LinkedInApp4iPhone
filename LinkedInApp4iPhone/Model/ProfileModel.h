@@ -26,6 +26,7 @@
 @property(nonatomic, strong)    NSString *mStime;
 @property(nonatomic, strong)    NSString *mEtime;
 @property(nonatomic, strong)    NSString *mOrg;
+@property(nonatomic, strong)    NSString *mId;
 
 /* 个人扩展信息 */
 @property(nonatomic, strong)    NSString *mBirthday;// 生日，yyyy-mm-dd格式

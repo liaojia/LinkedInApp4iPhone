@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/Home/HomeViewController.m"
-         timestampString = "403796442.206582"
+         timestampString = "403804158.890262"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "555"
-         endingLineNumber = "555"
+         startingLineNumber = "543"
+         endingLineNumber = "543"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -40,19 +40,6 @@
          startingLineNumber = "54"
          endingLineNumber = "54"
          landmarkName = "-initNavLeftButton"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "LinkedInApp4iPhone/ViewControllers/Notice/NoticeListViewController.m"
-         timestampString = "403598869.378035"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "28"
-         endingLineNumber = "28"
-         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -125,25 +112,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/Home/HomeViewController.m"
-         timestampString = "403796442.206582"
+         timestampString = "403797986.501526"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "137"
-         endingLineNumber = "137"
-         landmarkName = "-getSchoolInfo"
+         startingLineNumber = "231"
+         endingLineNumber = "231"
+         landmarkName = "-getFirstBroadCastDetailWithID:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "LinkedInApp4iPhone/ViewControllers/Home/HomeViewController.m"
-         timestampString = "403796442.206582"
+         filePath = "LinkedInApp4iPhone/ViewControllers/Notice/NoticeListViewController.m"
+         timestampString = "403802366.343339"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "407"
-         endingLineNumber = "407"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
+         landmarkName = "-getBroadcastListWithPage:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "LinkedInApp4iPhone/ViewControllers/Notice/NoticeListViewController.m"
+         timestampString = "403802366.343339"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
+         landmarkName = "-getBroadcastListWithPage:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -110,6 +110,8 @@
 		8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081A180CE0F300FDEABA /* Transfer.m */; };
 		8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2081E180CE12900FDEABA /* AppDelegate.m */; };
 		8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2082A180D879300FDEABA /* AppDataCenter.m */; };
+		CE364D21181181170033EA6B /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE364D1F181181170033EA6B /* NoticeDetailViewController.m */; };
+		CE364D22181181170033EA6B /* NoticeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE364D20181181170033EA6B /* NoticeDetailViewController.xib */; };
 		CE586ECA1810351000BE7A62 /* StaticDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC01810351000BE7A62 /* StaticDataTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE586ECB1810351000BE7A62 /* StaticFormatTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC21810351000BE7A62 /* StaticFormatTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE586ECC1810351000BE7A62 /* StaticOtherTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC41810351000BE7A62 /* StaticOtherTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -275,6 +277,9 @@
 		8DF2081E180CE12900FDEABA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8DF20829180D879300FDEABA /* AppDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDataCenter.h; sourceTree = "<group>"; };
 		8DF2082A180D879300FDEABA /* AppDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataCenter.m; sourceTree = "<group>"; };
+		CE364D1E181181170033EA6B /* NoticeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
+		CE364D1F181181170033EA6B /* NoticeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
+		CE364D20181181170033EA6B /* NoticeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeDetailViewController.xib; sourceTree = "<group>"; };
 		CE586EBF1810351000BE7A62 /* StaticDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticDataTools.h; sourceTree = "<group>"; };
 		CE586EC01810351000BE7A62 /* StaticDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticDataTools.m; sourceTree = "<group>"; };
 		CE586EC11810351000BE7A62 /* StaticFormatTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticFormatTools.h; sourceTree = "<group>"; };
@@ -685,6 +690,9 @@
 				CEE8EAB9180E65C30052E5D8 /* NoticeListViewController.h */,
 				CEE8EABA180E65C30052E5D8 /* NoticeListViewController.m */,
 				CEE8EABB180E65C30052E5D8 /* NoticeListViewController.xib */,
+				CE364D1E181181170033EA6B /* NoticeDetailViewController.h */,
+				CE364D1F181181170033EA6B /* NoticeDetailViewController.m */,
+				CE364D20181181170033EA6B /* NoticeDetailViewController.xib */,
 			);
 			path = Notice;
 			sourceTree = "<group>";
@@ -824,6 +832,7 @@
 				CED1AA0E180EC51B00A4A1A0 /* CommendListViewController.xib in Resources */,
 				CED1AA10180ED37E00A4A1A0 /* PersonCell.xib in Resources */,
 				CEAE7A7C180FDC1700ECBD5F /* WebViewController.xib in Resources */,
+				CE364D22181181170033EA6B /* NoticeDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +889,7 @@
 				CE586ECC1810351000BE7A62 /* StaticOtherTools.m in Sources */,
 				CE586ECD1810351000BE7A62 /* StaticTools.m in Sources */,
 				CE586ECE1810351000BE7A62 /* StaticUITools.m in Sources */,
+				CE364D21181181170033EA6B /* NoticeDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

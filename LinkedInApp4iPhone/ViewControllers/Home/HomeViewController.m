@@ -51,7 +51,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.listTableView.backgroundColor = [UIColor clearColor];
-    self.listTableView.backgroundView = nil;   
+    self.listTableView.backgroundView = nil;
+    
+    
+    [self getSchoolInfo];
+    [self getBroadcastList];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -63,9 +67,7 @@
     //必须放到viewdidappear里 否则将会被自定义的导航栏重置
     [self initNavLeftButton];
     [self initNavTitleView];
-    
-    [self getSchoolInfo];
-    [self getBroadcastList];
+
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -181,7 +183,7 @@
                  if (listArray.count>0)
                  {
                      NSDictionary *temDict = listArray[0];
-                     [self getFirstBroadCastDetailWithID:temDict[@"id"]];
+                     [self getFirstBroadCastDetailWithID:[NSString stringWithFormat:@"%d",[temDict[@"id"] intValue]]];
                      self.boadCastModel.mStime = temDict[@"time"];
                    
                      
@@ -216,17 +218,17 @@
 - (void)getFirstBroadCastDetailWithID:(NSString*)idStr
 
 {
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"COLLEGE_EVENT_DETAIL" messId:idStr success:^(id obj)
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"COLLEGE_BROADCAST_DETAIL" messId:idStr success:^(id obj)
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
-                  
-                   [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+                 self.boadCastModel.mDesc = obj[@"content"];
+                [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
                  
              }
              else if([[obj objectForKey:@"rc"]intValue] == -1)
              {
-                 [SVProgressHUD showErrorWithStatus:@"未找到公告信息！"];
+                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
              }
              else
              {
@@ -408,6 +410,7 @@
         //学校详情
         UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(105, nameLabel.frame.origin.y+nameLabel.frame.size.height+5, 180, 150-10-nameLabel.frame.size.height)];
         detailLabel.backgroundColor = [UIColor clearColor];
+        detailLabel.font = [UIFont systemFontOfSize:16];
         detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
         detailLabel.numberOfLines = 6;
         //detailLabel.font = [UIFont boldSystemFontOfSize:20];
@@ -482,7 +485,7 @@
               infoLabel.backgroundColor = [UIColor clearColor];
               infoLabel.numberOfLines = 0;
               infoLabel.lineBreakMode = UILineBreakModeTailTruncation;
-              infoLabel.font = [UIFont systemFontOfSize:17];
+              infoLabel.font = [UIFont systemFontOfSize:16];
               infoLabel.text = self.boadCastModel.mDesc;
               [cell.contentView addSubview:infoLabel];
               
@@ -490,6 +493,7 @@
               UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, infoLabel.frame.origin.y+infoLabel.frame.size.height, 190, 30)];
               timeLabel.backgroundColor = [UIColor clearColor];
               timeLabel.textAlignment = UITextAlignmentRight;
+              timeLabel.font = [UIFont systemFontOfSize:16];
               timeLabel.text = self.boadCastModel.mStime;
               [cell.contentView addSubview:timeLabel];
               
