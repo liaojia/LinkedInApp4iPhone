@@ -231,47 +231,6 @@ static NSString *totalSize = nil;
 
         }
 ];
-
-//    [operation start];
-    
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        /***
-//        if ([[Transfer sharedClient].operationQueue.operations count] == 0) {
-//            [SVProgressHUD dismiss];
-//        }
-//         ***/
-//        
-//        NSLog(@"Response: %@", [operation responseString]);
-//        
-//#ifdef DEMO
-////        id obj = [self DemoParse:[reqDic objectForKey:kMethodName]];
-////        success(obj);
-//#else
-////        id obj = [self ParseXMLWithReqName:[reqDic objectForKey:kMethodName] xmlString:respXML];
-////        success(obj);
-//#endif
-//        
-//    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        [SVProgressHUD dismiss];
-//        
-//        [[Transfer sharedClient].operationQueue cancelAllOperations];
-//        [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:[UserDefaults stringForKey:kHOSTNAME]];
-//        
-//        NSLog(@"--%@", [NSString stringWithFormat:@"%@",error]);
-//        //[SVProgressHUD showErrorWithStatus:[self getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]];
-//        
-//        // 点击取消的时候会报（The operation couldn’t be completed）,但是UserInfo中不存在NSLocalizedDescription属性，说明这不是一个错误，现用一BOOL值进行简单特殊控制,。。。
-//        NSString *message = [Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-//        if (!isCancelAction && message && alertError) {
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//            [alert show];
-//        }
-//        
-//        
-//        failure([Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]);
-//    }];
     
     return operation;
 }

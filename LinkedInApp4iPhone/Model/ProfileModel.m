@@ -62,6 +62,65 @@
     _mDept = [self checkNullWithString:mDept];
 }
 
+- (void)setMDesc:(NSString *)mDesc
+{
+    _mdesc = [self checkNullWithString:mDesc];
+}
+
+- (void)setMEtime:(NSString *)mEtime
+{
+    _mEtime = [self checkNullWithString:mEtime];
+}
+
+-(void)setMGender:(NSString *)mGender
+{
+    _mGender = [[self checkNullWithString:mGender] isEqualToString:@"1"] ? @"男":@"女";
+}
+
+-(void)setMGradYear:(NSString *)mGradYear
+{
+    _mGradYear = [self checkNullWithString:mGradYear];
+}
+
+-(void)setMImgUrl:(NSString *)mImgUrl
+{
+    _mImgUrl = [self checkNullWithString:mImgUrl];
+}
+
+-(void)setMMajor:(NSString *)mMajor
+{
+    _mMajor = [self checkNullWithString:mMajor];
+}
+
+-(void)setMName:(NSString *)mName
+{
+    _mName = [self checkNullWithString:mName];
+}
+
+-(void)setMNation:(NSString *)mNation
+{
+    _mNation = [self checkNullWithString:mNation];
+}
+
+-(void)setMPosition:(NSString *)mPosition
+{
+    _mPosition = [self checkNullWithString:mPosition];
+}
+
+-(void)setMProvince:(NSString *)mProvince
+{
+    _mProvince = [self checkNullWithString:mProvince];
+}
+
+-(void)setMSchool:(NSString *)mSchool
+{
+    _mSchool = [self checkNullWithString:mSchool];
+}
+
+-(void)setMStime:(NSString *)mStime
+{
+    _mStime = [self checkNullWithString:mStime];
+}
 
 - (void)setMOrg:(NSString *)mOrg
 {
