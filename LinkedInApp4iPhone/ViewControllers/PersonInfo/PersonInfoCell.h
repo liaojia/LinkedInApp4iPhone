@@ -23,7 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;        //时间
 @property (weak, nonatomic) IBOutlet UILabel *orgLabel;        //组织名称
 @property (weak, nonatomic) IBOutlet UILabel *placeLabel;      //所在地
-@property (weak, nonatomic) IBOutlet UILabel *descLabel;       //描述
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier profileModel:(ProfileModel*)model;
+@property (nonatomic, strong) ProfileModel *model;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+- (void)initWithMode:(ProfileModel *)tModel;
 @end

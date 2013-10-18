@@ -10,11 +10,10 @@
 #import "ProfileModel.h"
 @implementation PersonInfoCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier profileModel:(ProfileModel*)model
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self initWithModel:model];
     }
     return self;
 }
@@ -27,14 +26,13 @@
 }
 
 
-- (void)initWithModel:(ProfileModel*)model{
-    if (!model) {
+- (void)initWithMode:(ProfileModel*)tModel{
+    if (!tModel) {
         return;
     }
-    NSString *timeStr = [NSString stringWithFormat:@"%@ 至 %@", model.mStime, model.mEtime];
-    [_timeLabel setText:timeStr];
-    [_orgLabel setText:model.mOrg];
-    [_placeLabel setText:[NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity]];
-    [_descLabel setText:model.mDesc];
+    NSString *timeStr = [NSString stringWithFormat:@"%@ 至 %@", tModel.mStime, tModel.mEtime];
+    [self.timeLabel setText:timeStr];
+    [_orgLabel setText:tModel.mOrg];
+    [_placeLabel setText:[NSString stringWithFormat:@"%@--%@", tModel.mProvince, tModel.mCity]];
 }
 @end
