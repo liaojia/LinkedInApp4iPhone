@@ -209,7 +209,6 @@ static NSString *totalSize = nil;
             
             
             
-            
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
                     NSError *error, id JSON) {
             [SVProgressHUD dismiss];

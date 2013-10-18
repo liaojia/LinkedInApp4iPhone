@@ -171,7 +171,8 @@
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
                 
-                 [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+                 
+                 
              }
              else if([[obj objectForKey:@"rc"]intValue] == -1)
              {
@@ -198,6 +199,47 @@
                                    completeBlock:nil];
 
                                
+}
+
+/**
+ *	@brief	获取第一条公告的详情
+ *
+ *	@param 	idStr 	公告id
+ */
+- (void)getFirstBroadCastDetailWithID:(NSString*)idStr
+
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":@"1",@"num":@"5",@"previewLen":@"50"} requesId:@"COLLEGE_BROADCAST_LIST" messId:nil success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 
+                 
+                 
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [StaticTools showAlertWithTag:0
+                                         title:nil
+                                       message:@"未找到公告信息！"
+                                     AlertType:CAlertTypeDefault
+                                     SuperView:nil];
+             }
+             else
+             {
+                 [StaticTools showAlertWithTag:0
+                                         title:nil
+                                       message:@"公告信息加载失败！"
+                                     AlertType:CAlertTypeDefault
+                                     SuperView:nil];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"加载中..."
+                                   completeBlock:nil];
 }
 /**
  *	@brief	获取字符串的size 换行模式为UILineBreakModeWordWrap
