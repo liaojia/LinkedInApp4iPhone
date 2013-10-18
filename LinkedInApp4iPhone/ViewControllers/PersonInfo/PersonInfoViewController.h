@@ -17,7 +17,7 @@
  //
  ----------------------------------------------------------------*/
 #import <UIKit/UIKit.h>
-
+@class ProfileModel;
 @interface PersonInfoViewController : UIViewController<UITableViewDataSource,
     UITableViewDelegate>
 {
@@ -30,5 +30,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (assign, nonatomic) int pageType;  //页面复用标志
+
+@property (nonatomic, strong)ProfileModel *model;
+@property (nonatomic, strong)NSArray *timeLimeArray;
 
 @end

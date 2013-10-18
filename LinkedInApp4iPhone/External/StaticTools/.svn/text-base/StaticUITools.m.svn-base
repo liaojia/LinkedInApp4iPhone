@@ -1,0 +1,741 @@
+//
+//  StaticUITools.m
+//  Mlife
+//
+//  Created by xuliang on 12-12-27.
+//
+/*----------------------------------------------------------------
+ // Copyright (C) 2002 深圳四方精创资讯股份有限公司
+ // 版权所有。
+ //
+ // 文件名： StaticUITools.m
+ // 文件功能描述：公共方法类
+ 
+ // 创建标识：
+ // 修改标识：
+ // 修改日期：
+ // 修改描述：
+ //
+ ----------------------------------------------------------------*/
+
+
+#import "StaticUITools.h"
+#import <QuartzCore/QuartzCore.h>
+#import "StaticDataTools.h"
+#import "CitySelectViewController.h"
+#import "CodeSelectViewController.h"
+MBProgressHUD *HUD;
+@implementation StaticTools(StaticUITools)
+/*
+ 带tag的alert实现aLert代理的时候
+ */
++ (void)showAlertWithTag:(int)tag
+                   title:(NSString *)titleString
+                 message:(NSString *)messageString
+               AlertType:(CAlertStyle)AlertType
+               SuperView:(UIViewController *)SuperViewController
+{
+//    UIWindow *mainWindow= [[UIApplication sharedApplication] keyWindow];
+//    for(UIView *view in mainWindow.subviews){
+//        if ([view isKindOfClass:[UIAlertView class]])
+//        {
+//            [view removeFromSuperview];
+//        }
+//    }
+    
+    UIAlertView *alert;
+    
+    switch (AlertType)
+    {
+        case CAlertTypeDefault:
+            
+            alert=[[UIAlertView alloc] initWithTitle:titleString message:messageString delegate:SuperViewController cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+            if (SuperViewController)
+            {
+                alert.delegate=SuperViewController;
+            }
+            alert.tag = tag;
+            [alert show];
+            [alert release];
+            
+            break;
+        case CAlertTypeCacel:
+
+            alert=[[UIAlertView alloc] initWithTitle:titleString message:messageString delegate:SuperViewController cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            if (SuperViewController)
+            {
+                alert.delegate=SuperViewController;
+            }
+            alert.tag = tag;
+            [alert show];
+            [alert release];
+            
+            break;
+        case CAlertTypeUpDate:
+            
+            alert=[[UIAlertView alloc] initWithTitle:titleString message:messageString delegate:SuperViewController cancelButtonTitle:@"暂不更新" otherButtonTitles:@"更新", nil];
+            if (SuperViewController)
+            {
+                alert.delegate=SuperViewController;
+            }
+            alert.tag = tag;
+            [alert show];
+            [alert release];
+            
+            break;
+        case CAlertTypeRelogin:
+            
+            alert=[[UIAlertView alloc] initWithTitle:titleString message:messageString delegate:SuperViewController cancelButtonTitle:@"取消" otherButtonTitles:@"重新登录", nil];
+            if (SuperViewController)
+            {
+                alert.delegate=SuperViewController;
+            }
+            alert.tag = tag;
+            [alert show];
+            [alert release];
+            break;
+        case CalertTypeOther:
+            
+            alert=[[UIAlertView alloc] initWithTitle:titleString message:messageString delegate:SuperViewController cancelButtonTitle:@"关闭" otherButtonTitles:@"重试", nil];
+            if (SuperViewController)
+            {
+                alert.delegate=SuperViewController;
+            }
+            alert.tag = tag;
+            [alert show];
+            [alert release];
+            break;
+        default:
+            break;
+    }
+}
+
+//HUD 样式 ...待定
++ (void)showHUDInView:(UIView *)superView
+              HudType:(MBProgressHUDMode)hudType
+             withText:(NSString *)lableText
+{
+    UIWindow *mainWindow= [[UIApplication sharedApplication] keyWindow];
+    for(UIView *view in mainWindow.subviews)
+    {
+        if ([view isKindOfClass:[UIImageView class]])
+        {
+            [view removeFromSuperview];
+        }
+    }
+    
+    HUD = [[MBProgressHUD alloc] initWithView:superView];
+    HUD.removeFromSuperViewOnHide = YES;
+    [superView addSubview:HUD];
+    
+    switch (hudType)
+    {
+        case MBProgressHUDModeIndeterminate:
+            //带activeView的 不断转动
+            HUD.mode = MBProgressHUDModeIndeterminate;
+            HUD.labelText = lableText;
+            [HUD show:YES];
+            break;
+        case MBProgressHUDModeDeterminate:
+            
+            //设置模式为进度框形的
+            HUD.mode = MBProgressHUDModeDeterminate;
+            HUD.labelText = lableText;
+            [HUD showAnimated:YES whileExecutingBlock:^{
+                float progress = 0.0f;
+                while (progress < 1.0f) {
+                    progress += 0.01f;
+                    HUD.progress = progress;
+                    usleep(30000);
+                }
+            } completionBlock:^{
+                
+            }];
+            break;
+        case MBProgressHUDModeAnnularDeterminate:
+            
+            //进度框模式2
+            HUD.mode = MBProgressHUDModeAnnularDeterminate;
+            HUD.labelText = lableText;
+            [HUD showAnimated:YES whileExecutingBlock:^{
+                float progress = 0.0f;
+                while (progress < 1.0f) {
+                    progress += 0.01f;
+                    HUD.progress = progress;
+                    usleep(30000);
+                }
+            } completionBlock:^{
+                
+            }];
+            break;
+        case MBProgressHUDModeCustomView:
+            
+            //自定义类型 3秒消失
+            HUD.mode = MBProgressHUDModeCustomView;
+            HUD.labelText = lableText;
+            HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
+//            [HUD.customView setFrame:CGRectMake(0, 0, 170, 60)];
+            [HUD setBackgroundColor:[UIColor clearColor]];
+            [HUD show:YES];
+            [HUD hide:YES afterDelay:3];
+            
+//            [HUD showAnimated:NO whileExecutingBlock:^{
+//                sleep(3);
+//            } completionBlock:^{
+////                [HUD removeFromSuperview];
+//                //[HUD release];
+//            }];
+            
+            break;
+        case MBProgressHUDModeText:
+            //纯文本
+            HUD.mode = MBProgressHUDModeText;
+            HUD.labelText = lableText;
+            [HUD showAnimated:YES whileExecutingBlock:^{
+                sleep(3);
+            } completionBlock:^{
+                
+            }];
+            break;
+            
+        case MBProgressHUDModeButton:
+        {
+            HUD.mode = MBProgressHUDModeCustomView;
+            HUD.labelText = lableText;
+            [HUD setBackgroundColor:[UIColor clearColor]];
+            
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [btn setFrame:CGRectMake(0, 70, 107, 36)];
+            [btn setBackgroundImage:[UIImage imageNamed:@"btn_favorites.png"] forState:UIControlStateNormal];
+            [btn setTitle:@"去购物" forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(toHomeView) forControlEvents:UIControlEventTouchUpInside];
+            [btn.titleLabel setFont:[UIFont boldSystemFontOfSize:15]];
+            [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+            HUD.customView = btn;
+            HUD.mode = MBProgressHUDModeButton;
+            [HUD show:YES];
+
+        }
+            break;
+        
+        default:
+           
+            break;
+    }
+}
+
+/*
+ 隐藏hud
+ */
++ (void)removeHUDFromView:(UIView *)superView{
+    //superView上的hud都会被释放掉
+    //[MBProgressHUD hideHUDForView:superView animated:YES];
+    
+    
+    [HUD hide:YES];
+    
+//    NSArray *hudArray=[MBProgressHUD allHUDsForView:superView];
+//
+//    for (MBProgressHUD *hud in hudArray)
+//    {
+//        [hud removeFromSuperview];
+//        [hud release];
+//    }
+//    for (UIView *view in superView.subviews)
+//    {
+//        NSArray *hudArray=[MBProgressHUD allHUDsForView:view];
+//        
+//        for (MBProgressHUD *hud in hudArray)
+//        {
+//            [hud removeFromSuperview];
+//            [hud release];
+//        }
+//    }
+    
+}
+
+/*
+ @abstract 设置导航栏背景颜色
+ */
++ (void)navigationBarSetBackgroundImage:(UINavigationBar *)navigationBar{
+    if ([navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]){
+		[navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_viewnav"] forBarMetrics:UIBarMetricsDefault];
+        //navigationBar.tintColor=[UIColor redColor];
+        
+        //[UIColor colorWithRed:139.0/255 green:178.0/255 blue:38.0/255 alpha:1];
+	}
+}
+
+/*
+ @abstract 给View添加navigation
+ */
++ (UINavigationController *)pushNavController:(UIViewController *)viewController
+{
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [self navigationBarSetBackgroundImage:navController.navigationBar];
+    return [navController autorelease];
+}
+
+/*
+ @abstract 淡入淡出效果
+ */
++ (void) FadeOut:(UIView *)view appear:(BOOL)appear
+		   viewX:(float)viewX
+		   viewY:(float)viewY
+	   viewWidth:(float)viewWidth
+	  viewHeigth:(float)viewHeigth
+{
+    view.alpha = appear?0:1;
+    view.frame = appear?CGRectMake(viewX + viewWidth / 2, viewY+viewHeigth / 2, 0, 0):CGRectMake(viewX, viewY, viewWidth, viewHeigth);
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:.5];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationRepeatAutoreverses:NO];
+	view.alpha = appear?1:0;
+    view.frame = !appear?CGRectMake(viewX + viewWidth / 2, viewY + viewHeigth / 2, 0, 0):CGRectMake(viewX, viewY, viewWidth, viewHeigth);
+	[UIView commitAnimations];
+}
+
+/*
+ 给图片加边框
+ */
++ (void)addFrame:(UIView *)sender{
+    sender.layer.masksToBounds=YES;
+	sender.layer.cornerRadius=0.8;
+	sender.layer.borderWidth=0.8;
+    sender.layer.borderColor=[[UIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1]CGColor];
+}
+
+/*
+ 给图片加圆角
+ */
++ (void)createRoundedRectImage:(UIImageView *)imageView{
+    imageView.layer.masksToBounds = YES;
+	imageView.layer.cornerRadius = 5.0;
+}
+
+/*
+ *返回label的高度
+ */
++ (float)getLabelHeight:(NSString *)textString
+            defautWidth:(float)defautWidth
+           defautHeight:(float)defautHeight
+               fontSize:(int)fontSize
+{
+    CGSize size = CGSizeMake(defautWidth,defautHeight);
+    //计算实际frame大小，并将label的frame变成实际大小
+    CGSize labelsize = [textString sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+    return labelsize.height;
+}
+
+/*
+ *返回label的宽度
+ */
++ (float)getLabelWidth:(NSString *)textString
+           defautWidth:(float)defautWidth
+          defautHeight:(float)defautHeight
+              fontSize:(int)fontSize
+{
+    //textString = [textString stringByReplacingOccurrencesOfString:@"0" withString:@"*"];
+    CGSize size = CGSizeMake(defautWidth,defautHeight);
+    //计算实际frame大小，并将label的frame变成实际大小
+    CGSize labelsize = [textString sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+    return labelsize.width;
+}
+
+/*
+ *image拼图
+ *返回一个拼好的image
+ */
++ (UIImage *)getImageFromImage:(UIImage *)imageLeftOrTop
+                  centerImage:(UIImage *)imageCenter
+                   finalImage:(UIImage *)imageRightOrBottom
+                     withSize:(CGSize)resultSize
+{
+    //m_zhanggaofeng20130712 解决图片拼接后模糊问题
+//    UIGraphicsBeginImageContext(resultSize);
+    UIGraphicsBeginImageContextWithOptions(resultSize, NO, 0.0);
+    
+    // Draw image1
+    [imageLeftOrTop drawInRect:CGRectMake(0, 0, imageLeftOrTop.size.width, imageLeftOrTop.size.height)];
+    
+    // Draw image2
+    if (resultSize.height == imageLeftOrTop.size.height)
+    {
+        //如果高度相等 则从左到右画图
+        [imageCenter drawInRect:CGRectMake(imageLeftOrTop.size.width, 0, resultSize.width -imageLeftOrTop.size.width - imageRightOrBottom.size.width, imageCenter.size.height)];
+        // Draw image3
+        [imageRightOrBottom drawInRect:CGRectMake(resultSize.width-imageRightOrBottom.size.width, 0, imageRightOrBottom.size.width, imageRightOrBottom.size.height)];
+    }
+    else if(resultSize.width == imageLeftOrTop.size.width)
+    {
+        //宽度相同 则从上到下画图
+        [imageCenter drawInRect:CGRectMake(0, imageLeftOrTop.size.height, imageCenter.size.width, resultSize.height - imageLeftOrTop.size.height-imageRightOrBottom.size.height)];
+        // Draw image3
+        [imageRightOrBottom drawInRect:CGRectMake(0, resultSize.height - imageRightOrBottom.size.height, imageRightOrBottom.size.width, imageRightOrBottom.size.height)];
+    }
+    
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return resultingImage;
+//    [resultingImage release];
+}
+
+/*
+ *屏幕旋转
+ */
++ (CGAffineTransform)transformForOrientation {
+	UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+	if (UIInterfaceOrientationLandscapeLeft == orientation) {
+		return CGAffineTransformMakeRotation(M_PI*1.5);
+	} else if (UIInterfaceOrientationLandscapeRight == orientation) {
+		return CGAffineTransformMakeRotation(M_PI/2);
+	} else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
+		return CGAffineTransformMakeRotation(-M_PI);
+	} else {
+		return CGAffineTransformIdentity;
+	}
+}
+
++ (UIButton *)initNavigationItem:(int)tag withContext:(UIViewController *)context {
+	UIButton *ItemBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    ItemBtn.tag=tag;
+	[ItemBtn.titleLabel setFont:[UIFont boldSystemFontOfSize:12]];
+    [ItemBtn.titleLabel setTextColor:[UIColor blackColor]];
+    [ItemBtn.titleLabel setTextAlignment:UITextAlignmentCenter];
+	[ItemBtn setTitle:@"返回" forState:UIControlStateNormal];
+	[ItemBtn setTitle:@"返回" forState:UIControlStateHighlighted];
+	[ItemBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+   // [ItemBtn setContentEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];
+    if ([context respondsToSelector:@selector(touchUpClickListener:)])
+    {
+        [ItemBtn addTarget:context action:@selector(touchUpClickListener:) forControlEvents:UIControlEventTouchUpInside];
+    }
+	[ItemBtn setBackgroundImage:[UIImage imageNamed:@"btn_viewnav"] forState:UIControlStateNormal];
+	[ItemBtn setBackgroundImage:[UIImage imageNamed:@"btn_viewnavpress"] forState:UIControlStateHighlighted];
+	[ItemBtn setFrame:CGRectMake(0, 0, 60, 45)];
+	
+	return ItemBtn;
+}
+
+/*
+ *动态获取键盘状态的通知
+ */
++ (void)NotificationkeyboardRectHeight:(UIViewController *)context
+{
+    if ([context respondsToSelector:@selector(keyboardWillHide:)])
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:context selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    }
+    if ([context respondsToSelector:@selector(keyboardWillShow:)])
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:context selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+        
+        
+#ifdef __IPHONE_5_0
+        
+        float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+        
+        if (version >= 5.0) {
+            
+            [[NSNotificationCenter defaultCenter] addObserver:context selector:@selector(keyboardWillShow:) name:UIKeyboardDidChangeFrameNotification object:nil];
+            
+        }
+#endif
+        
+    }
+}
+
+/*
+ *给tableview添headerview
+ */
++ (void)setheaderView:(UITableView *)tableview{
+    
+    UIView *headview=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    [headview setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_list_all.png"]]];
+    UIImageView *lineImage=[[UIImageView alloc] initWithFrame:CGRectMake(0, 9, 320, 1)];
+    [lineImage setBackgroundColor:[StaticTools colorWithHexString:@"#e1e1e1"]];
+    [headview addSubview:lineImage];
+    [tableview setTableHeaderView:headview];
+    [lineImage release];
+    [headview release];
+}
+
+/*
+ 给view加BadgeValue
+ */
++ (UIView *)showBadgeValue:(NSString *)strBadgeValue
+                 withImage:(UIImage *)backgroundImage
+                    onView:(UIView *)parentView
+{
+    UIImageView *subview=[[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height)] autorelease];//M_lxl
+    [subview setImage:backgroundImage];
+    UILabel *badgeLable=[[UILabel alloc] initWithFrame:CGRectMake(0, -1, backgroundImage.size.width, backgroundImage.size.height)];
+    [badgeLable setFont:[UIFont systemFontOfSize:13]];
+    [badgeLable setBackgroundColor:[UIColor clearColor]];
+    [badgeLable setTextAlignment:UITextAlignmentCenter];
+    [badgeLable setTextColor:[UIColor whiteColor]];
+    if ([strBadgeValue intValue] < 10)
+    {
+        [badgeLable setText:strBadgeValue];
+    }
+    else
+    {
+        [badgeLable setText:@"N"];
+    }
+    [badgeLable setTextAlignment:UITextAlignmentCenter];
+    [subview addSubview:badgeLable];
+    [badgeLable release];//A_lxl
+    [parentView addSubview:subview];
+    subview.frame = CGRectMake(parentView.frame.size.width-subview.frame.size.width, 0,
+                               subview.frame.size.width, subview.frame.size.height);
+    
+    return subview;
+}
+
+/*
+ 给view移除badgevalue
+ */
++ (void)removeBadgeValue:(UIView *)view
+{
+    //移除badgevalue
+    for (UIView *subview in view.subviews) {
+        NSString *strClassName = [NSString stringWithUTF8String:object_getClassName(subview)];
+        if ([strClassName isEqualToString:@"UIImageView"] ||
+            [strClassName isEqualToString:@"_UIBadgeView"]) {
+            [subview removeFromSuperview];
+            break;
+        }
+    }
+}
+
+/*
+ tip提示
+ */
++ (void)showFavoriteTip:(NSString *)tip img:(NSString *)img{
+    UIWindow *mainWindow= [[UIApplication sharedApplication] keyWindow];
+    for(UIView *view in mainWindow.subviews)
+    {
+        if ([view isKindOfClass:[UIImageView class]])
+        {
+            [view removeFromSuperview];
+        }
+    }
+    
+    UIImageView *starImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_toast.png"]];
+    [starImageView setFrame:CGRectMake((mainWindow.frame.size.width - 170)/2, (mainWindow.frame.size.height - 60)/2, 170, 60)];
+    
+    UIImageView *iconImageview;
+    if ([img isEqualToString:@""]) {
+        iconImageview=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_toast_right.png"]];
+    }else{
+        iconImageview=[[UIImageView alloc] initWithImage:[UIImage imageNamed:img]];
+    }
+    
+    [iconImageview setFrame:CGRectMake(15, (starImageView.frame.size.height - 30)/2, 30, 30)];
+    [starImageView addSubview:iconImageview];
+    
+    UILabel *lblText = [[UILabel alloc] initWithFrame:CGRectMake(35, (starImageView.frame.size.height-30)/2, starImageView.frame.size.width-40, 30)];
+    lblText.textAlignment = UITextAlignmentCenter;
+    lblText.text = tip;
+    lblText.backgroundColor = [UIColor clearColor];
+    [lblText setTextColor:[UIColor whiteColor]];
+    [lblText setFont:[UIFont systemFontOfSize:15]];
+    [starImageView addSubview:lblText];
+    
+    [mainWindow addSubview:starImageView];
+    
+    //消失的动画
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationRepeatAutoreverses:NO];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:3.0f];
+    [UIView setAnimationDelay:2.0f];
+    
+    starImageView.alpha = 0.0f;
+    
+    [UIView commitAnimations];
+    
+    [starImageView release];
+    [lblText release];
+    [iconImageview release];
+}
+
+
+#pragma mark -
+#pragma mark 添加Notification
+/*
+ *注册通知
+ *
+ *@param context
+ *  传入接收消息的上下文，即谁要接收消息，类型为UIViewController
+ *
+ *@param notificationName
+ *  传入通知的名称
+ *
+ *@param notificationFunction
+ *  传入接到通知后要调用的方法名
+ *
+ *@调用举例
+ *   [StaticTools registerNotification:self notificationName:@"updata" notificationFunction:@selector(updata:)];
+ */
++(void)registerNotification:(UIViewController *)context
+           notificationName:(NSString * const)notificationName
+       notificationFunction:(SEL)function
+{
+    if ([context respondsToSelector:function])
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:context selector:function name:notificationName object:nil];
+    }
+}
+
+#pragma mark -
+#pragma mark 发送Notification
+/*
+ *发送通知
+ *
+ *@param notificationName
+ *  传入通知的名称
+ *
+ *@param param
+ *  传入通知需要携带的值，类型为id
+ *
+ *@调用举例
+ *   NSArray* arr = [[NSArray alloc] initWithObjects:@"a",@"b", nil];
+ [StaticTools postNotification:@"updata" param: arr];
+ *
+ *@取出消息中携带值方法
+ *  在接到通知后要调用的方法中  NSArray* arr = (NSArray*)[n object];
+ */
++ (void)postNotification:(NSString *)notificationName param:(id)param{
+    NSNotification *notification = [NSNotification notificationWithName:notificationName object:param];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+#pragma mark -
+#pragma mark 删除Notification
+/*
+ *删除接收通知
+ *
+ *@param context
+ *  传入接收消息的上下文，即谁要接收消息，类型为UIViewController
+ *
+ *@param notificationName
+ *  传入通知的名称，若在viewDidLoad 中调用注册通知，则在viewDidUnload中调用删除
+ *
+ *@调用举例
+ *   [StaticTools removeNotification:self notificationName:@"updata"];
+ */
++ (void)removeNotification:(UIViewController *)context  notificationName:(NSString *)notificationName{
+    [[NSNotificationCenter defaultCenter] removeObserver:context name:notificationName object:nil];
+}
+
+#pragma mark-
+#pragma mark--城市 币种 选择页面
+/**
+ *	@brief	弹出币种选择页面
+ *
+ *	@param 	size 	弹出的币种选择页面的size
+ *	@param 	arrowRect 	三角的frame
+ *	@param 	view
+  *	@param 	selectRow  被选中的项
+ *	@param 	delegate 	通过delegate来获取被选中的项
+ *	@param 	arrowDirections 	三角的方向
+ *	@param 	animated 	是否动画显示
+ */
++ (void)ShowCodeSelectFromPopSize:(CGSize)size
+                        arrowRect:(CGRect)arrowRect
+                           inView:(UIView *)view
+                      selectedRow:(int)selectRow
+                         delegate:(id)delegate
+                         pageType:(int)type
+         permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections
+                         animated:(BOOL)animated
+
+{
+    CodeSelectViewController *codeSelectViewController =
+    [[CodeSelectViewController alloc]initWithNibName:@"CodeSelectViewController" bundle:[NSBundle mainBundle]] ;
+    codeSelectViewController.delegate = delegate;
+    codeSelectViewController.selectRow = selectRow;
+    codeSelectViewController.pageType = type;
+    codeSelectViewController.view.frame = CGRectMake(0, 0, size.width, size.height);
+    codeSelectViewController.contentSizeForViewInPopover =size;
+    
+    UIPopoverController *codeSelectPopover = [[UIPopoverController alloc] initWithContentViewController:codeSelectViewController];
+    codeSelectPopover.delegate = (id)codeSelectViewController;
+    codeSelectPopover.popoverContentSize = CGSizeMake(codeSelectViewController.view.frame.size.width,
+                                            codeSelectViewController.view.frame.size.height+44);
+    
+    codeSelectViewController.codeSelectPopover = codeSelectPopover;
+    [codeSelectViewController.codeSelectPopover presentPopoverFromRect:arrowRect
+                                                                inView:view
+                                              permittedArrowDirections:arrowDirections
+                                                              animated:animated];
+    
+    [codeSelectPopover release];
+    [codeSelectViewController release];
+}
+
+
+/**
+ *	@brief	显示选择视图：添加参数判断数据类型
+ *
+ *	@param 	size 	弹出框的大小
+ *	@param 	arrowRect 	三角的位置？
+ *	@param 	view 	加到哪个视图
+ *	@param 	selectPath 	当前选中的区行
+ *	@param 	delegate 	代理
+ *	@param 	arrowDirections 	三角位置？？
+ *	@param 	dataArray 	传递过来的数据（有可能为空，在弹出视图发送请求）
+ *	@param 	type 	类型（0：省份。1：网点城市。2：业务类型。3：证件类型。4：预约时间。）
+ *	@param 	animated 	是否动画
+ */
++ (void)ShowCitySelectFromPopSize:(CGSize)size
+                        arrowRect:(CGRect)arrowRect
+                           inView:(UIView *)view
+                      selectIndex:(NSIndexPath *)selectPath
+                         delegate:(id)delegate
+         permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections
+                        dataArray:(NSMutableArray *)dataArray
+                             type:(int)type
+                         animated:(BOOL)animated
+{
+    CitySelectViewController *citySelectViewController = [[CitySelectViewController alloc]initWithNibName:@"CitySelectViewController" bundle:[NSBundle mainBundle]] ;
+    citySelectViewController.delegate = delegate;
+    citySelectViewController.selectIndex  = selectPath;
+    citySelectViewController.type = type;
+    citySelectViewController.cityArray = dataArray;
+    citySelectViewController.view.frame = CGRectMake(0, 0, size.width, size.height);
+    citySelectViewController.contentSizeForViewInPopover = size;
+    
+    UINavigationController *navSelect = [[UINavigationController alloc] initWithRootViewController:citySelectViewController];
+    UIPopoverController *citySelectPopover = [[UIPopoverController alloc] initWithContentViewController:navSelect];
+    citySelectPopover.popoverContentSize = CGSizeMake(citySelectViewController.view.frame.size.width, citySelectViewController.view.frame.size.height + 44);
+    
+    citySelectViewController.citySelectPopover = citySelectPopover;
+    [citySelectViewController.citySelectPopover presentPopoverFromRect:arrowRect
+                                                                inView:view
+                                              permittedArrowDirections:arrowDirections
+                                                              animated:animated];
+    
+    [citySelectPopover release];
+    [citySelectViewController release];
+    [navSelect release];
+}
+
+
+#pragma mark - 去掉cell多余的分割线
++ (void)setExtraCellLineHidden: (UITableView *)tableView
+{
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+    [view release];
+}
+
+@end
+

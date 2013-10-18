@@ -41,7 +41,15 @@
     self.titleTxtLabel.frame  = CGRectMake(self.titleTxtLabel.frame.origin.x, self.desLabel.frame.size.height+self.desLabel.frame.origin.y, self.titleTxtLabel.frame.size.width, self.titleTxtLabel.frame.size.height);
     self.titleDetailLabel.frame = CGRectMake(self.titleDetailLabel.frame.origin.x, self.titleTxtLabel.frame.origin.y, self.titleDetailLabel.frame.size.width, [self getStringHeight:self.titleDetailLabel.text withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(self.titleDetailLabel.frame.size.width, 1000)]);
     
-    self.timeTxtLabel.frame  = CGRectMake(self.timeTxtLabel.frame.origin.x, self.titleDetailLabel.frame.size.height+self.titleDetailLabel.frame.origin.y, self.timeTxtLabel.frame.size.width, self.timeTxtLabel.frame.size.height);
+    if (self.titleDetailLabel.frame.size.height+self.titleDetailLabel.frame.origin.y>self.timeTxtLabel.frame.origin.y)
+    {
+        self.timeTxtLabel.frame  = CGRectMake(self.timeTxtLabel.frame.origin.x, self.titleDetailLabel.frame.size.height+self.titleDetailLabel.frame.origin.y, self.timeTxtLabel.frame.size.width, self.timeTxtLabel.frame.size.height);
+    }
+    else
+    {
+        self.timeTxtLabel.frame  = CGRectMake(self.timeTxtLabel.frame.origin.x, self.timeTxtLabel.frame.origin.y, self.timeTxtLabel.frame.size.width, self.timeTxtLabel.frame.size.height);
+    }
+    
     self.timeDetailLabel.frame = CGRectMake(self.timeDetailLabel.frame.origin.x, self.timeTxtLabel.frame.origin.y, self.timeDetailLabel.frame.size.width, [self getStringHeight:self.timeDetailLabel.text withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(self.timeDetailLabel.frame.size.width, 1000)]);
     
     self.placeTxtLabel.frame  = CGRectMake(self.placeTxtLabel.frame.origin.x, self.timeDetailLabel.frame.size.height+self.timeDetailLabel.frame.origin.y, self.placeTxtLabel.frame.size.width, self.placeTxtLabel.frame.size.height);

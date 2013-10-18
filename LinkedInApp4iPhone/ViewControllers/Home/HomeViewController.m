@@ -11,6 +11,7 @@
 #import "ActivityCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ActivityDetailViewController.h"
+#import "WebViewController.h"
 
 #define Tag_Back_Action 200
 #define Tag_Search_Action 201
@@ -30,12 +31,12 @@
                       ,@"北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细"
                       ,@"公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容"
                       ,@"活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述"
-                      ,@"活动题目活动题目活动题目活动题目活动题目活动题目活动题目"
+                      ,@"活动题目活动题题目活"
                       ,@"2013-12-12 12:24"
-                      ,@"活动地点活动地点活动地点活动地点活动地点活动地点活动地点活动地点活动地点"
-                      ,@"活动类型活动类型活动类型活动类型活动类型活动类型活动类型"
-                      ,@"活动费用活动费用活动费用活动费用活动费用活动费用活动费用"
-                      ,@"主办方主办方主办方主办方主办方主办方主办方主办方主办方主办方"];
+                      ,@"活动地点活动地点活活动地点活活动地点活"
+                      ,@"活动类型"
+                      ,@"活动费用活动"
+                      ,@"主办方主办方主办方办方主办方办方主办方"];
         
         personInfoController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
     }
@@ -48,6 +49,8 @@
     // Do any additional setup after loading the view from its nib.
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
+    
+    
     
    
 }
@@ -221,9 +224,13 @@
     {
 
         float height = 0;
-        for (int i=0; i<7; i++)
+        int desAndTitleHeight; //描述和题目的高度总和 若小于图片的高度 测返回图片的高度
+        desAndTitleHeight = [self getStringHeight:testArray[0+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(135, 1000)]+[self getStringHeight:testArray[1+3] withFont:[UIFont systemFontOfSize:17]consSize:CGSizeMake(135, 1000)];
+        desAndTitleHeight = desAndTitleHeight<185?185:desAndTitleHeight;
+        height+=desAndTitleHeight;
+        for (int i=2; i<7; i++)
         {
-            height+=[self getStringHeight:testArray[i+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(135, 1000)];
+            height+=[self getStringHeight:testArray[i+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(220, 1000)];
         }
         
         return height;
@@ -414,7 +421,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section ==2)
+    if (indexPath.section == 0) //进入学校详情
+    {
+        WebViewController *webController = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:[NSBundle mainBundle]];
+        webController.urlStr = @"www.baidu.com";
+        webController.navTitleStr = @"北京师范大学";
+        [self.navigationController pushViewController:webController animated:YES];
+        
+    }
+    else if (indexPath.section ==2)//进入官方活动详情
     {
         ActivityDetailViewController *activityDetailController = [[ActivityDetailViewController alloc]initWithNibName:@"ActivityDetailViewController" bundle:[NSBundle mainBundle]];
         [self.navigationController pushViewController:activityDetailController animated:YES];
