@@ -38,6 +38,9 @@
                       ,@"活动费用活动"
                       ,@"主办方主办方主办方办方主办方办方主办方"];
         
+        self.schollInfoModel  = [[ProfileModel alloc]init];
+        self.boadCastModel = [[ProfileModel alloc]init];
+        
         personInfoController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
     }
     return self;
@@ -133,7 +136,11 @@
     {
         if ([[obj objectForKey:@"rc"]intValue] == 1)
         {
-            self.schoolDict = [NSDictionary dictionaryWithDictionary:obj];
+            self.schollInfoModel.mName = obj[@"name"];
+            self.schollInfoModel.mImgUrl = obj[@"logoURL"];
+            self.schollInfoModel.mDesc = obj[@"introduct"];
+            
+ 
             [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
         }
         else if([[obj objectForKey:@"rc"]intValue] == -1)
@@ -162,33 +169,33 @@
 }
 
 /**
- *	@brief	获取公告列表
+ *	@brief	获取公告列表 
  */
 - (void)getBroadcastList
 {
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":@"1",@"num":@"5",@"previewLen":@"50"} requesId:@"COLLEGE_BROADCAST_LIST" messId:nil success:^(id obj)
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":@"1",@"num":@"5",@"previewLen":@"0"} requesId:@"COLLEGE_BROADCAST_LIST" messId:nil success:^(id obj)
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
-                
+                 NSArray *listArray = obj[@"list"];
+                 if (listArray.count>0)
+                 {
+                     NSDictionary *temDict = listArray[0];
+                     [self getFirstBroadCastDetailWithID:temDict[@"id"]];
+                     self.boadCastModel.mStime = temDict[@"time"];
+                   
+                     
+                 }
                  
                  
              }
              else if([[obj objectForKey:@"rc"]intValue] == -1)
              {
-                 [StaticTools showAlertWithTag:0
-                                         title:nil
-                                       message:@"未找到公告信息！"
-                                     AlertType:CAlertTypeDefault
-                                     SuperView:nil];
+                 [SVProgressHUD showErrorWithStatus:@"未找到公告信息"];
              }
              else
              {
-                 [StaticTools showAlertWithTag:0
-                                         title:nil
-                                       message:@"公告信息加载失败！"
-                                     AlertType:CAlertTypeDefault
-                                     SuperView:nil];
+                 [SVProgressHUD showErrorWithStatus:@"公告信息加载失败"];
              }
              
              
@@ -209,29 +216,21 @@
 - (void)getFirstBroadCastDetailWithID:(NSString*)idStr
 
 {
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":@"1",@"num":@"5",@"previewLen":@"50"} requesId:@"COLLEGE_BROADCAST_LIST" messId:nil success:^(id obj)
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"COLLEGE_EVENT_DETAIL" messId:idStr success:^(id obj)
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
-                 
-                 
+                  
+                   [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
                  
              }
              else if([[obj objectForKey:@"rc"]intValue] == -1)
              {
-                 [StaticTools showAlertWithTag:0
-                                         title:nil
-                                       message:@"未找到公告信息！"
-                                     AlertType:CAlertTypeDefault
-                                     SuperView:nil];
+                 [SVProgressHUD showErrorWithStatus:@"未找到公告信息！"];
              }
              else
              {
-                 [StaticTools showAlertWithTag:0
-                                         title:nil
-                                       message:@"公告信息加载失败！"
-                                     AlertType:CAlertTypeDefault
-                                     SuperView:nil];
+                  [SVProgressHUD showErrorWithStatus:@"公告信息加载失败！"];
              }
              
              
@@ -361,7 +360,7 @@
     }
     else if(indexPath.section == 1&&indexPath.row !=0) //官方公告
     {
-        return [self getStringHeight:testArray[2] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(290, 1000)]+35;
+        return [self getStringHeight:self.boadCastModel.mDesc withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(290, 1000)]+35;
     }
     else if(indexPath.section == 4&&indexPath.row !=0) //官方微博
     {
@@ -393,7 +392,7 @@
         //学校图片
         UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 20, 100, 100)];
         headImgView.backgroundColor = [UIColor grayColor];
-        [headImgView setImageWithURL:[NSURL URLWithString:self.schoolDict[@"logoURL"]]];
+        [headImgView setImageWithURL:[NSURL URLWithString:self.schollInfoModel.mImgUrl]];
         [cell.contentView addSubview:headImgView];
         
         //学校名称
@@ -403,7 +402,7 @@
         nameLabel.lineBreakMode = UILineBreakModeWordWrap;
         nameLabel.textColor = RGBACOLOR(0, 140, 207, 1);
         nameLabel.font = [UIFont boldSystemFontOfSize:20];
-        nameLabel.text = self.schoolDict[@"name"];
+        nameLabel.text = self.schollInfoModel.mName;
         [cell.contentView addSubview:nameLabel];
         
         //学校详情
@@ -412,7 +411,7 @@
         detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
         detailLabel.numberOfLines = 6;
         //detailLabel.font = [UIFont boldSystemFontOfSize:20];
-        detailLabel.text = self.schoolDict[@"introduct"];
+        detailLabel.text = self.schollInfoModel.mDesc;
         [cell.contentView addSubview:detailLabel];
     }
     else
@@ -479,19 +478,19 @@
           {
                
               //公告内容
-              UILabel *infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 290, [self getStringHeight:testArray[2] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(290, 1000)])];
+              UILabel *infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 290, [self getStringHeight:self.boadCastModel.mDesc withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(290, 1000)])];
               infoLabel.backgroundColor = [UIColor clearColor];
               infoLabel.numberOfLines = 0;
-              infoLabel.lineBreakMode = UILineBreakModeWordWrap;
+              infoLabel.lineBreakMode = UILineBreakModeTailTruncation;
               infoLabel.font = [UIFont systemFontOfSize:17];
-              infoLabel.text = testArray[2];
+              infoLabel.text = self.boadCastModel.mDesc;
               [cell.contentView addSubview:infoLabel];
               
               //公告时间
               UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, infoLabel.frame.origin.y+infoLabel.frame.size.height, 190, 30)];
               timeLabel.backgroundColor = [UIColor clearColor];
               timeLabel.textAlignment = UITextAlignmentRight;
-              timeLabel.text = @"2013-13-13 12:34";
+              timeLabel.text = self.boadCastModel.mStime;
               [cell.contentView addSubview:timeLabel];
               
               //灰色背景

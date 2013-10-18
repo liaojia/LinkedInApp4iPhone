@@ -15,7 +15,8 @@
     #import "Constant.h"
     #import "Transfer.h"
     #import "AppDataCenter.h"
-    #import "StaticToolsHeader.h"
+    #import "StaticToolsHeader.h" 
+    #import "ProfileModel.h"
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
