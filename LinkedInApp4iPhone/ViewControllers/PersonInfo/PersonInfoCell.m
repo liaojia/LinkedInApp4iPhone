@@ -31,10 +31,10 @@
     if (!model) {
         return;
     }
-    NSString *timeStr = [NSString stringWithFormat:@"%@ 至 %@", [model.mStime isEqualToString:@""] ? NODATA:model.mStime, [model.mEtime isEqualToString:@""] ? NODATA:model.mEtime];
+    NSString *timeStr = [NSString stringWithFormat:@"%@ 至 %@", model.mStime, model.mEtime];
     [_timeLabel setText:timeStr];
-    [_orgLabel setText:[model.mOrg isEqualToString:@""] ? NODATA:model.mOrg];
-    [_placeLabel setText:[NSString stringWithFormat:@"%@--%@", [model.mProvince isEqualToString:@""] ? NODATA:model.mProvince, [model.mCity isEqualToString:@""] ? NODATA:model.mCity]];
-    [_descLabel setText:[model.mDesc isEqualToString:@""] ? NODATA:model.mDesc];
+    [_orgLabel setText:model.mOrg];
+    [_placeLabel setText:[NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity]];
+    [_descLabel setText:model.mDesc];
 }
 @end

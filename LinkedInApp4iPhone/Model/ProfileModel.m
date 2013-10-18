@@ -129,7 +129,10 @@
 
 - (NSString *)checkNullWithString:(NSString *)str
 {
-    if (!str || [str isEqualToString:@"<null>"] || str.length == 0) {
+    if ([str isKindOfClass:[NSNumber class]]) {
+        return str;
+    }
+    if (!str || [str isEqual:[NSNull null]] ) {
         return NODATA;
     }
     return str;

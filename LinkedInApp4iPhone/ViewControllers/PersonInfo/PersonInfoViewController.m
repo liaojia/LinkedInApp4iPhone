@@ -41,6 +41,7 @@
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
     
+    self.timeLimeArray = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -107,6 +108,8 @@
     if (section == 0)
     {
         return 1;
+    }else if(section == 1){
+        return [self.timeLimeArray count];
     }
     else if(section == 2||section == 3)
     {
@@ -131,7 +134,6 @@
         
     }
 
-    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -255,7 +257,7 @@
     else if (indexPath.section == 1&&indexPath!=0) //个人履历
     {
 //        cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
-        PersonInfoCell *personInfoCell = [[PersonInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier profileModel:[_timeLimeArray objectAtIndex:indexPath.row]];
+        PersonInfoCell *personInfoCell = [[PersonInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier profileModel:[self.timeLimeArray objectAtIndex:indexPath.row]];
         cell = personInfoCell;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -336,14 +338,15 @@
               NSDictionary *basicDic = [obj objectForKey:@"basic"];
               _model = [[ProfileModel alloc] init];
               [_model setMAdYear:[basicDic objectForKey:@"adYear"]];
-              [_model setMGender:[[basicDic objectForKey:@"gender"] intValue] == 1 ? @"男":@"女" ];
+              NSNumberFormatter *fomatter = [[NSNumberFormatter alloc] init];
+              [_model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
               [_model setMMajor:[basicDic objectForKey:@"major"]];
               [_model setMName:[basicDic objectForKey:@"name"]];
               [_model setMDept:[basicDic objectForKey:@"dept"]];
               
           }
           
-          
+          [self.listTableView performSelectorInBackground:@selector(reloadData) withObject:nil];
         }
         failure:^(NSString *errMsg) {
           
@@ -358,21 +361,19 @@
               
               if ([[obj objectForKey:@"rc"]intValue] == 1) {
                   NSArray *list = [obj objectForKey:@"list"];
-                  NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
                   for (id obj2 in list) {
                       ProfileModel *model = [[ProfileModel alloc] init];
-                      [model setMCity:[obj2 objectForKey:@"city"] ? [obj2 objectForKey:@"city"]:NODATA];
-                      [model setMDesc:[obj2 objectForKey:@"desc"] ? [obj2 objectForKey:@"desc"]:NODATA];
-                      [model setMEtime:[obj2 objectForKey:@"etime"] ? [obj2 objectForKey:@"etime"]:NODATA];
-                      [model setMStime:[obj2 objectForKey:@"stime"] ? [obj2 objectForKey:@"stime"]:NODATA];
-                      [model setMProvince:[obj2 objectForKey:@"province"] ? [obj2 objectForKey:@"province"]:NODATA];
-                      [model setMOrg:[obj2 objectForKey:@"org"] ? [obj2 objectForKey:@"org"]:NODATA];
-                      [tmpArray addObject:model];
+                      [model setMCity:[obj2 objectForKey:@"city"]];
+                      [model setMDesc:[obj2 objectForKey:@"desc"]];
+                      [model setMEtime:[obj2 objectForKey:@"etime"]];
+                      [model setMStime:[obj2 objectForKey:@"stime"]];
+                      [model setMProvince:[obj2 objectForKey:@"province"]];
+                      [model setMOrg:[obj2 objectForKey:@"org"]];
+                      [self.timeLimeArray addObject:model];
                   }
-                  _timeLimeArray = tmpArray;
                   
               }
-              
+              [self.listTableView performSelectorInBackground:@selector(reloadData) withObject:nil];
           }
           failure:^(NSString *errMsg) {
               
@@ -380,7 +381,6 @@
     
     [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation1, operation2, nil] prompt:@"正在获取数据..." completeBlock:^(NSArray *operations) {
         
-        [self.listTableView reloadData];
         
         
     }];
