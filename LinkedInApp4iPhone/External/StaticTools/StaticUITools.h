@@ -39,7 +39,14 @@ typedef enum
     
 } CAlertStyle;
 
-
+/*
+ 带tag的alert实现aLert代理的时候
+ */
++ (void)showAlertWithTag:(int)tag
+                   title:(NSString *)titleString
+                 message:(NSString *)messageString
+               AlertType:(CAlertStyle)AlertType
+               SuperView:(UIViewController *)SuperViewController;
 
 /*
  @abstract 设置导航栏背景颜色

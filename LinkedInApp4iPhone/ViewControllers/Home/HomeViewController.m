@@ -48,11 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.listTableView.backgroundColor = [UIColor clearColor];
-    self.listTableView.backgroundView = nil;
-    
-    
-    
-   
+    self.listTableView.backgroundView = nil;   
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -64,6 +60,9 @@
     //必须放到viewdidappear里 否则将会被自定义的导航栏重置
     [self initNavLeftButton];
     [self initNavTitleView];
+    
+    [self getSchoolInfo];
+    [self getBroadcastList];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -125,6 +124,81 @@
     
 }
 
+/**
+ *	@brief	获取院校信息
+ */
+- (void)getSchoolInfo
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"COLLEGE_INTRODUCT" messId:nil success:^(id obj)
+    {
+        if ([[obj objectForKey:@"rc"]intValue] == 1)
+        {
+            self.schoolDict = [NSDictionary dictionaryWithDictionary:obj];
+            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        else if([[obj objectForKey:@"rc"]intValue] == -1)
+         {
+             [StaticTools showAlertWithTag:0
+                                     title:nil
+                                   message:@"未找到母校信息！"
+                                 AlertType:CAlertTypeDefault
+                                 SuperView:nil];
+         }
+        else
+         {
+             [StaticTools showAlertWithTag:0
+                                     title:nil
+                                   message:@"母校信息加载失败！"
+                                 AlertType:CAlertTypeDefault
+                                 SuperView:nil];
+         }
+        
+        
+    } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"加载中..."
+                                   completeBlock:nil];
+}
+
+/**
+ *	@brief	获取公告列表
+ */
+- (void)getBroadcastList
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":@"1",@"num":@"5",@"previewLen":@"50"} requesId:@"COLLEGE_BROADCAST_LIST" messId:nil success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 self.schoolDict = [NSDictionary dictionaryWithDictionary:obj];
+                 [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [StaticTools showAlertWithTag:0
+                                         title:nil
+                                       message:@"未找到公告信息！"
+                                     AlertType:CAlertTypeDefault
+                                     SuperView:nil];
+             }
+             else
+             {
+                 [StaticTools showAlertWithTag:0
+                                         title:nil
+                                       message:@"公告信息加载失败！"
+                                     AlertType:CAlertTypeDefault
+                                     SuperView:nil];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"加载中..."
+                                   completeBlock:nil];
+
+                               
+}
 /**
  *	@brief	获取字符串的size 换行模式为UILineBreakModeWordWrap
  *
@@ -277,6 +351,7 @@
         //学校图片
         UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 20, 100, 100)];
         headImgView.backgroundColor = [UIColor grayColor];
+        [headImgView setImageWithURL:[NSURL URLWithString:self.schoolDict[@"logoURL"]]];
         [cell.contentView addSubview:headImgView];
         
         //学校名称
@@ -286,7 +361,7 @@
         nameLabel.lineBreakMode = UILineBreakModeWordWrap;
         nameLabel.textColor = RGBACOLOR(0, 140, 207, 1);
         nameLabel.font = [UIFont boldSystemFontOfSize:20];
-        nameLabel.text = testArray[0];
+        nameLabel.text = self.schoolDict[@"name"];
         [cell.contentView addSubview:nameLabel];
         
         //学校详情
@@ -295,7 +370,7 @@
         detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
         detailLabel.numberOfLines = 6;
         //detailLabel.font = [UIFont boldSystemFontOfSize:20];
-        detailLabel.text = testArray[1];
+        detailLabel.text = self.schoolDict[@"introduct"];
         [cell.contentView addSubview:detailLabel];
     }
     else

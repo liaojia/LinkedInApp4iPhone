@@ -28,6 +28,6 @@
     PersonInfoViewController *personInfoController;
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
-
+@property (strong, nonatomic) NSDictionary *schoolDict; //保存母校信息
 - (IBAction)buttonClickedHandle:(id)sender;
 @end

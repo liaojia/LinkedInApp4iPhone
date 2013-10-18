@@ -48,7 +48,7 @@ static NSString *totalSize = nil;
 + (AFHTTPClient *) sharedClient
 {
     if (nil == client) {
-        NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@", [UserDefaults stringForKey:kHOSTNAME]]];
+        NSURL *url = [[NSURL alloc] initWithString:DEFAULTHOST];
         client = [[AFHTTPClient alloc] initWithBaseURL:url];
     }
     
@@ -104,7 +104,7 @@ static NSString *totalSize = nil;
              NSLog(@"用户取消操作...");
              isCancelAction = YES;
              [[Transfer sharedClient].operationQueue cancelAllOperations];
-             [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:[UserDefaults stringForKey:kHOSTNAME]];
+             [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:DEFAULTHOST];
              
              [SVProgressHUD dismiss];
              
@@ -175,7 +175,7 @@ static NSString *totalSize = nil;
             isCancelAction = YES;
             
             [[Transfer sharedClient].operationQueue cancelAllOperations];
-            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:requestModel.method path:kHOSTNAME];
+            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:requestModel.method path:DEFAULTHOST];
             
             [SVProgressHUD dismiss];
         }];
@@ -208,7 +208,7 @@ static NSString *totalSize = nil;
             [SVProgressHUD dismiss];
             
             [[Transfer sharedClient].operationQueue cancelAllOperations];
-            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:kHOSTNAME];
+            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:DEFAULTHOST];
             
             NSLog(@"--%@", [NSString stringWithFormat:@"%@",error]);
             //[SVProgressHUD showErrorWithStatus:[self getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]];
@@ -269,7 +269,91 @@ static NSString *totalSize = nil;
     
     return operation;
 }
+#pragma mark-
+#pragma mark--发送请求
+/**
+ *	@brief	发送请求
+ *
+ *	@param 	reqDic 	post请求时传递数据 发送get请求时传nil
+ *	@param 	requestId 	请求标志
+ *	@param 	messId 	需要填充的参数 暂时只有id要填充 不需填充时传nil
+ *	@param 	success 	成功回调
+ *	@param 	failure 	失败回调 不需要处理失败时传nil
+ *
+ *	@return	
+ */
+- (AFHTTPRequestOperation *) sendRequestWithRequestDic:(NSDictionary *)reqDic
+                                              requesId:(NSString *)requestId
+                                                messId:(NSString*)messId
+                                               success:(SuccessBlock)success
+                                               failure:(FailureBlock)failure
 
+{
+    //没有网络连接时给出提示 直接返回
+    if (![self checkNetAvailable])
+    {
+        [SVProgressHUD dismiss];
+        return nil;
+    }
+    
+    RequestModel *requestModel = [[AppDataCenter sharedAppDataCenter] getModelWithRequestId:requestId];    
+    
+    [[Transfer sharedClient]  registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"application/json"];
+    [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
+    
+
+    if (messId!=nil) //需要填充id 将id字段替换
+    {
+        requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:messId];
+    }
+    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", requestModel.url, VERSION, CLIENT_ID,[UserDefaults objectForKey:@""]];
+    
+    NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:reqDic];
+    [request setTimeoutInterval:20];
+    NSLog(@"request: %@", request.URL);
+    if (reqDic!=nil)
+    {
+        NSLog(@"requestDict: %@",reqDic);
+    }
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
+       {
+            NSLog(@"请求成功--respose: %@", JSON);
+            success(JSON);
+            
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
+                    NSError *error, id JSON)
+       {
+            [SVProgressHUD dismiss];
+            
+            [[Transfer sharedClient].operationQueue cancelAllOperations];
+            [[Transfer sharedClient] cancelAllHTTPOperationsWithMethod:@"POST" path:DEFAULTHOST];
+            
+            NSLog(@"请求失败--err:%@", [NSString stringWithFormat:@"%@",error]);
+            //[SVProgressHUD showErrorWithStatus:[self getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]];
+            
+            // 点击取消的时候会报（The operation couldn’t be completed）,但是UserInfo中不存在NSLocalizedDescription属性，说明这不是一个错误，现用一BOOL值进行简单特殊控制,。。。
+            NSString *message = [Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            if (!isCancelAction && message)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+            }
+           
+           if (failure!=nil)
+           {
+                failure([Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]]);
+           }
+        }
+      ];
+
+    return operation;
+    
+}
+
+#pragma mark-
+#pragma mark--文件下载相关
 - (void) downloadFileWithName:(NSString *) name
                          link:(NSString *) link
                viewController:(UIViewController *) vc

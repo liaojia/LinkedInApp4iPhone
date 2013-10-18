@@ -41,6 +41,13 @@ typedef void (^QueueCompleteBlock) (NSArray *operations);
                                              prompt:(NSString *) prompt
                                             success:(SuccessBlock) success
                                             failure:(FailureBlock) failure;
+//发送请求
+- (AFHTTPRequestOperation *) sendRequestWithRequestDic:(NSDictionary *)reqDic
+                                              requesId:(NSString *)requestId
+                                                messId:(NSString*)messId
+                                               success:(SuccessBlock)success
+                                               failure:(FailureBlock)failure;
+
 
 - (void) downloadFileWithName:(NSString *) name
                          link:(NSString *) link
