@@ -170,7 +170,7 @@
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
-                 self.schoolDict = [NSDictionary dictionaryWithDictionary:obj];
+                
                  [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
              }
              else if([[obj objectForKey:@"rc"]intValue] == -1)

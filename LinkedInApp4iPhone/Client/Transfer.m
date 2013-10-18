@@ -314,7 +314,7 @@ static NSString *totalSize = nil;
     {
         requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:messId];
     }
-    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", requestModel.url, VERSION, CLIENT_ID,[UserDefaults objectForKey:@""]];
+    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
     
     NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:reqDic];
     [request setTimeoutInterval:20];
