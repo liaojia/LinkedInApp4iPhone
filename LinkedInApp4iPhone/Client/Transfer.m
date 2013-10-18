@@ -138,6 +138,7 @@ static NSString *totalSize = nil;
 - (AFHTTPRequestOperation *) TransferWithRequestDic:(NSDictionary *)reqDic
                                            requesId:(NSString *)requesId
                                              prompt:(NSString *) prompt
+                                          replaceId:(NSString *)replaceId
                                             success:(SuccessBlock) success
                                             failure:(FailureBlock) failure
 
@@ -146,6 +147,7 @@ static NSString *totalSize = nil;
     return [self TransferWithRequestDic:reqDic
                                requesId:requesId
                                  prompt:prompt
+                              replaceId:replaceId
                              alertError:YES
                                 success:^(id obj) {
                                  success(obj);
@@ -157,6 +159,7 @@ static NSString *totalSize = nil;
 - (AFHTTPRequestOperation *) TransferWithRequestDic:(NSDictionary *) reqDic
                                            requesId:(NSString *) requestId
                                              prompt:(NSString *) prompt
+                                          replaceId:(NSString *)replaceId
                                          alertError:(BOOL) alertError
                                             success:(SuccessBlock) success
                                             failure:(FailureBlock) failure
@@ -187,10 +190,14 @@ static NSString *totalSize = nil;
     [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"application/json"];
     [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
     
-    
-    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", requestModel.url, VERSION, CLIENT_ID, SESSION_ID];
+    NSString *tmp = nil;
+    if (replaceId) {
+       tmp = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:replaceId];
+    }
+    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", replaceId ? tmp:requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
     
     NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:reqDic];
+
     [request setTimeoutInterval:20];
     NSLog(@"request: %@", request.URL);
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request

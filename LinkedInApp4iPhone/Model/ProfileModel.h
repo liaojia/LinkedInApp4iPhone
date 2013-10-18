@@ -23,11 +23,16 @@
 @property(nonatomic, strong)    NSString *mGradYear;// 毕业年份，如果尚未毕业则为null
 @property(nonatomic, strong)    NSString *mCompany;
 @property(nonatomic, strong)    NSString *mPosition;
+@property(nonatomic, strong)    NSString *mStime;
+@property(nonatomic, strong)    NSString *mEtime;
+@property(nonatomic, strong)    NSString *mOrg;
 
 /* 个人扩展信息 */
 @property(nonatomic, strong)    NSString *mBirthday;// 生日，yyyy-mm-dd格式
 @property(nonatomic, strong)    NSString *mBirthplace;// 籍贯
 @property(nonatomic, strong)    NSString *mNation;// 民族
 @property(nonatomic, strong)    NSString *mDesc;// 个人描述
+
+- (NSString *)checkNullWithString:(NSString *)str;
 
 @end

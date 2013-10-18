@@ -12,12 +12,15 @@
 #import "CommendListViewController.h"
 #import "PersonCell.h"
 #import "PersonHeadView.h"
+#import "ProfileModel.h"
 
 @interface PersonInfoViewController ()
 
 @end
 
 @implementation PersonInfoViewController
+@synthesize model = _model;
+@synthesize timeLimeArray = _timeLimeArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,8 +40,14 @@
     // Do any additional setup after loading the view from its nib.
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
+    
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+    [self refreshData];
+}
 - (void)viewDidUnload
 {
     [self setListTableView:nil];
@@ -102,21 +111,21 @@
     else if(section == 2||section == 3)
     {
         int type = section ==2?myNoticeListType:NoticeMeListType;
-        int coutn = section ==2?myNoticeCount:NoticeMeCount;
+        int count = section ==2?myNoticeCount:NoticeMeCount;
         
         if (type == 0)
         {
-            return coutn+1;
+            return count+1;
         }
         else
         {
-            if (coutn%3==0)
+            if (count%3==0)
             {
-                return coutn/3+1;
+                return count/3+1;
             }
             else
             {
-                return coutn/3+2;
+                return count/3+2;
             }
         }
         
@@ -204,6 +213,14 @@
     }
     else if (indexPath.section == 0) //个人资料
     {
+        NSString *name = nil;
+        NSString *dept = nil;
+        NSString *major = nil;
+        if (_model) {
+            name = _model.mName ? _model.mName:NODATA;
+            dept = _model.mDept ? _model.mDept:NODATA;
+            major = _model.mMajor ? _model.mMajor:NODATA;
+        }
         //头像图片
         UIImageView *headImgView  = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 80, 120)];
         headImgView.backgroundColor = [UIColor grayColor];
@@ -214,7 +231,7 @@
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.font = [UIFont boldSystemFontOfSize:20];
         nameLabel.textColor = RGBACOLOR(0, 140, 207, 1);
-        nameLabel.text = @"文彬";
+        nameLabel.text = name;
         [cell.contentView addSubview:nameLabel];
         
         //学校名称
@@ -223,7 +240,7 @@
         schoolLabel.numberOfLines = 2;
         schoolLabel.lineBreakMode = UILineBreakModeWordWrap;
         schoolLabel.font = [UIFont boldSystemFontOfSize:20];
-        schoolLabel.text = @"学校名称学校名称";
+        schoolLabel.text = dept;
         [cell.contentView addSubview:schoolLabel];
         
         //专业名称
@@ -232,12 +249,14 @@
         specialityLabel.numberOfLines = 2;
         specialityLabel.lineBreakMode = UILineBreakModeWordWrap;
         specialityLabel.font = [UIFont boldSystemFontOfSize:20];
-        specialityLabel.text = @"专业名称专业名称";
+        specialityLabel.text = major;
         [cell.contentView addSubview:specialityLabel];
     }
     else if (indexPath.section == 1&&indexPath!=0) //个人履历
     {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
+//        cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
+        PersonInfoCell *personInfoCell = [[PersonInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier profileModel:[_timeLimeArray objectAtIndex:indexPath.row]];
+        cell = personInfoCell;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -302,6 +321,69 @@
         [appdelegate.rootNavigationController pushViewController:commendListController animated:YES];
 
     }
+}
+
+- (void)refreshData
+{
+    //获取个人信息
+    AFHTTPRequestOperation *operation1 = [[Transfer sharedTransfer] TransferWithRequestDic:nil
+        requesId:@"PROFILE_BASIC"
+        prompt:@"prompt"
+     replaceId:@"me"
+        success:^(id obj) {
+          
+          if ([[obj objectForKey:@"rc"]intValue] == 1) {
+              NSDictionary *basicDic = [obj objectForKey:@"basic"];
+              _model = [[ProfileModel alloc] init];
+              [_model setMAdYear:[basicDic objectForKey:@"adYear"]];
+              [_model setMGender:[[basicDic objectForKey:@"gender"] intValue] == 1 ? @"男":@"女" ];
+              [_model setMMajor:[basicDic objectForKey:@"major"]];
+              [_model setMName:[basicDic objectForKey:@"name"]];
+              [_model setMDept:[basicDic objectForKey:@"dept"]];
+              
+          }
+          
+          
+        }
+        failure:^(NSString *errMsg) {
+          
+        }];
+    
+    // 查看个人履历
+    AFHTTPRequestOperation *operation2 = [[Transfer sharedTransfer] TransferWithRequestDic:nil
+         requesId:@"TIMELINE_LIST"
+           prompt:@"prompt"
+        replaceId:@"me"
+          success:^(id obj) {
+              
+              if ([[obj objectForKey:@"rc"]intValue] == 1) {
+                  NSArray *list = [obj objectForKey:@"list"];
+                  NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
+                  for (id obj2 in list) {
+                      ProfileModel *model = [[ProfileModel alloc] init];
+                      [model setMCity:[obj2 objectForKey:@"city"] ? [obj2 objectForKey:@"city"]:NODATA];
+                      [model setMDesc:[obj2 objectForKey:@"desc"] ? [obj2 objectForKey:@"desc"]:NODATA];
+                      [model setMEtime:[obj2 objectForKey:@"etime"] ? [obj2 objectForKey:@"etime"]:NODATA];
+                      [model setMStime:[obj2 objectForKey:@"stime"] ? [obj2 objectForKey:@"stime"]:NODATA];
+                      [model setMProvince:[obj2 objectForKey:@"province"] ? [obj2 objectForKey:@"province"]:NODATA];
+                      [model setMOrg:[obj2 objectForKey:@"org"] ? [obj2 objectForKey:@"org"]:NODATA];
+                      [tmpArray addObject:model];
+                  }
+                  _timeLimeArray = tmpArray;
+                  
+              }
+              
+          }
+          failure:^(NSString *errMsg) {
+              
+          }];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation1, operation2, nil] prompt:@"正在获取数据..." completeBlock:^(NSArray *operations) {
+        
+        [self.listTableView reloadData];
+        
+        
+    }];
 }
 
 @end

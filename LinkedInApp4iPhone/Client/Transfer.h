@@ -39,6 +39,7 @@ typedef void (^QueueCompleteBlock) (NSArray *operations);
 - (AFHTTPRequestOperation *) TransferWithRequestDic:(NSDictionary *) reqDic
                                            requesId:(NSString *)requesId
                                              prompt:(NSString *) prompt
+                                          replaceId:(NSString *)replaceId
                                             success:(SuccessBlock) success
                                             failure:(FailureBlock) failure;
 //发送请求

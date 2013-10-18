@@ -16,6 +16,9 @@
 @end
 
 @implementation AppDataCenter
+@synthesize version = _version;
+@synthesize sid = _sid;
+@synthesize clientId = _clientId;
 
 static AppDataCenter *instance = nil;
 
@@ -36,6 +39,17 @@ static AppDataCenter *instance = nil;
     return instance;
 }
 
+- (id)init
+{
+    if (self = [super init]) {
+        _version = @"1";
+        _sid = @"-1";
+        _clientId = @"3";//1、网站 2、Android 3、IOS
+        
+    }
+    
+    return self;
+}
 - (RequestModel*) getModelWithRequestId:(NSString*) name{
     NSArray *array = [Transfer paseRequestParamXML];
     for (RequestModel* model in array) {
