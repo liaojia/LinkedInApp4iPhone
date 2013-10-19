@@ -145,6 +145,10 @@
 {
     _mId = [self checkNullWithString:mId];
 }
+- (void)setMContent:(NSString *)mContent
+{
+    _mContent = [self checkNullWithString:mContent];
+}
 - (NSString *)checkNullWithString:(NSString *)str
 {
     if ([str isKindOfClass:[NSNumber class]])

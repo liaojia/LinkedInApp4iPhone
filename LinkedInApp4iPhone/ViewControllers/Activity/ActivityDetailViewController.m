@@ -9,6 +9,9 @@
 #import "ActivityDetailViewController.h"
 #import "ActivityCell.h"
 #import "PersonHeadView.h"
+
+#define Tag_AddMore_Action 100
+
 @interface ActivityDetailViewController ()
 
 @end
@@ -20,16 +23,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        testArray = @[@"活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情"
-                      ,@"北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细北京师范大学详细"
-                      ,@"公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容"
-                      ,@"活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述"
-                      ,@"活动题目活动题目活动题目活动题目活动题目活动题目活动题目"
-                      ,@"2013-12-12 12:24"
-                      ,@"活动地点活动地点活动地点活动地点活动地点活动地点活动地点活动地点活动地点"
-                      ,@"活动类型活动类型活动类型活动类型活动类型活动类型活动类型"
-                      ,@"活动费用活动费用活动费用活动费用活动费用活动费用活动费用"
-                      ,@"主办方主办方主办方主办方主办方主办方主办方主办方主办方主办方"];
+        self.actDetailModel = [[ProfileModel alloc]init];
+        self.pepleListMtbArray = [NSMutableArray arrayWithCapacity:0];
     }
     return self;
 }
@@ -39,7 +34,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"活动详情";
-    self.listTableView.separatorColor = [UIColor clearColor];
+
+    [self initTableview];
+    
+    [self getActivityDetailWithID:self.idStr];
+    [self getActPersonListWithID:self.idStr page:1];
     
 }
 - (void)viewDidUnload
@@ -54,11 +53,136 @@
 }
 #pragma mark-
 #pragma mark--功能函数
--(float)getStringHeight:(NSString*)str withFont:(UIFont*)font consSize:(CGSize)size
+
+#pragma mark-
+#pragma mark--功能函数
+/**
+ *	@brief	初始化tableview相关
+ */
+- (void)initTableview
 {
-    CGSize strSize = [str sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    return strSize.height;
+    self.listTableView.separatorColor = [UIColor clearColor];
+    
+    //初始化tablview 的footview
+    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    footView.backgroundColor = [UIColor clearColor];
+    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    moreBtn.frame  = CGRectMake(20, 5, 280, 30);
+    [moreBtn setTitle:@"查看更多参加活动的人" forState:UIControlStateNormal];
+    moreBtn.tag = Tag_AddMore_Action;
+    [moreBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+    [footView addSubview:moreBtn];
+    self.listTableView.tableFooterView = footView;
+    
+    
 }
+
+/**
+ *	@brief	获取活动详细
+ *
+ *	@param 	idStr 	活动id
+ */
+- (void)getActivityDetailWithID:(NSString*)idStr
+
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"COLLEGE_EVENT_DETAIL" messId:idStr success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 self.actDetailModel.mDesc = obj[@"preview"];
+                 self.actDetailModel.mName = obj[@"title"];
+                 self.actDetailModel.mStime = obj[@"stime"];
+                 self.actDetailModel.mPlace = obj[@"address"];
+                 self.actDetailModel.mType = obj[@"typeID"];
+                 self.actDetailModel.mMoney = obj[@"charge"];
+                 self.actDetailModel.mSponsor = obj[@"sponsor"];
+                 self.actDetailModel.mImgUrl = obj[@"pic"];
+                 self.actDetailModel.mContent  = obj[@"content"];
+                 [self.listTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)] withRowAnimation:UITableViewRowAnimationFade];
+                 
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+             }
+             else
+             {
+                 [SVProgressHUD showErrorWithStatus:@"活动信息加载失败！"];
+             }
+             
+             
+         } failure:nil];
+
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"加载中..."
+                                   completeBlock:nil];
+
+}
+
+/**
+ *	@brief	获取活动成员列表
+ *
+ *	@param 	idStr 	活动id
+ */
+- (void)getActPersonListWithID:(NSString*)idStr page:(int)page
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":[NSString stringWithFormat:@"%d",page],@"num":@"20"} requesId:@"COLLEGE_EVENT_PARTICIPANT_LIST" messId:idStr success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 currentPage++;
+                 
+                 pepleCount = [obj[@"total"] intValue];
+                 NSArray *list = obj[@"list"];
+                 for (int i=0; i<list.count; i++)
+                 {
+                     ProfileModel *model = [[ProfileModel alloc]init];
+                     model.mName = obj[@"name"];
+                     [self.pepleListMtbArray addObject:model];
+                 }
+                 if (self.pepleListMtbArray.count>=pepleCount)
+                 {
+                     self.listTableView.tableFooterView.hidden = YES;
+                 }
+                 
+                 [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                 
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+             }
+             else
+             {
+                 [SVProgressHUD showErrorWithStatus:@"成员信息加载失败！"];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"加载中..."
+                                   completeBlock:nil];
+}
+
+#pragma mark-
+#pragma mark--按钮点击相关
+- (void)buttonClickHandle:(id)sender
+{
+    UIButton *button = (UIButton*)sender;
+    switch (button.tag)
+    {
+        case Tag_AddMore_Action:
+        {
+            [self getActPersonListWithID:self.idStr page:currentPage+1];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark-
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -76,7 +200,7 @@
     {
         return 2;
     }
-    return 3;
+    return self.pepleListMtbArray.count%4==0?self.pepleListMtbArray.count/4+1:self.pepleListMtbArray.count/4+2;
 }
 
 
@@ -85,13 +209,21 @@
 {
     if (indexPath.section == 0)
     {
-        float height = 0;
-        for (int i=0; i<7; i++)
-        {
-            height+=[self getStringHeight:testArray[i+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(135, 1000)];
-        }
+        float height;
+        ProfileModel *model = self.actDetailModel;
+        int desAndTitleHeight; //描述和题目的高度总和 若小于图片的高度 测返回图片的高度
+        
+        desAndTitleHeight  = [StaticTools getLabelHeight:model.mDesc defautWidth:135 defautHeight:1000 fontSize:17]+[StaticTools getLabelHeight:model.mName defautWidth:134 defautHeight:1000 fontSize:17];
+        desAndTitleHeight = desAndTitleHeight<185?185:desAndTitleHeight;
+        height+=desAndTitleHeight;
+        height += [StaticTools getLabelHeight:model.mStime defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mPlace defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mType defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mMoney defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mSponsor defautWidth:220 defautHeight:1000 fontSize:17];
         
         return height;
+
     }
     else
     {
@@ -101,7 +233,8 @@
         }
         else if(indexPath.section == 1&&indexPath.row == 1) //活动详情
         {
-            return [self getStringHeight: testArray[0] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(300, 1000)];
+        
+            return [StaticTools getLabelHeight:self.actDetailModel.mContent defautWidth:300 defautHeight:10000 fontSize:17];
         }
         else //参加活动的人
         {
@@ -132,16 +265,9 @@
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ActivityCell" owner:nil options:nil] objectAtIndex:0];
         ActivityCell *activityCell = (ActivityCell*)cell;
-        activityCell.desLabel.text = testArray[3];
-        activityCell.titleDetailLabel.text = testArray[4];
-        activityCell.timeDetailLabel.text = testArray[5];
-        activityCell.placeDetailLabel.text = testArray[6];
-        activityCell.typeDetailLabel.text = testArray[7];
-        activityCell.moneyDetailLabel.text = testArray[8];
-        activityCell.hostDetailLabel.text = testArray[9];
+        [activityCell setDataWithModel:self.actDetailModel];
         [activityCell adjuctSubFrame];
 
-        
     }
     else
     {
@@ -159,20 +285,44 @@
         {
            if(indexPath.section == 1)//活动详情
            {
-               UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5,300 , [self getStringHeight: testArray[0] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(300, 1000)])];
+               UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5,300 , [StaticTools getLabelHeight:self.actDetailModel.mContent defautWidth:300 defautHeight:10000 fontSize:17])];
                detailLabel.backgroundColor = [UIColor clearColor];
                detailLabel.font = [UIFont systemFontOfSize:17];
                detailLabel.numberOfLines = 0;
                detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
-               detailLabel.text =  testArray[0];
+               detailLabel.text =  self.actDetailModel.mContent;
                [cell.contentView addSubview:detailLabel];
            }
            else if(indexPath.section == 2) //参加活动的人
             {
-                for (int i=0; i<4; i++)
+                
+                int rowCount = self.pepleListMtbArray.count%4==0?self.pepleListMtbArray.count/4:self.pepleListMtbArray.count/4+1;
+                int currentLineCount ;
+                if (self.pepleListMtbArray.count%4 == 0)
                 {
+                    currentLineCount = 4;
+                }
+                else
+                {
+                    if (indexPath.row<rowCount)
+                    {
+                        currentLineCount = 4;
+                    }
+                    else
+                    {
+                        currentLineCount = self.pepleListMtbArray.count%4;
+                    }
+                }
+
+    
+                for (int i=0; i<currentLineCount; i++)
+                {
+                    
                     PersonHeadView *perosnView = [[PersonHeadView alloc]initWithFrame:CGRectMake(5+i*10+70*i, 5, 70, 100)];
-                    perosnView.nameLabel.text = @"文彬";
+                  
+                    ProfileModel *model = self.pepleListMtbArray[(indexPath.row-1)*4+i];
+                    perosnView.nameLabel.text = model.mName;
+                    [perosnView.headImgBtn setBackgroundImage:[UIImage imageNamed:model.mImgUrl] forState:UIControlStateNormal];
                     [cell.contentView addSubview:perosnView];
                 }
             }

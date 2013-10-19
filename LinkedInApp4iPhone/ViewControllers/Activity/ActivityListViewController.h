@@ -22,6 +22,7 @@
     UITableViewDelegate>
 {
     int activityTotalCount; //活动总数
+    int currentPage; //当前页
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTableVew;
 @property (strong, nonatomic) NSMutableArray *listMtbArray;

@@ -252,6 +252,7 @@
                      model.mMoney = temDict[@"charge"];
                      model.mSponsor = temDict[@"sponsor"];
                      model.mImgUrl = temDict[@"pic"];
+                     model.mId = temDict[@"id"];
                      
                      [self.actMtbArray addObject:model];
                      
@@ -569,7 +570,10 @@
     else if (indexPath.section ==2)//进入官方活动详情
     {
         ActivityDetailViewController *activityDetailController = [[ActivityDetailViewController alloc]initWithNibName:@"ActivityDetailViewController" bundle:[NSBundle mainBundle]];
+        ProfileModel *model = self.actMtbArray[indexPath.row-1];
+        activityDetailController.idStr  = model.mId;
         [self.navigationController pushViewController:activityDetailController animated:YES];
     }
+
 }
 @end
