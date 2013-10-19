@@ -8,6 +8,7 @@
 
 #import "PersonInfoCell.h"
 #import "ProfileModel.h"
+#import "CommendListViewController.h"
 @implementation PersonInfoCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -35,4 +36,5 @@
     [_orgLabel setText:tModel.mOrg];
     [_placeLabel setText:[NSString stringWithFormat:@"%@--%@", tModel.mProvince, tModel.mCity]];
 }
+
 @end

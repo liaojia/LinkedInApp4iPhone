@@ -18,6 +18,13 @@
         <method>POST</method>
     </request>
     
+    <!-- 注册 -->
+    <request>
+        <requestId>REGISTER</requestId>
+        <url>/account/create</url>
+        <method>POST</method>
+    </request>
+    
     <!-- 查看个人基本信息 -->
     <request>
         <requestId>PROFILE_BASIC</requestId>
@@ -85,6 +92,13 @@
     <request>
         <requestId>COLLEGE_BROADCAST_DETAIL</requestId>
         <url>/college/broadcast/${id}/detail</url>
+        <method>GET</method>
+    </request>
+    
+    <!-- 获取活动类型列表 -->
+    <request>
+        <requestId>COLLEGE_EVENT_TYPE_LIST</requestId>
+        <url>/college/event/type/list</url>
         <method>GET</method>
     </request>
     
@@ -164,5 +178,41 @@
         <url>/college/alucard/status</url>
         <method>GET</method>
     </request>
+    
+    <!-- 查看履历推荐好友 -->
+    <request>
+        <requestId>SUGGESTPEOPLE_LIST</requestId>
+        <url>/timeline/me/node/${nodeID}/newfriends/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!-- 查看我关注的好友列表 -->
+    <request>
+        <requestId>MYATTENTIONS_LIST</requestId>
+        <url>/friends/me/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!-- 查看我关注的好友列表 -->
+    <request>
+        <requestId>FANS_LIST</requestId>
+        <url>/friends/me/funs/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!-- 加关注 -->
+    <request>
+        <requestId>ADD_ATTENTION</requestId>
+        <url>/friends/${id}/follow</url>
+        <method>POST</method>
+    </request>
+    
+    <!-- 取消关注 -->
+    <request>
+        <requestId>CANCELATTENTION</requestId>
+        <url>/friends/${id}/unfollow</url>
+        <method>POST</method>
+    </request>
+    
     
 </root>

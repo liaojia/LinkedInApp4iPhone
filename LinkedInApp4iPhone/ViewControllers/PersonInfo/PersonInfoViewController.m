@@ -41,14 +41,14 @@
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
     
+    self.timeLimeArray = [[NSMutableArray alloc] init];
+    [self refreshData];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     
-    self.timeLimeArray = [[NSMutableArray alloc] init];
-    [self refreshData];
 }
 - (void)viewDidUnload
 {
@@ -226,7 +226,7 @@
         //姓名
         UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 10, 200, 30)];
         nameLabel.backgroundColor = [UIColor clearColor];
-        nameLabel.font = [UIFont boldSystemFontOfSize:20];
+        nameLabel.font = [UIFont boldSystemFontOfSize:18];
         nameLabel.textColor = RGBACOLOR(0, 140, 207, 1);
         nameLabel.text = self.model.mName;
         [cell.contentView addSubview:nameLabel];
@@ -236,7 +236,7 @@
         schoolLabel.backgroundColor = [UIColor clearColor];
         schoolLabel.numberOfLines = 2;
         schoolLabel.lineBreakMode = UILineBreakModeWordWrap;
-        schoolLabel.font = [UIFont boldSystemFontOfSize:20];
+        schoolLabel.font = [UIFont boldSystemFontOfSize:16];
         schoolLabel.text = self.model.mDept;
         [cell.contentView addSubview:schoolLabel];
         
@@ -245,18 +245,19 @@
         specialityLabel.backgroundColor = [UIColor clearColor];
         specialityLabel.numberOfLines = 2;
         specialityLabel.lineBreakMode = UILineBreakModeWordWrap;
-        specialityLabel.font = [UIFont boldSystemFontOfSize:20];
+        specialityLabel.font = [UIFont boldSystemFontOfSize:16];
         specialityLabel.text = self.model.mMajor;
         [cell.contentView addSubview:specialityLabel];
     }
     else if (indexPath.section == 1&&indexPath.row!=0) //个人履历
     {
-//        cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
+
         PersonInfoCell *personInfoCell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
         [personInfoCell initWithMode:[self.timeLimeArray objectAtIndex:indexPath.row-1]];
-        personInfoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        personInfoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [personInfoCell.recommendButton addTarget:self action:@selector(recommendAction:) forControlEvents:UIControlEventTouchUpInside];
+        [personInfoCell.recommendButton setTag:(999+indexPath.row)];
         personInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        cell = personInfoCell;
         return personInfoCell;
     }
     else if(indexPath.section == 2||indexPath.section == 3) //个人关注||//关注我的人
@@ -315,9 +316,7 @@
 {
     if (indexPath.section == 1&&self.pageType == 0) //进入相关推荐页面
     {
-        CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
-        AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        [appdelegate.rootNavigationController pushViewController:commendListController animated:YES];
+        
 
     }
 }
@@ -358,7 +357,6 @@
               
               if ([[obj objectForKey:@"rc"]intValue] == 1) {
                   NSArray *list = [obj objectForKey:@"list"];
-//                  [self.timeLimeArray removeAllObjects];
                   for (id obj2 in list) {
                       ProfileModel *model = [[ProfileModel alloc] init];
                       [model setMCity:[obj2 objectForKey:@"city"]];
@@ -367,6 +365,7 @@
                       [model setMStime:[obj2 objectForKey:@"stime"]];
                       [model setMProvince:[obj2 objectForKey:@"province"]];
                       [model setMOrg:[obj2 objectForKey:@"org"]];
+                      [model setMId:[obj2 objectForKey:@"id"]];
                       [self.timeLimeArray addObject:model];
                   }
                   [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
@@ -384,4 +383,45 @@
     }];
 }
 
+-(IBAction)recommendAction:(id)sender
+{
+    int index = ((UIButton*)sender).tag - 1000;
+    ProfileModel *model = [self.timeLimeArray objectAtIndex:index];
+    [self getSuggestPepoleListWithId:model.mId];
+
+}
+
+/**
+ *	@brief	根据选中履历推荐好友
+ *
+ *	@param 	nodeId 	结点Id
+ */
+-(void)getSuggestPepoleListWithId:(NSString *)nodeId
+{
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"SUGGESTPEOPLE_LIST" messId:nodeId success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 
+                 CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
+                 AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+                 [appdelegate.rootNavigationController pushViewController:commendListController animated:YES];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+             }
+             else
+             {
+                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"加载中..."
+                                   completeBlock:nil];
+}
 @end
