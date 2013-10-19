@@ -22,6 +22,12 @@
     UITableViewDataSource>
 {
     NSArray *testArray; //测试数据
+    
+    int currentPage;  //参加或的人当前页
+    int pepleCount;   //参加或的总人数
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
+@property (strong, nonatomic) NSString *idStr; //前一个页面传过来的活动id
+@property (strong, nonatomic) ProfileModel *actDetailModel; //活动详情数据
+@property (strong, nonatomic) NSMutableArray *pepleListMtbArray; //参加活动的人
 @end
