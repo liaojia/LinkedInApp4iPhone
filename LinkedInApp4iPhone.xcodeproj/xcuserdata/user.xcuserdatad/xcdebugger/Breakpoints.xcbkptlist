@@ -102,7 +102,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "147"
          endingLineNumber = "147"
-         landmarkName = "-tableView:heightForRowAtIndexPath:"
+         landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

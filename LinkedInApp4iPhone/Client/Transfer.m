@@ -193,6 +193,7 @@ static NSString *totalSize = nil;
     NSString *tmp = nil;
     if (replaceId) {
        tmp = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:replaceId];
+        tmp = [tmp stringByReplacingOccurrencesOfString:@"${nodeID}" withString:replaceId];
     }
     NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", replaceId ? tmp:requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
     
@@ -271,6 +272,7 @@ static NSString *totalSize = nil;
     if (messId!=nil) //需要填充id 将id字段替换
     {
         requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:messId];
+        requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${nodeID}" withString:messId];
     }
     NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
     

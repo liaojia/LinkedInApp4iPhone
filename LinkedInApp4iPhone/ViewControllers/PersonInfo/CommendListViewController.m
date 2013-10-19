@@ -23,7 +23,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        personCount = 14;
     }
     return self;
 }
@@ -34,6 +33,7 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"相关推荐";
     
+    personCount = [self.mArray count];
     [self initTableview];
 }
 - (void)viewDidUnload
@@ -160,11 +160,12 @@
             cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonCell" owner:nil options:nil]objectAtIndex:0];
         }
         
+        ProfileModel *model = [self.mArray objectAtIndex:indexPath.row];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.actionBtn.hidden = YES;
-        cell.nameLabel.text = @"文彬";
-        cell.sexLabel.text = @"男";
-        cell.placeLabel.text = @"所在地：北京市-海淀区";
+        cell.nameLabel.text = model.mName;
+        cell.sexLabel.text = model.mGender;
+        cell.placeLabel.text = [NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity];
         
         return cell;
     }

@@ -24,14 +24,15 @@
     int myNoticeListType; //个人关注列表展示类型 0：列表 1：网格
     int NoticeMeListType; //关注我的列表展示类型 0：列表 1：网格
     
-    int myNoticeCount;  //测试数据 我的关注人数
-    int NoticeMeCount;  //测试数据 关注我的人人数
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (assign, nonatomic) int pageType;  //页面复用标志
+@property (nonatomic, strong)NSString *personId;
 
 @property (nonatomic, strong)ProfileModel *model;
 @property (nonatomic, strong)NSMutableArray *timeLimeArray;
+@property (nonatomic, strong)NSMutableArray *myNoticeArray;
+@property (nonatomic, strong)NSMutableArray *noticeMeArray;
 
 @end
