@@ -27,9 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
-        myNoticeCount = 13;
-        NoticeMeCount = 8;
+    
     }
     return self;
 }
@@ -42,6 +40,9 @@
     self.listTableView.backgroundView = nil;
     
     self.timeLimeArray = [[NSMutableArray alloc] init];
+    self.myNoticeArray = [[NSMutableArray alloc] init];
+    self.noticeMeArray = [[NSMutableArray alloc] init];
+    
     [self refreshData];
 
 }
@@ -67,10 +68,22 @@
 {
     
     UIButton *button  = (UIButton*)sender;
-    if (button.tag>=200)
+    if (button.tag>=20000)
     {
         PersonInfoViewController *perosnInforController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
         perosnInforController.pageType = 1;
+        int tag = button.tag - 40000;
+        if (tag > 19999) {
+            // 和 section = 3 等价，即关注我的人
+            perosnInforController.personId = ((ProfileModel*)[self.noticeMeArray objectAtIndex:tag-20000]).mId;
+            
+            
+        }else{
+            // 和 section = 2 等价，即我关注的人
+            perosnInforController.personId = ((ProfileModel*)[self.myNoticeArray objectAtIndex:tag]).mId;
+           
+        }
+        
         AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         [appdelegate.rootNavigationController pushViewController:perosnInforController animated:YES];
         
@@ -117,7 +130,7 @@
     else if(section == 2||section == 3)
     {
         int type = section ==2?myNoticeListType:NoticeMeListType;
-        int count = section ==2?myNoticeCount:NoticeMeCount;
+        int count = section ==2?[self.myNoticeArray count ]:[self.noticeMeArray count];
         
         if (type == 0)
         {
@@ -257,13 +270,18 @@
 //        personInfoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [personInfoCell.recommendButton addTarget:self action:@selector(recommendAction:) forControlEvents:UIControlEventTouchUpInside];
         [personInfoCell.recommendButton setTag:(999+indexPath.row)];
+        if (![self.personId isEqualToString:@"me"]) {
+            [personInfoCell.recommendButton setHidden:YES];
+        }else{
+            [personInfoCell.recommendButton setHidden:NO];
+        }
         personInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return personInfoCell;
     }
-    else if(indexPath.section == 2||indexPath.section == 3) //个人关注||//关注我的人
+    else if(indexPath.section == 2|| indexPath.section == 3) //个人关注||//关注我的人
     {
         int type = indexPath.section ==2?myNoticeListType:NoticeMeListType;
-        int coutn = indexPath.section==2?myNoticeCount:NoticeMeCount;
+        int coutn = indexPath.section==2?[self.myNoticeArray count ]:[self.noticeMeArray count];
         
         if (type == 1)
         {
@@ -302,15 +320,44 @@
             cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonCell" owner:nil options:nil] objectAtIndex:0];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             PersonCell *pesonCell = (PersonCell*)cell;
-            pesonCell.headImg.tag =200; //TODO 暂时写死
-            [pesonCell.headImg addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
-            [pesonCell.actionBtn setTitle:indexPath.section==2?@"取消关注":@"关注" forState:UIControlStateNormal];
+            NSArray *tmpArray = nil;
+            if (indexPath.section == 2) {
+                tmpArray = self.myNoticeArray;
+            }else{
+                tmpArray = self.noticeMeArray;
+            }
+            if (tmpArray || [tmpArray count] !=0) {
+                ProfileModel *model = [tmpArray objectAtIndex:indexPath.row-1];
+                pesonCell.selectionStyle = UITableViewCellSelectionStyleNone;
+                pesonCell.nameLabel.text = model.mName;
+                pesonCell.sexLabel.text = model.mGender;
+                pesonCell.placeLabel.text = [NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity];
+                pesonCell.headImg.tag =indexPath.section*20000+indexPath.row-1;
+                [pesonCell.headImg addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+                [pesonCell.actionBtn setTitle:indexPath.section==2?@"取消关注":@"关注" forState:UIControlStateNormal];
+                [pesonCell.actionBtn setTag:(indexPath.section*20000+indexPath.row-1) ];
+                [pesonCell.actionBtn addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            
         }
         
         
     }
   
     return cell;
+}
+
+-(IBAction)cancelAction:(id)sender
+{
+    int tag = ((UIButton*)sender).tag - 40000;
+    if (tag > 19999) {
+        // 和 section = 3 等价，即关注我的人, 加关注
+        [self addNoticeWithId:((ProfileModel*)[self.noticeMeArray objectAtIndex:tag-20000]).mId];
+        
+    }else{
+        // 和 section = 2 等价，即我关注的人，取消关注
+        [self cancelNoticeWithId:((ProfileModel*)[self.myNoticeArray objectAtIndex:tag]).mId];
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -323,64 +370,21 @@
 
 - (void)refreshData
 {
-    //获取个人信息
-    AFHTTPRequestOperation *operation1 = [[Transfer sharedTransfer] TransferWithRequestDic:nil
-        requesId:@"PROFILE_BASIC"
-        prompt:@"prompt"
-     replaceId:@"me"
-        success:^(id obj) {
-          
-          if ([[obj objectForKey:@"rc"]intValue] == 1) {
-              NSDictionary *basicDic = [obj objectForKey:@"basic"];
-              _model = [[ProfileModel alloc] init];
-              [_model setMAdYear:[basicDic objectForKey:@"adYear"]];
-              NSNumberFormatter *fomatter = [[NSNumberFormatter alloc] init];
-              [_model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
-              [_model setMMajor:[basicDic objectForKey:@"major"]];
-              [_model setMName:[basicDic objectForKey:@"name"]];
-              [_model setMDept:[basicDic objectForKey:@"dept"]];
-              
-          }
-        [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-          
+    if (self.pageType == 0) {
+        self.personId = @"me";
+        [self getProfileWithId:@"me"];
+        [self getTimeLimeWithId:@"me"];
+        [self getMyNoticeList];
+        [self getNoticeMeList];
+    }else{
+        if (self.personId) {
+            [self getProfileWithId:self.personId];
+            [self getTimeLimeWithId:self.personId];
         }
-        failure:^(NSString *errMsg) {
-          
-        }];
-    
-    // 查看个人履历
-    AFHTTPRequestOperation *operation2 = [[Transfer sharedTransfer] TransferWithRequestDic:nil
-         requesId:@"TIMELINE_LIST"
-           prompt:@"prompt"
-        replaceId:@"me"
-          success:^(id obj) {
-              
-              if ([[obj objectForKey:@"rc"]intValue] == 1) {
-                  NSArray *list = [obj objectForKey:@"list"];
-                  for (id obj2 in list) {
-                      ProfileModel *model = [[ProfileModel alloc] init];
-                      [model setMCity:[obj2 objectForKey:@"city"]];
-                      [model setMDesc:[obj2 objectForKey:@"desc"]];
-                      [model setMEtime:[obj2 objectForKey:@"etime"]];
-                      [model setMStime:[obj2 objectForKey:@"stime"]];
-                      [model setMProvince:[obj2 objectForKey:@"province"]];
-                      [model setMOrg:[obj2 objectForKey:@"org"]];
-                      [model setMId:[obj2 objectForKey:@"id"]];
-                      [self.timeLimeArray addObject:model];
-                  }
-                  [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
-              }
-             
-          }
-          failure:^(NSString *errMsg) {
-              
-          }];
-    
-    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation2, operation1, nil] prompt:@"正在获取数据..." completeBlock:^(NSArray *operations) {
         
-//         [self.listTableView performSelectorInBackground:@selector(reloadData) withObject:nil];
-        
-    }];
+    }
+    
+    
 }
 
 -(IBAction)recommendAction:(id)sender
@@ -391,6 +395,44 @@
 
 }
 
+
+/**
+ *	@brief	查看个人履历
+ */
+-(void)getTimeLimeWithId:(NSString*)personId
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] TransferWithRequestDic:nil
+      requesId:@"TIMELINE_LIST"
+        prompt:@"prompt"
+     replaceId:personId
+       success:^(id obj) {
+           
+           if ([[obj objectForKey:@"rc"]intValue] == 1) {
+               NSArray *list = [obj objectForKey:@"list"];
+               for (id obj2 in list) {
+                   ProfileModel *model = [[ProfileModel alloc] init];
+                   [model setMCity:[obj2 objectForKey:@"city"]];
+                   [model setMDesc:[obj2 objectForKey:@"desc"]];
+                   [model setMEtime:[obj2 objectForKey:@"etime"]];
+                   [model setMStime:[obj2 objectForKey:@"stime"]];
+                   [model setMProvince:[obj2 objectForKey:@"province"]];
+                   [model setMOrg:[obj2 objectForKey:@"org"]];
+                   [model setMId:[obj2 objectForKey:@"id"]];
+                   [self.timeLimeArray addObject:model];
+               }
+               [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+           }
+           
+       }
+       failure:^(NSString *errMsg) {
+           
+       }];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil] prompt:@"正在获取数据..." completeBlock:^(NSArray *operations) {
+        
+        
+    }];
+}
 /**
  *	@brief	根据选中履历推荐好友
  *
@@ -440,7 +482,39 @@
 }
 
 /**
- *	@brief 关注我的人列表
+ *	@brief	获取个人信息
+ */
+-(void)getProfileWithId:(NSString*)personId
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] TransferWithRequestDic:nil
+      requesId:@"PROFILE_BASIC"
+        prompt:@"prompt"
+     replaceId:personId
+       success:^(id obj) {
+           
+           if ([[obj objectForKey:@"rc"]intValue] == 1) {
+               NSDictionary *basicDic = [obj objectForKey:@"basic"];
+               _model = [[ProfileModel alloc] init];
+               [_model setMAdYear:[basicDic objectForKey:@"adYear"]];
+               NSNumberFormatter *fomatter = [[NSNumberFormatter alloc] init];
+               [_model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
+               [_model setMMajor:[basicDic objectForKey:@"major"]];
+               [_model setMName:[basicDic objectForKey:@"name"]];
+               [_model setMDept:[basicDic objectForKey:@"dept"]];
+               
+           }
+           [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+           
+       }
+       failure:^(NSString *errMsg) {
+           
+       }];
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
+/**
+ *	@brief 我关注的人列表
  */
 -(void)getMyNoticeList
 
@@ -448,9 +522,9 @@
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"MYATTENTIONS_LIST" messId:nil success:^(id obj)
          {
-             NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
+                 [self.myNoticeArray removeAllObjects];
                  NSArray *list = [obj objectForKey:@"list"];
                  for (id obj2 in list) {
                      ProfileModel *model = [[ProfileModel alloc] init];
@@ -463,11 +537,9 @@
                      [model setMName:[obj2 objectForKey:@"name"]];
                      [model setMGender:[obj2 objectForKey:@"gender"]];
                      [model setMId:[obj2 objectForKey:@"id"]];
-                     [tmpArray addObject:model];
+                     [self.myNoticeArray addObject:model];
                  }
-                 CommendListViewController *vc = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
-                 vc.mArray = tmpArray;
-                 [self.navigationController pushViewController:vc animated:YES];
+                 [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
              }
              else if([[obj objectForKey:@"rc"]intValue] == -1)
              {
@@ -486,4 +558,123 @@
                                    completeBlock:nil];
 }
 
+/**
+ *	@brief 关注我的人列表
+ */
+-(void)getNoticeMeList
+
+{
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"FANS_LIST" messId:nil success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 NSArray *list = [obj objectForKey:@"list"];
+                 for (id obj2 in list) {
+                     ProfileModel *model = [[ProfileModel alloc] init];
+                     [model setMCity:[obj2 objectForKey:@"city"]];
+                     [model setMDesc:[obj2 objectForKey:@"desc"]];
+                     [model setMEtime:[obj2 objectForKey:@"etime"]];
+                     [model setMStime:[obj2 objectForKey:@"stime"]];
+                     [model setMProvince:[obj2 objectForKey:@"province"]];
+                     [model setMOrg:[obj2 objectForKey:@"org"]];
+                     [model setMName:[obj2 objectForKey:@"name"]];
+                     [model setMGender:[obj2 objectForKey:@"gender"]];
+                     [model setMId:[obj2 objectForKey:@"id"]];
+                     [self.noticeMeArray addObject:model];
+                 }
+                [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+             }
+             else
+             {
+                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
+
+/**
+ *	@brief	加关注
+ *
+ *	@param 	personId 	人员ID（必填项）
+ */
+-(void)addNoticeWithId:(NSString *)personId
+
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"ADD_ATTENTION" messId:personId success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 [self getMyNoticeList];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -2){
+                 [SVProgressHUD showErrorWithStatus:@"已经关注过此人！"];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -3){
+                 [SVProgressHUD showErrorWithStatus:@"关注对象非法！"];
+             }
+             else
+             {
+                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
+
+/**
+ *	@brief	取消关注
+ *
+ *	@param 	personId 	人员ID（必填项）
+ */
+-(void)cancelNoticeWithId:(NSString *)personId
+
+
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"CANCELATTENTION" messId:personId success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 [self getMyNoticeList];
+                 
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -2){
+                 [SVProgressHUD showErrorWithStatus:@"没有关注过此人！"];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -3){
+                 [SVProgressHUD showErrorWithStatus:@"关注对象非法！"];
+             }
+             else
+             {
+                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
 @end
