@@ -24,6 +24,7 @@
     UITableViewDelegate>
 {
     NSArray *testArray; //测试数据
+    int activityTotalCount; //活动总条数
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;

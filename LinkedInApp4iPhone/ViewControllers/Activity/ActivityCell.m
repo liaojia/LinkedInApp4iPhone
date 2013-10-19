@@ -33,6 +33,23 @@
 }
 
 /**
+ *	@brief	设置属性值
+ *
+ *	@param 	model 	
+ */
+- (void)setDataWithModel:(ProfileModel*)model
+{
+    self.desLabel.text =model.mDesc ;
+    self.titleDetailLabel.text = model.mName;
+    self.timeDetailLabel.text = model.mStime;
+    self.placeDetailLabel.text = model.mPlace;
+    self.typeDetailLabel.text = [NSString stringWithFormat:@"%d",[model.mType intValue]];
+    self.moneyDetailLabel.text = [NSString stringWithFormat:@"%d",[model.mMoney intValue]];
+    self.hostDetailLabel.text = model.mSponsor;
+    [self.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl]];
+
+}
+/**
  *	@brief	根据赋值文字 调整子视图frame  需在设置了所有属性的值后调用
  */
 - (void)adjuctSubFrame
