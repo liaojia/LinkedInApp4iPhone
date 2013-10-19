@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ActivityDetailViewController.h"
 #import "WebViewController.h"
+#import "ActivityListViewController.h"
 
 #define Tag_Back_Action 200
 
@@ -40,9 +41,8 @@
 
         self.schollInfoModel  = [[ProfileModel alloc]init];
         self.boadCastModel = [[ProfileModel alloc]init];
+        self.actMtbArray = [[NSMutableArray alloc]init];
         
-       
-
     }
     return self;
 }
@@ -57,6 +57,7 @@
     
     [self getSchoolInfo];
     [self getBroadcastList];
+    [self getActivityList];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -69,8 +70,6 @@
     [self initNavLeftButton];
     [self initNavTitleView];
 
-    [self getSchoolInfo];
-    [self getBroadcastList];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -228,6 +227,57 @@
                                           prompt:@"加载中..."
                                    completeBlock:nil];
 }
+
+/**
+ *	@brief	获取活动列表 首页只取前两条显示
+ */
+- (void)getActivityList
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":@"1",@"num":@"2",@"previewLen":@"0",@"typeID":@"0"} requesId:@"COLLEGE_EVENT_LIST" messId:nil success:^(id obj)
+         {
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 NSArray *listArray = obj[@"list"];
+                 activityTotalCount = [obj[@"total"] intValue];
+                 
+                for (int i=0; i< listArray.count; i++)
+                 {
+                     NSDictionary *temDict = listArray[i];
+                     ProfileModel *model = [[ProfileModel alloc]init];
+                     model.mDesc = temDict[@"preview"];
+                     model.mName = temDict[@"title"];
+                     model.mStime = temDict[@"stime"];
+                     model.mPlace = temDict[@"address"];
+                     model.mType = temDict[@"typeID"];
+                     model.mMoney = temDict[@"charge"];
+                     model.mSponsor = temDict[@"sponsor"];
+                     model.mImgUrl = temDict[@"pic"];
+                     
+                     [self.actMtbArray addObject:model];
+                     
+                 }
+                 
+                 [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                 
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [SVProgressHUD showErrorWithStatus:@"未找到公告信息"];
+             }
+             else
+             {
+                 [SVProgressHUD showErrorWithStatus:@"公告信息加载失败"];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"加载中..."
+                                   completeBlock:nil];
+
+}
+
 /**
  *	@brief	获取字符串的size 换行模式为UILineBreakModeWordWrap
  *
@@ -262,6 +312,13 @@
             [self.navigationController pushViewController:noticeController animated:YES];
         }
             break;
+        case 102: //官方活动列表
+        {
+            ActivityListViewController *activityListController = [[ActivityListViewController alloc]initWithNibName:@"ActivityListViewController" bundle:[NSBundle mainBundle]];
+            [self.navigationController pushViewController:activityListController animated:YES];
+        
+        }
+            break;
             
         default:
             break;
@@ -283,7 +340,7 @@
     }
     else if(section == 2)
     {
-        return 3;
+        return self.actMtbArray.count +1;
     }
     return 2;
 }
@@ -299,16 +356,19 @@
     if(indexPath.section == 2&&indexPath.row!=0) //官方活动
     {
 
+        ProfileModel *model = [self.actMtbArray objectAtIndex:indexPath.row-1];
         float height = 0;
         int desAndTitleHeight; //描述和题目的高度总和 若小于图片的高度 测返回图片的高度
-        desAndTitleHeight = [self getStringHeight:testArray[0+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(135, 1000)]+[self getStringHeight:testArray[1+3] withFont:[UIFont systemFontOfSize:17]consSize:CGSizeMake(135, 1000)];
+        
+        desAndTitleHeight  = [StaticTools getLabelHeight:model.mDesc defautWidth:135 defautHeight:1000 fontSize:17]+[StaticTools getLabelHeight:model.mName defautWidth:134 defautHeight:1000 fontSize:17];
         desAndTitleHeight = desAndTitleHeight<185?185:desAndTitleHeight;
         height+=desAndTitleHeight;
-        for (int i=2; i<7; i++)
-        {
-            height+=[self getStringHeight:testArray[i+3] withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(220, 1000)];
-        }
-        
+        height += [StaticTools getLabelHeight:model.mStime defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mPlace defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mType defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mMoney defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mSponsor defautWidth:220 defautHeight:1000 fontSize:17];
+
         return height;
     }
     else if(indexPath.section ==0) //学校简介
@@ -397,6 +457,8 @@
             else if(indexPath.section == 2)
             {
                 titleStr = @"官方活动";
+                detailImg = @"img_school_notice_normal";
+                detailPressImg = @"img_school_notice_pressed";
             }
             else if(indexPath.section == 3)
             {
@@ -416,7 +478,7 @@
             [cell.contentView addSubview:titleLabel];
             
             //右侧操作按钮
-            if(indexPath.section != 2)
+            if(indexPath.section != 2||(indexPath.section==2&&activityTotalCount>2))
             {
                 UIButton *detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
                 detailBtn.frame = CGRectMake(tableView.frame.size.width-130, 5, 100, 35);
@@ -467,14 +529,10 @@
              cell = [[[NSBundle mainBundle] loadNibNamed:@"ActivityCell" owner:nil options:nil] objectAtIndex:0];
               cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
               cell.selectionStyle = UITableViewCellSelectionStyleNone;
+              
+              ProfileModel *model = self.actMtbArray[indexPath.row-1];
               ActivityCell *activityCell = (ActivityCell*)cell;
-              activityCell.desLabel.text = testArray[3];
-              activityCell.titleDetailLabel.text = testArray[4];
-              activityCell.timeDetailLabel.text = testArray[5];
-              activityCell.placeDetailLabel.text = testArray[6];
-              activityCell.typeDetailLabel.text = testArray[7];
-              activityCell.moneyDetailLabel.text = testArray[8];
-              activityCell.hostDetailLabel.text = testArray[9];
+              [activityCell setDataWithModel:model];
               [activityCell adjuctSubFrame];
           }
           else if(indexPath.section == 3) //校园卡

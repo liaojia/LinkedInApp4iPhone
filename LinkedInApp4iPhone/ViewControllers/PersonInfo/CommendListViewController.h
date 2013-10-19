@@ -26,5 +26,5 @@
     int personCount; //测试数据 表示有多少个推荐的人
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTable;
-@property (strong, nonatomic) NSMutableArray *array;
+@property (strong, nonatomic) NSMutableArray *mArray;
 @end

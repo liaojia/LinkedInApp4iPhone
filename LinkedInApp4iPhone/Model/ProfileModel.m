@@ -126,13 +126,32 @@
 {
     _mOrg = [self checkNullWithString:mOrg];
 }
-
+- (void)setMPlace:(NSString *)mPlace
+{
+    _mPlace = [self checkNullWithString:mPlace];
+}
+- (void)setMSponsor:(NSString *)mSponsor
+{
+    _mSponsor = [self checkNullWithString:mSponsor];
+}
+- (void)setMType:(NSString *)mType
+{
+    _mType = [self checkNullWithString:mType];
+}
+- (void)setMMoney:(NSString *)mMoney{
+    _mMoney = [self checkNullWithString:mMoney];
+}
+- (void)setMId:(NSString *)mId
+{
+    _mId = [self checkNullWithString:mId];
+}
 - (NSString *)checkNullWithString:(NSString *)str
 {
-    if ([str isKindOfClass:[NSNumber class]]) {
-        return str;
+    if ([str isKindOfClass:[NSNumber class]])
+    {
+        return [NSString stringWithFormat:@"%d",[str intValue]];
     }
-    if (!str || [str isEqual:[NSNull null]] ) {
+    if (!str || [str isEqual:[NSNull null]]||str.length == 0 ) {
         return NODATA;
     }
     return str;

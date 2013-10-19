@@ -35,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *hostTxtLabel;     //主办方
 @property (weak, nonatomic) IBOutlet UILabel *hostDetailLabel;  //主办方详细
 
+//设置属性值
+- (void)setDataWithModel:(ProfileModel*)model;
 //根据赋值文字 调整子视图frame
 - (void)adjuctSubFrame;
 

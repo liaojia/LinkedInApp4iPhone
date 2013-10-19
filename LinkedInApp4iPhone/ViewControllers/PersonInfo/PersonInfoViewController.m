@@ -401,12 +401,26 @@
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"SUGGESTPEOPLE_LIST" messId:nodeId success:^(id obj)
          {
+             NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
-                 
-                 CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
-                 AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-                 [appdelegate.rootNavigationController pushViewController:commendListController animated:YES];
+                 NSArray *list = [obj objectForKey:@"list"];
+                 for (id obj2 in list) {
+                     ProfileModel *model = [[ProfileModel alloc] init];
+                     [model setMCity:[obj2 objectForKey:@"city"]];
+                     [model setMDesc:[obj2 objectForKey:@"desc"]];
+                     [model setMEtime:[obj2 objectForKey:@"etime"]];
+                     [model setMStime:[obj2 objectForKey:@"stime"]];
+                     [model setMProvince:[obj2 objectForKey:@"province"]];
+                     [model setMOrg:[obj2 objectForKey:@"org"]];
+                     [model setMName:[obj2 objectForKey:@"name"]];
+                     [model setMGender:[obj2 objectForKey:@"gender"]];
+                     [model setMId:[obj2 objectForKey:@"id"]];
+                     [tmpArray addObject:model];
+                 }
+                 CommendListViewController *vc = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
+                 vc.mArray = tmpArray;
+                 [self.navigationController pushViewController:vc animated:YES];
              }
              else if([[obj objectForKey:@"rc"]intValue] == -1)
              {
@@ -421,7 +435,55 @@
          } failure:nil];
     
     [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
-                                          prompt:@"加载中..."
+                                          prompt:@"数据加载中..."
                                    completeBlock:nil];
 }
+
+/**
+ *	@brief 关注我的人列表
+ */
+-(void)getMyNoticeList
+
+{
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"MYATTENTIONS_LIST" messId:nil success:^(id obj)
+         {
+             NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
+             if ([[obj objectForKey:@"rc"]intValue] == 1)
+             {
+                 NSArray *list = [obj objectForKey:@"list"];
+                 for (id obj2 in list) {
+                     ProfileModel *model = [[ProfileModel alloc] init];
+                     [model setMCity:[obj2 objectForKey:@"city"]];
+                     [model setMDesc:[obj2 objectForKey:@"desc"]];
+                     [model setMEtime:[obj2 objectForKey:@"etime"]];
+                     [model setMStime:[obj2 objectForKey:@"stime"]];
+                     [model setMProvince:[obj2 objectForKey:@"province"]];
+                     [model setMOrg:[obj2 objectForKey:@"org"]];
+                     [model setMName:[obj2 objectForKey:@"name"]];
+                     [model setMGender:[obj2 objectForKey:@"gender"]];
+                     [model setMId:[obj2 objectForKey:@"id"]];
+                     [tmpArray addObject:model];
+                 }
+                 CommendListViewController *vc = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
+                 vc.mArray = tmpArray;
+                 [self.navigationController pushViewController:vc animated:YES];
+             }
+             else if([[obj objectForKey:@"rc"]intValue] == -1)
+             {
+                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+             }
+             else
+             {
+                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+             }
+             
+             
+         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
+
 @end
