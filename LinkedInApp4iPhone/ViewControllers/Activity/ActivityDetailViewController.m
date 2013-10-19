@@ -23,7 +23,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.actDetailModel = [[ProfileModel alloc]init];
         self.pepleListMtbArray = [NSMutableArray arrayWithCapacity:0];
     }
     return self;
@@ -73,6 +72,7 @@
     [moreBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:moreBtn];
     self.listTableView.tableFooterView = footView;
+    self.listTableView.tableFooterView.hidden  = YES;
     
     
 }
@@ -89,6 +89,7 @@
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
+                 self.actDetailModel = [[ProfileModel alloc]init];
                  self.actDetailModel.mDesc = obj[@"preview"];
                  self.actDetailModel.mName = obj[@"title"];
                  self.actDetailModel.mStime = obj[@"stime"];
@@ -136,13 +137,18 @@
                  NSArray *list = obj[@"list"];
                  for (int i=0; i<list.count; i++)
                  {
+                     NSDictionary *temDict = list[i];
                      ProfileModel *model = [[ProfileModel alloc]init];
-                     model.mName = obj[@"name"];
+                     model.mName = temDict[@"name"];
                      [self.pepleListMtbArray addObject:model];
                  }
                  if (self.pepleListMtbArray.count>=pepleCount)
                  {
                      self.listTableView.tableFooterView.hidden = YES;
+                 }
+                 else
+                 {
+                     self.listTableView.tableFooterView.hidden  = NO;
                  }
                  
                  [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
@@ -194,7 +200,8 @@
 {
     if (section ==0)
     {
-        return 1;
+        
+        return self.actDetailModel==nil?0:1;
     }
     else if(section == 1)
     {
@@ -265,6 +272,7 @@
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ActivityCell" owner:nil options:nil] objectAtIndex:0];
         ActivityCell *activityCell = (ActivityCell*)cell;
+        activityCell.desLabel.hidden = YES;
         [activityCell setDataWithModel:self.actDetailModel];
         [activityCell adjuctSubFrame];
 

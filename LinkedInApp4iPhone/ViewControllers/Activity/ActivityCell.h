@@ -22,7 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImgView;   //活动图片
 @property (weak, nonatomic) IBOutlet UILabel *desLabel;          //活动描述
-@property (weak, nonatomic) IBOutlet UILabel *titleTxtLabel;    //题目
+//@property (weak, nonatomic) IBOutlet UILabel *titleTxtLabel;    //题目
 @property (weak, nonatomic) IBOutlet UILabel *titleDetailLabel; //题目详细
 @property (weak, nonatomic) IBOutlet UILabel *timeTxtLabel;     //时间
 @property (weak, nonatomic) IBOutlet UILabel *timeDetailLabel;  //时间详细

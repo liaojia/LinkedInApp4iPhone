@@ -54,13 +54,15 @@
  */
 - (void)adjuctSubFrame
 {
-    self.desLabel.frame = CGRectMake(self.desLabel.frame.origin.x, self.desLabel.frame.origin.y, self.desLabel.frame.size.width, [self getStringHeight:self.desLabel.text withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(self.desLabel.frame.size.width, 1000)]);
-    self.titleTxtLabel.frame  = CGRectMake(self.titleTxtLabel.frame.origin.x, self.desLabel.frame.size.height+self.desLabel.frame.origin.y, self.titleTxtLabel.frame.size.width, self.titleTxtLabel.frame.size.height);
-    self.titleDetailLabel.frame = CGRectMake(self.titleDetailLabel.frame.origin.x, self.titleTxtLabel.frame.origin.y, self.titleDetailLabel.frame.size.width, [self getStringHeight:self.titleDetailLabel.text withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(self.titleDetailLabel.frame.size.width, 1000)]);
+
+    //self.titleTxtLabel.frame  = CGRectMake(self.titleTxtLabel.frame.origin.x, self.desLabel.frame.size.height+self.desLabel.frame.origin.y, self.titleTxtLabel.frame.size.width, self.titleTxtLabel.frame.size.height);
     
-    if (self.titleDetailLabel.frame.size.height+self.titleDetailLabel.frame.origin.y>self.timeTxtLabel.frame.origin.y)
+    self.titleDetailLabel.frame = CGRectMake(self.titleDetailLabel.frame.origin.x, self.titleDetailLabel.frame.origin.y, self.titleDetailLabel.frame.size.width, [self getStringHeight:self.titleDetailLabel.text withFont:[UIFont systemFontOfSize:18] consSize:CGSizeMake(self.titleDetailLabel.frame.size.width, 1000)]);
+    self.desLabel.frame = CGRectMake(self.desLabel.frame.origin.x, self.titleDetailLabel.frame.origin.y+self.titleDetailLabel.frame.size.height, self.desLabel.frame.size.width, [self getStringHeight:self.desLabel.text withFont:[UIFont systemFontOfSize:15] consSize:CGSizeMake(self.desLabel.frame.size.width, 1000)]);
+    
+    if (self.desLabel.frame.size.height+self.desLabel.frame.origin.y>self.timeTxtLabel.frame.origin.y)
     {
-        self.timeTxtLabel.frame  = CGRectMake(self.timeTxtLabel.frame.origin.x, self.titleDetailLabel.frame.size.height+self.titleDetailLabel.frame.origin.y, self.timeTxtLabel.frame.size.width, self.timeTxtLabel.frame.size.height);
+        self.timeTxtLabel.frame  = CGRectMake(self.timeTxtLabel.frame.origin.x, self.desLabel.frame.size.height+self.desLabel.frame.origin.y, self.timeTxtLabel.frame.size.width, self.timeTxtLabel.frame.size.height);
     }
     else
     {

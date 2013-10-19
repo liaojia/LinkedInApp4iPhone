@@ -75,7 +75,7 @@
  */
 - (void)getActivityListWithPage:(int)page
 {
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":[NSString stringWithFormat:@"%d",page],@"num":@"5",@"previewLen":@"0",@"typeID":@"0"} requesId:@"COLLEGE_EVENT_LIST" messId:nil success:^(id obj)
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":[NSString stringWithFormat:@"%d",page],@"num":@"5",@"previewLen":@"50",@"typeID":@"0"} requesId:@"COLLEGE_EVENT_LIST" messId:nil success:^(id obj)
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
@@ -166,8 +166,8 @@
     float height = 0;
     int desAndTitleHeight; //描述和题目的高度总和 若小于图片的高度 测返回图片的高度
     
-    desAndTitleHeight  = [StaticTools getLabelHeight:model.mDesc defautWidth:135 defautHeight:1000 fontSize:17]+[StaticTools getLabelHeight:model.mName defautWidth:134 defautHeight:1000 fontSize:17];
-    desAndTitleHeight = desAndTitleHeight<185?185:desAndTitleHeight;
+    desAndTitleHeight  = [StaticTools getLabelHeight:model.mDesc defautWidth:170 defautHeight:1000 fontSize:15]+[StaticTools getLabelHeight:model.mName defautWidth:195 defautHeight:1000 fontSize:18];
+    desAndTitleHeight = desAndTitleHeight<185?185:desAndTitleHeight+15;
     height+=desAndTitleHeight;
     height += [StaticTools getLabelHeight:model.mStime defautWidth:220 defautHeight:1000 fontSize:17];
     height += [StaticTools getLabelHeight:model.mPlace defautWidth:220 defautHeight:1000 fontSize:17];
