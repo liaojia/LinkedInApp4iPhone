@@ -284,7 +284,8 @@ static NSString *totalSize = nil;
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
        {
-            NSLog(@"请求成功--respose: %@", JSON);
+        
+           NSLog(@"请求成功--respose: %s", [[JSON description] cStringUsingEncoding:NSISOLatin2StringEncoding ]);
             success(JSON);
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,

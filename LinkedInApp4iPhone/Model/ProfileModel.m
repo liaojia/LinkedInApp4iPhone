@@ -149,6 +149,10 @@
 {
     _mContent = [self checkNullWithString:mContent];
 }
+- (void)setMTitle:(NSString *)mTitle
+{
+    _mTitle = [self checkNullWithString:mTitle];
+}
 - (NSString *)checkNullWithString:(NSString *)str
 {
     if ([str isKindOfClass:[NSNumber class]])

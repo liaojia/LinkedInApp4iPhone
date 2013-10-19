@@ -13,6 +13,7 @@
 #import "PersonCell.h"
 #import "PersonHeadView.h"
 #import "ProfileModel.h"
+#import "PersonInfoEditViewController.h"
 
 @interface PersonInfoViewController ()
 
@@ -315,6 +316,12 @@
 {
     if (indexPath.section == 1&&self.pageType == 0) //进入相关推荐页面
     {
+        PersonInfoEditViewController *personInfoEditController = [[PersonInfoEditViewController alloc]   initWithNibName:@"PersonInfoEditViewController" bundle:[NSBundle mainBundle]];
+        personInfoEditController.infoModel = self.timeLimeArray[indexPath.row-1];
+        personInfoEditController.pageType = 1;
+        [self.navigationController pushViewController:personInfoEditController animated:YES];
+        return;
+        
         CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
         AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         [appdelegate.rootNavigationController pushViewController:commendListController animated:YES];
@@ -361,6 +368,8 @@
 //                  [self.timeLimeArray removeAllObjects];
                   for (id obj2 in list) {
                       ProfileModel *model = [[ProfileModel alloc] init];
+                      [model setMId:[obj2 objectForKey:@"id"]];
+                      [model setMTitle:[obj2 objectForKey:@"mTitle"]];
                       [model setMCity:[obj2 objectForKey:@"city"]];
                       [model setMDesc:[obj2 objectForKey:@"desc"]];
                       [model setMEtime:[obj2 objectForKey:@"etime"]];

@@ -25,6 +25,7 @@
 @property(nonatomic, strong)    NSString *mPosition;
 @property(nonatomic, strong)    NSString *mStime;
 @property(nonatomic, strong)    NSString *mEtime;
+@property(nonatomic, strong)    NSString *mTitle; //身份
 @property(nonatomic, strong)    NSString *mOrg;
 @property(nonatomic, strong)    NSString *mId;
 @property(nonatomic, strong)    NSString *mType;  //活动类型
