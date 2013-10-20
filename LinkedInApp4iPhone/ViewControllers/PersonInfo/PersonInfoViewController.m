@@ -140,6 +140,20 @@
             [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
         }
             break;
+        case 104: //个人关注 更多
+        {
+            CommendListViewController *vc = [[CommendListViewController alloc] initWithNibName:@"CommendListViewController" bundle:nil];
+            vc.fromFlag = 1;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 105: //关注我的人 更多
+        {
+            CommendListViewController *vc = [[CommendListViewController alloc] initWithNibName:@"CommendListViewController" bundle:nil];
+            vc.fromFlag = 2;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
             
         default:
             break;
@@ -278,6 +292,7 @@
         else if(indexPath.section == 2)
         {
             titleStr = @"个人关注";
+            
         }
         else if(indexPath.section == 3)
         {
@@ -294,7 +309,28 @@
             [typeBtn setImage:[UIImage imageNamed:@"img_card_list_two"] forState:UIControlStateNormal];
             [typeBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:typeBtn];
-          
+            
+            //查看更多
+            UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            moreBtn.frame = CGRectMake(180, 5, 80, 35);
+            moreBtn.tag = 103+indexPath.section;
+            [moreBtn setImage:[UIImage imageNamed:@"img_school_notice_normal"] forState:UIControlStateNormal];
+            [moreBtn setImage:[UIImage imageNamed:@"img_school_notice_pressed"] forState:UIControlStateHighlighted];
+            [moreBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.contentView addSubview:moreBtn];
+            NSArray *tmpArray = nil;
+            if (indexPath.section == 2) {
+                tmpArray = self.myNoticeArray;
+            }else{
+                tmpArray = self.noticeMeArray;
+            }
+            if ([tmpArray count] > kPAGESIZE) {
+                [moreBtn setHidden:NO];
+            }else{
+                [moreBtn setHidden:YES];
+            }
+                      
+            
 
         }
     }
@@ -337,7 +373,6 @@
 
         PersonInfoCell *personInfoCell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
         [personInfoCell initWithMode:[self.timeLimeArray objectAtIndex:indexPath.row-1]];
-//        personInfoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [personInfoCell.recommendButton addTarget:self action:@selector(recommendAction:) forControlEvents:UIControlEventTouchUpInside];
         [personInfoCell.recommendButton setTag:(999+indexPath.row)];
         if (![self.personId isEqualToString:@"me"]) {
@@ -456,37 +491,6 @@
         
     }
     
-
-    // 查看个人履历
-    AFHTTPRequestOperation *operation2 = [[Transfer sharedTransfer] TransferWithRequestDic:nil
-         requesId:@"TIMELINE_LIST"
-           prompt:@"prompt"
-        replaceId:@"me"
-          success:^(id obj) {
-              
-              if ([[obj objectForKey:@"rc"]intValue] == 1) {
-                  NSArray *list = [obj objectForKey:@"list"];
-//                  [self.timeLimeArray removeAllObjects];
-                  for (id obj2 in list) {
-                      ProfileModel *model = [[ProfileModel alloc] init];
-                      [model setMId:[obj2 objectForKey:@"id"]];
-                      [model setMTitle:[obj2 objectForKey:@"mTitle"]];
-                      [model setMCity:[obj2 objectForKey:@"city"]];
-                      [model setMDesc:[obj2 objectForKey:@"desc"]];
-                      [model setMEtime:[obj2 objectForKey:@"etime"]];
-                      [model setMStime:[obj2 objectForKey:@"stime"]];
-                      [model setMProvince:[obj2 objectForKey:@"province"]];
-                      [model setMOrg:[obj2 objectForKey:@"org"]];
-                      [self.timeLimeArray addObject:model];
-                  }
-                  [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
-              }
-             
-          }
-          failure:^(NSString *errMsg) {
-              
-          }];
-    
 }
 
 
@@ -534,7 +538,7 @@
  */
 -(void)getSuggestPepoleListWithId:(NSString *)nodeId
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", [NSString stringWithFormat:@"%@", kPAGESIZE], @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"SUGGESTPEOPLE_LIST" messId:nodeId success:^(id obj)
          {
              NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
@@ -613,7 +617,7 @@
 -(void)getMyNoticeList
 
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", [NSString stringWithFormat:@"%@", kPAGESIZE], @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"MYATTENTIONS_LIST" messId:nil success:^(id obj)
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
@@ -658,7 +662,7 @@
 -(void)getNoticeMeList
 
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", [NSString stringWithFormat:@"%@", kPAGESIZE], @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"FANS_LIST" messId:nil success:^(id obj)
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)

@@ -34,6 +34,7 @@
     self.navigationItem.title = @"相关推荐";
     
     personCount = [self.mArray count];
+    currentPate = 1;
     [self initTableview];
 }
 - (void)viewDidUnload
@@ -89,7 +90,7 @@
     [footView addSubview:moreBtn];
     self.listTable.tableFooterView = footView;
     
-
+    [self refreshData];
 }
 
 #pragma mark-
@@ -217,5 +218,184 @@
   return nil;
 }
 
+-(void)refreshData
+{
+    switch (self.fromFlag) {
+        case 0:
+            
+            break;
+        case 1://个人关注
+            [self getMyNoticeList];
+            break;
+        case 2://关注我的人
+            [self getNoticeMeList];
+            break;
+        default:
+            break;
+    }
+}
 
+/**
+ *	@brief 我关注的人列表
+ */
+-(void)getMyNoticeList
+
+{
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", [NSString stringWithFormat:@"%@", kPAGESIZE*4], @"num", nil];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"MYATTENTIONS_LIST" messId:nil success:^(id obj)
+                                         {
+                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
+                                             {
+                                                 [self.mArray removeAllObjects];
+                                                 NSArray *list = [obj objectForKey:@"list"];
+                                                 for (id obj2 in list) {
+                                                     ProfileModel *model = [[ProfileModel alloc] init];
+                                                     [model setMCity:[obj2 objectForKey:@"city"]];
+                                                     [model setMDesc:[obj2 objectForKey:@"desc"]];
+                                                     [model setMEtime:[obj2 objectForKey:@"etime"]];
+                                                     [model setMStime:[obj2 objectForKey:@"stime"]];
+                                                     [model setMProvince:[obj2 objectForKey:@"province"]];
+                                                     [model setMOrg:[obj2 objectForKey:@"org"]];
+                                                     [model setMName:[obj2 objectForKey:@"name"]];
+                                                     [model setMGender:[obj2 objectForKey:@"gender"]];
+                                                     [model setMId:[obj2 objectForKey:@"id"]];
+                                                     [self.mArray addObject:model];
+                                                 }
+                                                 [self.listTable reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                                             }
+                                             else
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                                             }
+                                             
+                                             
+                                         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
+
+/**
+ *	@brief 关注我的人列表
+ */
+-(void)getNoticeMeList
+
+{
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", [NSString stringWithFormat:@"%@", kPAGESIZE], @"num", nil];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"FANS_LIST" messId:nil success:^(id obj)
+                                         {
+                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
+                                             {
+                                                 NSArray *list = [obj objectForKey:@"list"];
+                                                 for (id obj2 in list) {
+                                                     ProfileModel *model = [[ProfileModel alloc] init];
+                                                     [model setMCity:[obj2 objectForKey:@"city"]];
+                                                     [model setMDesc:[obj2 objectForKey:@"desc"]];
+                                                     [model setMEtime:[obj2 objectForKey:@"etime"]];
+                                                     [model setMStime:[obj2 objectForKey:@"stime"]];
+                                                     [model setMProvince:[obj2 objectForKey:@"province"]];
+                                                     [model setMOrg:[obj2 objectForKey:@"org"]];
+                                                     [model setMName:[obj2 objectForKey:@"name"]];
+                                                     [model setMGender:[obj2 objectForKey:@"gender"]];
+                                                     [model setMId:[obj2 objectForKey:@"id"]];
+                                                     [self.mArray addObject:model];
+                                                 }
+                                                 [self.listTable reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                                             }
+                                             else
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                                             }
+                                             
+                                             
+                                         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
+
+/**
+ *	@brief	加关注
+ *
+ *	@param 	personId 	人员ID（必填项）
+ */
+-(void)addNoticeWithId:(NSString *)personId
+
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"ADD_ATTENTION" messId:personId success:^(id obj)
+                                         {
+                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
+                                             {
+                                                 [self getMyNoticeList];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -2){
+                                                 [SVProgressHUD showErrorWithStatus:@"已经关注过此人！"];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -3){
+                                                 [SVProgressHUD showErrorWithStatus:@"关注对象非法！"];
+                                             }
+                                             else
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                                             }
+                                             
+                                             
+                                         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
+
+/**
+ *	@brief	取消关注
+ *
+ *	@param 	personId 	人员ID（必填项）
+ */
+-(void)cancelNoticeWithId:(NSString *)personId
+
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"CANCELATTENTION" messId:personId success:^(id obj)
+                                         {
+                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
+                                             {
+                                                 [self getMyNoticeList];
+                                                 
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -2){
+                                                 [SVProgressHUD showErrorWithStatus:@"没有关注过此人！"];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -3){
+                                                 [SVProgressHUD showErrorWithStatus:@"关注对象非法！"];
+                                             }
+                                             else
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                                             }
+                                             
+                                             
+                                         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
 @end
