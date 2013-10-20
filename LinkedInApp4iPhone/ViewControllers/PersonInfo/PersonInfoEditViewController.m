@@ -34,7 +34,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"个人履历修改";
+    if (self.pageType == 0)
+    {
+        self.navigationItem.title = @"个人履历修改";
+    }
+    else if(self.pageType == 1)
+    {
+        self.navigationItem.title = @"个人履历增加";
+    }
+    
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
     

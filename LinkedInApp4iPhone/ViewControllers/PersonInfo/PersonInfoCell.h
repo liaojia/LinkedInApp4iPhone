@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *orgLabel;        //组织名称
 @property (weak, nonatomic) IBOutlet UILabel *placeLabel;      //所在地
 @property (nonatomic, strong) IBOutlet UIButton *recommendButton;
+@property (weak, nonatomic) IBOutlet UIButton *addBtn;         //增加
+@property (weak, nonatomic) IBOutlet UIButton *changeBtn;       //修改
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;       //删除
 
 @property (nonatomic, strong) ProfileModel *model;
 

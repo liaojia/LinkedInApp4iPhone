@@ -19,10 +19,12 @@
 #import <UIKit/UIKit.h>
 @class ProfileModel;
 @interface PersonInfoViewController : UIViewController<UITableViewDataSource,
-    UITableViewDelegate>
+    UITableViewDelegate,
+    UIAlertViewDelegate>
 {
     int myNoticeListType; //个人关注列表展示类型 0：列表 1：网格
     int NoticeMeListType; //关注我的列表展示类型 0：列表 1：网格
+    int selectDeleteIndex; //点击了删除的个人履历项
     
 }
 

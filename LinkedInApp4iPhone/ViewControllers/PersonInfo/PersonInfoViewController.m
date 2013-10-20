@@ -15,6 +15,8 @@
 #import "ProfileModel.h"
 #import "PersonInfoEditViewController.h"
 
+#define Tag_DeletePersonInfo_Alert 500
+
 @interface PersonInfoViewController ()
 
 @end
@@ -69,6 +71,37 @@
 {
     
     UIButton *button  = (UIButton*)sender;
+    
+    if (button.tag>=200&&button.tag<300) //增加履历节点
+    {
+        PersonInfoEditViewController *personInfoEditController = [[PersonInfoEditViewController alloc]   initWithNibName:@"PersonInfoEditViewController" bundle:[NSBundle mainBundle]];
+        personInfoEditController.infoModel = self.timeLimeArray[button.tag-200-1];
+        personInfoEditController.pageType = 1;
+        [self.navigationController pushViewController:personInfoEditController animated:YES];
+        return;
+        
+    }
+    else if(button.tag>=300&&button.tag<400) //修改履历节点
+    {
+        
+        PersonInfoEditViewController *personInfoEditController = [[PersonInfoEditViewController alloc]   initWithNibName:@"PersonInfoEditViewController" bundle:[NSBundle mainBundle]];
+        personInfoEditController.infoModel = self.timeLimeArray[button.tag-300-1];
+        personInfoEditController.pageType = 0;
+        [self.navigationController pushViewController:personInfoEditController animated:YES];
+        return;
+    }
+    else if(button.tag>=400&&button.tag<500) //删除履历节点
+    {
+        [StaticTools showAlertWithTag:Tag_DeletePersonInfo_Alert
+                                title:nil
+                              message:@"您确定要删除该条记录吗？"
+                            AlertType:CAlertTypeCacel SuperView:self];
+        
+        selectDeleteIndex = button.tag-400-1;
+        return;
+        
+    }
+    
     if (button.tag>=20000)
     {
         PersonInfoViewController *perosnInforController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
@@ -87,6 +120,7 @@
         
         AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         [appdelegate.rootNavigationController pushViewController:perosnInforController animated:YES];
+        return;
         
     }
     switch (button.tag)
@@ -111,6 +145,41 @@
             break;
     }
 }
+
+-(IBAction)cancelAction:(id)sender
+{
+    int tag = ((UIButton*)sender).tag - 40000;
+    if (tag > 19999) {
+        // 和 section = 3 等价，即关注我的人, 加关注
+        [self addNoticeWithId:((ProfileModel*)[self.noticeMeArray objectAtIndex:tag-20000]).mId];
+        
+    }else{
+        // 和 section = 2 等价，即我关注的人，取消关注
+        [self cancelNoticeWithId:((ProfileModel*)[self.myNoticeArray objectAtIndex:tag]).mId];
+    }
+}
+
+-(IBAction)recommendAction:(id)sender
+{
+    int index = ((UIButton*)sender).tag - 1000;
+    ProfileModel *model = [self.timeLimeArray objectAtIndex:index];
+    [self getSuggestPepoleListWithId:model.mId];
+    
+}
+
+#pragma mark-
+#pragma mark--UIAlertVewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == Tag_DeletePersonInfo_Alert)
+    {
+        if (buttonIndex !=alertView.cancelButtonIndex)
+        {
+            [self deletePersonInFoWithIndex:selectDeleteIndex];
+        }
+    }
+}
+
 #pragma mark-
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -161,7 +230,7 @@
     else if(indexPath.section == 1)
     {
         
-        return indexPath.row == 0?44:110;
+        return indexPath.row == 0?44:140;
     }
     if (indexPath.section == 2||indexPath.section==3)
     {
@@ -276,6 +345,14 @@
         }else{
             [personInfoCell.recommendButton setHidden:NO];
         }
+        
+        personInfoCell.addBtn.tag = 200+indexPath.row;
+        [personInfoCell.addBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+        personInfoCell.changeBtn.tag = 300+indexPath.row;
+        [personInfoCell.changeBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+        personInfoCell.deleteBtn.tag = 400+indexPath.row;
+        [personInfoCell.deleteBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+
         personInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return personInfoCell;
     }
@@ -348,29 +425,11 @@
     return cell;
 }
 
--(IBAction)cancelAction:(id)sender
-{
-    int tag = ((UIButton*)sender).tag - 40000;
-    if (tag > 19999) {
-        // 和 section = 3 等价，即关注我的人, 加关注
-        [self addNoticeWithId:((ProfileModel*)[self.noticeMeArray objectAtIndex:tag-20000]).mId];
-        
-    }else{
-        // 和 section = 2 等价，即我关注的人，取消关注
-        [self cancelNoticeWithId:((ProfileModel*)[self.myNoticeArray objectAtIndex:tag]).mId];
-    }
-}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1&&self.pageType == 0) //进入相关推荐页面
     {
-
-        PersonInfoEditViewController *personInfoEditController = [[PersonInfoEditViewController alloc]   initWithNibName:@"PersonInfoEditViewController" bundle:[NSBundle mainBundle]];
-        personInfoEditController.infoModel = self.timeLimeArray[indexPath.row-1];
-        personInfoEditController.pageType = 1;
-        [self.navigationController pushViewController:personInfoEditController animated:YES];
-        return;
-        
         CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
         AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         [appdelegate.rootNavigationController pushViewController:commendListController animated:YES];
@@ -379,6 +438,8 @@
     }
 }
 
+#pragma mark-
+#pragma mark--功能函数
 - (void)refreshData
 {
     if (self.pageType == 0) {
@@ -426,14 +487,6 @@
               
           }];
     
-}
-
--(IBAction)recommendAction:(id)sender
-{
-    int index = ((UIButton*)sender).tag - 1000;
-    ProfileModel *model = [self.timeLimeArray objectAtIndex:index];
-    [self getSuggestPepoleListWithId:model.mId];
-
 }
 
 
@@ -687,7 +740,6 @@
  */
 -(void)cancelNoticeWithId:(NSString *)personId
 
-
 {
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"CANCELATTENTION" messId:personId success:^(id obj)
          {
@@ -717,5 +769,40 @@
     [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
                                           prompt:@"数据加载中..."
                                    completeBlock:nil];
+}
+
+/**
+ *	@brief	删除个人履历节点信息
+ *
+ *	@param 	num 表示第几条数据
+ */
+- (void)deletePersonInFoWithIndex:(int)num
+{
+     ProfileModel *model = self.timeLimeArray[num];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"id":model.mId} requesId:@"TIMELINE_NODE_DELETE" messId:nil success:^(id obj)
+     {
+         if ([[obj objectForKey:@"rc"]intValue] == 1)
+         {
+             
+             [SVProgressHUD showErrorWithStatus:@"履历删除成功！"];
+             [self.timeLimeArray removeObjectAtIndex:num];
+             [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+         }
+         else if([[obj objectForKey:@"rc"]intValue] == -1)
+         {
+             [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+         }
+         else
+         {
+             [SVProgressHUD showErrorWithStatus:@"履历删除失败！"];
+         }
+         
+         
+     } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+
 }
 @end
