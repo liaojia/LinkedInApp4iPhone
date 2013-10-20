@@ -46,7 +46,7 @@
 #define kBGIMAGEID                      @"backgroundImageId"
 
 #define kBGIMAGECOUNT                   3
-#define kPAGESIZE                       5
+#define kPAGESIZE                       @"5"
 
 #define kCOUNT_DBGW                     @"count_DBGW"
 #define kCOUNT_QSBG                     @"count_QSBG"

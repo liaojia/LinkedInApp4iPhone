@@ -121,6 +121,7 @@
 		CE5AFB9318125590007AFC79 /* ActivityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5AFB9118125590007AFC79 /* ActivityListViewController.xib */; };
 		CE5AFB971812C26E007AFC79 /* PersonInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFB951812C26E007AFC79 /* PersonInfoEditViewController.m */; };
 		CE5AFB981812C26E007AFC79 /* PersonInfoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5AFB961812C26E007AFC79 /* PersonInfoEditViewController.xib */; };
+		CE9DE2ED18138477003D0EAD /* UIImage+Resizeable.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9DE2EC18138477003D0EAD /* UIImage+Resizeable.m */; };
 		CEAE7A7B180FDC1700ECBD5F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE7A79180FDC1700ECBD5F /* WebViewController.m */; };
 		CEAE7A7C180FDC1700ECBD5F /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */; };
 		CED1AA06180EC4D500A4A1A0 /* PersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1AA01180EC4D500A4A1A0 /* PersonInfoCell.m */; };
@@ -301,6 +302,8 @@
 		CE5AFB941812C26E007AFC79 /* PersonInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoEditViewController.h; sourceTree = "<group>"; };
 		CE5AFB951812C26E007AFC79 /* PersonInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoEditViewController.m; sourceTree = "<group>"; };
 		CE5AFB961812C26E007AFC79 /* PersonInfoEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoEditViewController.xib; sourceTree = "<group>"; };
+		CE9DE2EB18138477003D0EAD /* UIImage+Resizeable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resizeable.h"; sourceTree = "<group>"; };
+		CE9DE2EC18138477003D0EAD /* UIImage+Resizeable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resizeable.m"; sourceTree = "<group>"; };
 		CEAE7A78180FDC1700ECBD5F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		CEAE7A79180FDC1700ECBD5F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 		8DD5D3141806E7DC00EB446F /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				CE9DE2EB18138477003D0EAD /* UIImage+Resizeable.h */,
+				CE9DE2EC18138477003D0EAD /* UIImage+Resizeable.m */,
 				8DD5D3171806E7DC00EB446F /* FileManagerUtil.h */,
 				8DD5D3181806E7DC00EB446F /* FileManagerUtil.m */,
 			);
@@ -910,6 +915,7 @@
 				CE364D21181181170033EA6B /* NoticeDetailViewController.m in Sources */,
 				CE5AFB9218125590007AFC79 /* ActivityListViewController.m in Sources */,
 				CE5AFB971812C26E007AFC79 /* PersonInfoEditViewController.m in Sources */,
+				CE9DE2ED18138477003D0EAD /* UIImage+Resizeable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,10 +31,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"相关推荐";
+    self.navigationItem.title = self.titleStr ? self.titleStr:@"相关推荐";
     
-    personCount = [self.mArray count];
-    currentPate = 1;
+    personCount = 0;
+    currentPage = 1;
+    totalPage = 0;
+    self.mArray = [[NSMutableArray alloc] init];
     [self initTableview];
 }
 - (void)viewDidUnload
@@ -74,7 +76,7 @@
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 44, 320, 1)];
     lineView.backgroundColor = [UIColor lightGrayColor];
     [headView addSubview:lineView];
-    self.listTable.tableHeaderView = headView;
+//    self.listTable.tableHeaderView = headView;
     
     
     //初始化tablview 的footview
@@ -110,7 +112,7 @@
             break;
         case Tag_AddMore_Action: //点击加载更多
         {
-            personCount+=10;
+            [self refreshData];
             [self.listTable reloadData];
         }
             break;
@@ -160,14 +162,36 @@
         {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonCell" owner:nil options:nil]objectAtIndex:0];
         }
-        
-        ProfileModel *model = [self.mArray objectAtIndex:indexPath.row];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonCell" owner:nil options:nil] objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.actionBtn.hidden = YES;
-        cell.nameLabel.text = model.mName;
-        cell.sexLabel.text = model.mGender;
-        cell.placeLabel.text = [NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity];
+        PersonCell *pesonCell = (PersonCell*)cell;
         
+        if (self.mArray || [self.mArray count] !=0) {
+            ProfileModel *model = [self.mArray objectAtIndex:indexPath.row];
+            pesonCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            pesonCell.nameLabel.text = model.mName;
+            pesonCell.sexLabel.text = model.mGender;
+            pesonCell.placeLabel.text = [NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity];
+            pesonCell.headImg.tag =self.fromFlag*10000+indexPath.row;
+            [pesonCell.headImg addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+            NSString *tmpBtnStr = @"";
+            switch (self.fromFlag) {
+                case 0:
+                    [pesonCell.actionBtn setHidden:YES];
+                    break;
+                case 1:
+                    tmpBtnStr = @"取消关注";
+                    break;
+                case 2:
+                    tmpBtnStr = @"关注";
+                    break;
+                default:
+                    break;
+            }
+            [pesonCell.actionBtn setTitle:tmpBtnStr forState:UIControlStateNormal];
+            [pesonCell.actionBtn setTag:(self.fromFlag*20000+indexPath.row) ];
+            [pesonCell.actionBtn addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
         return cell;
     }
     else
@@ -218,11 +242,23 @@
   return nil;
 }
 
+-(IBAction)cancelAction:(id)sender
+{
+    int tag = ((UIButton*)sender).tag - 20000;
+    if (tag > 19999) {
+        //即关注我的人, 加关注
+        [self addNoticeWithId:((ProfileModel*)[self.mArray objectAtIndex:tag-20000]).mId];
+        
+    }else{
+        //即我关注的人，取消关注
+        [self cancelNoticeWithId:((ProfileModel*)[self.mArray objectAtIndex:tag]).mId];
+    }
+}
 -(void)refreshData
 {
     switch (self.fromFlag) {
         case 0:
-            
+            [self getSuggestPepoleListWithId:self.nodeId];
             break;
         case 1://个人关注
             [self getMyNoticeList];
@@ -236,17 +272,21 @@
 }
 
 /**
- *	@brief 我关注的人列表
+ *	@brief	根据选中履历推荐好友
+ *
+ *	@param 	nodeId 	结点Id
  */
--(void)getMyNoticeList
-
+-(void)getSuggestPepoleListWithId:(NSString *)nodeId
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", [NSString stringWithFormat:@"%@", kPAGESIZE*4], @"num", nil];
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"MYATTENTIONS_LIST" messId:nil success:^(id obj)
+    NSString *num = [NSString stringWithFormat:@"%d", [kPAGESIZE intValue]*4];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", currentPage++],@"page", num, @"num", nil];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"SUGGESTPEOPLE_LIST" messId:nodeId success:^(id obj)
                                          {
                                              if ([[obj objectForKey:@"rc"]intValue] == 1)
                                              {
-                                                 [self.mArray removeAllObjects];
+                                                 int total = [[obj objectForKey:@"total"]intValue];
+                                                 totalPage = (total + [num intValue] - 1) / [num intValue];
+                                                 [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
                                                  NSArray *list = [obj objectForKey:@"list"];
                                                  for (id obj2 in list) {
                                                      ProfileModel *model = [[ProfileModel alloc] init];
@@ -261,9 +301,59 @@
                                                      [model setMId:[obj2 objectForKey:@"id"]];
                                                      [self.mArray addObject:model];
                                                  }
-                                                 [self.listTable reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                                                 personCount = [self.mArray count];
+                                                 [self.listTable reloadData];
                                              }
                                              else if([[obj objectForKey:@"rc"]intValue] == -1)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                                             }
+                                             else
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                                             }
+                                             
+                                             
+                                         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
+
+/**
+ *	@brief 我关注的人列表
+ */
+-(void)getMyNoticeList
+
+{
+    NSString *num = [NSString stringWithFormat:@"%d", [kPAGESIZE intValue]*4];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", currentPage++],@"page",  num, @"num", nil];
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"MYATTENTIONS_LIST" messId:nil success:^(id obj)
+                                         {
+                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
+                                             {
+                                                 int total = [[obj objectForKey:@"total"]intValue];
+                                                 totalPage = (total + [num intValue] - 1) / [num intValue];
+                                                 [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
+                                                 NSArray *list = [obj objectForKey:@"list"];
+                                                 for (id obj2 in list) {
+                                                     ProfileModel *model = [[ProfileModel alloc] init];
+                                                     [model setMCity:[obj2 objectForKey:@"city"]];
+                                                     [model setMDesc:[obj2 objectForKey:@"desc"]];
+                                                     [model setMEtime:[obj2 objectForKey:@"etime"]];
+                                                     [model setMStime:[obj2 objectForKey:@"stime"]];
+                                                     [model setMProvince:[obj2 objectForKey:@"province"]];
+                                                     [model setMOrg:[obj2 objectForKey:@"org"]];
+                                                     [model setMName:[obj2 objectForKey:@"name"]];
+                                                     [model setMGender:[obj2 objectForKey:@"gender"]];
+                                                     [model setMId:[obj2 objectForKey:@"id"]];
+                                                     [self.mArray addObject:model];
+                                                     personCount = [self.mArray count];
+                                                 }
+                                                 personCount = [self.mArray count];
+                                                 [self.listTable reloadData];
+                                             }else if([[obj objectForKey:@"rc"]intValue] == -1)
                                              {
                                                  [SVProgressHUD showErrorWithStatus:@"id不存在！"];
                                              }
@@ -286,11 +376,15 @@
 -(void)getNoticeMeList
 
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", [NSString stringWithFormat:@"%@", kPAGESIZE], @"num", nil];
+    NSString *num = [NSString stringWithFormat:@"%d", [kPAGESIZE intValue]*4];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", currentPage++],@"page", num, @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"FANS_LIST" messId:nil success:^(id obj)
                                          {
                                              if ([[obj objectForKey:@"rc"]intValue] == 1)
                                              {
+                                                 int total = [[obj objectForKey:@"total"]intValue];
+                                                 totalPage = (total + [num intValue] - 1) / [num intValue];
+                                                 [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
                                                  NSArray *list = [obj objectForKey:@"list"];
                                                  for (id obj2 in list) {
                                                      ProfileModel *model = [[ProfileModel alloc] init];
@@ -304,8 +398,10 @@
                                                      [model setMGender:[obj2 objectForKey:@"gender"]];
                                                      [model setMId:[obj2 objectForKey:@"id"]];
                                                      [self.mArray addObject:model];
+                                                     
                                                  }
-                                                 [self.listTable reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+                                                 personCount = [self.mArray count];
+                                                 [self.listTable reloadData];
                                              }
                                              else if([[obj objectForKey:@"rc"]intValue] == -1)
                                              {
@@ -336,7 +432,7 @@
                                          {
                                              if ([[obj objectForKey:@"rc"]intValue] == 1)
                                              {
-                                                 [self getMyNoticeList];
+                                                 [SVProgressHUD showErrorWithStatus:@"关注成功！"];
                                              }
                                              else if([[obj objectForKey:@"rc"]intValue] == -1)
                                              {
@@ -373,6 +469,7 @@
                                          {
                                              if ([[obj objectForKey:@"rc"]intValue] == 1)
                                              {
+                                                 [self.mArray removeAllObjects];
                                                  [self getMyNoticeList];
                                                  
                                              }
@@ -398,4 +495,6 @@
                                           prompt:@"数据加载中..."
                                    completeBlock:nil];
 }
+
+
 @end
