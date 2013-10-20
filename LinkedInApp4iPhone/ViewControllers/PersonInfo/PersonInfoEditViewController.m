@@ -196,6 +196,13 @@
         self.toolBar.hidden = NO;
         return NO;
     }
+    else if(textField.tag == 101||textField.tag == 102)
+    {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.listTableView.contentOffset = CGPointMake(0, 80);
+        }];
+        
+    }
     else if(textField.tag == 103||textField.tag == 104)
     {
         [UIView animateWithDuration:0.5 animations:^{
@@ -255,7 +262,6 @@
 }
 
 #pragma mark-
-#pragma mark--UIImagePickerDelegate
 #pragma mark - UIImagePickerController delegate methods
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -382,7 +388,7 @@
     [infoMtbDict setValue:self.infoModel.mEtime forKey:@"etime"];
     
     UIImageView *headImgView = (UIImageView*)[self.listTableView.tableHeaderView viewWithTag:Tag_HeadImgView_View];
-    [infoMtbDict setValue:[[NSString alloc]initWithData:UIImagePNGRepresentation(headImgView.image) encoding:NSISOLatin1StringEncoding] forKey:@"pic"];
+    [infoMtbDict setValue:[[NSString alloc]initWithData:UIImagePNGRepresentation(headImgView.image) encoding:NSUTF8StringEncoding] forKey:@"pic"];
 
     
     if (self.pageType == 0)

@@ -56,11 +56,11 @@
 
 -(IBAction)registerAction:(id)sender
 {
-//    RegisterViewController *vc = [[RegisterViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
-    ProfileViewController *vc = [[ProfileViewController alloc] init];
+    RegisterViewController *vc = [[RegisterViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+    
+//    ProfileViewController *vc = [[ProfileViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 
 
 }

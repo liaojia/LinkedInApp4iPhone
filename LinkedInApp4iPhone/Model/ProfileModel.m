@@ -153,6 +153,10 @@
 {
     _mTitle = [self checkNullWithString:mTitle];
 }
+- (void)setMTel:(NSString *)mTel
+{
+    _mTel  = [self checkNullWithString:mTel];
+}
 - (NSString *)checkNullWithString:(NSString *)str
 {
     if ([str isKindOfClass:[NSNumber class]])

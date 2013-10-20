@@ -14,6 +14,7 @@
 #import "PersonHeadView.h"
 #import "ProfileModel.h"
 #import "PersonInfoEditViewController.h"
+#import "PersonalCardViewController.h"
 
 #define Tag_DeletePersonInfo_Alert 500
 
@@ -471,6 +472,12 @@
         
 
 
+    }
+    else if(indexPath.section == 0) //进入个人名片修改页面
+    {
+        PersonalCardViewController *personalCardController = [[PersonalCardViewController alloc]initWithNibName:@"PersonalCardViewController" bundle:[NSBundle mainBundle]];
+        personalCardController.fatherContrller = self;
+        [self.navigationController pushViewController:personalCardController animated:YES];
     }
 }
 
