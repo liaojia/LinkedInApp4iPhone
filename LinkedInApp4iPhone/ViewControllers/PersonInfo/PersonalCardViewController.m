@@ -299,6 +299,7 @@
   
     [self hideKeyBoad];
     
+    UIImageView *headImgView = (UIImageView*)[[self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:101];
     int gender = [self.infoModel.mGender isEqualToString:@"男"]?1:0;
     NSDictionary *requectDict = @{@"basic":@{@"name":self.infoModel.mName,
                                              @"gender": [NSNumber numberWithInt:gender],
@@ -306,7 +307,7 @@
                                              @"major":self.infoModel.mMajor,
                                              @"adYear":self.infoModel.mAdYear,
                                              @"gradYear":self.infoModel.mGradYear,
-                                             @"pic":@""},
+                                             @"pic":[[NSString alloc]initWithData:UIImagePNGRepresentation(headImgView.image) encoding:NSUTF8StringEncoding]},
                                   @"ext":@{@"birthday":self.infoModel.mBirthday,
                                            @"birthplace":self.infoModel.mBirthplace,
                                            @"desc":self.infoModel.mDesc,
