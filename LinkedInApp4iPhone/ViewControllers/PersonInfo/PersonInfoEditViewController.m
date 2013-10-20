@@ -10,6 +10,9 @@
 
 #define Tag_PickerCancel_Action 200
 #define Tag_PickerOk_Aciton  201
+#define Tag_SelectPic_Action 202
+
+#define Tag_HeadImgView_View 300
 
 @interface PersonInfoEditViewController ()
 
@@ -23,9 +26,6 @@
     if (self) {
         // Custom initialization
         keyArray = @[@"身份",@"描述",@"组织",@"省份",@"城市",@"开始时间",@"结束时间"];
-        
-        
-   
     }
     return self;
 }
@@ -43,8 +43,10 @@
         self.navigationItem.title = @"个人履历增加";
     }
     
-    self.listTableView.backgroundColor = [UIColor clearColor];
-    self.listTableView.backgroundView = nil;
+    [self initTableView];
+    
+    imagePicker = [[UIImagePickerController alloc] init];
+	imagePicker.delegate = self;
     
     if (self.pageType == 1)
     {
@@ -124,7 +126,7 @@
     }
     else if(indexPath.row == 3)
     {
-        txtField.text = self.infoModel.mPlace;
+        txtField.text = self.infoModel.mProvince;
     }
     else if(indexPath.row == 4)
     {
@@ -197,7 +199,7 @@
     else if(textField.tag == 103||textField.tag == 104)
     {
         [UIView animateWithDuration:0.5 animations:^{
-            self.listTableView.contentOffset = CGPointMake(0, 100);
+            self.listTableView.contentOffset = CGPointMake(0, 150);
         }];
         
     }
@@ -236,11 +238,61 @@
             }
           
         }
+            break;
+        case Tag_SelectPic_Action: //从相册选择图片
+        {
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+            {
+                imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                [self presentModalViewController:imagePicker animated:YES];
+            }
+        }
+            break;
             
         default:
             break;
     }
 }
+
+#pragma mark-
+#pragma mark--UIImagePickerDelegate
+#pragma mark - UIImagePickerController delegate methods
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	UIImage *pickerSelectedImage = (UIImage*)[info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+	CGFloat width = pickerSelectedImage.size.width;			// 压缩图片到80*100
+	CGFloat height = pickerSelectedImage.size.height;
+	if (width > 80.0 || height > 100.0){
+		if (width > height) {
+			height = height * 80.0 / width;
+			width = 80.0;
+		}else {
+			width = width * 100.0 / height;
+			height = 100.0;
+		}
+	}
+    else if (width < 80.0 && height < 100.0)
+    {
+        if(width < height)
+        {
+            width = width * 100.0 / height;
+            height = 100.0;
+        }
+        else
+        {
+            height = height * 80.0 / width;
+            width = 80.0;
+        }
+    }
+	UIImage *imgFixed = [UIImage imageWithImage:pickerSelectedImage scaledToSize:CGSizeMake(width, height)];
+	
+    UIImageView *headImgView = (UIImageView*)[self.listTableView.tableHeaderView viewWithTag:Tag_HeadImgView_View];
+    headImgView.image = imgFixed;
+	[self dismissModalViewControllerAnimated:YES];
+	
+}
+
 
 #pragma mark-
 #pragma mark--UIScrollViewDelegate
@@ -249,16 +301,78 @@
   
     [self hideKeyBoad];
 }
+
 #pragma mark-
 #pragma mark--功能函数
+
+/**
+ *	@brief	初始化tableview相关
+ */
+- (void)initTableView
+{
+    self.listTableView.backgroundColor = [UIColor clearColor];
+    self.listTableView.backgroundView = nil;
+    
+    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 80)];
+    headView.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 70, 70)];
+    headImgView.backgroundColor = [UIColor lightGrayColor];
+    [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl]];
+    headImgView.tag = Tag_HeadImgView_View;
+    [headView addSubview:headImgView];
+    
+    UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    selectBtn.frame = CGRectMake(120, 40, 140, 30);
+    selectBtn.tag = Tag_SelectPic_Action;
+    [selectBtn setTitle:@"从相册选择头像" forState:UIControlStateNormal];
+    [selectBtn addTarget:self action:@selector(buttonClickerHandle:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:selectBtn];
+    
+    self.listTableView.tableHeaderView = headView;
+}
 
 /**
  *	@brief	更新个人履历节点 ||新增履历节点
  */
 - (void)updatePersonInfo
 {
-    NSMutableArray *infoMtbDict = [NSMutableDictionary dictionaryWithCapacity:0];
+    NSString *errStr = nil;
+    if ([StaticTools isEmptyString:self.infoModel.mTitle])
+    {
+        errStr = @"请输入身份信息";
+    }
+    else if ([StaticTools isEmptyString:self.infoModel.mDesc])
+    {
+        errStr = @"请输入描述信息";
+    }
+    else if ([StaticTools isEmptyString:self.infoModel.mOrg])
+    {
+        errStr = @"请输入组织信息";
+    }
+    else if ([StaticTools isEmptyString:self.infoModel.mProvince])
+    {
+        errStr = @"请输入省份信息";
+    } else if ([StaticTools isEmptyString:self.infoModel.mCity])
+    {
+        errStr = @"请输入城市信息";
+    }
+    else if ([StaticTools isEmptyString:self.infoModel.mStime])
+    {
+        errStr = @"请输入开始时间";
+    }
+    else if ([StaticTools isEmptyString:self.infoModel.mEtime])
+    {
+        errStr = @"请输入结束时间";
+    }
+    if (errStr !=nil)
+    {
+        [SVProgressHUD showErrorWithStatus:errStr];
+        return;
+    }
     
+    
+    NSMutableArray *infoMtbDict = [NSMutableDictionary dictionaryWithCapacity:0];
     [infoMtbDict setValue:self.infoModel.mTitle forKey:@"title"];
     [infoMtbDict setValue:self.infoModel.mDesc forKey:@"desc"];
     [infoMtbDict setValue:self.infoModel.mOrg forKey:@"org"];
@@ -266,7 +380,10 @@
     [infoMtbDict setValue:self.infoModel.mCity forKey:@"city"];
     [infoMtbDict setValue:self.infoModel.mStime forKey:@"stime"];
     [infoMtbDict setValue:self.infoModel.mEtime forKey:@"etime"];
-    [infoMtbDict setValue:self.infoModel.mImgUrl forKey:@"pic"];
+    
+    UIImageView *headImgView = (UIImageView*)[self.listTableView.tableHeaderView viewWithTag:Tag_HeadImgView_View];
+    [infoMtbDict setValue:[[NSString alloc]initWithData:UIImagePNGRepresentation(headImgView.image) encoding:NSISOLatin1StringEncoding] forKey:@"pic"];
+
     
     if (self.pageType == 0)
     {
@@ -288,7 +405,9 @@
                  }
                  else
                  {
-                     [SVProgressHUD showErrorWithStatus:@"履历添加更新成功！"];
+                     [SVProgressHUD showErrorWithStatus:@"履历添加成功！"];
+                     [self.fatherController performSelector:@selector(refreshTimeLine) withObject:nil];
+                     [self.navigationController popViewControllerAnimated:YES];
                  }
                  
                  

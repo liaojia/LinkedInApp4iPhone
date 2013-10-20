@@ -263,10 +263,21 @@ static NSString *totalSize = nil;
     }
     
     RequestModel *requestModel = [[AppDataCenter sharedAppDataCenter] getModelWithRequestId:requestId];    
-    
+
     [[Transfer sharedClient]  registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"application/json"];
-    [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
+    
+    //履历更新||新建履历 带有图片上传的
+    if ([requestId isEqualToString:@"TIMELINE_NODE_CREATE"]
+        ||[requestId isEqualToString:@"TIMELINE_NODE_UPDATE"])
+    {
+        [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"multipart/form-data"];
+    }
+    else
+    {
+        [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"application/json"];
+    }
+    
+       [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
     
 
     if (messId!=nil) //需要填充id 将id字段替换
@@ -287,7 +298,7 @@ static NSString *totalSize = nil;
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
        {
         
-           NSLog(@"请求成功--respose: %s", [[JSON description] cStringUsingEncoding:NSISOLatin2StringEncoding ]);
+           NSLog(@"请求成功(%@)--respose: %s", requestId, [[JSON description] cStringUsingEncoding:NSISOLatin2StringEncoding ]);
             success(JSON);
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,

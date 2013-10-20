@@ -21,15 +21,18 @@
 @interface PersonInfoEditViewController : UIViewController<UITableViewDataSource,
     UITableViewDelegate,
     UITextFieldDelegate,
-    UIScrollViewDelegate>
+    UIScrollViewDelegate,
+    UIImagePickerControllerDelegate>
 {
     NSArray *keyArray;
     UITextField *textfiled;
+    UIImagePickerController *imagePicker;
 
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dataPicker;
+@property (assign, nonatomic)UIViewController *fatherController;
 @property (strong, nonatomic) ProfileModel *infoModel; //保存履历节点信息
 @property (assign, nonatomic) int pageType; //0:节点修改 1：增加节点
 

@@ -77,6 +77,7 @@
         PersonInfoEditViewController *personInfoEditController = [[PersonInfoEditViewController alloc]   initWithNibName:@"PersonInfoEditViewController" bundle:[NSBundle mainBundle]];
         personInfoEditController.infoModel = self.timeLimeArray[button.tag-200-1];
         personInfoEditController.pageType = 1;
+        personInfoEditController.fatherController = self;
         [self.navigationController pushViewController:personInfoEditController animated:YES];
         return;
         
@@ -87,6 +88,7 @@
         PersonInfoEditViewController *personInfoEditController = [[PersonInfoEditViewController alloc]   initWithNibName:@"PersonInfoEditViewController" bundle:[NSBundle mainBundle]];
         personInfoEditController.infoModel = self.timeLimeArray[button.tag-300-1];
         personInfoEditController.pageType = 0;
+         personInfoEditController.fatherController = self;
         [self.navigationController pushViewController:personInfoEditController animated:YES];
         return;
     }
@@ -489,6 +491,14 @@
     
 }
 
+/**
+ *	@brief	刷新个人简历  增加履历节点成功后由增加页面调用
+ */
+- (void)refreshTimeLine
+{
+    [self.timeLimeArray removeAllObjects];
+    [self getTimeLimeWithId:@"me"];
+}
 
 /**
  *	@brief	查看个人履历
@@ -505,6 +515,7 @@
                NSArray *list = [obj objectForKey:@"list"];
                for (id obj2 in list) {
                    ProfileModel *model = [[ProfileModel alloc] init];
+                   [model setMTitle:[obj2 objectForKey:@"title"]];
                    [model setMCity:[obj2 objectForKey:@"city"]];
                    [model setMDesc:[obj2 objectForKey:@"desc"]];
                    [model setMEtime:[obj2 objectForKey:@"etime"]];
