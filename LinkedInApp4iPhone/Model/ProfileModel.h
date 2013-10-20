@@ -39,6 +39,7 @@
 @property(nonatomic, strong)    NSString *mBirthplace;// 籍贯
 @property(nonatomic, strong)    NSString *mNation;// 民族
 @property(nonatomic, strong)    NSString *mDesc;// 个人描述
+@property(nonatomic, strong)    NSString *mTel;  //联系方式
 
 - (NSString *)checkNullWithString:(NSString *)str;
 
