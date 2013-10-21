@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "ClearTextField.h"
 #import "HomeViewController.h"
-
+#import "CommitBasicInfoViewController.h"
 @interface LoginViewController ()
 
 @end
@@ -30,6 +30,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:YES];
     
 }
 - (void)viewDidLoad
@@ -80,10 +81,39 @@
               
               [AppDataCenter sharedAppDataCenter].sid = [obj objectForKey:@"sid"];
               if ([[obj objectForKey:@"rc"]intValue] == 1) {
-                  HomeViewController *homeControlelr = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
-                  self.navigationController.navigationBarHidden = NO;
-                  [self.navigationController pushViewController:homeControlelr animated:YES];
+                  if (false) {
+                      //-1尚未填写基本信息
+                      CommitBasicInfoViewController *vc = [[CommitBasicInfoViewController alloc] initWithNibName:@"CommitBasicInfoViewController" bundle:[NSBundle mainBundle]];
+                      [self.navigationController pushViewController:vc animated:YES];
+                  }else{
+                      if ([[obj objectForKey:@"status"]intValue] == 1) {
+                          HomeViewController *homeControlelr = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
+                          self.navigationController.navigationBarHidden = NO;
+                          [self.navigationController pushViewController:homeControlelr animated:YES];
+                      }else if([[obj objectForKey:@"status"]intValue] == -1){
+                          //-1尚未填写基本信息
+                          CommitBasicInfoViewController *vc = [[CommitBasicInfoViewController alloc] initWithNibName:@"CommitBasicInfoViewController" bundle:[NSBundle mainBundle]];
+                          [self.navigationController pushViewController:vc animated:YES];
+                          
+                      }else if([[obj objectForKey:@"status"]intValue] == -2){
+                          // -2等待审核
+                          [self.navigationController popViewControllerAnimated:YES];
+                          
+                      }
+                  }
+                  
                 
+              }
+              else if([[obj objectForKey:@"rc"]intValue] == -1){
+                  // 0失败，未知原因
+                  [SVProgressHUD showErrorWithStatus:@"失败，未知原因!"];
+              }
+              else if([[obj objectForKey:@"rc"]intValue] == -1){
+                  // -1密码错误
+                  [SVProgressHUD showErrorWithStatus:@"密码错误!"];
+              }else if([[obj objectForKey:@"rc"]intValue] == -2 ){
+                  // -2登录名不存在
+                  [SVProgressHUD showErrorWithStatus:@"登录名不存在!"];
               }
               
               

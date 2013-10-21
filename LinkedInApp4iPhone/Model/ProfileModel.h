@@ -33,6 +33,8 @@
 @property(nonatomic, strong)    NSString *mPlace; //活动地点
 @property(nonatomic, strong)    NSString *mSponsor; //活动主办方
 @property(nonatomic, strong)    NSString *mContent;  //活动内容
+@property(nonatomic, strong)    NSString *mIdCardNo; //身份证号
+@property(nonatomic, strong)    NSString *mStuNo; //学号
 
 /* 个人扩展信息 */
 @property(nonatomic, strong)    NSString *mBirthday;// 生日，yyyy-mm-dd格式

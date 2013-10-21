@@ -522,6 +522,7 @@
        success:^(id obj) {
            
            if ([[obj objectForKey:@"rc"]intValue] == 1) {
+               [self.timeLimeArray removeAllObjects];
                NSArray *list = [obj objectForKey:@"list"];
                for (id obj2 in list) {
                    ProfileModel *model = [[ProfileModel alloc] init];

@@ -30,6 +30,8 @@
 @synthesize mStime = _mStime;
 @synthesize mEtime = _mEtime;
 @synthesize mOrg = _mOrg;
+@synthesize mIdCardNo = _mIdCardNo;
+@synthesize mStuNo = _mStuNo;
 
 
 - (void)setMAdYear:(NSString *)mAdYear
