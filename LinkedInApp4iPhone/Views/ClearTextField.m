@@ -20,7 +20,8 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"img_login_edittext_backdrop"]]];
+       // [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"img_login_edittext_backdrop"]]];
+        self.backgroundColor = [UIColor whiteColor];
         _tf_input = [[UITextField alloc] initWithFrame:CGRectMake(5, (frame.size.height)/4.0, frame.size.width-50, TF_INPUT_H)];
         [self addSubview:_tf_input];
         

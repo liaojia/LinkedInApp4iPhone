@@ -409,11 +409,11 @@
         desAndTitleHeight  = [StaticTools getLabelHeight:model.mDesc defautWidth:170 defautHeight:1000 fontSize:15]+[StaticTools getLabelHeight:model.mName defautWidth:195 defautHeight:1000 fontSize:18];
         desAndTitleHeight = desAndTitleHeight<185?185:desAndTitleHeight+15;
         height+=desAndTitleHeight;
-        height += [StaticTools getLabelHeight:model.mStime defautWidth:220 defautHeight:1000 fontSize:17];
-        height += [StaticTools getLabelHeight:model.mPlace defautWidth:220 defautHeight:1000 fontSize:17];
-        height += [StaticTools getLabelHeight:model.mType defautWidth:220 defautHeight:1000 fontSize:17];
-        height += [StaticTools getLabelHeight:model.mMoney defautWidth:220 defautHeight:1000 fontSize:17];
-        height += [StaticTools getLabelHeight:model.mSponsor defautWidth:220 defautHeight:1000 fontSize:17];
+        height += [StaticTools getLabelHeight:model.mStime defautWidth:220 defautHeight:1000 fontSize:15];
+        height += [StaticTools getLabelHeight:model.mPlace defautWidth:220 defautHeight:1000 fontSize:15];
+        height += [StaticTools getLabelHeight:model.mType defautWidth:220 defautHeight:1000 fontSize:15];
+        height += [StaticTools getLabelHeight:model.mMoney defautWidth:220 defautHeight:1000 fontSize:15];
+        height += [StaticTools getLabelHeight:model.mSponsor defautWidth:220 defautHeight:1000 fontSize:15];
 
         return height;
     }
@@ -427,7 +427,7 @@
     }
     else if(indexPath.section == 1&&indexPath.row !=0) //官方公告
     {
-        return [self getStringHeight:self.boadCastModel.mDesc withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(290, 1000)]+35;
+        return [self getStringHeight:self.boadCastModel.mDesc withFont:[UIFont systemFontOfSize:15] consSize:CGSizeMake(290, 1000)]+35;
     }
     else if(indexPath.section == 4&&indexPath.row !=0) //官方微博
     {
@@ -475,7 +475,7 @@
         //学校详情
         UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(105, nameLabel.frame.origin.y+nameLabel.frame.size.height+5, 180, 150-10-nameLabel.frame.size.height)];
         detailLabel.backgroundColor = [UIColor clearColor];
-        detailLabel.font = [UIFont systemFontOfSize:16];
+        detailLabel.font = [UIFont systemFontOfSize:15];
         detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
         detailLabel.numberOfLines = 6;
         //detailLabel.font = [UIFont boldSystemFontOfSize:20];
@@ -548,11 +548,11 @@
           {
                
               //公告内容
-              UILabel *infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 290, [self getStringHeight:self.boadCastModel.mDesc withFont:[UIFont systemFontOfSize:17] consSize:CGSizeMake(290, 1000)])];
+              UILabel *infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 290, [self getStringHeight:self.boadCastModel.mDesc withFont:[UIFont systemFontOfSize:15] consSize:CGSizeMake(290, 1000)])];
               infoLabel.backgroundColor = [UIColor clearColor];
               infoLabel.numberOfLines = 0;
               infoLabel.lineBreakMode = UILineBreakModeTailTruncation;
-              infoLabel.font = [UIFont systemFontOfSize:16];
+              infoLabel.font = [UIFont systemFontOfSize:15];
               infoLabel.text = self.boadCastModel.mDesc;
               [cell.contentView addSubview:infoLabel];
               

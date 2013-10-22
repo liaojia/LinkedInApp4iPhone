@@ -163,20 +163,19 @@
 {
     
     ProfileModel *model = [self.listMtbArray objectAtIndex:indexPath.row];
-    float height = 0;
+    float height = 10;
     int desAndTitleHeight; //描述和题目的高度总和 若小于图片的高度 测返回图片的高度
     
     desAndTitleHeight  = [StaticTools getLabelHeight:model.mDesc defautWidth:170 defautHeight:1000 fontSize:15]+[StaticTools getLabelHeight:model.mName defautWidth:195 defautHeight:1000 fontSize:18];
     desAndTitleHeight = desAndTitleHeight<185?185:desAndTitleHeight+15;
     height+=desAndTitleHeight;
-    height += [StaticTools getLabelHeight:model.mStime defautWidth:220 defautHeight:1000 fontSize:17];
-    height += [StaticTools getLabelHeight:model.mPlace defautWidth:220 defautHeight:1000 fontSize:17];
-    height += [StaticTools getLabelHeight:model.mType defautWidth:220 defautHeight:1000 fontSize:17];
-    height += [StaticTools getLabelHeight:model.mMoney defautWidth:220 defautHeight:1000 fontSize:17];
-    height += [StaticTools getLabelHeight:model.mSponsor defautWidth:220 defautHeight:1000 fontSize:17];
+    height += [StaticTools getLabelHeight:model.mStime defautWidth:220 defautHeight:1000 fontSize:15];
+    height += [StaticTools getLabelHeight:model.mPlace defautWidth:220 defautHeight:1000 fontSize:15];
+    height += [StaticTools getLabelHeight:model.mType defautWidth:220 defautHeight:1000 fontSize:15];
+    height += [StaticTools getLabelHeight:model.mMoney defautWidth:220 defautHeight:1000 fontSize:15];
+    height += [StaticTools getLabelHeight:model.mSponsor defautWidth:220 defautHeight:1000 fontSize:15];
     
     return height;
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

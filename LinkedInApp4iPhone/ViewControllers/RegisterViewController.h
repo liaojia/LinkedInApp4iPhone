@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 @class ClearTextField;
 
-@interface RegisterViewController : BaseViewController
+@interface RegisterViewController : BaseViewController<UITextFieldDelegate>
 
 @property(nonatomic, strong)ClearTextField *tf_username;
 @property(nonatomic, strong)ClearTextField *tf_pwd;
