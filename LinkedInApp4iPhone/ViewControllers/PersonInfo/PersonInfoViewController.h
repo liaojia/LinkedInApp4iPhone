@@ -25,7 +25,8 @@
     int myNoticeListType; //个人关注列表展示类型 0：列表 1：网格
     int NoticeMeListType; //关注我的列表展示类型 0：列表 1：网格
     int selectDeleteIndex; //点击了删除的个人履历项
-    
+    BOOL hasMoreMyNotice; //是否显示更多按钮
+    BOOL hasMoreNoticeMe; //是否显示更多按钮
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
@@ -36,5 +37,6 @@
 @property (nonatomic, strong)NSMutableArray *timeLimeArray;
 @property (nonatomic, strong)NSMutableArray *myNoticeArray;
 @property (nonatomic, strong)NSMutableArray *noticeMeArray;
+
 
 @end

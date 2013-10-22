@@ -214,5 +214,13 @@
         <method>POST</method>
     </request>
     
+    <!-- 提交个人信息-后台匹配 -->
+    <request>
+        <requestId>COMMITPERSONINFO</requestId>
+        <url>/profile/me/match</url>
+        <method>POST</method>
+    </request>
+    
+    
     
 </root>

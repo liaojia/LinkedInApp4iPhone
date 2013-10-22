@@ -43,17 +43,17 @@
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
     
+    hasMoreMyNotice = false;
+    hasMoreNoticeMe = false;
     self.timeLimeArray = [[NSMutableArray alloc] init];
     self.myNoticeArray = [[NSMutableArray alloc] init];
     self.noticeMeArray = [[NSMutableArray alloc] init];
     
-    [self refreshData];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    
+    [self refreshData];
 }
 - (void)viewDidUnload
 {
@@ -143,6 +143,22 @@
             [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
         }
             break;
+        case 104: //个人关注 更多
+        {
+            CommendListViewController *vc = [[CommendListViewController alloc] initWithNibName:@"CommendListViewController" bundle:nil];
+            vc.fromFlag = 1;
+            vc.titleStr = @"个人关注";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 105: //关注我的人 更多
+        {
+            CommendListViewController *vc = [[CommendListViewController alloc] initWithNibName:@"CommendListViewController" bundle:nil];
+            vc.fromFlag = 2;
+            vc.titleStr = @"关注我的人";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
             
         default:
             break;
@@ -166,7 +182,11 @@
 {
     int index = ((UIButton*)sender).tag - 1000;
     ProfileModel *model = [self.timeLimeArray objectAtIndex:index];
-    [self getSuggestPepoleListWithId:model.mId];
+    CommendListViewController *vc = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
+    vc.fromFlag = 0;
+    vc.titleStr = @"相关推荐人";
+    vc.nodeId = model.mId;
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -281,6 +301,7 @@
         else if(indexPath.section == 2)
         {
             titleStr = @"个人关注";
+            
         }
         else if(indexPath.section == 3)
         {
@@ -291,12 +312,28 @@
         
         if (indexPath.section==2||indexPath.section == 3)
         {
-            UIButton *typeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            typeBtn.frame = CGRectMake(260, 5, 35, 35);
-            typeBtn.tag = 100+indexPath.section;
-            [typeBtn setImage:[UIImage imageNamed:@"img_card_list_two"] forState:UIControlStateNormal];
-            [typeBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
-            [cell.contentView addSubview:typeBtn];
+//            UIButton *typeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//            typeBtn.frame = CGRectMake(260, 5, 35, 35);
+//            typeBtn.tag = 100+indexPath.section;
+//            [typeBtn setImage:[UIImage imageNamed:@"img_card_list_two"] forState:UIControlStateNormal];
+//            [typeBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+//            [cell.contentView addSubview:typeBtn];
+            
+            //查看更多
+            UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            moreBtn.frame = CGRectMake(tableView.frame.size.width -130, 5, 100, 35);
+            [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
+            moreBtn.tag = 102+indexPath.section;
+            [moreBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forState:UIControlStateNormal];
+            [moreBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_pressed"] forState:UIControlStateHighlighted];
+            [moreBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [cell.contentView addSubview:moreBtn];
+            if (indexPath.section == 2) {
+                [moreBtn setHidden:hasMoreMyNotice];
+            }else{
+                [moreBtn setHidden:hasMoreNoticeMe];
+            }
           
 
         }
@@ -312,7 +349,7 @@
         //姓名
         UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 10, 200, 30)];
         nameLabel.backgroundColor = [UIColor clearColor];
-        nameLabel.font = [UIFont boldSystemFontOfSize:18];
+        nameLabel.font = [UIFont systemFontOfSize:18];
         nameLabel.textColor = RGBACOLOR(0, 140, 207, 1);
         nameLabel.text = self.model.mName;
         [cell.contentView addSubview:nameLabel];
@@ -322,7 +359,7 @@
         schoolLabel.backgroundColor = [UIColor clearColor];
         schoolLabel.numberOfLines = 2;
         schoolLabel.lineBreakMode = UILineBreakModeWordWrap;
-        schoolLabel.font = [UIFont boldSystemFontOfSize:16];
+        schoolLabel.font = [UIFont systemFontOfSize:16];
         schoolLabel.text = self.model.mDept;
         [cell.contentView addSubview:schoolLabel];
         
@@ -331,7 +368,7 @@
         specialityLabel.backgroundColor = [UIColor clearColor];
         specialityLabel.numberOfLines = 2;
         specialityLabel.lineBreakMode = UILineBreakModeWordWrap;
-        specialityLabel.font = [UIFont boldSystemFontOfSize:16];
+        specialityLabel.font = [UIFont systemFontOfSize:16];
         specialityLabel.text = self.model.mMajor;
         [cell.contentView addSubview:specialityLabel];
     }
@@ -340,7 +377,6 @@
 
         PersonInfoCell *personInfoCell = [[[NSBundle mainBundle]loadNibNamed:@"PersonInfoCell" owner:nil options:nil] objectAtIndex:0];
         [personInfoCell initWithMode:[self.timeLimeArray objectAtIndex:indexPath.row-1]];
-//        personInfoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [personInfoCell.recommendButton addTarget:self action:@selector(recommendAction:) forControlEvents:UIControlEventTouchUpInside];
         [personInfoCell.recommendButton setTag:(999+indexPath.row)];
         if (![self.personId isEqualToString:@"me"]) {
@@ -433,9 +469,7 @@
 {
     if (indexPath.section == 1&&self.pageType == 0) //进入相关推荐页面
     {
-        CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
-        AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        [appdelegate.rootNavigationController pushViewController:commendListController animated:YES];
+        
 
 
     }
@@ -465,37 +499,6 @@
         
     }
     
-
-    // 查看个人履历
-    AFHTTPRequestOperation *operation2 = [[Transfer sharedTransfer] TransferWithRequestDic:nil
-         requesId:@"TIMELINE_LIST"
-           prompt:@"prompt"
-        replaceId:@"me"
-          success:^(id obj) {
-              
-              if ([[obj objectForKey:@"rc"]intValue] == 1) {
-                  NSArray *list = [obj objectForKey:@"list"];
-//                  [self.timeLimeArray removeAllObjects];
-                  for (id obj2 in list) {
-                      ProfileModel *model = [[ProfileModel alloc] init];
-                      [model setMId:[obj2 objectForKey:@"id"]];
-                      [model setMTitle:[obj2 objectForKey:@"mTitle"]];
-                      [model setMCity:[obj2 objectForKey:@"city"]];
-                      [model setMDesc:[obj2 objectForKey:@"desc"]];
-                      [model setMEtime:[obj2 objectForKey:@"etime"]];
-                      [model setMStime:[obj2 objectForKey:@"stime"]];
-                      [model setMProvince:[obj2 objectForKey:@"province"]];
-                      [model setMOrg:[obj2 objectForKey:@"org"]];
-                      [self.timeLimeArray addObject:model];
-                  }
-                  [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
-              }
-             
-          }
-          failure:^(NSString *errMsg) {
-              
-          }];
-    
 }
 
 /**
@@ -519,6 +522,7 @@
        success:^(id obj) {
            
            if ([[obj objectForKey:@"rc"]intValue] == 1) {
+               [self.timeLimeArray removeAllObjects];
                NSArray *list = [obj objectForKey:@"list"];
                for (id obj2 in list) {
                    ProfileModel *model = [[ProfileModel alloc] init];
@@ -544,53 +548,6 @@
         
         
     }];
-}
-/**
- *	@brief	根据选中履历推荐好友
- *
- *	@param 	nodeId 	结点Id
- */
--(void)getSuggestPepoleListWithId:(NSString *)nodeId
-{
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"SUGGESTPEOPLE_LIST" messId:nodeId success:^(id obj)
-         {
-             NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
-             if ([[obj objectForKey:@"rc"]intValue] == 1)
-             {
-                 NSArray *list = [obj objectForKey:@"list"];
-                 for (id obj2 in list) {
-                     ProfileModel *model = [[ProfileModel alloc] init];
-                     [model setMCity:[obj2 objectForKey:@"city"]];
-                     [model setMDesc:[obj2 objectForKey:@"desc"]];
-                     [model setMEtime:[obj2 objectForKey:@"etime"]];
-                     [model setMStime:[obj2 objectForKey:@"stime"]];
-                     [model setMProvince:[obj2 objectForKey:@"province"]];
-                     [model setMOrg:[obj2 objectForKey:@"org"]];
-                     [model setMName:[obj2 objectForKey:@"name"]];
-                     [model setMGender:[obj2 objectForKey:@"gender"]];
-                     [model setMId:[obj2 objectForKey:@"id"]];
-                     [tmpArray addObject:model];
-                 }
-                 CommendListViewController *vc = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:[NSBundle mainBundle]];
-                 vc.mArray = tmpArray;
-                 [self.navigationController pushViewController:vc animated:YES];
-             }
-             else if([[obj objectForKey:@"rc"]intValue] == -1)
-             {
-                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
-             }
-             else
-             {
-                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
-             }
-             
-             
-         } failure:nil];
-    
-    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
-                                          prompt:@"数据加载中..."
-                                   completeBlock:nil];
 }
 
 /**
@@ -631,12 +588,19 @@
 -(void)getMyNoticeList
 
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", kPAGESIZE, @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"MYATTENTIONS_LIST" messId:nil success:^(id obj)
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
                  [self.myNoticeArray removeAllObjects];
+                 int total = [[obj objectForKey:@"total"]intValue];
+                 int totalPage = (total + [kPAGESIZE intValue] - 1) / [kPAGESIZE intValue];
+                 if (1<totalPage) {
+                     hasMoreMyNotice = true;
+                 }else{
+                     hasMoreMyNotice = false;
+                 }
                  NSArray *list = [obj objectForKey:@"list"];
                  for (id obj2 in list) {
                      ProfileModel *model = [[ProfileModel alloc] init];
@@ -676,12 +640,20 @@
 -(void)getNoticeMeList
 
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", @"5", @"num", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"1",@"page", kPAGESIZE, @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"FANS_LIST" messId:nil success:^(id obj)
          {
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
                  NSArray *list = [obj objectForKey:@"list"];
+                 [self.noticeMeArray removeAllObjects];
+                 int total = [[obj objectForKey:@"total"]intValue];
+                 int totalPage = (total + [kPAGESIZE intValue] - 1) / [kPAGESIZE intValue];
+                 if (1<totalPage) {
+                     hasMoreNoticeMe = true;
+                 }else{
+                     hasMoreNoticeMe = false;
+                 }
                  for (id obj2 in list) {
                      ProfileModel *model = [[ProfileModel alloc] init];
                      [model setMCity:[obj2 objectForKey:@"city"]];

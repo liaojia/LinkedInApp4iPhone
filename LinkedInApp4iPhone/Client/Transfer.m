@@ -97,7 +97,7 @@ static NSString *totalSize = nil;
     isCancelAction = NO;
     
     if (prompt) {
-        //[SVProgressHUD showWithStatus:prompt maskType:SVProgressHUDMaskTypeClear];
+//        [SVProgressHUD showWithStatus:prompt maskType:SVProgressHUDMaskTypeClear];
         
         
          [SVProgressHUD showWithStatus:prompt maskType:SVProgressHUDMaskTypeClear cancelBlock:^(id sender){
