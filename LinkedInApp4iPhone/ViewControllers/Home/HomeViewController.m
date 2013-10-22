@@ -52,6 +52,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
     
@@ -95,9 +96,10 @@
     leftBtn.frame = CGRectMake(0, 0, 35, 35);
     leftBtn.tag  = Tag_Back_Action;
     
+    self.navigationItem.title = @"学校信息";
     [leftBtn setImage:[UIImage imageNamed:@"img_list_right_normal"] forState:UIControlStateNormal];
     [leftBtn setImage:[UIImage imageNamed:@"img_list_right_pressed"] forState:UIControlStateHighlighted];
- 
+    self.navigationItem.title = @"学校信息";
     [leftBtn addTarget:self action:@selector(buttonClickedHandle:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
     
