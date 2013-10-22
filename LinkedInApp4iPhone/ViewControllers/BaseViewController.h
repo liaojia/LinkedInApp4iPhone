@@ -11,4 +11,5 @@
 @interface BaseViewController : UIViewController<UITextFieldDelegate>
 
 -(void)setButtonBgWithNomal:(NSString*) nomalImageStr selectedImageStr:(NSString *) selectedImageStr button:(UIButton*) button;
+
 @end
