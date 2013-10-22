@@ -81,7 +81,7 @@
               
               [AppDataCenter sharedAppDataCenter].sid = [obj objectForKey:@"sid"];
               if ([[obj objectForKey:@"rc"]intValue] == 1) {
-                  if (false) {
+                  if (true) {
                       //-1尚未填写基本信息
                       CommitBasicInfoViewController *vc = [[CommitBasicInfoViewController alloc] initWithNibName:@"CommitBasicInfoViewController" bundle:[NSBundle mainBundle]];
                       [self.navigationController pushViewController:vc animated:YES];

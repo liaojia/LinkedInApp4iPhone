@@ -261,7 +261,7 @@
     
     [self hideKeyBoad];
     
-    NSLog(@"image: %@", [[NSString alloc]initWithData:UIImagePNGRepresentation(selectImg) encoding:NSUTF8StringEncoding]);
+    NSLog(@"image: %@", [[NSString alloc]initWithData:UIImagePNGRepresentation(selectImg) encoding:NSISOLatin2StringEncoding]);
     int gender = [self.infoModel.mGender isEqualToString:@"男"]?1:0;
     NSDictionary *requectDict = @{@"basic":@{@"name":self.infoModel.mName,
                                              @"gender": [NSNumber numberWithInt:gender],
@@ -271,7 +271,7 @@
                                              @"major":self.infoModel.mMajor,
                                              @"adYear":self.infoModel.mAdYear,
                                              @"gradYear":self.infoModel.mGradYear,
-                                             @"pic":[[NSString alloc]initWithData:UIImagePNGRepresentation(selectImg) encoding:NSUTF8StringEncoding]},
+                                             @"pic":[[NSString alloc]initWithData:UIImagePNGRepresentation(selectImg) encoding:NSISOLatin2StringEncoding]},
                                   @"ext":@{@"birthday":self.infoModel.mBirthday,
                                            @"birthplace":self.infoModel.mBirthplace,
                                            @"desc":self.infoModel.mDesc,
