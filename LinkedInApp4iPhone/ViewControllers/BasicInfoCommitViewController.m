@@ -221,6 +221,7 @@
              if ([[obj objectForKey:@"rc"]intValue] == 1)
              {
                  [SVProgressHUD showErrorWithStatus:@"信息提交成功！"];
+                 [self.navigationController popToRootViewControllerAnimated:YES];
                  
              }
              else if([[obj objectForKey:@"rc"]intValue] == 2)
