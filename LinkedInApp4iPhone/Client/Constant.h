@@ -54,6 +54,27 @@
 #define kCOUNT_ZJGL                     @"count_ZJGL"
 #define kCOUNT_XXZX                     @"count_XXZX"
 #define kCOUNT_XXTZ                     @"count_XXTZ"
+
+//*************sinaweibo*****************
+#define SINA_V2_DOMAIN              @"https://api.weibo.com/2"
+#define SINA_API_AUTHORIZE          @"https://api.weibo.com/oauth2/authorize"
+#define SINA_API_ACCESS_TOKEN       @"https://api.weibo.com/oauth2/access_token"
+
+
+//所以需要把这里的app key 和 app secret 换成你在新浪上注册的app key 和 app secret
+//然后给你注册的应用添加几个测试账号，用测试账号登陆。
+#define SINA_APP_KEY                @"3601604349"
+#define SINA_APP_SECRET             @"7894dfdd1fc2ce7cc6e9e9ca620082fb"
+
+#define USER_INFO_KEY_TYPE          @"requestType"
+
+#define USER_STORE_ACCESS_TOKEN     @"SinaAccessToken"
+#define USER_STORE_EXPIRATION_DATE  @"SinaExpirationDate"
+#define USER_STORE_USER_ID          @"SinaUserID"
+#define USER_STORE_USER_NAME        @"SinaUserName"
+#define USER_OBJECT                 @"USER_OBJECT"
+#define NeedToReLogin               @"NeedToReLogin"
+//***********
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 #define STRETCH                                5
 #define NODATA                          @"未知"

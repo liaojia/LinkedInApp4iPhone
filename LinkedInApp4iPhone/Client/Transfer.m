@@ -298,7 +298,15 @@ static NSString *totalSize = nil;
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
        {
         
-           NSLog(@"请求成功(%@)--respose: %s", requestId, [[JSON description] cStringUsingEncoding:NSISOLatin2StringEncoding ]);
+         //  NSLog(@"请求成功(%@)--respose: %s", requestId, [[JSON description] cStringUsingEncoding:NSISOLatin2StringEncoding ]);
+           
+           NSData *data = [NSJSONSerialization dataWithJSONObject:JSON
+                                                          options:0 
+                                                            error:nil];
+     
+           
+           NSLog(@"请求返回数据:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+           
             success(JSON);
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,

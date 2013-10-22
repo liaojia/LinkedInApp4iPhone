@@ -13,7 +13,8 @@
 #import "ActivityDetailViewController.h"
 #import "WebViewController.h"
 #import "ActivityListViewController.h"
-
+#import "OAuthWebView.h"
+#import "ProfileVC.h"
 #define Tag_Back_Action 200
 
 @interface HomeViewController ()
@@ -320,12 +321,54 @@
         
         }
             break;
+        case 104: //新浪微博
+        {
+            //如果未授权或授权过期，则转入授权页面。
+            NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:USER_STORE_ACCESS_TOKEN];
+            if (authToken == nil || [self isNeedToRefreshTheToken])
+            {
+          
+                OAuthWebView *webV = [[OAuthWebView alloc]initWithNibName:@"OAuthWebView" bundle:nil];
+                 webV.fatherController = self;
+                [self.navigationController pushViewController:webV animated:NO];
+            
+            }
+            else
+            {
+                [self gotoSinaWeiBo];
+            }
+        }
+            break;
             
         default:
             break;
     }
 }
 
+/**
+ *	@brief	判断微博授权是否授权或授权过期
+ *
+ *	@return
+ */
+-(BOOL)isNeedToRefreshTheToken
+{
+    NSDate *expirationDate = [[NSUserDefaults standardUserDefaults]objectForKey:USER_STORE_EXPIRATION_DATE];
+    if (expirationDate == nil)  return YES;
+    
+    BOOL boolValue1 = !(NSOrderedDescending == [expirationDate compare:[NSDate date]]);
+    BOOL boolValue2 = (expirationDate != nil);
+    
+    return (boolValue1 && boolValue2);
+}
+/**
+ *	@brief	跳转到新浪微博页面
+ */
+- (void)gotoSinaWeiBo
+{
+    ProfileVC *profile = [[ProfileVC alloc]initWithNibName:@"ProfileVC" bundle:nil];
+    profile.userID = [NSString stringWithFormat:@"%@",@"3044034642"];
+    [self.navigationController pushViewController:profile animated:YES];
+}
 #pragma mark-
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
