@@ -1,6 +1,7 @@
 
 
 #import <Foundation/Foundation.h>
+
 @class RequestModel;
 
 @interface AppDataCenter : NSObject
