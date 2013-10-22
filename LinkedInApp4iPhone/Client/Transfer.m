@@ -118,7 +118,7 @@ static NSString *totalSize = nil;
     [[Transfer sharedClient] enqueueBatchOfHTTPRequestOperations:operationList progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
         
     } completionBlock:^(NSArray *operations) {
-        [SVProgressHUD dismiss];
+       // [SVProgressHUD dismiss];
         
         if (completeBlock) {
             completeBlock(operations);
@@ -306,7 +306,7 @@ static NSString *totalSize = nil;
      
            
            NSLog(@"请求返回数据:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-           
+           [SVProgressHUD dismiss];
             success(JSON);
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,

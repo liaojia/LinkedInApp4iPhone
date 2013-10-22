@@ -178,6 +178,8 @@
 		CE5AFB9318125590007AFC79 /* ActivityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5AFB9118125590007AFC79 /* ActivityListViewController.xib */; };
 		CE5AFB971812C26E007AFC79 /* PersonInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFB951812C26E007AFC79 /* PersonInfoEditViewController.m */; };
 		CE5AFB981812C26E007AFC79 /* PersonInfoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5AFB961812C26E007AFC79 /* PersonInfoEditViewController.xib */; };
+		CE62E2531816BC7F00F49A43 /* BasicInfoCommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62E2511816BC7F00F49A43 /* BasicInfoCommitViewController.m */; };
+		CE62E2541816BC7F00F49A43 /* BasicInfoCommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE62E2521816BC7F00F49A43 /* BasicInfoCommitViewController.xib */; };
 		CE935F171815566F00DAC626 /* OAuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE935F151815566F00DAC626 /* OAuthWebView.m */; };
 		CE935F181815566F00DAC626 /* OAuthWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE935F161815566F00DAC626 /* OAuthWebView.xib */; };
 		CE935F1C18155B6700DAC626 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE935F1A18155B6700DAC626 /* ProfileVC.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -442,6 +444,9 @@
 		CE5AFB941812C26E007AFC79 /* PersonInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoEditViewController.h; sourceTree = "<group>"; };
 		CE5AFB951812C26E007AFC79 /* PersonInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoEditViewController.m; sourceTree = "<group>"; };
 		CE5AFB961812C26E007AFC79 /* PersonInfoEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoEditViewController.xib; sourceTree = "<group>"; };
+		CE62E2501816BC7F00F49A43 /* BasicInfoCommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoCommitViewController.h; sourceTree = "<group>"; };
+		CE62E2511816BC7F00F49A43 /* BasicInfoCommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoCommitViewController.m; sourceTree = "<group>"; };
+		CE62E2521816BC7F00F49A43 /* BasicInfoCommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicInfoCommitViewController.xib; sourceTree = "<group>"; };
 		CE935F141815566F00DAC626 /* OAuthWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthWebView.h; sourceTree = "<group>"; };
 		CE935F151815566F00DAC626 /* OAuthWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthWebView.m; sourceTree = "<group>"; };
 		CE935F161815566F00DAC626 /* OAuthWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthWebView.xib; sourceTree = "<group>"; };
@@ -774,6 +779,9 @@
 				8D0FB3491814CE4400FE9EF7 /* CommitBasicInfoViewController.h */,
 				8D0FB34A1814CE4400FE9EF7 /* CommitBasicInfoViewController.m */,
 				8D0FB34B1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib */,
+				CE62E2501816BC7F00F49A43 /* BasicInfoCommitViewController.h */,
+				CE62E2511816BC7F00F49A43 /* BasicInfoCommitViewController.m */,
+				CE62E2521816BC7F00F49A43 /* BasicInfoCommitViewController.xib */,
 				CEE8EAA8180E23030052E5D8 /* Home */,
 				CED1A9FF180EC4D500A4A1A0 /* PersonInfo */,
 				CEE8EAC4180E71E40052E5D8 /* Activity */,
@@ -1210,6 +1218,7 @@
 				CE00A12A181615D700253780 /* tabbar_whitebtn.png in Resources */,
 				CE00A12B181615D700253780 /* tabbar_whitebtn@2x.png in Resources */,
 				8D0FB34D1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib in Resources */,
+				CE62E2541816BC7F00F49A43 /* BasicInfoCommitViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1290,6 +1299,7 @@
 				8D152220181426F0006AFC1D /* AFXMLRequestOperation.m in Sources */,
 				8D152221181426F0006AFC1D /* UIImageView+AFNetworking.m in Sources */,
 				8D0FB34C1814CE4400FE9EF7 /* CommitBasicInfoViewController.m in Sources */,
+				CE62E2531816BC7F00F49A43 /* BasicInfoCommitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
