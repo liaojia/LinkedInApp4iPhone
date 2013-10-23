@@ -322,7 +322,7 @@ static NSString *totalSize = nil;
             
             // 点击取消的时候会报（The operation couldn’t be completed）,但是UserInfo中不存在NSLocalizedDescription属性，说明这不是一个错误，现用一BOOL值进行简单特殊控制,。。。
             NSString *message = [Transfer getErrorMsg:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-            if (!isCancelAction && message)
+            if (message)
             {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert show];
@@ -484,6 +484,10 @@ static NSString *totalSize = nil;
         } else if ([enMsg rangeOfString:@"got 404"].location != NSNotFound) {
             // Expected status code in (200-299), got 404
             return @"服务器无法响应功能请求(404)";
+        }
+        else if ([enMsg rangeOfString:@"got 415"].location != NSNotFound) {
+            // Expected status code in (200-299), got 404
+            return @"服务器无法响应功能请求(415) 不支持的媒体类型";
         }
     }
     

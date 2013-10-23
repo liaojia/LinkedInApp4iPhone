@@ -8,6 +8,7 @@
 #import "ActivityCell.h"
 #import "ActivityListViewController.h"
 #import "ActivityDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define Tag_AddMore_Action 100
 
@@ -60,9 +61,12 @@
     
     UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     footView.backgroundColor = [UIColor clearColor];
-    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     moreBtn.frame  = CGRectMake(20, 5, 280, 30);
     [moreBtn setTitle:@"点击加载更多" forState:UIControlStateNormal];
+    [moreBtn setTitleColor:RGBACOLOR(0, 140, 207, 1) forState:UIControlStateNormal];
+    moreBtn.layer.borderColor = RGBACOLOR(0, 140, 207, 1).CGColor;
+    moreBtn.layer.borderWidth = 1;
     moreBtn.tag = Tag_AddMore_Action;
     [moreBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:moreBtn];

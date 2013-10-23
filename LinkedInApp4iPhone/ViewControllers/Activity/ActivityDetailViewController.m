@@ -241,7 +241,7 @@
         else if(indexPath.section == 1&&indexPath.row == 1) //活动详情
         {
         
-            return [StaticTools getLabelHeight:self.actDetailModel.mContent defautWidth:300 defautHeight:10000 fontSize:17];
+            return [StaticTools getLabelHeight:self.actDetailModel.mContent defautWidth:300 defautHeight:10000 fontSize:15];
         }
         else //参加活动的人
         {
@@ -293,9 +293,9 @@
         {
            if(indexPath.section == 1)//活动详情
            {
-               UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5,300 , [StaticTools getLabelHeight:self.actDetailModel.mContent defautWidth:300 defautHeight:10000 fontSize:17])];
+               UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5,300 , [StaticTools getLabelHeight:self.actDetailModel.mContent defautWidth:300 defautHeight:10000 fontSize:15])];
                detailLabel.backgroundColor = [UIColor clearColor];
-               detailLabel.font = [UIFont systemFontOfSize:17];
+               detailLabel.font = [UIFont systemFontOfSize:15];
                detailLabel.numberOfLines = 0;
                detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
                detailLabel.text =  self.actDetailModel.mContent;

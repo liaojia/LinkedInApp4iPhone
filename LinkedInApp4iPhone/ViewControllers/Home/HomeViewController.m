@@ -486,8 +486,9 @@
         if (indexPath.row == 0) //section组别标题
         {
             //左侧标题文字
-            UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 100, 30)];
+            UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 8, 100, 30)];
             titleLabel.backgroundColor = [UIColor clearColor];
+            titleLabel.font  = [UIFont boldSystemFontOfSize:20];
             NSString *titleStr;
             NSString *dtailStr = @"查看更多";
             NSString *detailImg;

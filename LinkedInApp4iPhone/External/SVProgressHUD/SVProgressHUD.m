@@ -378,6 +378,16 @@
         if(self.cancelBlock) {
             [self addCancelButton];
         }
+        else
+        {
+            for (UIView *view in self.hudView.subviews)
+            {
+                if ([view isKindOfClass:[UIButton class]])
+                {
+                    [view removeFromSuperview];
+                }
+            }
+        }
         
         [self.overlayWindow setHidden:NO];
         [self positionHUD:nil];
@@ -404,7 +414,11 @@
 - (void)showImage:(UIImage *)image status:(NSString *)string duration:(NSTimeInterval)duration {
     if(![SVProgressHUD isVisible])
         [SVProgressHUD show];
-    
+    else
+    {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD show];
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
         self.imageView.image = image;
         self.imageView.hidden = NO;

@@ -109,7 +109,7 @@
         return [StaticTools getLabelHeight:self.detalModel.mName defautWidth:280 defautHeight:1000 fontSize:20]+30;
     }
     
-    return [StaticTools getLabelHeight:self.detalModel.mDesc defautWidth:300 defautHeight:10000 fontSize:17];
+    return [StaticTools getLabelHeight:self.detalModel.mDesc defautWidth:300 defautHeight:10000 fontSize:15];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -153,9 +153,9 @@
     else
     {
         //详细
-        UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5,300 , [StaticTools getLabelHeight:self.detalModel.mDesc defautWidth:300 defautHeight:10000 fontSize:17])];
+        UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5,300 , [StaticTools getLabelHeight:self.detalModel.mDesc defautWidth:300 defautHeight:10000 fontSize:15])];
         detailLabel.backgroundColor = [UIColor clearColor];
-        detailLabel.font = [UIFont systemFontOfSize:17];
+        detailLabel.font = [UIFont systemFontOfSize:15];
         detailLabel.numberOfLines = 0;
         detailLabel.lineBreakMode = UILineBreakModeWordWrap;
         detailLabel.text = self.detalModel.mDesc;

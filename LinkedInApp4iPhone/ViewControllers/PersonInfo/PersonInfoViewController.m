@@ -49,11 +49,12 @@
     self.myNoticeArray = [[NSMutableArray alloc] init];
     self.noticeMeArray = [[NSMutableArray alloc] init];
     
+    [self refreshData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self refreshData];
+    
 }
 - (void)viewDidUnload
 {
@@ -354,7 +355,7 @@
         nameLabel.text = self.model.mName;
         [cell.contentView addSubview:nameLabel];
         
-        //学校名称
+        //院系名称
         UILabel *schoolLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 40, 200, 50)];
         schoolLabel.backgroundColor = [UIColor clearColor];
         schoolLabel.numberOfLines = 2;
@@ -570,6 +571,7 @@
                [_model setMMajor:[basicDic objectForKey:@"major"]];
                [_model setMName:[basicDic objectForKey:@"name"]];
                [_model setMDept:[basicDic objectForKey:@"dept"]];
+               [_model setMSchool:[basicDic objectForKey:@"colg"]];
                
            }
            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
