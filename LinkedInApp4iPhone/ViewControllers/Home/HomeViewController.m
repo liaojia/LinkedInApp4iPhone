@@ -63,21 +63,19 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-
     [super viewWillAppear:animated];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     //必须放到viewdidappear里 否则将会被自定义的导航栏重置
     [self initNavLeftButton];
-    [self initNavTitleView];
+//    [self initNavTitleView];
 
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    self.navigationItem.titleView = nil;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -96,10 +94,10 @@
     leftBtn.frame = CGRectMake(0, 0, 35, 35);
     leftBtn.tag  = Tag_Back_Action;
     
-    self.navigationItem.title = @"学校信息";
     [leftBtn setImage:[UIImage imageNamed:@"img_list_right_normal"] forState:UIControlStateNormal];
     [leftBtn setImage:[UIImage imageNamed:@"img_list_right_pressed"] forState:UIControlStateHighlighted];
     self.navigationItem.title = @"学校信息";
+
     [leftBtn addTarget:self action:@selector(buttonClickedHandle:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
     
@@ -341,7 +339,7 @@
             }
         }
             break;
-            
+        
         default:
             break;
     }
@@ -431,7 +429,7 @@
     }
     else if(indexPath.section == 4&&indexPath.row !=0) //官方微博
     {
-        return 120;
+        return 90;
     }
     return 44;
 }
@@ -463,7 +461,7 @@
         [cell.contentView addSubview:headImgView];
         
         //学校名称
-        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(105, 5, 200, [self getStringHeight:testArray[0] withFont:[UIFont boldSystemFontOfSize:20] consSize:CGSizeMake(200, 1000)])];
+        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 5, 200, [self getStringHeight:testArray[0] withFont:[UIFont boldSystemFontOfSize:20] consSize:CGSizeMake(200, 1000)])];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.numberOfLines = 0;
         nameLabel.lineBreakMode = UILineBreakModeWordWrap;
@@ -473,7 +471,7 @@
         [cell.contentView addSubview:nameLabel];
         
         //学校详情
-        UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(105, nameLabel.frame.origin.y+nameLabel.frame.size.height+5, 180, 150-10-nameLabel.frame.size.height)];
+        UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, nameLabel.frame.origin.y+nameLabel.frame.size.height+5, 180, 150-10-nameLabel.frame.size.height)];
         detailLabel.backgroundColor = [UIColor clearColor];
         detailLabel.font = [UIFont systemFontOfSize:15];
         detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
@@ -488,8 +486,9 @@
         if (indexPath.row == 0) //section组别标题
         {
             //左侧标题文字
-            UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 100, 30)];
+            UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 8, 100, 30)];
             titleLabel.backgroundColor = [UIColor clearColor];
+            titleLabel.font  = [UIFont boldSystemFontOfSize:18];
             NSString *titleStr;
             NSString *dtailStr = @"查看更多";
             NSString *detailImg;
@@ -592,6 +591,14 @@
               rightCardBtn.frame = CGRectMake(155, 5, 140, 70);
               [rightCardBtn setBackgroundImage:[UIImage imageNamed:@"img_school_card_front"] forState:UIControlStateNormal];
               [cell.contentView addSubview:rightCardBtn];
+          }else if(indexPath.section == 4){
+              UIButton *btn_login_sina = [UIButton buttonWithType:UIButtonTypeCustom];
+              [btn_login_sina setFrame:CGRectMake(75, 30, 150, 35)];
+              [btn_login_sina setBackgroundColor:[UIColor purpleColor]];
+              [btn_login_sina setTitle:@"登录新浪微博" forState:UIControlStateNormal];
+              [btn_login_sina setTag:104];
+              [btn_login_sina addTarget:self action:@selector(buttonClickedHandle:) forControlEvents:UIControlEventTouchUpInside];
+              [cell.contentView addSubview:btn_login_sina];
           }
             
         }
@@ -621,4 +628,5 @@
     }
 
 }
+
 @end

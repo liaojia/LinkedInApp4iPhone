@@ -8,6 +8,7 @@
 
 #import "NoticeListViewController.h"
 #import "NoticeDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define Tag_AddMore_Action 100
 
@@ -61,9 +62,12 @@
     
     UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     footView.backgroundColor = [UIColor clearColor];
-    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     moreBtn.frame  = CGRectMake(20, 5, 280, 30);
     [moreBtn setTitle:@"点击加载更多" forState:UIControlStateNormal];
+    [moreBtn setTitleColor:RGBACOLOR(0, 140, 207, 1) forState:UIControlStateNormal];
+    moreBtn.layer.borderColor = RGBACOLOR(0, 140, 207, 1).CGColor;
+    moreBtn.layer.borderWidth = 1;
     moreBtn.tag = Tag_AddMore_Action;
     [moreBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:moreBtn];
@@ -77,7 +81,7 @@
  */
 - (void)getBroadcastListWithPage:(int)page
 {
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":[NSString stringWithFormat:@"%d",page],@"num":@"5",@"previewLen":@"50"} requesId:@"COLLEGE_BROADCAST_LIST" messId:nil success:^(id obj)
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":[NSString stringWithFormat:@"%d",page],@"num":@"5",@"previewLen":@"100"} requesId:@"COLLEGE_BROADCAST_LIST" messId:nil success:^(id obj)
      {
          if ([[obj objectForKey:@"rc"]intValue] == 1)
          {
@@ -157,7 +161,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    return 110;
+    return 100;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -190,17 +194,17 @@
     //详细
     UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 35,300 , 40)];
     detailLabel.backgroundColor = [UIColor clearColor];
-    detailLabel.font = [UIFont systemFontOfSize:17];
+    detailLabel.font = [UIFont systemFontOfSize:15];
     detailLabel.numberOfLines = 2;
     detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
     detailLabel.text = model.mDesc;
     [cell.contentView addSubview:detailLabel];
     
     //时间
-    UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(210, 75,100 , 30)];
+    UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 70,190 , 30)];
     timeLabel.backgroundColor = [UIColor clearColor];
     timeLabel.font = [UIFont systemFontOfSize:17];
-    titleLabel.textAlignment = UITextAlignmentRight;
+    timeLabel.textAlignment = UITextAlignmentRight;
     timeLabel.text = model.mStime;
     [cell.contentView addSubview:timeLabel];
     return cell;

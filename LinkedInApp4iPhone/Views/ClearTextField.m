@@ -42,4 +42,8 @@
 -(NSString*)getText{
     return _tf_input.text;
 }
+
+-(void)setInputTypePwd{
+    [self.tf_input setSecureTextEntry:YES];
+}
 @end

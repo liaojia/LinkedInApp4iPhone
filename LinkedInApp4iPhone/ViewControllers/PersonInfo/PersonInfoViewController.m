@@ -49,11 +49,12 @@
     self.myNoticeArray = [[NSMutableArray alloc] init];
     self.noticeMeArray = [[NSMutableArray alloc] init];
     
+    [self refreshData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self refreshData];
+    
 }
 - (void)viewDidUnload
 {
@@ -73,10 +74,16 @@
     
     UIButton *button  = (UIButton*)sender;
     
-    if (button.tag>=200&&button.tag<300) //增加履历节点
+    if (button.tag == 106) //增加履历节点
     {
         PersonInfoEditViewController *personInfoEditController = [[PersonInfoEditViewController alloc]   initWithNibName:@"PersonInfoEditViewController" bundle:[NSBundle mainBundle]];
-        personInfoEditController.infoModel = self.timeLimeArray[button.tag-200-1];
+        ProfileModel *model = [[ProfileModel alloc] init];
+        if ([self.timeLimeArray count] == 0) {
+            model.mId = @"null";
+        }else{
+            model.mId = ((ProfileModel*)[self.timeLimeArray objectAtIndex:([self.timeLimeArray count]-1)]).mId;
+        }
+        personInfoEditController.infoModel = model;
         personInfoEditController.pageType = 1;
         personInfoEditController.fatherController = self;
         [self.navigationController pushViewController:personInfoEditController animated:YES];
@@ -310,7 +317,17 @@
         titleLabel.text =  titleStr;
         [cell.contentView addSubview:titleLabel];
         
-        if (indexPath.section==2||indexPath.section == 3)
+        if (indexPath.section == 1 && indexPath.row == 0) {
+            //增加
+            UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            addBtn.frame = CGRectMake(tableView.frame.size.width -80, 5, 50, 35);
+            [addBtn setTitle:@"增加" forState:UIControlStateNormal];
+            addBtn.tag = 106;
+            
+            [addBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [cell.contentView addSubview:addBtn];
+        }else if (indexPath.section==2||indexPath.section == 3)
         {
 //            UIButton *typeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //            typeBtn.frame = CGRectMake(260, 5, 35, 35);
@@ -354,7 +371,7 @@
         nameLabel.text = self.model.mName;
         [cell.contentView addSubview:nameLabel];
         
-        //学校名称
+        //院系名称
         UILabel *schoolLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 40, 200, 50)];
         schoolLabel.backgroundColor = [UIColor clearColor];
         schoolLabel.numberOfLines = 2;
@@ -385,8 +402,6 @@
             [personInfoCell.recommendButton setHidden:NO];
         }
         
-        personInfoCell.addBtn.tag = 200+indexPath.row;
-        [personInfoCell.addBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
         personInfoCell.changeBtn.tag = 300+indexPath.row;
         [personInfoCell.changeBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
         personInfoCell.deleteBtn.tag = 400+indexPath.row;
@@ -570,6 +585,7 @@
                [_model setMMajor:[basicDic objectForKey:@"major"]];
                [_model setMName:[basicDic objectForKey:@"name"]];
                [_model setMDept:[basicDic objectForKey:@"dept"]];
+               [_model setMSchool:[basicDic objectForKey:@"colg"]];
                
            }
            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];

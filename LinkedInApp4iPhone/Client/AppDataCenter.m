@@ -27,7 +27,7 @@ static AppDataCenter *instance = nil;
  */
 + (AppDataCenter *) sharedAppDataCenter
 {
-    @synchronized(self)
+    @synchronized(self) 
     {
         if (nil == instance) {
             instance = [[AppDataCenter alloc] init];
@@ -51,8 +51,11 @@ static AppDataCenter *instance = nil;
     return self;
 }
 - (RequestModel*) getModelWithRequestId:(NSString*) name{
-    NSArray *array = [Transfer paseRequestParamXML];
-    for (RequestModel* model in array) {
+    
+    if(!self.requestParamList){
+        self.requestParamList = [Transfer paseRequestParamXML];
+    }
+    for (RequestModel* model in self.requestParamList) {
         if ([model.requestId isEqualToString:name]) {
             return model;
         }
