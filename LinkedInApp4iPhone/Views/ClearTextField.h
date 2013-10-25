@@ -14,4 +14,5 @@
 @property(nonatomic, strong)UIButton    *btn_clear;
 
 -(NSString*)getText;
+-(void)setInputTypePwd;
 @end

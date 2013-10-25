@@ -55,6 +55,7 @@
     
     _tf_pwd = [[ClearTextField alloc] initWithFrame:CGRectMake(10, 200, 300, 40)];
     [_tf_pwd.tf_input setText:@"123"];
+    [_tf_pwd setInputTypePwd];
     [self.view addSubview:_tf_pwd];
     
 }
