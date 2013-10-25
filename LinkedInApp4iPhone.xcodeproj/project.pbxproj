@@ -195,6 +195,7 @@
 		CE9DE2F21813DF52003D0EAD /* PersonalCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9DE2F01813DF52003D0EAD /* PersonalCardViewController.xib */; };
 		CEAE7A7B180FDC1700ECBD5F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE7A79180FDC1700ECBD5F /* WebViewController.m */; };
 		CEAE7A7C180FDC1700ECBD5F /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */; };
+		CECD90761819536F00EB2249 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD90741819536F00EB2249 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CED1AA06180EC4D500A4A1A0 /* PersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1AA01180EC4D500A4A1A0 /* PersonInfoCell.m */; };
 		CED1AA07180EC4D500A4A1A0 /* PersonInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED1AA02180EC4D500A4A1A0 /* PersonInfoCell.xib */; };
 		CED1AA08180EC4D500A4A1A0 /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1AA04180EC4D500A4A1A0 /* PersonInfoViewController.m */; };
@@ -471,6 +472,9 @@
 		CEAE7A78180FDC1700ECBD5F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		CEAE7A79180FDC1700ECBD5F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		CECD90731819536F00EB2249 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		CECD90741819536F00EB2249 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		CECD90751819536F00EB2249 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		CED1AA00180EC4D500A4A1A0 /* PersonInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoCell.h; sourceTree = "<group>"; };
 		CED1AA01180EC4D500A4A1A0 /* PersonInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoCell.m; sourceTree = "<group>"; };
 		CED1AA02180EC4D500A4A1A0 /* PersonInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoCell.xib; sourceTree = "<group>"; };
@@ -564,6 +568,7 @@
 		8DD5D31B1806E83D00EB446F /* External */ = {
 			isa = PBXGroup;
 			children = (
+				CECD90721819536F00EB2249 /* CTMbase64 */,
 				8D152205181426F0006AFC1D /* AFNetworking */,
 				CE586EBE1810351000BE7A62 /* StaticTools */,
 				8DD5D32E1806E8F300EB446F /* TBXML */,
@@ -978,6 +983,16 @@
 			path = PullToRefresh;
 			sourceTree = "<group>";
 		};
+		CECD90721819536F00EB2249 /* CTMbase64 */ = {
+			isa = PBXGroup;
+			children = (
+				CECD90731819536F00EB2249 /* GTMBase64.h */,
+				CECD90741819536F00EB2249 /* GTMBase64.m */,
+				CECD90751819536F00EB2249 /* GTMDefines.h */,
+			);
+			path = CTMbase64;
+			sourceTree = "<group>";
+		};
 		CED1A9FF180EC4D500A4A1A0 /* PersonInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1300,6 +1315,7 @@
 				8D152221181426F0006AFC1D /* UIImageView+AFNetworking.m in Sources */,
 				8D0FB34C1814CE4400FE9EF7 /* CommitBasicInfoViewController.m in Sources */,
 				CE62E2531816BC7F00F49A43 /* BasicInfoCommitViewController.m in Sources */,
+				CECD90761819536F00EB2249 /* GTMBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

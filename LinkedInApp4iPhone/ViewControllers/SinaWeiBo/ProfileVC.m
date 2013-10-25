@@ -188,7 +188,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
              {
-                 
+                 [SVProgressHUD dismiss];
                  NSData *data = [NSJSONSerialization dataWithJSONObject:JSON
                                                                 options:0
                                                                   error:nil];
@@ -217,7 +217,7 @@
                          NSError *error, id JSON)
              {
                  
-                 
+                 [SVProgressHUD dismiss];
                 [ client.operationQueue cancelAllOperations];
                  [client cancelAllHTTPOperationsWithMethod:@"POST" path:DEFAULTHOST];
                  
@@ -270,7 +270,8 @@
                                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
                      {
                          
-                    
+                        [SVProgressHUD dismiss];
+                         
                          NSData *data = [NSJSONSerialization dataWithJSONObject:JSON
                                                                         options:0
                                                                           error:nil];
@@ -294,7 +295,7 @@
                      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
                                  NSError *error, id JSON)
                      {
-                         
+                         [SVProgressHUD dismiss];
                          
                          [ client.operationQueue cancelAllOperations];
                          [client cancelAllHTTPOperationsWithMethod:@"POST" path:DEFAULTHOST];

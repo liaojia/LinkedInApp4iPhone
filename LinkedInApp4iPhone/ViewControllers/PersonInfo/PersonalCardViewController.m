@@ -8,6 +8,8 @@
 
 #import "PersonalCardViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GTMBase64.h"
+
 @interface PersonalCardViewController ()
 
 @end
@@ -307,7 +309,7 @@
                                              @"major":self.infoModel.mMajor,
                                              @"adYear":self.infoModel.mAdYear,
                                              @"gradYear":self.infoModel.mGradYear,
-                                             @"pic":[[NSString alloc]initWithData:UIImagePNGRepresentation(headImgView.image) encoding:NSUTF8StringEncoding]},
+                                             @"pic":[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ]},
                                   @"ext":@{@"birthday":self.infoModel.mBirthday,
                                            @"birthplace":self.infoModel.mBirthplace,
                                            @"desc":self.infoModel.mDesc,
@@ -322,6 +324,7 @@
                  [SVProgressHUD showErrorWithStatus:@"信息更新成功！"];
                 
                  [self.fatherContrller performSelector:@selector(getProfileWithId:) withObject:@"me"];
+                 [self.navigationController popViewControllerAnimated:YES];
              }
              else
              {
@@ -390,6 +393,7 @@
         headImgView.tag =  100+1;
         if (selectImg == nil)
         {
+            NSLog(@"head imgurl %@",self.infoModel.mImgUrl);
             [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl]];
         }
         else

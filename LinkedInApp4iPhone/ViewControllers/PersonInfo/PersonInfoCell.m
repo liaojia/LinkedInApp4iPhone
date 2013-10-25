@@ -35,6 +35,8 @@
     [self.timeLabel setText:timeStr];
     [_orgLabel setText:tModel.mOrg];
     [_placeLabel setText:[NSString stringWithFormat:@"%@--%@", tModel.mProvince, tModel.mCity]];
+    NSLog(@"tmode.mimgurl %@",tModel.mImgUrl);
+    [self.headImgView setImageWithURL:[NSURL URLWithString:tModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
 }
 
 @end

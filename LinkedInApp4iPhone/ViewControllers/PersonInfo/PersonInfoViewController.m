@@ -23,7 +23,6 @@
 @end
 
 @implementation PersonInfoViewController
-@synthesize model = _model;
 @synthesize timeLimeArray = _timeLimeArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,6 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.model = [[ProfileModel alloc] init];
     
     }
     return self;
@@ -345,6 +345,8 @@
         //头像图片
         UIImageView *headImgView  = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 80, 120)];
         headImgView.backgroundColor = [UIColor grayColor];
+        NSLog(@"head imgurl %@",self.model.mImgUrl);
+        [headImgView setImageWithURL:[NSURL URLWithString:self.model.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         [cell.contentView addSubview:headImgView];
         
         //姓名
@@ -535,6 +537,7 @@
                    [model setMProvince:[obj2 objectForKey:@"province"]];
                    [model setMOrg:[obj2 objectForKey:@"org"]];
                    [model setMId:[obj2 objectForKey:@"id"]];
+                   [model setMImgUrl:[obj2 objectForKey:@"pic"]];
                    [self.timeLimeArray addObject:model];
                }
                [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
@@ -562,16 +565,18 @@
      replaceId:personId
        success:^(id obj) {
            
-           if ([[obj objectForKey:@"rc"]intValue] == 1) {
+           if ([[obj objectForKey:@"rc"]intValue] == 1)
+           {
                NSDictionary *basicDic = [obj objectForKey:@"basic"];
-               _model = [[ProfileModel alloc] init];
-               [_model setMAdYear:[basicDic objectForKey:@"adYear"]];
+               
+               [self.model setMAdYear:[basicDic objectForKey:@"adYear"]];
                NSNumberFormatter *fomatter = [[NSNumberFormatter alloc] init];
-               [_model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
-               [_model setMMajor:[basicDic objectForKey:@"major"]];
-               [_model setMName:[basicDic objectForKey:@"name"]];
-               [_model setMDept:[basicDic objectForKey:@"dept"]];
-               [_model setMSchool:[basicDic objectForKey:@"colg"]];
+               [self.model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
+               [self.model setMMajor:[basicDic objectForKey:@"major"]];
+               [self.model setMName:[basicDic objectForKey:@"name"]];
+               [self.model setMDept:[basicDic objectForKey:@"dept"]];
+               [self.model setMSchool:[basicDic objectForKey:@"colg"]];
+               [self.model setMImgUrl:[basicDic objectForKey:@"pic"]];
                
            }
            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
