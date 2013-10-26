@@ -8,6 +8,7 @@
 
 #import "PersonInfoEditViewController.h"
 #import "GTMBase64.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define Tag_PickerCancel_Action 200
 #define Tag_PickerOk_Aciton  201
@@ -325,6 +326,8 @@
     
     UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 70, 70)];
     headImgView.backgroundColor = [UIColor lightGrayColor];
+    headImgView.layer.borderWidth = 2;
+    headImgView.layer.borderColor = [UIColor grayColor].CGColor;
     NSLog(@"self.infoModel.mImgUrl %@",self.infoModel.mImgUrl);
     [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
     headImgView.tag = Tag_HeadImgView_View;

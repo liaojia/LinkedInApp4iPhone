@@ -7,7 +7,7 @@
 //
 
 #import "PersonCell.h"
-
+#import <QuartzCore/QuartzCore.h>
 @implementation PersonCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -17,6 +17,13 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    self.headImg.layer.borderColor = [UIColor grayColor].CGColor;
+    self.headImg.layer.borderWidth = 2;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -21,7 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        keyArray = @[@[@"姓名",@"性别",@"学校",@"专业",@"入学时间",@"毕业时间"],@[@"生日",@"籍贯",@"名族",@"简介",@"联系方式"]];
+        keyArray = @[@[@"姓名",@"性别",@"专业",@"入学时间",@"毕业时间"],@[@"生日",@"籍贯",@"名族",@"简介",@"联系方式"]];
         
         self.infoModel = [[ProfileModel alloc]init];
     }
@@ -87,11 +87,11 @@
             self.toolBar.hidden = YES;
             NSString *timeStr = [StaticTools getDateStrWithDate:self.dataPicker.date withCutStr:@"-" hasTime:NO];
             selectTextView.text = timeStr;
-            if (selectTextView.tag == 105) //入学时间
+            if (selectTextView.tag == 104) //入学时间
             {
                 self.infoModel.mAdYear = timeStr;
             }
-            else if(selectTextView.tag == 106) //毕业时间
+            else if(selectTextView.tag == 105) //毕业时间
             {
                 self.infoModel.mGradYear = timeStr;
             }
@@ -165,7 +165,7 @@
 {
     selectTextView = textView;
     //入学时间||毕业时间||生日
-    if (textView.tag == 105||textView.tag == 106|| textView.tag == 200)
+    if (textView.tag == 104||textView.tag == 105|| textView.tag == 200)
     {
         [self hideKeyBoad];
         self.toolBar.hidden = NO;
@@ -190,11 +190,11 @@
     {
         self.infoModel.mName = textView.text;
     }
+//    else if(textView.tag == 103)
+//    {
+//         self.infoModel.mSchool = textView.text;
+//    }
     else if(textView.tag == 103)
-    {
-         self.infoModel.mSchool = textView.text;
-    }
-    else if(textView.tag == 104)
     {
         self.infoModel.mMajor = textView.text;
     }
@@ -318,7 +318,7 @@
     
     NSDictionary *requectDict = @{@"name":self.infoModel.mName,
                                  @"gender": [NSNumber numberWithInt:gender],
-                                 @"colg":self.infoModel.mSchool,
+//                                 @"colg":self.infoModel.mSchool,
                                  @"major":self.infoModel.mMajor,
                                  @"adYear":[self.infoModel.mAdYear substringToIndex:4],
                                  @"gradYear":[self.infoModel.mGradYear substringToIndex:4],
@@ -399,6 +399,8 @@
     {
         UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 100, 100)];
         headImgView.backgroundColor = [UIColor grayColor];
+        headImgView.layer.borderColor = [UIColor grayColor].CGColor;
+        headImgView.layer.borderWidth = 2;
         headImgView.tag =  100+1;
         if (selectImg == nil)
         {
@@ -463,19 +465,19 @@
                 {
                     txtView.text = self.infoModel.mName;
                 }
+//                else if(indexPath.row == 3)
+//                {
+//                    txtView.text = self.infoModel.mSchool;
+//                }
                 else if(indexPath.row == 3)
-                {
-                    txtView.text = self.infoModel.mSchool;
-                }
-                else if(indexPath.row == 4)
                 {
                     txtView.text = self.infoModel.mMajor;
                 }
-                else if(indexPath.row == 5)
+                else if(indexPath.row == 4)
                 {
                     txtView.text = self.infoModel.mAdYear;
                 }
-                else if(indexPath.row == 6)
+                else if(indexPath.row == 5)
                 {
                     txtView.text = self.infoModel.mGradYear;
                 }

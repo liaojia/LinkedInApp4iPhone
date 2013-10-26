@@ -455,10 +455,12 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         //学校图片
-        UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 20, 100, 100)];
+        UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 15, 100, 120)];
         headImgView.backgroundColor = [UIColor grayColor];
         NSLog(@"schollInfoModel.mImgUrl %@",self.schollInfoModel.mImgUrl);
         [headImgView setImageWithURL:[NSURL URLWithString:self.schollInfoModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        headImgView.layer.borderColor = [UIColor grayColor].CGColor;
+        headImgView.layer.borderWidth = 2;
         [cell.contentView addSubview:headImgView];
         
         //学校名称
@@ -524,7 +526,7 @@
             [cell.contentView addSubview:titleLabel];
             
             //右侧操作按钮
-            if(indexPath.section != 2||(indexPath.section==2&&activityTotalCount>2))
+            if(indexPath.section != 4||(indexPath.section==2&&activityTotalCount>2))
             {
                 UIButton *detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
                 detailBtn.frame = CGRectMake(tableView.frame.size.width-130, 5, 100, 35);

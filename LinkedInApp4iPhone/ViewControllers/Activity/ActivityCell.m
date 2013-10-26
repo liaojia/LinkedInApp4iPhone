@@ -7,6 +7,7 @@
 //
 
 #import "ActivityCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation ActivityCell
 
@@ -47,6 +48,8 @@
     self.moneyDetailLabel.text = [NSString stringWithFormat:@"%d",[model.mMoney intValue]];
     self.hostDetailLabel.text = model.mSponsor;
     [self.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+    self.headImgView.layer.borderWidth = 2;
+    self.headImgView.layer.borderColor = [UIColor grayColor].CGColor;
     NSLog(@"acitvity.mImgUrl %@",model.mImgUrl);
 
 }

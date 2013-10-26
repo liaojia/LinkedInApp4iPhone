@@ -9,6 +9,7 @@
 #import "PersonInfoCell.h"
 #import "ProfileModel.h"
 #import "CommendListViewController.h"
+#import <QuartzCore/QuartzCore.h>
 @implementation PersonInfoCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -25,7 +26,12 @@
 
     // Configure the view for the selected state
 }
-
+- (void)awakeFromNib
+{
+    self.headImgView.layer.borderColor = [UIColor grayColor].CGColor;
+    self.headImgView.layer.borderWidth = 2;
+    
+}
 
 - (void)initWithMode:(ProfileModel*)tModel{
     if (!tModel) {
