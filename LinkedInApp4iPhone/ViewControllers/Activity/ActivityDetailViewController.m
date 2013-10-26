@@ -140,6 +140,8 @@
                      NSDictionary *temDict = list[i];
                      ProfileModel *model = [[ProfileModel alloc]init];
                      model.mName = temDict[@"name"];
+                     model.mId = temDict[@"id"];
+                     model.mImgUrl = temDict[@"pic"];
                      [self.pepleListMtbArray addObject:model];
                  }
                  if (self.pepleListMtbArray.count>=pepleCount)
@@ -330,7 +332,7 @@
                   
                     ProfileModel *model = self.pepleListMtbArray[(indexPath.row-1)*4+i];
                     perosnView.nameLabel.text = model.mName;
-                    [perosnView.headImgBtn setBackgroundImage:[UIImage imageNamed:model.mImgUrl] forState:UIControlStateNormal];
+                    [perosnView.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
                     [cell.contentView addSubview:perosnView];
                 }
             }

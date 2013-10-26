@@ -465,8 +465,6 @@
             {
                 PersonHeadView *personHeadView = [[PersonHeadView alloc]initWithFrame:CGRectMake(8*(i+1)+i*90, 5, 90, 120)];
                 personHeadView.nameLabel.text = @"文彬";
-                personHeadView.headImgBtn.tag = 201; //TODO: 暂时写死
-                [personHeadView.headImgBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.contentView addSubview:personHeadView];
             }
 

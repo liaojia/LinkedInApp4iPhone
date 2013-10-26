@@ -149,11 +149,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/Activity/ActivityDetailViewController.m"
-         timestampString = "403864690.527527"
+         timestampString = "404465090.103756"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "307"
-         endingLineNumber = "307"
+         startingLineNumber = "309"
+         endingLineNumber = "309"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -383,11 +383,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoViewController.m"
-         timestampString = "404449698.305753"
+         timestampString = "404464972.890386"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "619"
-         endingLineNumber = "619"
+         startingLineNumber = "617"
+         endingLineNumber = "617"
          landmarkName = "@implementation PersonInfoViewController"
          landmarkType = "3">
       </FileBreakpoint>
