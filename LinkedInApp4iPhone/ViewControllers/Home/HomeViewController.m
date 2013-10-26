@@ -457,7 +457,8 @@
         //学校图片
         UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 20, 100, 100)];
         headImgView.backgroundColor = [UIColor grayColor];
-        [headImgView setImageWithURL:[NSURL URLWithString:self.schollInfoModel.mImgUrl]];
+        NSLog(@"schollInfoModel.mImgUrl %@",self.schollInfoModel.mImgUrl);
+        [headImgView setImageWithURL:[NSURL URLWithString:self.schollInfoModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         [cell.contentView addSubview:headImgView];
         
         //学校名称

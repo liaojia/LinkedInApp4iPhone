@@ -46,7 +46,8 @@
     self.typeDetailLabel.text = [NSString stringWithFormat:@"%d",[model.mType intValue]];
     self.moneyDetailLabel.text = [NSString stringWithFormat:@"%d",[model.mMoney intValue]];
     self.hostDetailLabel.text = model.mSponsor;
-    [self.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl]];
+    [self.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+    NSLog(@"acitvity.mImgUrl %@",model.mImgUrl);
 
 }
 /**

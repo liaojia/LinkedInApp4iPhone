@@ -345,6 +345,7 @@
  */
 - (void)updatePersonInfo
 {
+    [self hideKeyBoad];
     NSString *errStr = nil;
     if ([StaticTools isEmptyString:self.infoModel.mTitle])
     {

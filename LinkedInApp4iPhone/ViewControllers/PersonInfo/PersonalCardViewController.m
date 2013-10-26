@@ -303,18 +303,27 @@
     
     UIImageView *headImgView = (UIImageView*)[[self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:101];
     int gender = [self.infoModel.mGender isEqualToString:@"男"]?1:0;
-    NSDictionary *requectDict = @{@"basic":@{@"name":self.infoModel.mName,
-                                             @"gender": [NSNumber numberWithInt:gender],
-                                             @"colg":self.infoModel.mSchool,
-                                             @"major":self.infoModel.mMajor,
-                                             @"adYear":self.infoModel.mAdYear,
-                                             @"gradYear":self.infoModel.mGradYear,
-                                             @"pic":[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ]},
-                                  @"ext":@{@"birthday":self.infoModel.mBirthday,
-                                           @"birthplace":self.infoModel.mBirthplace,
-                                           @"desc":self.infoModel.mDesc,
-                                           @"nation":self.infoModel.mNation,
-                                           @"tel":self.infoModel.mTel,}};
+//    NSDictionary *requectDict = @{@"basic":@{@"name":self.infoModel.mName,
+//                                             @"gender": [NSNumber numberWithInt:gender],
+//                                             @"colg":self.infoModel.mSchool,
+//                                             @"major":self.infoModel.mMajor,
+//                                             @"adYear":[self.infoModel.mAdYear substringToIndex:4],
+//                                             @"gradYear":[self.infoModel.mGradYear substringToIndex:4],
+//                                             @"pic":[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ]},
+//                                  @"ext":@{@"birthday":self.infoModel.mBirthday,
+//                                           @"birthplace":self.infoModel.mBirthplace,
+//                                           @"desc":self.infoModel.mDesc,
+//                                           @"nation":self.infoModel.mNation,
+//                                           @"tel":self.infoModel.mTel,}};
+    
+    NSDictionary *requectDict = @{@"name":self.infoModel.mName,
+                                 @"gender": [NSNumber numberWithInt:gender],
+                                 @"colg":self.infoModel.mSchool,
+                                 @"major":self.infoModel.mMajor,
+                                 @"adYear":[self.infoModel.mAdYear substringToIndex:4],
+                                 @"gradYear":[self.infoModel.mGradYear substringToIndex:4],
+                                 @"pic":[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ]};
+                              ;
     
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:requectDict requesId:@"PROFILE_UPDATE" messId:nil success:^(id obj)
          {
@@ -328,7 +337,7 @@
              }
              else
              {
-                 [SVProgressHUD showErrorWithStatus:@"信息失败！"];
+                 [SVProgressHUD showErrorWithStatus:@"信息更新失败！"];
              }
              
              
@@ -343,7 +352,7 @@
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -394,7 +403,7 @@
         if (selectImg == nil)
         {
             NSLog(@"head imgurl %@",self.infoModel.mImgUrl);
-            [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl]];
+            [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         }
         else
         {
