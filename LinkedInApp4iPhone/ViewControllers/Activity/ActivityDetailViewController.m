@@ -133,6 +133,7 @@
              {
                  currentPage++;
                  
+                 
                  pepleCount = [obj[@"total"] intValue];
                  NSArray *list = obj[@"list"];
                  for (int i=0; i<list.count; i++)
