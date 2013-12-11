@@ -21,6 +21,7 @@
 		8D15221F181426F0006AFC1D /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D152214181426F0006AFC1D /* AFURLConnectionOperation.m */; };
 		8D152220181426F0006AFC1D /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D152216181426F0006AFC1D /* AFXMLRequestOperation.m */; };
 		8D152221181426F0006AFC1D /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D152218181426F0006AFC1D /* UIImageView+AFNetworking.m */; };
+		8D935456181D378000DD4C65 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D935455181D378000DD4C65 /* icon@2x.png */; };
 		8DD5D30A1806A1C200EB446F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD5D3091806A1C200EB446F /* Security.framework */; };
 		8DD5D30C1806A1D500EB446F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD5D30B1806A1D500EB446F /* CFNetwork.framework */; };
 		8DD5D31A1806E7DC00EB446F /* FileManagerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5D3181806E7DC00EB446F /* FileManagerUtil.m */; };
@@ -47,7 +48,6 @@
 		8DEE3E5218044A1C00B4C607 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DEE3E5118044A1C00B4C607 /* Default.png */; };
 		8DEE3E5418044A1C00B4C607 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DEE3E5318044A1C00B4C607 /* Default@2x.png */; };
 		8DEE3E5618044A1C00B4C607 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DEE3E5518044A1C00B4C607 /* Default-568h@2x.png */; };
-		8DF207CA180CE05600FDEABA /* @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DF20793180CE05600FDEABA /* @2x.png */; };
 		8DF207CB180CE05600FDEABA /* img_card_announcement@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DF20794180CE05600FDEABA /* img_card_announcement@2x.png */; };
 		8DF207CC180CE05600FDEABA /* img_card_arrows_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DF20795180CE05600FDEABA /* img_card_arrows_normal@2x.png */; };
 		8DF207CD180CE05600FDEABA /* img_card_arrows_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DF20796180CE05600FDEABA /* img_card_arrows_pressed@2x.png */; };
@@ -244,6 +244,7 @@
 		8D152216181426F0006AFC1D /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		8D152217181426F0006AFC1D /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		8D152218181426F0006AFC1D /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		8D935455181D378000DD4C65 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		8DD5D3091806A1C200EB446F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8DD5D30B1806A1D500EB446F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8DD5D3171806E7DC00EB446F /* FileManagerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManagerUtil.h; sourceTree = "<group>"; };
@@ -281,7 +282,6 @@
 		8DEE3E5118044A1C00B4C607 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8DEE3E5318044A1C00B4C607 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8DEE3E5518044A1C00B4C607 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8DF20793180CE05600FDEABA /* @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "@2x.png"; sourceTree = "<group>"; };
 		8DF20794180CE05600FDEABA /* img_card_announcement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_card_announcement@2x.png"; sourceTree = "<group>"; };
 		8DF20795180CE05600FDEABA /* img_card_arrows_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_card_arrows_normal@2x.png"; sourceTree = "<group>"; };
 		8DF20796180CE05600FDEABA /* img_card_arrows_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_card_arrows_pressed@2x.png"; sourceTree = "<group>"; };
@@ -708,7 +708,7 @@
 		8DF20792180CE05600FDEABA /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				8DF20793180CE05600FDEABA /* @2x.png */,
+				8D935455181D378000DD4C65 /* icon@2x.png */,
 				8DF20794180CE05600FDEABA /* img_card_announcement@2x.png */,
 				8DF20795180CE05600FDEABA /* img_card_arrows_normal@2x.png */,
 				8DF20796180CE05600FDEABA /* img_card_arrows_pressed@2x.png */,
@@ -1117,7 +1117,6 @@
 				8DEE3E5618044A1C00B4C607 /* Default-568h@2x.png in Resources */,
 				8DD5D3281806E83D00EB446F /* SVProgressHUD.bundle in Resources */,
 				8DD5D34B1807CEAF00EB446F /* http_request_param.xml in Resources */,
-				8DF207CA180CE05600FDEABA /* @2x.png in Resources */,
 				8DF207CB180CE05600FDEABA /* img_card_announcement@2x.png in Resources */,
 				8DF207CC180CE05600FDEABA /* img_card_arrows_normal@2x.png in Resources */,
 				8DF207CD180CE05600FDEABA /* img_card_arrows_pressed@2x.png in Resources */,
@@ -1234,6 +1233,7 @@
 				CE00A12B181615D700253780 /* tabbar_whitebtn@2x.png in Resources */,
 				8D0FB34D1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib in Resources */,
 				CE62E2541816BC7F00F49A43 /* BasicInfoCommitViewController.xib in Resources */,
+				8D935456181D378000DD4C65 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,8 +1345,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Link-Power Information Technologies Development Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Link-Power Information Technologies Development Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: China Grains & Logistics Corporation, Beiliang Co.,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: China Grains & Logistics Corporation, Beiliang Co.,Ltd.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1361,8 +1361,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "462F75B5-B389-40DE-9EB7-FD9D23702424";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "462F75B5-B389-40DE-9EB7-FD9D23702424";
+				PROVISIONING_PROFILE = "420A487D-743D-4E0A-9E90-14740116C2C4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "420A487D-743D-4E0A-9E90-14740116C2C4";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1379,8 +1379,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Link-Power Information Technologies Development Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Link-Power Information Technologies Development Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: China Grains & Logistics Corporation, Beiliang Co.,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: China Grains & Logistics Corporation, Beiliang Co.,Ltd.";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1388,8 +1388,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "462F75B5-B389-40DE-9EB7-FD9D23702424";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "462F75B5-B389-40DE-9EB7-FD9D23702424";
+				PROVISIONING_PROFILE = "420A487D-743D-4E0A-9E90-14740116C2C4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "420A487D-743D-4E0A-9E90-14740116C2C4";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
