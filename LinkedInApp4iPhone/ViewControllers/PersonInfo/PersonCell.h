@@ -21,7 +21,7 @@
 
 @interface PersonCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *headImg;
+@property (weak, nonatomic) IBOutlet UIImageView *headImg;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;        //姓名
 @property (weak, nonatomic) IBOutlet UILabel *sexLabel;         //性别

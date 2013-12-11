@@ -205,6 +205,7 @@ static NSString *totalSize = nil;
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
     
+            [SVProgressHUD dismiss];
             NSLog(@"respose: %@", JSON);
             success(JSON);
             
@@ -267,15 +268,17 @@ static NSString *totalSize = nil;
     [[Transfer sharedClient]  registerHTTPOperationClass:[AFJSONRequestOperation class]];
     
     //履历更新||新建履历 带有图片上传的
-    if ([requestId isEqualToString:@"TIMELINE_NODE_CREATE"]
-        ||[requestId isEqualToString:@"TIMELINE_NODE_UPDATE"])
-    {
-        [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"multipart/form-data"];
-    }
-    else
-    {
+//    if ([requestId isEqualToString:@"TIMELINE_NODE_CREATE"]
+//        ||[requestId isEqualToString:@"TIMELINE_NODE_UPDATE"])
+//    {
+////        [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"multipart/form-data"];
+//
+//        
+//    }
+//    else
+//    {
         [[Transfer sharedClient] setDefaultHeader:@"Content-Type" value:@"application/json"];
-    }
+//    }
     
        [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
     

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/Home/HomeViewController.m"
-         timestampString = "404224576.763982"
+         timestampString = "404448128.326552"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "642"
-         endingLineNumber = "642">
+         startingLineNumber = "645"
+         endingLineNumber = "645">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -71,11 +71,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/CommendListViewController.m"
-         timestampString = "404223786.472351"
+         timestampString = "404446801.822599"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "159"
-         endingLineNumber = "159"
+         startingLineNumber = "160"
+         endingLineNumber = "160"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -84,25 +84,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoViewController.m"
-         timestampString = "404224732.710675"
+         timestampString = "404449698.305753"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
          landmarkName = "-buttonClickHandle:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoViewController.m"
-         timestampString = "404224732.710675"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "220"
-         endingLineNumber = "220"
-         landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -162,11 +149,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/Activity/ActivityDetailViewController.m"
-         timestampString = "403864690.527527"
+         timestampString = "404465090.103756"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "307"
-         endingLineNumber = "307"
+         startingLineNumber = "309"
+         endingLineNumber = "309"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -175,11 +162,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoEditViewController.m"
-         timestampString = "403932441.999184"
+         timestampString = "404447489.835552"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-textFieldDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -188,11 +175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoEditViewController.m"
-         timestampString = "403932441.999184"
+         timestampString = "404447489.835552"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "156"
-         endingLineNumber = "156"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
          landmarkName = "-textFieldDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -201,11 +188,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoEditViewController.m"
-         timestampString = "403957095.402272"
+         timestampString = "404447489.835552"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "346"
-         endingLineNumber = "346"
+         startingLineNumber = "352"
+         endingLineNumber = "352"
          landmarkName = "-updatePersonInfo"
          landmarkType = "5">
       </FileBreakpoint>
@@ -214,11 +201,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoEditViewController.m"
-         timestampString = "403957095.402272"
+         timestampString = "404447489.835552"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "382"
-         endingLineNumber = "382"
+         startingLineNumber = "388"
+         endingLineNumber = "388"
          landmarkName = "-updatePersonInfo"
          landmarkType = "5">
       </FileBreakpoint>
@@ -253,11 +240,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonalCardViewController.m"
-         timestampString = "403969409.233009"
+         timestampString = "404398378.406509"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "188"
-         endingLineNumber = "188"
+         startingLineNumber = "190"
+         endingLineNumber = "190"
          landmarkName = "-textViewDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -266,11 +253,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonalCardViewController.m"
-         timestampString = "403969409.233009"
+         timestampString = "404398378.406509"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
+         startingLineNumber = "90"
+         endingLineNumber = "90"
          landmarkName = "-buttonClickHandle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -279,11 +266,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonalCardViewController.m"
-         timestampString = "403974690.758266"
+         timestampString = "404402741.644739"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "317"
-         endingLineNumber = "317"
+         startingLineNumber = "328"
+         endingLineNumber = "328"
          landmarkName = "-updatePersonalCard"
          landmarkType = "5">
       </FileBreakpoint>
@@ -292,11 +279,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonalCardViewController.m"
-         timestampString = "403969409.233009"
+         timestampString = "404398378.406509"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "110"
-         endingLineNumber = "110"
+         startingLineNumber = "112"
+         endingLineNumber = "112"
          landmarkName = "-segmentValueChange:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -305,11 +292,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonalCardViewController.m"
-         timestampString = "403974690.758266"
+         timestampString = "404398378.406509"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "303"
-         endingLineNumber = "303"
+         startingLineNumber = "305"
+         endingLineNumber = "305"
          landmarkName = "-updatePersonalCard"
          landmarkType = "5">
       </FileBreakpoint>
@@ -318,24 +305,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonalCardViewController.m"
-         timestampString = "403974690.758266"
+         timestampString = "404398378.406509"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "423"
-         endingLineNumber = "423"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonalCardViewController.m"
-         timestampString = "403969409.233009"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
          landmarkName = "-segmentValueChange:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -383,25 +357,51 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LinkedInApp4iPhone/Client/Transfer.m"
-         timestampString = "404149499.802316"
+         timestampString = "404397626.375681"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
-         landmarkName = "-doQueueByTogether:prompt:completeBlock:"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
+         landmarkName = "-sendRequestWithRequestDic:requesId:messId:success:failure:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "LinkedInApp4iPhone/Client/Transfer.m"
-         timestampString = "404226274.101397"
+         filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoEditViewController.m"
+         timestampString = "404447560.707886"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "324"
-         endingLineNumber = "324"
-         landmarkName = "-sendRequestWithRequestDic:requesId:messId:success:failure:"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
+         landmarkName = "-initTableView"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonInfoViewController.m"
+         timestampString = "404464972.890386"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "617"
+         endingLineNumber = "617"
+         landmarkName = "@implementation PersonInfoViewController"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "LinkedInApp4iPhone/ViewControllers/PersonInfo/PersonalCardViewController.m"
+         timestampString = "404402567.111998"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
+         landmarkName = "-buttonClickHandle:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

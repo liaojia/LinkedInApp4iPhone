@@ -33,9 +33,11 @@
 */
 - (void)initSubView
 {
-    self.headImgBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.headImgBtn.frame = CGRectMake(5, 5, self.frame.size.width-10, self.frame.size.height-40);
-    [self addSubview:self.headImgBtn];
+    self.headImgView = [[UIImageView alloc]init];
+    self.headImgView.frame = CGRectMake(5, 5, self.frame.size.width-10, self.frame.size.height-40);
+    self.headImgView.layer.borderWidth = 2;
+    self.headImgView.layer.borderColor = [UIColor grayColor].CGColor;
+    [self addSubview:self.headImgView];
     
     self.nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, self.frame.size.height-30, self.frame.size.width-10, 30)];
     self.nameLabel.backgroundColor = [UIColor clearColor];

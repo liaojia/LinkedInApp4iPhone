@@ -86,6 +86,11 @@
 
 -(void)setMImgUrl:(NSString *)mImgUrl
 {
+    if (mImgUrl!=nil&& ![mImgUrl isEqual:[NSNull null]])
+    {
+        mImgUrl = [mImgUrl stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+
+    }
     _mImgUrl = [self checkNullWithString:mImgUrl];
 }
 

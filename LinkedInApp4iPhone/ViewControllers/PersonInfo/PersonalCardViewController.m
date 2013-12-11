@@ -8,6 +8,8 @@
 
 #import "PersonalCardViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GTMBase64.h"
+
 @interface PersonalCardViewController ()
 
 @end
@@ -19,7 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        keyArray = @[@[@"姓名",@"性别",@"学校",@"专业",@"入学时间",@"毕业时间"],@[@"生日",@"籍贯",@"名族",@"简介",@"联系方式"]];
+        keyArray = @[@[@"姓名",@"性别",@"专业",@"入学时间",@"毕业时间"],@[@"生日",@"籍贯",@"名族",@"简介",@"联系方式"]];
         
         self.infoModel = [[ProfileModel alloc]init];
     }
@@ -85,11 +87,11 @@
             self.toolBar.hidden = YES;
             NSString *timeStr = [StaticTools getDateStrWithDate:self.dataPicker.date withCutStr:@"-" hasTime:NO];
             selectTextView.text = timeStr;
-            if (selectTextView.tag == 105) //入学时间
+            if (selectTextView.tag == 104) //入学时间
             {
                 self.infoModel.mAdYear = timeStr;
             }
-            else if(selectTextView.tag == 106) //毕业时间
+            else if(selectTextView.tag == 105) //毕业时间
             {
                 self.infoModel.mGradYear = timeStr;
             }
@@ -163,7 +165,7 @@
 {
     selectTextView = textView;
     //入学时间||毕业时间||生日
-    if (textView.tag == 105||textView.tag == 106|| textView.tag == 200)
+    if (textView.tag == 104||textView.tag == 105|| textView.tag == 200)
     {
         [self hideKeyBoad];
         self.toolBar.hidden = NO;
@@ -188,11 +190,11 @@
     {
         self.infoModel.mName = textView.text;
     }
+//    else if(textView.tag == 103)
+//    {
+//         self.infoModel.mSchool = textView.text;
+//    }
     else if(textView.tag == 103)
-    {
-         self.infoModel.mSchool = textView.text;
-    }
-    else if(textView.tag == 104)
     {
         self.infoModel.mMajor = textView.text;
     }
@@ -301,18 +303,27 @@
     
     UIImageView *headImgView = (UIImageView*)[[self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:101];
     int gender = [self.infoModel.mGender isEqualToString:@"男"]?1:0;
-    NSDictionary *requectDict = @{@"basic":@{@"name":self.infoModel.mName,
-                                             @"gender": [NSNumber numberWithInt:gender],
-                                             @"colg":self.infoModel.mSchool,
-                                             @"major":self.infoModel.mMajor,
-                                             @"adYear":self.infoModel.mAdYear,
-                                             @"gradYear":self.infoModel.mGradYear,
-                                             @"pic":[[NSString alloc]initWithData:UIImagePNGRepresentation(headImgView.image) encoding:NSUTF8StringEncoding]},
-                                  @"ext":@{@"birthday":self.infoModel.mBirthday,
-                                           @"birthplace":self.infoModel.mBirthplace,
-                                           @"desc":self.infoModel.mDesc,
-                                           @"nation":self.infoModel.mNation,
-                                           @"tel":self.infoModel.mTel,}};
+//    NSDictionary *requectDict = @{@"basic":@{@"name":self.infoModel.mName,
+//                                             @"gender": [NSNumber numberWithInt:gender],
+//                                             @"colg":self.infoModel.mSchool,
+//                                             @"major":self.infoModel.mMajor,
+//                                             @"adYear":[self.infoModel.mAdYear substringToIndex:4],
+//                                             @"gradYear":[self.infoModel.mGradYear substringToIndex:4],
+//                                             @"pic":[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ]},
+//                                  @"ext":@{@"birthday":self.infoModel.mBirthday,
+//                                           @"birthplace":self.infoModel.mBirthplace,
+//                                           @"desc":self.infoModel.mDesc,
+//                                           @"nation":self.infoModel.mNation,
+//                                           @"tel":self.infoModel.mTel,}};
+    
+    NSDictionary *requectDict = @{@"name":self.infoModel.mName,
+                                 @"gender": [NSNumber numberWithInt:gender],
+//                                 @"colg":self.infoModel.mSchool,
+                                 @"major":self.infoModel.mMajor,
+                                 @"adYear":[self.infoModel.mAdYear substringToIndex:4],
+                                 @"gradYear":[self.infoModel.mGradYear substringToIndex:4],
+                                 @"pic":[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ]};
+                              ;
     
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:requectDict requesId:@"PROFILE_UPDATE" messId:nil success:^(id obj)
          {
@@ -322,10 +333,11 @@
                  [SVProgressHUD showErrorWithStatus:@"信息更新成功！"];
                 
                  [self.fatherContrller performSelector:@selector(getProfileWithId:) withObject:@"me"];
+                 [self.navigationController popViewControllerAnimated:YES];
              }
              else
              {
-                 [SVProgressHUD showErrorWithStatus:@"信息失败！"];
+                 [SVProgressHUD showErrorWithStatus:@"信息更新失败！"];
              }
              
              
@@ -340,7 +352,7 @@
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -387,10 +399,13 @@
     {
         UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 100, 100)];
         headImgView.backgroundColor = [UIColor grayColor];
+        headImgView.layer.borderColor = [UIColor grayColor].CGColor;
+        headImgView.layer.borderWidth = 2;
         headImgView.tag =  100+1;
         if (selectImg == nil)
         {
-            [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl]];
+            NSLog(@"head imgurl %@",self.infoModel.mImgUrl);
+            [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         }
         else
         {
@@ -450,19 +465,19 @@
                 {
                     txtView.text = self.infoModel.mName;
                 }
+//                else if(indexPath.row == 3)
+//                {
+//                    txtView.text = self.infoModel.mSchool;
+//                }
                 else if(indexPath.row == 3)
-                {
-                    txtView.text = self.infoModel.mSchool;
-                }
-                else if(indexPath.row == 4)
                 {
                     txtView.text = self.infoModel.mMajor;
                 }
-                else if(indexPath.row == 5)
+                else if(indexPath.row == 4)
                 {
                     txtView.text = self.infoModel.mAdYear;
                 }
-                else if(indexPath.row == 6)
+                else if(indexPath.row == 5)
                 {
                     txtView.text = self.infoModel.mGradYear;
                 }

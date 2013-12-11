@@ -23,7 +23,6 @@
 @end
 
 @implementation PersonInfoViewController
-@synthesize model = _model;
 @synthesize timeLimeArray = _timeLimeArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,6 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.model = [[ProfileModel alloc] init];
     
     }
     return self;
@@ -42,6 +42,14 @@
     // Do any additional setup after loading the view from its nib.
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
+    if (self.pageType == 0)
+    {
+        self.navigationItem.title = @"我的信息";
+    }
+    else
+    {
+        self.navigationItem.title = @"个人信息";
+    }
     
     hasMoreMyNotice = false;
     hasMoreNoticeMe = false;
@@ -112,27 +120,27 @@
         
     }
     
-    if (button.tag>=20000)
-    {
-        PersonInfoViewController *perosnInforController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
-        perosnInforController.pageType = 1;
-        int tag = button.tag - 40000;
-        if (tag > 19999) {
-            // 和 section = 3 等价，即关注我的人
-            perosnInforController.personId = ((ProfileModel*)[self.noticeMeArray objectAtIndex:tag-20000]).mId;
-            
-            
-        }else{
-            // 和 section = 2 等价，即我关注的人
-            perosnInforController.personId = ((ProfileModel*)[self.myNoticeArray objectAtIndex:tag]).mId;
-           
-        }
-        
-        AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        [appdelegate.rootNavigationController pushViewController:perosnInforController animated:YES];
-        return;
-        
-    }
+//    if (button.tag>=20000)
+//    {
+//        PersonInfoViewController *perosnInforController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
+//        perosnInforController.pageType = 1;
+//        int tag = button.tag - 40000;
+//        if (tag > 19999) {
+//            // 和 section = 3 等价，即关注我的人
+//            perosnInforController.personId = ((ProfileModel*)[self.noticeMeArray objectAtIndex:tag-20000]).mId;
+//            
+//            
+//        }else{
+//            // 和 section = 2 等价，即我关注的人
+//            perosnInforController.personId = ((ProfileModel*)[self.myNoticeArray objectAtIndex:tag]).mId;
+//           
+//        }
+//        
+//        AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//        [appdelegate.rootNavigationController pushViewController:perosnInforController animated:YES];
+//        return;
+//        
+//    }
     switch (button.tag)
     {
         case 102: //我的关注列表类型改变
@@ -249,6 +257,7 @@
         }
         
     }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -257,10 +266,20 @@
     {
         return 130;
     }
-    else if(indexPath.section == 1)
+    else if(indexPath.section == 1) //个人履历
     {
-        
-        return indexPath.row == 0?44:140;
+        if (indexPath.row == 0)
+        {
+            return 44;
+        }
+        else
+        {
+            if ([self.personId isEqualToString:@"me"])
+            {
+                return 140;
+            }
+            return 120; //查看别人的履历时底部无修改、删除按钮
+        }
     }
     if (indexPath.section == 2||indexPath.section==3)
     {
@@ -317,7 +336,7 @@
         titleLabel.text =  titleStr;
         [cell.contentView addSubview:titleLabel];
         
-        if (indexPath.section == 1 && indexPath.row == 0) {
+        if (indexPath.section == 1 && indexPath.row == 0&&[self.personId isEqualToString:@"me"]) {
             //增加
             UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             addBtn.frame = CGRectMake(tableView.frame.size.width -80, 5, 50, 35);
@@ -359,12 +378,14 @@
     {
         
         //头像图片
-        UIImageView *headImgView  = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 80, 120)];
+        UIImageView *headImgView  = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 100, 120)];
         headImgView.backgroundColor = [UIColor grayColor];
+        NSLog(@"head imgurl %@",self.model.mImgUrl);
+        [headImgView setImageWithURL:[NSURL URLWithString:self.model.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         [cell.contentView addSubview:headImgView];
         
         //姓名
-        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 10, 200, 30)];
+        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 10, 190, 30)];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.font = [UIFont systemFontOfSize:18];
         nameLabel.textColor = RGBACOLOR(0, 140, 207, 1);
@@ -372,7 +393,7 @@
         [cell.contentView addSubview:nameLabel];
         
         //院系名称
-        UILabel *schoolLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 40, 200, 50)];
+        UILabel *schoolLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 40, 190, 50)];
         schoolLabel.backgroundColor = [UIColor clearColor];
         schoolLabel.numberOfLines = 2;
         schoolLabel.lineBreakMode = UILineBreakModeWordWrap;
@@ -381,7 +402,7 @@
         [cell.contentView addSubview:schoolLabel];
         
         //专业名称
-        UILabel *specialityLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 80, 200, 50)];
+        UILabel *specialityLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 80, 190, 50)];
         specialityLabel.backgroundColor = [UIColor clearColor];
         specialityLabel.numberOfLines = 2;
         specialityLabel.lineBreakMode = UILineBreakModeWordWrap;
@@ -398,8 +419,12 @@
         [personInfoCell.recommendButton setTag:(999+indexPath.row)];
         if (![self.personId isEqualToString:@"me"]) {
             [personInfoCell.recommendButton setHidden:YES];
+            personInfoCell.changeBtn.hidden = YES;
+            personInfoCell.deleteBtn.hidden = YES;
         }else{
             [personInfoCell.recommendButton setHidden:NO];
+            personInfoCell.changeBtn.hidden = NO;
+            personInfoCell.deleteBtn.hidden = NO;
         }
         
         personInfoCell.changeBtn.tag = 300+indexPath.row;
@@ -440,8 +465,6 @@
             {
                 PersonHeadView *personHeadView = [[PersonHeadView alloc]initWithFrame:CGRectMake(8*(i+1)+i*90, 5, 90, 120)];
                 personHeadView.nameLabel.text = @"文彬";
-                personHeadView.headImgBtn.tag = 201; //TODO: 暂时写死
-                [personHeadView.headImgBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.contentView addSubview:personHeadView];
             }
 
@@ -451,6 +474,7 @@
         {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonCell" owner:nil options:nil] objectAtIndex:0];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             PersonCell *pesonCell = (PersonCell*)cell;
             NSArray *tmpArray = nil;
             if (indexPath.section == 2) {
@@ -463,9 +487,10 @@
                 pesonCell.selectionStyle = UITableViewCellSelectionStyleNone;
                 pesonCell.nameLabel.text = model.mName;
                 pesonCell.sexLabel.text = model.mGender;
+                [pesonCell.headImg setImageWithURL:[NSURL URLWithString:model.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
                 pesonCell.placeLabel.text = [NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity];
-                pesonCell.headImg.tag =indexPath.section*20000+indexPath.row-1;
-                [pesonCell.headImg addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+//                pesonCell.headImg.tag =indexPath.section*20000+indexPath.row-1;
+//                [pesonCell.headImg addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
                 [pesonCell.actionBtn setTitle:indexPath.section==2?@"取消关注":@"关注" forState:UIControlStateNormal];
                 [pesonCell.actionBtn setTag:(indexPath.section*20000+indexPath.row-1) ];
                 [pesonCell.actionBtn addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -494,6 +519,30 @@
         personalCardController.fatherContrller = self;
         [self.navigationController pushViewController:personalCardController animated:YES];
     }
+    else if(indexPath.section == 2||indexPath.section == 3)
+    {
+        if (indexPath.row==0)
+        {
+            return;
+        }
+        PersonInfoViewController *perosnInforController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
+        perosnInforController.pageType = 1;
+        if (indexPath.section == 3) //关注我的人
+        {
+            perosnInforController.personId = ((ProfileModel*)[self.noticeMeArray objectAtIndex:indexPath.row-1]).mId;
+            
+            
+        }
+        else //即我关注的人
+        {
+            perosnInforController.personId = ((ProfileModel*)[self.myNoticeArray objectAtIndex:indexPath.row-1]).mId;
+            
+        }
+        
+        [self.navigationController pushViewController:perosnInforController animated:YES];
+
+    }
+    
 }
 
 #pragma mark-
@@ -549,6 +598,7 @@
                    [model setMProvince:[obj2 objectForKey:@"province"]];
                    [model setMOrg:[obj2 objectForKey:@"org"]];
                    [model setMId:[obj2 objectForKey:@"id"]];
+                   [model setMImgUrl:[obj2 objectForKey:@"pic"]];
                    [self.timeLimeArray addObject:model];
                }
                [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
@@ -576,16 +626,18 @@
      replaceId:personId
        success:^(id obj) {
            
-           if ([[obj objectForKey:@"rc"]intValue] == 1) {
+           if ([[obj objectForKey:@"rc"]intValue] == 1)
+           {
                NSDictionary *basicDic = [obj objectForKey:@"basic"];
-               _model = [[ProfileModel alloc] init];
-               [_model setMAdYear:[basicDic objectForKey:@"adYear"]];
+               
+               [self.model setMAdYear:[basicDic objectForKey:@"adYear"]];
                NSNumberFormatter *fomatter = [[NSNumberFormatter alloc] init];
-               [_model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
-               [_model setMMajor:[basicDic objectForKey:@"major"]];
-               [_model setMName:[basicDic objectForKey:@"name"]];
-               [_model setMDept:[basicDic objectForKey:@"dept"]];
-               [_model setMSchool:[basicDic objectForKey:@"colg"]];
+               [self.model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
+               [self.model setMMajor:[basicDic objectForKey:@"major"]];
+               [self.model setMName:[basicDic objectForKey:@"name"]];
+               [self.model setMDept:[basicDic objectForKey:@"dept"]];
+               [self.model setMSchool:[basicDic objectForKey:@"colg"]];
+               [self.model setMImgUrl:[basicDic objectForKey:@"pic"]];
                
            }
            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
@@ -629,6 +681,7 @@
                      [model setMName:[obj2 objectForKey:@"name"]];
                      [model setMGender:[obj2 objectForKey:@"gender"]];
                      [model setMId:[obj2 objectForKey:@"id"]];
+                     [model setMImgUrl:[obj2 objectForKey:@"pic"]];
                      [self.myNoticeArray addObject:model];
                  }
                  [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
@@ -681,6 +734,7 @@
                      [model setMName:[obj2 objectForKey:@"name"]];
                      [model setMGender:[obj2 objectForKey:@"gender"]];
                      [model setMId:[obj2 objectForKey:@"id"]];
+                     [model setMImgUrl:[obj2 objectForKey:@"pic"]];
                      [self.noticeMeArray addObject:model];
                  }
                 [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];

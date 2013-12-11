@@ -9,6 +9,7 @@
 #import "CommendListViewController.h"
 #import "PersonHeadView.h"
 #import "PersonCell.h"
+#import "PersonInfoViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define Tag_ChangeShowType_Action 100
@@ -169,6 +170,8 @@
         }
         cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonCell" owner:nil options:nil] objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
         PersonCell *pesonCell = (PersonCell*)cell;
         
         if (self.mArray || [self.mArray count] !=0) {
@@ -177,8 +180,10 @@
             pesonCell.nameLabel.text = model.mName;
             pesonCell.sexLabel.text = model.mGender;
             pesonCell.placeLabel.text = [NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity];
-            pesonCell.headImg.tag =self.fromFlag*10000+indexPath.row;
-            [pesonCell.headImg addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+            NSLog(@"model.mImgUrl %@",model.mImgUrl);
+            [pesonCell.headImg setImageWithURL:[NSURL URLWithString:model.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+//            pesonCell.headImg.tag =self.fromFlag*10000+indexPath.row;
+//            [pesonCell.headImg addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
             NSString *tmpBtnStr = @"";
             switch (self.fromFlag) {
                 case 0:
@@ -246,7 +251,17 @@
 
   return nil;
 }
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProfileModel *model = [self.mArray objectAtIndex:indexPath.row];
+    PersonInfoViewController *perosnInforController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:[NSBundle mainBundle]];
+    perosnInforController.pageType = 1;
+    perosnInforController.personId = model.mId;
+    [self.navigationController pushViewController:perosnInforController animated:YES];
 
+}
+#pragma mark-
+#pragma mark--功能函数
 -(IBAction)cancelAction:(id)sender
 {
     int tag = ((UIButton*)sender).tag - 20000;
@@ -286,40 +301,41 @@
     NSString *num = [NSString stringWithFormat:@"%d", [kPAGESIZE intValue]*4];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", currentPage++],@"page", num, @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"SUGGESTPEOPLE_LIST" messId:nodeId success:^(id obj)
-                                         {
-                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
-                                             {
-                                                 int total = [[obj objectForKey:@"total"]intValue];
-                                                 totalPage = (total + [num intValue] - 1) / [num intValue];
-                                                 [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
-                                                 NSArray *list = [obj objectForKey:@"list"];
-                                                 for (id obj2 in list) {
-                                                     ProfileModel *model = [[ProfileModel alloc] init];
-                                                     [model setMCity:[obj2 objectForKey:@"city"]];
-                                                     [model setMDesc:[obj2 objectForKey:@"desc"]];
-                                                     [model setMEtime:[obj2 objectForKey:@"etime"]];
-                                                     [model setMStime:[obj2 objectForKey:@"stime"]];
-                                                     [model setMProvince:[obj2 objectForKey:@"province"]];
-                                                     [model setMOrg:[obj2 objectForKey:@"org"]];
-                                                     [model setMName:[obj2 objectForKey:@"name"]];
-                                                     [model setMGender:[obj2 objectForKey:@"gender"]];
-                                                     [model setMId:[obj2 objectForKey:@"id"]];
-                                                     [self.mArray addObject:model];
-                                                 }
-                                                 personCount = [self.mArray count];
-                                                 [self.listTable reloadData];
-                                             }
-                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
-                                             {
-                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
-                                             }
-                                             else
-                                             {
-                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
-                                             }
-                                             
-                                             
-                                         } failure:nil];
+                 {
+                     if ([[obj objectForKey:@"rc"]intValue] == 1)
+                     {
+                         int total = [[obj objectForKey:@"total"]intValue];
+                         totalPage = (total + [num intValue] - 1) / [num intValue];
+                         [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
+                         NSArray *list = [obj objectForKey:@"list"];
+                         for (id obj2 in list) {
+                             ProfileModel *model = [[ProfileModel alloc] init];
+                             [model setMCity:[obj2 objectForKey:@"city"]];
+                             [model setMDesc:[obj2 objectForKey:@"desc"]];
+                             [model setMEtime:[obj2 objectForKey:@"etime"]];
+                             [model setMStime:[obj2 objectForKey:@"stime"]];
+                             [model setMProvince:[obj2 objectForKey:@"province"]];
+                             [model setMOrg:[obj2 objectForKey:@"org"]];
+                             [model setMName:[obj2 objectForKey:@"name"]];
+                             [model setMGender:[obj2 objectForKey:@"gender"]];
+                             [model setMId:[obj2 objectForKey:@"id"]];
+                             [model setMImgUrl:[obj2 objectForKey:@"pic"]];
+                             [self.mArray addObject:model];
+                         }
+                         personCount = [self.mArray count];
+                         [self.listTable reloadData];
+                     }
+                     else if([[obj objectForKey:@"rc"]intValue] == -1)
+                     {
+                         [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                     }
+                     else
+                     {
+                         [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                     }
+                     
+                     
+                 } failure:nil];
     
     [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
                                           prompt:@"数据加载中..."
@@ -335,41 +351,43 @@
     NSString *num = [NSString stringWithFormat:@"%d", [kPAGESIZE intValue]*4];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", currentPage++],@"page",  num, @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"MYATTENTIONS_LIST" messId:nil success:^(id obj)
-                                         {
-                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
-                                             {
-                                                 int total = [[obj objectForKey:@"total"]intValue];
-                                                 totalPage = (total + [num intValue] - 1) / [num intValue];
-                                                 [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
-                                                 NSArray *list = [obj objectForKey:@"list"];
-                                                 for (id obj2 in list) {
-                                                     ProfileModel *model = [[ProfileModel alloc] init];
-                                                     [model setMCity:[obj2 objectForKey:@"city"]];
-                                                     [model setMDesc:[obj2 objectForKey:@"desc"]];
-                                                     [model setMEtime:[obj2 objectForKey:@"etime"]];
-                                                     [model setMStime:[obj2 objectForKey:@"stime"]];
-                                                     [model setMProvince:[obj2 objectForKey:@"province"]];
-                                                     [model setMOrg:[obj2 objectForKey:@"org"]];
-                                                     [model setMName:[obj2 objectForKey:@"name"]];
-                                                     [model setMGender:[obj2 objectForKey:@"gender"]];
-                                                     [model setMId:[obj2 objectForKey:@"id"]];
-                                                     [self.mArray addObject:model];
-                                                     personCount = [self.mArray count];
-                                                 }
-                                                 personCount = [self.mArray count];
-                                                 [self.listTable reloadData];
-                                             }else if([[obj objectForKey:@"rc"]intValue] == -1)
-                                             {
-                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
-                                             }
-                                             else
-                                             {
-                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
-                                             }
-                                             
-                                             
-                                         } failure:nil];
-    
+                     {
+                         if ([[obj objectForKey:@"rc"]intValue] == 1)
+                         {
+                             int total = [[obj objectForKey:@"total"]intValue];
+                             totalPage = (total + [num intValue] - 1) / [num intValue];
+                             [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
+                             NSArray *list = [obj objectForKey:@"list"];
+                             for (id obj2 in list) {
+                                 ProfileModel *model = [[ProfileModel alloc] init];
+                                 [model setMCity:[obj2 objectForKey:@"city"]];
+                                 [model setMDesc:[obj2 objectForKey:@"desc"]];
+                                 [model setMEtime:[obj2 objectForKey:@"etime"]];
+                                 [model setMStime:[obj2 objectForKey:@"stime"]];
+                                 [model setMProvince:[obj2 objectForKey:@"province"]];
+                                 [model setMOrg:[obj2 objectForKey:@"org"]];
+                                 [model setMName:[obj2 objectForKey:@"name"]];
+                                 [model setMGender:[obj2 objectForKey:@"gender"]];
+                                 [model setMId:[obj2 objectForKey:@"id"]];
+                                 [model setMImgUrl:[obj2 objectForKey:@"pic"]];
+
+                                 [self.mArray addObject:model];
+                                 personCount = [self.mArray count];
+                             }
+                             personCount = [self.mArray count];
+                             [self.listTable reloadData];
+                         }else if([[obj objectForKey:@"rc"]intValue] == -1)
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                         }
+                         else
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                         }
+                         
+                         
+                     } failure:nil];
+
     [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
                                           prompt:@"数据加载中..."
                                    completeBlock:nil];
@@ -384,41 +402,43 @@
     NSString *num = [NSString stringWithFormat:@"%d", [kPAGESIZE intValue]*4];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", currentPage++],@"page", num, @"num", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dic requesId:@"FANS_LIST" messId:nil success:^(id obj)
-                                         {
-                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
-                                             {
-                                                 int total = [[obj objectForKey:@"total"]intValue];
-                                                 totalPage = (total + [num intValue] - 1) / [num intValue];
-                                                 [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
-                                                 NSArray *list = [obj objectForKey:@"list"];
-                                                 for (id obj2 in list) {
-                                                     ProfileModel *model = [[ProfileModel alloc] init];
-                                                     [model setMCity:[obj2 objectForKey:@"city"]];
-                                                     [model setMDesc:[obj2 objectForKey:@"desc"]];
-                                                     [model setMEtime:[obj2 objectForKey:@"etime"]];
-                                                     [model setMStime:[obj2 objectForKey:@"stime"]];
-                                                     [model setMProvince:[obj2 objectForKey:@"province"]];
-                                                     [model setMOrg:[obj2 objectForKey:@"org"]];
-                                                     [model setMName:[obj2 objectForKey:@"name"]];
-                                                     [model setMGender:[obj2 objectForKey:@"gender"]];
-                                                     [model setMId:[obj2 objectForKey:@"id"]];
-                                                     [self.mArray addObject:model];
-                                                     
-                                                 }
-                                                 personCount = [self.mArray count];
-                                                 [self.listTable reloadData];
-                                             }
-                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
-                                             {
-                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
-                                             }
-                                             else
-                                             {
-                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
-                                             }
-                                             
-                                             
-                                         } failure:nil];
+                     {
+                         if ([[obj objectForKey:@"rc"]intValue] == 1)
+                         {
+                             int total = [[obj objectForKey:@"total"]intValue];
+                             totalPage = (total + [num intValue] - 1) / [num intValue];
+                             [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
+                             NSArray *list = [obj objectForKey:@"list"];
+                             for (id obj2 in list) {
+                                 ProfileModel *model = [[ProfileModel alloc] init];
+                                 [model setMCity:[obj2 objectForKey:@"city"]];
+                                 [model setMDesc:[obj2 objectForKey:@"desc"]];
+                                 [model setMEtime:[obj2 objectForKey:@"etime"]];
+                                 [model setMStime:[obj2 objectForKey:@"stime"]];
+                                 [model setMProvince:[obj2 objectForKey:@"province"]];
+                                 [model setMOrg:[obj2 objectForKey:@"org"]];
+                                 [model setMName:[obj2 objectForKey:@"name"]];
+                                 [model setMGender:[obj2 objectForKey:@"gender"]];
+                                 [model setMId:[obj2 objectForKey:@"id"]];
+                                 [model setMImgUrl:[obj2 objectForKey:@"pic"]];
+
+                                 [self.mArray addObject:model];
+                                 
+                             }
+                             personCount = [self.mArray count];
+                             [self.listTable reloadData];
+                         }
+                         else if([[obj objectForKey:@"rc"]intValue] == -1)
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                         }
+                         else
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                         }
+                         
+                         
+                     } failure:nil];
     
     [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
                                           prompt:@"数据加载中..."

@@ -7,6 +7,8 @@
 //
 
 #import "PersonInfoEditViewController.h"
+#import "GTMBase64.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define Tag_PickerCancel_Action 200
 #define Tag_PickerOk_Aciton  201
@@ -324,7 +326,10 @@
     
     UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 70, 70)];
     headImgView.backgroundColor = [UIColor lightGrayColor];
-    [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl]];
+    headImgView.layer.borderWidth = 2;
+    headImgView.layer.borderColor = [UIColor grayColor].CGColor;
+    NSLog(@"self.infoModel.mImgUrl %@",self.infoModel.mImgUrl);
+    [headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
     headImgView.tag = Tag_HeadImgView_View;
     [headView addSubview:headImgView];
     
@@ -343,6 +348,7 @@
  */
 - (void)updatePersonInfo
 {
+    [self hideKeyBoad];
     NSString *errStr = nil;
     if ([StaticTools isEmptyString:self.infoModel.mTitle])
     {
@@ -384,11 +390,12 @@
     [infoMtbDict setValue:self.infoModel.mOrg forKey:@"org"];
     [infoMtbDict setValue:self.infoModel.mProvince forKey:@"province"];
     [infoMtbDict setValue:self.infoModel.mCity forKey:@"city"];
-    [infoMtbDict setValue:self.infoModel.mStime forKey:@"stime"];
-    [infoMtbDict setValue:self.infoModel.mEtime forKey:@"etime"];
+    [infoMtbDict setValue:[self.infoModel.mStime substringToIndex:7] forKey:@"stime"];
+    [infoMtbDict setValue:[self.infoModel.mEtime substringToIndex:7] forKey:@"etime"];
     
     UIImageView *headImgView = (UIImageView*)[self.listTableView.tableHeaderView viewWithTag:Tag_HeadImgView_View];
-    [infoMtbDict setValue:[[NSString alloc]initWithData:UIImagePNGRepresentation(headImgView.image) encoding:NSUTF8StringEncoding] forKey:@"pic"];
+    [infoMtbDict setValue:[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ] forKey:@"pic"];
+    
 
     
     if (self.pageType == 0)
@@ -408,6 +415,8 @@
                  if (self.pageType == 0)
                  {
                      [SVProgressHUD showErrorWithStatus:@"履历更新成功！"];
+                     [self.navigationController popViewControllerAnimated:YES];
+                     [self.fatherController performSelector:@selector(getTimeLimeWithId:) withObject:@"me"];
                  }
                  else
                  {

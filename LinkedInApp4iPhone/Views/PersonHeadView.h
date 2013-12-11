@@ -20,7 +20,7 @@
 
 @interface PersonHeadView : UIView
 
-@property (strong, nonatomic) UIButton *headImgBtn;     //头像图片
+@property (strong, nonatomic) UIImageView *headImgView;     //头像图片
 @property (strong, nonatomic) UILabel *nameLabel;       //名字
 
 @end
