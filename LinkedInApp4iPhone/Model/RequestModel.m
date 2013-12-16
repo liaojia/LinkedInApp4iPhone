@@ -21,4 +21,13 @@
     
     return self;
 }
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    RequestModel *copy = [[self class] allocWithZone: zone];
+    copy.requestId = [NSString stringWithFormat:@"%@",self.requestId];
+    copy.url = [NSString stringWithFormat:@"%@",self.url];
+    copy.method = [NSString stringWithFormat:@"%@",self.method];
+    return copy;
+}
 @end

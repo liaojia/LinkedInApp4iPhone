@@ -10,6 +10,11 @@
 #import "ClearTextField.h"
 #import "HomeViewController.h"
 #import "CommitBasicInfoViewController.h"
+#import "PersonInfoViewController.h"
+#import "StudentInfoViewController.h"
+#import "SchollInfoViewController.h"
+#import "SetingMainViewController.h"
+
 @interface LoginViewController ()
 
 @end
@@ -66,6 +71,45 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark-
+#pragma mark--功能函数
+/**
+ *  跳转到首页
+ */
+- (void)gotoHome
+{
+    UITabBarController *tabbar  = [[UITabBarController alloc]init];
+    
+    StudentInfoViewController *studentInfoController = [[StudentInfoViewController alloc]initWithNibName:@"StudentInfoViewController" bundle:nil];
+    UINavigationController *studentNav = [[UINavigationController alloc]initWithRootViewController:studentInfoController];
+    studentInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"校友信息" image:nil tag:0];
+   // [studentInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"scroll_icon_s_1"] withFinishedUnselectedImage:[UIImage imageNamed:@"scroll_icon_n_1"]];
+    
+    SchollInfoViewController *schollInfoController = [[SchollInfoViewController alloc]initWithNibName:@"SchollInfoViewController" bundle:nil];
+    UINavigationController *schoolNav = [[UINavigationController alloc]initWithRootViewController:schollInfoController];
+    schollInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"母校信息" image:nil tag:0];
+   // [schollInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"scroll_icon_s_2"] withFinishedUnselectedImage:[UIImage imageNamed:@"scroll_icon_n_2"]];
+    
+    PersonInfoViewController *personalCenterController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:nil];
+    UINavigationController *personNav = [[UINavigationController alloc]initWithRootViewController:personalCenterController];
+    personalCenterController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"个人信息" image:nil tag:0];
+   // [personalCenterController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"scroll_icon_s_3"] withFinishedUnselectedImage:[UIImage imageNamed:@"scroll_icon_n_3"]];
+    
+
+    
+    SetingMainViewController *setingController = [[SetingMainViewController alloc]initWithNibName:@"SetingMainViewController" bundle:nil];
+    UINavigationController *setingNav = [[UINavigationController alloc]initWithRootViewController:setingController];
+    setingController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"系统设置" image:nil tag:0];
+    //[setingController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"scroll_icon_s_4"] withFinishedUnselectedImage:[UIImage imageNamed:@"scroll_icon_n_4"]];
+    
+    
+    
+    tabbar.viewControllers = @[studentNav,schoolNav,personNav,setingNav];
+    
+    [self.navigationController pushViewController:tabbar animated:YES];
+}
+#pragma mark-
+#pragma mark--按钮点击事件
 -(IBAction)backAction:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -88,9 +132,14 @@
                       [self.navigationController pushViewController:vc animated:YES];
                   }else{
                       if ([[obj objectForKey:@"status"]intValue] == 1) {
-                          HomeViewController *homeControlelr = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
-                          self.navigationController.navigationBarHidden = NO;
-                          [self.navigationController pushViewController:homeControlelr animated:YES];
+                          
+                          [self gotoHome];
+                          
+//                          HomeViewController *homeControlelr = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:[NSBundle mainBundle]];
+//                          self.navigationController.navigationBarHidden = NO;
+//                          [self.navigationController pushViewController:homeControlelr animated:YES];
+                          
+                          
                       }else if([[obj objectForKey:@"status"]intValue] == -1){
                           //-1尚未填写基本信息
                           CommitBasicInfoViewController *vc = [[CommitBasicInfoViewController alloc] initWithNibName:@"CommitBasicInfoViewController" bundle:[NSBundle mainBundle]];

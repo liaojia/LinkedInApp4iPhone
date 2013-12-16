@@ -221,6 +221,21 @@
         <method>POST</method>
     </request>
     
+    <!-- 获取普通媒体信息列表 -->
+    <request>
+        <requestId>CUSTOMEMEDIOLISTINFO</requestId>
+        <url>/media/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!-- 根据ID获取媒体信息详情 -->
+    <request>
+        <requestId>CUSTOMEMEDIODETAILTINFO</requestId>
+        <url>/media/${id}/detail</url>
+        <method>GET</method>
+    </request>
+
+    
     
     
 </root>

@@ -178,6 +178,16 @@
 		CE5AFB9318125590007AFC79 /* ActivityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5AFB9118125590007AFC79 /* ActivityListViewController.xib */; };
 		CE5AFB971812C26E007AFC79 /* PersonInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFB951812C26E007AFC79 /* PersonInfoEditViewController.m */; };
 		CE5AFB981812C26E007AFC79 /* PersonInfoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5AFB961812C26E007AFC79 /* PersonInfoEditViewController.xib */; };
+		CE610FD4185F38E000D66FE7 /* SetingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610FD2185F38E000D66FE7 /* SetingMainViewController.m */; };
+		CE610FD5185F38E000D66FE7 /* SetingMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE610FD3185F38E000D66FE7 /* SetingMainViewController.xib */; };
+		CE610FDB185F3DC300D66FE7 /* StudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610FD9185F3DC300D66FE7 /* StudentInfoViewController.m */; };
+		CE610FDC185F3DC300D66FE7 /* StudentInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE610FDA185F3DC300D66FE7 /* StudentInfoViewController.xib */; };
+		CE610FE0185F3DE900D66FE7 /* SchollInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610FDE185F3DE900D66FE7 /* SchollInfoViewController.m */; };
+		CE610FE1185F3DE900D66FE7 /* SchollInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE610FDF185F3DE900D66FE7 /* SchollInfoViewController.xib */; };
+		CE610FE4185F4D6D00D66FE7 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610FE3185F4D6D00D66FE7 /* ListCell.m */; };
+		CE610FE6185F4D7F00D66FE7 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE610FE5185F4D7F00D66FE7 /* ListCell.xib */; };
+		CE610FEA185F5C9F00D66FE7 /* DetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610FE8185F5C9F00D66FE7 /* DetailInfoViewController.m */; };
+		CE610FEB185F5C9F00D66FE7 /* DetailInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE610FE9185F5C9F00D66FE7 /* DetailInfoViewController.xib */; };
 		CE62E2531816BC7F00F49A43 /* BasicInfoCommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62E2511816BC7F00F49A43 /* BasicInfoCommitViewController.m */; };
 		CE62E2541816BC7F00F49A43 /* BasicInfoCommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE62E2521816BC7F00F49A43 /* BasicInfoCommitViewController.xib */; };
 		CE935F171815566F00DAC626 /* OAuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE935F151815566F00DAC626 /* OAuthWebView.m */; };
@@ -445,6 +455,21 @@
 		CE5AFB941812C26E007AFC79 /* PersonInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoEditViewController.h; sourceTree = "<group>"; };
 		CE5AFB951812C26E007AFC79 /* PersonInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoEditViewController.m; sourceTree = "<group>"; };
 		CE5AFB961812C26E007AFC79 /* PersonInfoEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoEditViewController.xib; sourceTree = "<group>"; };
+		CE610FD1185F38E000D66FE7 /* SetingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetingMainViewController.h; sourceTree = "<group>"; };
+		CE610FD2185F38E000D66FE7 /* SetingMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetingMainViewController.m; sourceTree = "<group>"; };
+		CE610FD3185F38E000D66FE7 /* SetingMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetingMainViewController.xib; sourceTree = "<group>"; };
+		CE610FD8185F3DC300D66FE7 /* StudentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentInfoViewController.h; sourceTree = "<group>"; };
+		CE610FD9185F3DC300D66FE7 /* StudentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentInfoViewController.m; sourceTree = "<group>"; };
+		CE610FDA185F3DC300D66FE7 /* StudentInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentInfoViewController.xib; sourceTree = "<group>"; };
+		CE610FDD185F3DE900D66FE7 /* SchollInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchollInfoViewController.h; sourceTree = "<group>"; };
+		CE610FDE185F3DE900D66FE7 /* SchollInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchollInfoViewController.m; sourceTree = "<group>"; };
+		CE610FDF185F3DE900D66FE7 /* SchollInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchollInfoViewController.xib; sourceTree = "<group>"; };
+		CE610FE2185F4D6D00D66FE7 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
+		CE610FE3185F4D6D00D66FE7 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		CE610FE5185F4D7F00D66FE7 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		CE610FE7185F5C9F00D66FE7 /* DetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailInfoViewController.h; sourceTree = "<group>"; };
+		CE610FE8185F5C9F00D66FE7 /* DetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailInfoViewController.m; sourceTree = "<group>"; };
+		CE610FE9185F5C9F00D66FE7 /* DetailInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailInfoViewController.xib; sourceTree = "<group>"; };
 		CE62E2501816BC7F00F49A43 /* BasicInfoCommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoCommitViewController.h; sourceTree = "<group>"; };
 		CE62E2511816BC7F00F49A43 /* BasicInfoCommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoCommitViewController.m; sourceTree = "<group>"; };
 		CE62E2521816BC7F00F49A43 /* BasicInfoCommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicInfoCommitViewController.xib; sourceTree = "<group>"; };
@@ -771,6 +796,9 @@
 		8DF20801180CE06100FDEABA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE610FD7185F3DB100D66FE7 /* StudentInfo */,
+				CE610FD6185F3DB100D66FE7 /* SchollInfo */,
+				CE610FD0185F38AB00D66FE7 /* Setting */,
 				8DF20802180CE06100FDEABA /* BaseViewController.h */,
 				8DF20803180CE06100FDEABA /* BaseViewController.m */,
 				8DF20804180CE06100FDEABA /* LoginViewController.h */,
@@ -950,6 +978,42 @@
 			path = StaticTools;
 			sourceTree = "<group>";
 		};
+		CE610FD0185F38AB00D66FE7 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				CE610FD1185F38E000D66FE7 /* SetingMainViewController.h */,
+				CE610FD2185F38E000D66FE7 /* SetingMainViewController.m */,
+				CE610FD3185F38E000D66FE7 /* SetingMainViewController.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		CE610FD6185F3DB100D66FE7 /* SchollInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE610FDD185F3DE900D66FE7 /* SchollInfoViewController.h */,
+				CE610FDE185F3DE900D66FE7 /* SchollInfoViewController.m */,
+				CE610FDF185F3DE900D66FE7 /* SchollInfoViewController.xib */,
+			);
+			path = SchollInfo;
+			sourceTree = "<group>";
+		};
+		CE610FD7185F3DB100D66FE7 /* StudentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE610FD8185F3DC300D66FE7 /* StudentInfoViewController.h */,
+				CE610FD9185F3DC300D66FE7 /* StudentInfoViewController.m */,
+				CE610FDA185F3DC300D66FE7 /* StudentInfoViewController.xib */,
+				CE610FE2185F4D6D00D66FE7 /* ListCell.h */,
+				CE610FE3185F4D6D00D66FE7 /* ListCell.m */,
+				CE610FE5185F4D7F00D66FE7 /* ListCell.xib */,
+				CE610FE7185F5C9F00D66FE7 /* DetailInfoViewController.h */,
+				CE610FE8185F5C9F00D66FE7 /* DetailInfoViewController.m */,
+				CE610FE9185F5C9F00D66FE7 /* DetailInfoViewController.xib */,
+			);
+			path = StudentInfo;
+			sourceTree = "<group>";
+		};
 		CE935F131815563900DAC626 /* SinaWeiBo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1122,6 +1186,7 @@
 				8DF207CD180CE05600FDEABA /* img_card_arrows_pressed@2x.png in Resources */,
 				8DF207CE180CE05600FDEABA /* img_card_grayline@2x.png in Resources */,
 				8DF207CF180CE05600FDEABA /* img_card_head_portrait@2x.png in Resources */,
+				CE610FE6185F4D7F00D66FE7 /* ListCell.xib in Resources */,
 				8DF207D0180CE05600FDEABA /* img_card_head_portrait_small@2x.png in Resources */,
 				8DF207D1180CE05600FDEABA /* img_card_list_one@2x.png in Resources */,
 				8DF207D2180CE05600FDEABA /* img_card_list_two@2x.png in Resources */,
@@ -1134,6 +1199,7 @@
 				8DF207D9180CE05600FDEABA /* img_list_right_pressed@2x.png in Resources */,
 				8DF207DA180CE05600FDEABA /* img_listview_divider@2x.jpg in Resources */,
 				8DF207DB180CE05600FDEABA /* img_login_back_normal@2x.png in Resources */,
+				CE610FDC185F3DC300D66FE7 /* StudentInfoViewController.xib in Resources */,
 				8DF207DC180CE05600FDEABA /* img_login_back_pressed@2x.png in Resources */,
 				8DF207DD180CE05600FDEABA /* img_login_backdrop@2x.png in Resources */,
 				8DF207DE180CE05600FDEABA /* img_login_btn_normal@2x.png in Resources */,
@@ -1152,12 +1218,15 @@
 				8DF207EB180CE05600FDEABA /* img_school_card_front@2x.png in Resources */,
 				8DF207EC180CE05600FDEABA /* img_school_notice_normal@2x.png in Resources */,
 				8DF207ED180CE05600FDEABA /* img_school_notice_pressed@2x.png in Resources */,
+				CE610FEB185F5C9F00D66FE7 /* DetailInfoViewController.xib in Resources */,
 				8DF207EE180CE05600FDEABA /* img_sina_weibo_64@2x.png in Resources */,
 				8DF207EF180CE05600FDEABA /* img_splash@2x.png in Resources */,
 				8DF207F0180CE05600FDEABA /* img_timeline_node@2x.png in Resources */,
 				8DF207F1180CE05600FDEABA /* img_timeline_vertical@2x.png in Resources */,
 				8DF207F2180CE05600FDEABA /* img_topbar_more_normal@2x.png in Resources */,
 				8DF207F3180CE05600FDEABA /* img_topbar_more_pressed@2x.png in Resources */,
+				CE610FD5185F38E000D66FE7 /* SetingMainViewController.xib in Resources */,
+				CE610FE1185F3DE900D66FE7 /* SchollInfoViewController.xib in Resources */,
 				8DF207F4180CE05600FDEABA /* img_topbar_search_normal@2x.png in Resources */,
 				8DF207F5180CE05600FDEABA /* img_topbar_search_pressed@2x.png in Resources */,
 				8DF207F6180CE05600FDEABA /* img_topbar_searchbox@2x.png in Resources */,
@@ -1249,6 +1318,7 @@
 				8DD5D3261806E83D00EB446F /* MProgressAlertView.m in Sources */,
 				8DD5D3271806E83D00EB446F /* Reachability.m in Sources */,
 				8DD5D3291806E83D00EB446F /* SVProgressHUD.m in Sources */,
+				CE610FE0185F3DE900D66FE7 /* SchollInfoViewController.m in Sources */,
 				8DD5D3351806E8F300EB446F /* TBXML+Compression.m in Sources */,
 				8DD5D3361806E8F300EB446F /* TBXML+HTTP.m in Sources */,
 				8DD5D3371806E8F300EB446F /* TBXML.m in Sources */,
@@ -1266,6 +1336,7 @@
 				8D12D3AE180E36A8003D09CA /* ProfileViewController.m in Sources */,
 				8D12D3B4180E7A37003D09CA /* ProfileModel.m in Sources */,
 				CEE8EAAC180E23030052E5D8 /* HomeViewController.m in Sources */,
+				CE610FDB185F3DC300D66FE7 /* StudentInfoViewController.m in Sources */,
 				CEE8EABC180E65C30052E5D8 /* NoticeListViewController.m in Sources */,
 				CEE8EAC3180E6F490052E5D8 /* UINavigationController_BackButton.m in Sources */,
 				CEE8EAC8180E71E40052E5D8 /* ActivityCell.m in Sources */,
@@ -1278,6 +1349,7 @@
 				CEAE7A7B180FDC1700ECBD5F /* WebViewController.m in Sources */,
 				CE586ECA1810351000BE7A62 /* StaticDataTools.m in Sources */,
 				CE586ECB1810351000BE7A62 /* StaticFormatTools.m in Sources */,
+				CE610FEA185F5C9F00D66FE7 /* DetailInfoViewController.m in Sources */,
 				CE586ECC1810351000BE7A62 /* StaticOtherTools.m in Sources */,
 				CE586ECD1810351000BE7A62 /* StaticTools.m in Sources */,
 				CE586ECE1810351000BE7A62 /* StaticUITools.m in Sources */,
@@ -1299,6 +1371,7 @@
 				CE00A0CB1816125600253780 /* CustomScrollView.m in Sources */,
 				CE00A0CC1816125600253780 /* GifView.m in Sources */,
 				CE00A0CD1816125600253780 /* ImageBrowser.m in Sources */,
+				CE610FE4185F4D6D00D66FE7 /* ListCell.m in Sources */,
 				CE00A0CF1816125600253780 /* ImageProcess.m in Sources */,
 				CE00A0D01816125600253780 /* SHKActivityIndicator.m in Sources */,
 				CE00A0D11816125600253780 /* UIDevice+Orientation.m in Sources */,
@@ -1309,6 +1382,7 @@
 				8D15221B181426F0006AFC1D /* AFImageRequestOperation.m in Sources */,
 				8D15221C181426F0006AFC1D /* AFJSONRequestOperation.m in Sources */,
 				8D15221D181426F0006AFC1D /* AFNetworkActivityIndicatorManager.m in Sources */,
+				CE610FD4185F38E000D66FE7 /* SetingMainViewController.m in Sources */,
 				8D15221E181426F0006AFC1D /* AFPropertyListRequestOperation.m in Sources */,
 				8D15221F181426F0006AFC1D /* AFURLConnectionOperation.m in Sources */,
 				8D152220181426F0006AFC1D /* AFXMLRequestOperation.m in Sources */,

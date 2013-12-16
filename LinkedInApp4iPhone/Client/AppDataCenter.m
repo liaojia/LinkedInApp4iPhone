@@ -57,7 +57,7 @@ static AppDataCenter *instance = nil;
     }
     for (RequestModel* model in self.requestParamList) {
         if ([model.requestId isEqualToString:name]) {
-            return model;
+            return [model copy];
         }
     }
     return nil;
