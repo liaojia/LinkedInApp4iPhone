@@ -79,28 +79,44 @@
 - (void)gotoHome
 {
     UITabBarController *tabbar  = [[UITabBarController alloc]init];
+    if (IOS7_OR_LATER)
+    {
+        tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
+    }
     
     StudentInfoViewController *studentInfoController = [[StudentInfoViewController alloc]initWithNibName:@"StudentInfoViewController" bundle:nil];
     UINavigationController *studentNav = [[UINavigationController alloc]initWithRootViewController:studentInfoController];
-    studentInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"校友信息" image:nil tag:0];
-   // [studentInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"scroll_icon_s_1"] withFinishedUnselectedImage:[UIImage imageNamed:@"scroll_icon_n_1"]];
+    studentInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
+    [studentInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_friend_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_friend_normal"]];
+    studentInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
+    studentInfoController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    studentInfoController.navigationController.delegate = studentInfoController.navigationController;
     
     SchollInfoViewController *schollInfoController = [[SchollInfoViewController alloc]initWithNibName:@"SchollInfoViewController" bundle:nil];
     UINavigationController *schoolNav = [[UINavigationController alloc]initWithRootViewController:schollInfoController];
-    schollInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"母校信息" image:nil tag:0];
-   // [schollInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"scroll_icon_s_2"] withFinishedUnselectedImage:[UIImage imageNamed:@"scroll_icon_n_2"]];
+    schollInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
+    [schollInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_school_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_school_normal"]];
+     schollInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
+    schollInfoController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    schollInfoController.navigationController.delegate = schollInfoController.navigationController;
     
     PersonInfoViewController *personalCenterController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:nil];
     UINavigationController *personNav = [[UINavigationController alloc]initWithRootViewController:personalCenterController];
-    personalCenterController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"个人信息" image:nil tag:0];
-   // [personalCenterController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"scroll_icon_s_3"] withFinishedUnselectedImage:[UIImage imageNamed:@"scroll_icon_n_3"]];
+    personalCenterController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
+    [personalCenterController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_profile_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_profile_normal"]];
+     personalCenterController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
+    personalCenterController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    personalCenterController.navigationController.delegate = personalCenterController.navigationController;
     
 
     
     SetingMainViewController *setingController = [[SetingMainViewController alloc]initWithNibName:@"SetingMainViewController" bundle:nil];
     UINavigationController *setingNav = [[UINavigationController alloc]initWithRootViewController:setingController];
-    setingController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"系统设置" image:nil tag:0];
-    //[setingController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"scroll_icon_s_4"] withFinishedUnselectedImage:[UIImage imageNamed:@"scroll_icon_n_4"]];
+    setingController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
+    [setingController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_setting_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_setting_normal"]];
+     setingController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
+    setingController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    setingController.navigationController.delegate = setingController.navigationController;
     
     
     

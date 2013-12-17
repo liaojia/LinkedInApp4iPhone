@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = @"新闻详情";
     self.listTableView.separatorColor = [UIColor clearColor];
     self.listTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self getDetailWithID:self.listId];
@@ -196,6 +197,11 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    for (UIView *view in cell.contentView.subviews)
+    {
+        [view removeFromSuperview];
+    }
      NSArray *pics = self.resultDict[@"pics"];
     
     if (indexPath.row==0)
@@ -204,6 +210,8 @@
         titleLabel.font = [UIFont systemFontOfSize:17];
         titleLabel.textAlignment = UITextAlignmentCenter;
         titleLabel.text = self.resultDict[@"title"];
+        titleLabel.numberOfLines = 0;
+        titleLabel.lineBreakMode = UILineBreakModeWordWrap;
         [cell.contentView addSubview:titleLabel];
         
         UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, titleLabel.frame.origin.y+titleLabel.frame.size.height+5, 200, 30)];

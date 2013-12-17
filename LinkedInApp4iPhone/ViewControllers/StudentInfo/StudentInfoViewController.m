@@ -9,6 +9,8 @@
 #import "StudentInfoViewController.h"
 #import "ListCell.h"
 #import "DetailInfoViewController.h"
+#import "SchollCardApplyViewController.h"
+#import "MessageListViewController.h"
 
 @interface StudentInfoViewController ()
 
@@ -28,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.listTableView.backgroundView = nil;
     // Do any additional setup after loading the view from its nib.
     
     self.navigationItem.title = @"校友信息";
@@ -45,7 +48,7 @@
 #pragma mark-
 #pragma mark--发送http请求
 /**
- *  获取校友动态信息
+ *  获取校友动态信息||获取公告信息
  */
 - (void)getListInfoWithType:(int)type
 {
@@ -107,6 +110,39 @@
     [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
                                           prompt:@"加载中..."
                                    completeBlock:nil];
+}
+
+#pragma mark-
+#pragma mark--按钮点击事件
+- (void)buttonClickHandle:(id)sender
+{
+    UIButton *button = (UIButton*)sender;
+    switch (button.tag)
+    {
+        case 100: //校友动态查看更多
+        {
+            MessageListViewController *messageListController = [[MessageListViewController alloc]init];
+            messageListController.type = 1;
+            [self.navigationController pushViewController:messageListController animated:YES];
+        }
+            break;
+        case 101: //通知公告查看更多
+        {
+            MessageListViewController *messageListController = [[MessageListViewController alloc]init];
+            messageListController.type = 2;
+            [self.navigationController pushViewController:messageListController animated:YES];
+        }
+            break;
+        case 102: //申请校友龙卡
+        {
+            SchollCardApplyViewController *schoolCardApplyController = [[SchollCardApplyViewController alloc]init];
+            [self.navigationController pushViewController:schoolCardApplyController animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 #pragma mark-
 #pragma mark--TableViewDelegate
@@ -172,24 +208,23 @@
         NSString *dtailStr = @"查看更多";
         NSString *detailImg;
         NSString *detailPressImg;
+        
+        detailImg = @"img_school_notice_normal";
+        detailPressImg = @"img_school_notice_pressed";
+        
         if (indexPath.section == 0)
         {
             titleStr = @"校友动态";
-            detailImg = @"img_school_notice_normal";
-            detailPressImg = @"img_school_notice_pressed";
+     
         }
         else if(indexPath.section == 1)
         {
             titleStr = @"通知公告";
-            detailImg = @"img_school_notice_normal";
-            detailPressImg = @"img_school_notice_pressed";
         }
         else if(indexPath.section == 2)
         {
             dtailStr = @"我要申请";
             titleStr = @"校友龙卡";
-            detailImg = @"img_school_notice_normal";
-            detailPressImg = @"img_school_notice_pressed";
         }
         
         titleLabel.text = titleStr;
@@ -204,7 +239,7 @@
         
         
         detailBtn.tag = 100+indexPath.section;
-        [detailBtn addTarget:self action:@selector(buttonClickedHandle:) forControlEvents:UIControlEventTouchUpInside];
+        [detailBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
         [detailBtn setTitle:dtailStr forState:UIControlStateNormal];
         
         if ((indexPath.section==0&&self.studentInfoTotalCount>3)||
@@ -213,6 +248,8 @@
         {
             [cell.contentView addSubview:detailBtn];
         }
+        
+        [cell.contentView addSubview:detailBtn]; //TODO
         
         
         return cell;

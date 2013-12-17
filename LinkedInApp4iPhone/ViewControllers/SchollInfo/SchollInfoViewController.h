@@ -22,4 +22,5 @@
 @interface SchollInfoViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
+@property (strong, nonatomic) NSMutableArray *schoolInfoMtbArray; //保存母校动态信息
 @end

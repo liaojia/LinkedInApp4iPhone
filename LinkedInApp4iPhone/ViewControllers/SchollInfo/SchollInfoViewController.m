@@ -8,8 +8,15 @@
 
 #import "SchollInfoViewController.h"
 #import "ListCell.h"
-@interface SchollInfoViewController ()
+#import "DetailInfoViewController.h"
+#import "MessageListViewController.h"
+#import "SchollCardApplyViewController.h"
+#import "BDViewController.h"
 
+@interface SchollInfoViewController ()
+{
+    int schollInfoTotalCount;   //母校动态信息条数
+}
 @end
 
 @implementation SchollInfoViewController
@@ -28,6 +35,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"母校信息";
+    
+    self.listTableView.backgroundView = nil;
+    
+    [self getSchollInfoListInfo];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,6 +47,101 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark-
+#pragma mark--功能函数
+/**
+ *  跳转到详情页面
+ *
+ *  @param idStr 新闻id
+ */
+- (void)gotoDetailPageWithID:(NSString*)idStr type:(int)type
+{
+    DetailInfoViewController *detailController = [[DetailInfoViewController alloc]initWithNibName:@"DetailInfoViewController" bundle:Nil];
+    detailController.listId = idStr;
+    detailController.typeId = [NSString stringWithFormat:@"%d",type];
+    [self.navigationController pushViewController:detailController animated:YES];
+    
+}
+#pragma mark-
+#pragma mark--发送http请求
+/**
+ *  获取母校动态信息
+ */
+- (void)getSchollInfoListInfo
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":@"1",@"num":@"5",@"previewLen":@"50",@"type":[NSString stringWithFormat:@"%d",3]} requesId:@"CUSTOMEMEDIOLISTINFO" messId:nil success:^(id obj)
+                                         {
+                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
+                                             {
+                                                 NSArray *listArray = obj[@"list"];
+      
+                                                 schollInfoTotalCount = [obj[@"total"] intValue];
+                                                 self.schoolInfoMtbArray = [NSMutableArray arrayWithCapacity:0];
+                                                 
+                                                 for (int i=0; i< listArray.count; i++)
+                                                 {
+                                                     NSDictionary *temDict = listArray[i];
+                                                     ProfileModel *model = [[ProfileModel alloc]init];
+                                                     model.mDesc = temDict[@"preview"];
+                                                     model.mImgUrl = temDict[@"pic"];
+                                                     model.mId = temDict[@"id"];
+                                                     
+                                                    
+                                                    [self.schoolInfoMtbArray addObject:model];
+                                                     
+                                                 }
+                                                 
+                                                 [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+                                                 
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
+                                             {
+                                                  [SVProgressHUD showErrorWithStatus:@"母校动态加载失败"];
+                                             }
+                                             else
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"母校动态加载失败"];
+                                             }
+                                             
+                                             
+                                         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"加载中..."
+                                   completeBlock:nil];
+}
+#pragma mark-
+#pragma mark--按钮点击事件
+- (void)buttonClickHandle:(id)sender
+{
+    UIButton *button = (UIButton*)sender;
+    switch (button.tag)
+    {
+        case 100: //母校动态查看更多
+        {
+            MessageListViewController *messageListController = [[MessageListViewController alloc]init];
+            messageListController.type = 3;
+            [self.navigationController pushViewController:messageListController animated:YES];
+        }
+            break;
+        case 101: //印象首师查看更多
+        {
+            BDViewController *bcViewController = [[BDViewController alloc]init];
+            [self.navigationController pushViewController:bcViewController animated:YES];
+        }
+            break;
+        case 102: //我要捐赠
+        {
+            SchollCardApplyViewController *schoolCardApplyController = [[SchollCardApplyViewController alloc]init];
+            schoolCardApplyController.pageType = 1;
+            [self.navigationController pushViewController:schoolCardApplyController animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 #pragma mark-
 #pragma mark--TableViewDelegate
@@ -48,7 +154,7 @@
 {
     if (section==0)
     {
-        return 4;
+        return self.schoolInfoMtbArray.count;
     }
  
     return 2;
@@ -83,7 +189,6 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     for (UIView *view in cell.contentView.subviews)
     {
@@ -138,15 +243,15 @@
         
         
         detailBtn.tag = 100+indexPath.section;
-        [detailBtn addTarget:self action:@selector(buttonClickedHandle:) forControlEvents:UIControlEventTouchUpInside];
+        [detailBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
         [detailBtn setTitle:dtailStr forState:UIControlStateNormal];
         
-        if (indexPath.section!=3)
+        if (indexPath.section==0&&schollInfoTotalCount>3)
         {
             [cell.contentView addSubview:detailBtn];
         }
         
-        
+        [cell.contentView addSubview:detailBtn]; //TODO
         return cell;
     }
     
@@ -154,6 +259,10 @@
     {
         ListCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
         
+        ProfileModel *model = self.schoolInfoMtbArray[indexPath.row];
+        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        cell.txtLabel.text = model.mDesc;
+
         return cell;
     }
     else if(indexPath.section == 1)
@@ -206,6 +315,15 @@
     }
     
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section==0) //母校动态
+    {
+        ProfileModel *model = self.schoolInfoMtbArray[indexPath.row];
+        [self gotoDetailPageWithID:model.mId type:3];
+    }
 }
 
 @end

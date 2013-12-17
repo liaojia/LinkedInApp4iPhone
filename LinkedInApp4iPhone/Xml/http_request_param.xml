@@ -234,6 +234,58 @@
         <url>/media/${id}/detail</url>
         <method>GET</method>
     </request>
+    
+    <!--申请校友龙卡-->
+    <request>
+        <requestId>APPLEFOCCHOLLCARD</requestId>
+        <url>/college/card/apply</url>
+        <method>POST</method>
+    </request>
+    
+    <!--申请捐赠-->
+    <request>
+        <requestId>APPLEFORFEEDBACK</requestId>
+        <url>/college/feedback/apply</url>
+        <method>POST</method>
+    </request>
+
+    
+    <!--获取置顶媒体信息列表-->
+    <request>
+        <requestId>GETTOPMEDIAINFO</requestId>
+        <url>/media/top/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!--获取照片列表-->
+    <request>
+        <requestId>GETPHOTOLIST</requestId>
+        <url>/galary/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!--获取照片列表-->
+    <request>
+        <requestId>CHAGNEPASSWORD</requestId>
+        <url>/account/password/update</url>
+        <method>POST</method>
+    </request>
+    
+    <!--用户退出-->
+    <request>
+        <requestId>USERLOGOUT</requestId>
+        <url>/logout</url>
+        <method>POST</method>
+    </request>
+    
+    <!--用户退出-->
+    <request>
+        <requestId>USERLOGOUT</requestId>
+        <url>/logout</url>
+        <method>POST</method>
+    </request>
+
+
 
     
     
