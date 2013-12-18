@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@class ClearTextField;
 
-@interface LoginViewController : BaseViewController
+@interface LoginViewController : UIViewController
 
+@property (weak, nonatomic)IBOutlet UITextField *nameTxtField;
+@property (weak, nonatomic)IBOutlet UITextField *psaTxtField;
 
-@property(nonatomic, strong)ClearTextField *tf_username;
-@property(nonatomic, strong)ClearTextField *tf_pwd;
-
+- (IBAction)buttonClickHandle:(id)sender;
 @end

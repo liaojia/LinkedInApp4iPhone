@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
 #import "Transfer+ParseXML.h"
+#import "LoginViewController.h"
 
 @implementation AppDelegate
 
@@ -18,13 +18,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    ViewController *loginViewController = [[ViewController alloc] init];
+    LoginViewController *loginViewController = [[LoginViewController alloc] init];
     self.rootNavigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    self.rootNavigationController.delegate = self.rootNavigationController;
-    //设置导航栏背景图片
-    if ([self.rootNavigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]){
-		[self.rootNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forBarMetrics:UIBarMetricsDefault];
-	}
+    
     //[self.window addSubview:_rootNavigationController.view];
     self.window.rootViewController = self.rootNavigationController;
     //self.window.backgroundColor = [UIColor whiteColor];

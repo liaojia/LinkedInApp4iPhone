@@ -13,10 +13,12 @@
 #import "SchollCardApplyViewController.h"
 #import "BDViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "FeedOutViewController.h"
 
 @interface SchollInfoViewController ()
 {
     int schollInfoTotalCount;   //母校动态信息条数
+    int currentPicIndex;
 }
 @end
 
@@ -37,9 +39,26 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"母校信息";
     
+    self.schollImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image01.jpg"]];
+    self.schollImgView.frame =CGRectMake(5, 5, 290, 160);
+    
     self.listTableView.backgroundView = nil;
     
     [self getSchollInfoListInfo];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [NSThread detachNewThreadSelector:@selector(initTimer) toTarget:self withObject:nil];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.timer invalidate];
+    self.timer=nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +69,18 @@
 
 #pragma mark-
 #pragma mark--功能函数
+- (void)initTimer
+{
+    currentPicIndex = 1;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(changePic) userInfo:nil repeats:YES];
+    
+    while (self.timer!=nil) {
+        
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    }
+    
+
+}
 /**
  *  跳转到详情页面
  *
@@ -63,6 +94,28 @@
     [self.navigationController pushViewController:detailController animated:YES];
     
 }
+/**
+ *  印象首师图片切换
+ */
+- (void)changePic
+{
+    currentPicIndex++;
+    if(currentPicIndex>5)
+    {
+        currentPicIndex=1;
+    }
+    
+    
+    CATransition *transition = [CATransition animation];
+	transition.duration = 0.5;
+	transition.type = kCATransitionPush;
+	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+	transition.subtype =kCATransitionFromRight;
+    self.schollImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]];
+	[self.schollImgView.layer addAnimation:transition forKey:nil];
+}
+
+
 #pragma mark-
 #pragma mark--发送http请求
 /**
@@ -138,6 +191,13 @@
             [self.navigationController pushViewController:schoolCardApplyController animated:YES];
         }
             break;
+        case 200: //捐款方式
+        {
+            FeedOutViewController *feedOutController = [[FeedOutViewController alloc]initWithNibName:@"FeedOutViewController" bundle:nil];
+            [self.navigationController pushViewController:feedOutController animated:YES];
+            
+        }
+            break;
             
         default:
             break;
@@ -165,7 +225,7 @@
 {
     if (indexPath.section == 1||indexPath.section == 2)
     {
-        return indexPath.row == 0?44:150;
+        return indexPath.row == 0?44:170;
     }
     else if(indexPath.section == 3)
     {
@@ -266,23 +326,24 @@
 
         return cell;
     }
-    else if(indexPath.section == 1)
+    else if(indexPath.section == 1) //印象首师
     {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
-        button.frame = CGRectMake(5, 5, tableView.frame.size.width-10, 140);
-        [cell.contentView addSubview:button];
+        [cell.contentView addSubview:self.schollImgView];
         return cell;
     }
-    else if(indexPath.section == 2)
+    else if(indexPath.section == 2) //校友捐赠
     {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
-        button.frame = CGRectMake(5, 5, tableView.frame.size.width-10, 140);
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(5, 5,290, 160);
+        [button setBackgroundImage:[UIImage imageNamed:@"img_feedback"] forState:UIControlStateNormal];
         [cell.contentView addSubview:button];
+        button.tag = 200;
+        [button addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     else if(indexPath.section == 3)
     {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+      
         //学校图片
         UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 15, 100, 70)];
         headImgView.backgroundColor = [UIColor grayColor];

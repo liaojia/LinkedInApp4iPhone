@@ -107,14 +107,9 @@
     };
 
     
-    [self animateReload];
+   [self animateReloadWithPage:1];
     
 
-    [self buildBarButtons];
-}
-- (void)animateReload
-{
-    [self animateReloadWithPage:currentPage+1];
 }
 
 /**
@@ -187,7 +182,10 @@
     
     currentPage++; //TODO
 }
-
+- (void)shouldUpDragUpdate
+{
+    [self animateReloadWithPage:currentPage+1];
+}
 - (NSUInteger)numberOfViews
 {
     return self.items.count;
@@ -210,18 +208,6 @@
     [super shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
     return YES;
 }
--(void)buildBarButtons
-{
-    UIBarButtonItem * reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Lay it!"
-                                                                      style:UIBarButtonItemStylePlain
-                                                                     target:self
-                                                                     action:@selector(animateReload)];
-    
-    
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: reloadButton, nil];
-    
-}
-
 
 
 - (void)doUpdateWithIndex:(int)index

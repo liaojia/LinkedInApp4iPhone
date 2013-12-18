@@ -14,6 +14,7 @@
 #import "StudentInfoViewController.h"
 #import "SchollInfoViewController.h"
 #import "SetingMainViewController.h"
+#import "RegisterViewController.h"
 
 @interface LoginViewController ()
 
@@ -21,8 +22,7 @@
 
 @implementation LoginViewController
 
-@synthesize tf_username = _tf_username;
-@synthesize tf_pwd = _tf_pwd;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,27 +41,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"img_login_backdrop"]]];
-    UIButton *btn_back = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn_back setFrame:CGRectMake(15, 15, 30, 30)];
-    [self setButtonBgWithNomal:@"img_login_back_normal" selectedImageStr:@"img_login_back_pressed" button:btn_back];
-    [btn_back addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn_back];
     
-    UIButton *btn_confirm = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn_confirm setFrame:CGRectMake(275, 15, 30, 30)];
-    [self setButtonBgWithNomal:@"img_login_completed_normal" selectedImageStr:@"img_login_completed_pressed" button:btn_confirm];
-    [btn_confirm addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn_confirm];
-    
-    _tf_username = [[ClearTextField alloc] initWithFrame:CGRectMake(10, 120, 300, 40)];
-    [_tf_username.tf_input setText:@"20131014001@qq.com"];
-    [self.view addSubview:_tf_username];
-    
-    _tf_pwd = [[ClearTextField alloc] initWithFrame:CGRectMake(10, 200, 300, 40)];
-    [_tf_pwd.tf_input setText:@"123"];
-    [_tf_pwd setInputTypePwd];
-    [self.view addSubview:_tf_pwd];
+    self.nameTxtField.text = @"20131014001@qq.com";
+    self.psaTxtField.text = @"123";
     
 }
 
@@ -79,10 +61,10 @@
 - (void)gotoHome
 {
     UITabBarController *tabbar  = [[UITabBarController alloc]init];
-//    if (IOS7_OR_LATER)
-//    {
-//        tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
-//    }
+    if (IOS7_OR_LATER)
+    {
+        tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
+    }
     
     StudentInfoViewController *studentInfoController = [[StudentInfoViewController alloc]initWithNibName:@"StudentInfoViewController" bundle:nil];
     UINavigationController *studentNav = [[UINavigationController alloc]initWithRootViewController:studentInfoController];
@@ -91,7 +73,7 @@
     studentInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
     studentInfoController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     studentInfoController.navigationController.delegate = studentInfoController.navigationController;
-    
+        
     SchollInfoViewController *schollInfoController = [[SchollInfoViewController alloc]initWithNibName:@"SchollInfoViewController" bundle:nil];
     UINavigationController *schoolNav = [[UINavigationController alloc]initWithRootViewController:schollInfoController];
     schollInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
@@ -126,14 +108,24 @@
 }
 #pragma mark-
 #pragma mark--按钮点击事件
--(IBAction)backAction:(id)sender
+- (IBAction)buttonClickHandle:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    UIButton *button = (UIButton*)sender;
+    if (button.tag==100)
+    {
+        RegisterViewController *regsiterController = [[RegisterViewController alloc]init];
+        [self.navigationController pushViewController:regsiterController animated:YES];
+    }
+    else if(button.tag==101)
+    {
+        [self confirmAction];
+    }
 }
 
--(IBAction)confirmAction:(id)sender{
+-(void)confirmAction
+{
         
-    NSDictionary *requestDic = [[NSDictionary alloc] initWithObjectsAndKeys:_tf_username.getText, @"name", _tf_pwd.getText, @"password", nil];
+    NSDictionary *requestDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.nameTxtField.text, @"name", self.psaTxtField.text, @"password", nil];
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] TransferWithRequestDic:requestDic
          requesId:@"LOGIN"
            prompt:@"hell"
@@ -197,8 +189,8 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [_tf_username.tf_input resignFirstResponder];
-    [_tf_pwd.tf_input resignFirstResponder];
+
+    [self.view endEditing:YES];
 }
 
 @end

@@ -13,6 +13,12 @@
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    //设置导航栏背景图片
+    if ([self.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]){
+		[self.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forBarMetrics:UIBarMetricsDefault];
+	}
+
+    
     if (navigationController.viewControllers.count>1)
     {
         UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];

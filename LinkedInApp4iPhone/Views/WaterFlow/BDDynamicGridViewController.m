@@ -334,16 +334,17 @@
 #pragma mark - scrolling
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-
-    for (UIView *view in _tableView.subviews)
+    float yMargin = scrollView.contentOffset.y + scrollView.frame.size.height - scrollView.contentSize.height;
+    if (yMargin>50)
     {
-        if ([view isKindOfClass:[UIScrollView class]])
+        if ([self.delegate respondsToSelector:@selector(shouldUpDragUpdate)])
         {
-            NSLog(@"scrollView.contentOffset.y %F scrollView.contentSize.height %f",scrollView.contentOffset.y,scrollView.contentSize.height);
-
+            [self.delegate shouldUpDragUpdate];
         }
+        
     }
-    
+
+   
        if([self.delegate respondsToSelector:@selector(gridViewWillEndScrolling)]){
         [self.delegate gridViewWillEndScrolling];
     }

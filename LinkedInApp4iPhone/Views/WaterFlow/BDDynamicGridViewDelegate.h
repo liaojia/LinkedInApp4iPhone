@@ -111,6 +111,9 @@
  */
 - (void) gridViewDidEndScrolling;
 
+//上啦刷新回调
+- (void)shouldUpDragUpdate;
+
 
 /**
  This method is called to determine the height of the specified row.
