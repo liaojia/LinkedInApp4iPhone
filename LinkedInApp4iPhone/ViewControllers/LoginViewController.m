@@ -79,10 +79,10 @@
 - (void)gotoHome
 {
     UITabBarController *tabbar  = [[UITabBarController alloc]init];
-    if (IOS7_OR_LATER)
-    {
-        tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
-    }
+//    if (IOS7_OR_LATER)
+//    {
+//        tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
+//    }
     
     StudentInfoViewController *studentInfoController = [[StudentInfoViewController alloc]initWithNibName:@"StudentInfoViewController" bundle:nil];
     UINavigationController *studentNav = [[UINavigationController alloc]initWithRootViewController:studentInfoController];

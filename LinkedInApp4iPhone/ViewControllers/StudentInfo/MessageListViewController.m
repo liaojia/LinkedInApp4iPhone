@@ -9,6 +9,7 @@
 #import "MessageListViewController.h"
 #import "ListCell.h"
 #import "DetailInfoViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MessageListViewController ()
 {

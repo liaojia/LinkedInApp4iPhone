@@ -9,6 +9,7 @@
 #import "BDViewController.h"
 #import "BDRowInfo.h"
 #import "ImageShowView.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define kOonePageCount 10
 
