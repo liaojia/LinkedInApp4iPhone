@@ -12,6 +12,7 @@
 #import "MessageListViewController.h"
 #import "SchollCardApplyViewController.h"
 #import "BDViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SchollInfoViewController ()
 {

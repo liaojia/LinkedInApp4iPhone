@@ -14,6 +14,7 @@
 #import "StudentInfoViewController.h"
 #import "SchollInfoViewController.h"
 #import "SetingMainViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface LoginViewController ()
 
@@ -81,7 +82,7 @@
     UITabBarController *tabbar  = [[UITabBarController alloc]init];
     if (IOS7_OR_LATER)
     {
-        tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
+       // tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
     }
     
     StudentInfoViewController *studentInfoController = [[StudentInfoViewController alloc]initWithNibName:@"StudentInfoViewController" bundle:nil];
