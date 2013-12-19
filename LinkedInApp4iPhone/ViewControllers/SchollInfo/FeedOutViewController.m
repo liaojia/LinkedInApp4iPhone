@@ -33,6 +33,11 @@
         
         self.navigationItem.title = @"捐款方式";
     }
+    else if(self.pageType==1)
+    {
+        self.navigationItem.title = @"首都师范大学";
+         self.content = @"首都师范大学xxxxxxxxxxxxxxxxxxx";//TODO  增加正文
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,7 +66,7 @@
         {
             return 160;
         }
-        return  [StaticTools getLabelHeight:self.content defautWidth:310 defautHeight:4800 fontSize:16]+10;;
+        return  [StaticTools getLabelHeight:self.content defautWidth:310 defautHeight:4800 fontSize:16]+10;
     }
     else if(self.pageType==1)
     {
@@ -69,7 +74,7 @@
         {
             return 160;
         }
-        return 1000;
+        return  [StaticTools getLabelHeight:self.content defautWidth:310 defautHeight:4800 fontSize:16]+10;;
     }
     return 44;
 }
@@ -86,15 +91,18 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    if (self.pageType==0&&indexPath.row==1)
+    if ((self.pageType==0&&indexPath.row==1)||
+        (self.pageType==1&&indexPath.row==0))
     {
         UIImageView *imgView = [[UIImageView alloc]init];;
         imgView.frame = CGRectMake(5, 5,290, 150);
-        imgView.image = [UIImage imageNamed:@"img_feedback"];
+        imgView.image = [UIImage imageNamed:self.pageType==0? @"img_feedback":@"img_school_logo.jpg"];
         [cell.contentView addSubview:imgView];
+        imgView.contentMode = UIViewContentModeScaleAspectFit;
         
     }
-    else if(self.pageType==0&&indexPath.row==0)
+    else if((self.pageType==0&&indexPath.row==0)||
+            (self.pageType==1&&indexPath.row==1))
     {
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 310, [StaticTools getLabelHeight:self.content defautWidth:310 defautHeight:4800 fontSize:16])];
         label.backgroundColor = [UIColor clearColor];

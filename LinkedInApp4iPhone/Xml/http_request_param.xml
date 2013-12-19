@@ -28,7 +28,7 @@
     <!-- 查看个人基本信息 -->
     <request>
         <requestId>PROFILE_BASIC</requestId>
-        <url>/profile/${id}/basic</url>
+        <url>/profile/${id}/detail</url>
         <method>GET</method>
     </request>
     

@@ -92,8 +92,8 @@
     
     self.onSingleTap =  ^(UIView* view, NSInteger viewIndex){
         
-            //TODO
-             ImageShowView *imageShowView  = [[ImageShowView alloc]initWithFrame:CGRectMake(0, 0,320,480) url:testImgArray[viewIndex]];
+            //TODO URL需处理
+             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:CGRectMake(0, 0,320,480) url:testImgArray[viewIndex]];
             
             [self.view.superview.superview addSubview:imageShowView];
             
@@ -158,7 +158,7 @@
 - (void)animateReloadWithPage:(int)page
 {
     for (int i=0; i < kOonePageCount; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder"]];
         imageView.frame = CGRectMake(0, 0, 44, 44);
         imageView.clipsToBounds = YES;
         [self.items addObject:imageView];
@@ -180,7 +180,7 @@
         [operation start];
     }
     
-    currentPage++; //TODO
+    currentPage++; //TODO 从服务器请求图片数据时需去掉
 }
 - (void)shouldUpDragUpdate
 {

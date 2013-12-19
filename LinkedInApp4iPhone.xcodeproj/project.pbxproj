@@ -289,6 +289,8 @@
 		CEE8EACD180E720D0052E5D8 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EACB180E720D0052E5D8 /* ActivityDetailViewController.m */; };
 		CEE8EACE180E720D0052E5D8 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE8EACC180E720D0052E5D8 /* ActivityDetailViewController.xib */; };
 		CEE8EAD1180E776C0052E5D8 /* PersonHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */; };
+		CEE982671863219F00735125 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE982661863219F00735125 /* RegisterViewController.xib */; };
+		CEE9826918632FCF00735125 /* img_school_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEE9826818632FCF00735125 /* img_school_logo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -668,6 +670,8 @@
 		CEE8EACC180E720D0052E5D8 /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
 		CEE8EACF180E776C0052E5D8 /* PersonHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonHeadView.h; sourceTree = "<group>"; };
 		CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonHeadView.m; sourceTree = "<group>"; };
+		CEE982661863219F00735125 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		CEE9826818632FCF00735125 /* img_school_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_school_logo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -873,6 +877,7 @@
 		8DF20792180CE05600FDEABA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CEE9826818632FCF00735125 /* img_school_logo.jpg */,
 				CE67C8071861F199006EA741 /* img_edittext_pwd.png */,
 				CE67C8081861F199006EA741 /* img_edittext_user.png */,
 				CE67C8011861EFFC006EA741 /* img_login_top.png */,
@@ -996,6 +1001,7 @@
 				CE67C7FF1861EEE6006EA741 /* LoginViewController.xib */,
 				8DF20806180CE06100FDEABA /* RegisterViewController.h */,
 				8DF20807180CE06100FDEABA /* RegisterViewController.m */,
+				CEE982661863219F00735125 /* RegisterViewController.xib */,
 				8D12D3AB180E36A8003D09CA /* ProfileViewController.h */,
 				8D12D3AC180E36A8003D09CA /* ProfileViewController.m */,
 				8D0FB3491814CE4400FE9EF7 /* CommitBasicInfoViewController.h */,
@@ -1414,6 +1420,7 @@
 				CE67C7FE1861ED2A006EA741 /* img_feedback.png in Resources */,
 				CE67C80A1861F199006EA741 /* img_edittext_user.png in Resources */,
 				8DF207CD180CE05600FDEABA /* img_card_arrows_pressed@2x.png in Resources */,
+				CEE9826918632FCF00735125 /* img_school_logo.jpg in Resources */,
 				8DF207CE180CE05600FDEABA /* img_card_grayline@2x.png in Resources */,
 				CE67C7F71861ED1C006EA741 /* image01.jpg in Resources */,
 				8DF207CF180CE05600FDEABA /* img_card_head_portrait@2x.png in Resources */,
@@ -1514,6 +1521,7 @@
 				CE00A102181615D700253780 /* blueArrow.png in Resources */,
 				CE00A103181615D700253780 /* blueArrow@2x.png in Resources */,
 				CE00A104181615D700253780 /* input_window.png in Resources */,
+				CEE982671863219F00735125 /* RegisterViewController.xib in Resources */,
 				CE67C7E71861ECD2006EA741 /* img_splash_11.png in Resources */,
 				CE00A105181615D700253780 /* input_window@2x.png in Resources */,
 				CE00A106181615D700253780 /* noImage50x118.png in Resources */,

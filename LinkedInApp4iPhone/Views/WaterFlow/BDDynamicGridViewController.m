@@ -384,10 +384,17 @@
 
 - (void)gesture:(UIGestureRecognizer*)gesture view:(UIView**)view viewIndex:(NSInteger*)viewIndex
 {
-        
-    BDDynamicGridCell *cell = (BDDynamicGridCell*) [gesture.view.superview superview];
-    
-    CGPoint locationInGridContainer = [gesture locationInView:gesture.view];    
+    BDDynamicGridCell *cell = Nil;
+    if (IOS7_OR_LATER) //ios7后多了层scrollview   view-》contentview-》scrollview-》cell
+    {
+        cell =(BDDynamicGridCell*) [[gesture.view.superview superview]superview];
+    }
+    else
+    {
+        cell = (BDDynamicGridCell*) [gesture.view.superview superview];
+    }
+
+    CGPoint locationInGridContainer = [gesture locationInView:gesture.view];
     for (int i=0; i < cell.gridContainerView.subviews.count; i++){
         UIView *subview = [cell.gridContainerView.subviews objectAtIndex:i];
         CGRect vincinityRect = CGRectMake(subview.frame.origin.x - self.borderWidth, 

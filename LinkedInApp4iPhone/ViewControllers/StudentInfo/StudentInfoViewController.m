@@ -37,6 +37,11 @@
     
     [self getListInfoWithType:1];
     [self getListInfoWithType:2];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -180,7 +185,14 @@
     }
     return 90;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return [[UIView alloc]initWithFrame:CGRectZero];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -249,7 +261,7 @@
             [cell.contentView addSubview:detailBtn];
         }
         
-        [cell.contentView addSubview:detailBtn]; //TODO
+        [cell.contentView addSubview:detailBtn]; //TODO 暂时一直放着
         
         
         return cell;
@@ -276,6 +288,7 @@
     else
     {
         ListCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
+         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         ProfileModel *model;
         if (indexPath.section == 0)

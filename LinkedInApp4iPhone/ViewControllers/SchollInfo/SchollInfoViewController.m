@@ -45,6 +45,11 @@
     self.listTableView.backgroundView = nil;
     
     [self getSchollInfoListInfo];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -239,6 +244,15 @@
     return 90;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return [[UIView alloc]initWithFrame:CGRectZero];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -312,14 +326,14 @@
             [cell.contentView addSubview:detailBtn];
         }
         
-        [cell.contentView addSubview:detailBtn]; //TODO
+        [cell.contentView addSubview:detailBtn]; //TODO 暂时一直放着
         return cell;
     }
     
     if (indexPath.section==0)
     {
         ListCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         ProfileModel *model = self.schoolInfoMtbArray[indexPath.row];
         [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         cell.txtLabel.text = model.mDesc;
@@ -345,31 +359,32 @@
     {
       
         //学校图片
-        UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 15, 100, 70)];
+        UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 70, 90)];
         headImgView.backgroundColor = [UIColor grayColor];
        
         //[headImgView setImageWithURL:[NSURL URLWithString:self.schollInfoModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
-        headImgView.layer.borderColor = [UIColor grayColor].CGColor;
-        headImgView.layer.borderWidth = 2;
+        headImgView.image = [UIImage imageNamed:@"img_school_logo.jpg"];
+//        headImgView.layer.borderColor = [UIColor grayColor].CGColor;
+//        headImgView.layer.borderWidth = 2;
         [cell.contentView addSubview:headImgView];
         
         //学校名称
-        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 5, 200, 90)];
+        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 5, 200, 30)];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.numberOfLines = 0;
         nameLabel.lineBreakMode = UILineBreakModeWordWrap;
         nameLabel.textColor = RGBACOLOR(0, 140, 207, 1);
         nameLabel.font = [UIFont boldSystemFontOfSize:16];
-        nameLabel.text = @"学校名称";
+        nameLabel.text = @"首都师范大学";
         [cell.contentView addSubview:nameLabel];
         
         //学校详情
-        UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, nameLabel.frame.origin.y+nameLabel.frame.size.height+5, 180, 100-10-nameLabel.frame.size.height)];
+        UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 35, 180, 70)];
         detailLabel.backgroundColor = [UIColor clearColor];
         detailLabel.font = [UIFont systemFontOfSize:15];
         detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
         detailLabel.numberOfLines = 6;
-        detailLabel.text = @"detail";
+        detailLabel.text = @"detail"; //TODO  增加正文
         [cell.contentView addSubview:detailLabel];
         
         return cell;
@@ -385,6 +400,12 @@
     {
         ProfileModel *model = self.schoolInfoMtbArray[indexPath.row];
         [self gotoDetailPageWithID:model.mId type:3];
+    }
+    else if(indexPath.section==3) //数据母校
+    {
+        FeedOutViewController *feedOutController = [[FeedOutViewController alloc]initWithNibName:@"FeedOutViewController" bundle:nil];
+        feedOutController.pageType=1;
+        [self.navigationController pushViewController:feedOutController animated:YES];
     }
 }
 

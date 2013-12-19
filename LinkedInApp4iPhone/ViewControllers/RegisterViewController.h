@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@class ClearTextField;
+
 
 @interface RegisterViewController : BaseViewController<UITextFieldDelegate>
 
-@property(nonatomic, strong)ClearTextField *tf_username;
-@property(nonatomic, strong)ClearTextField *tf_pwd;
-@property(nonatomic, strong)ClearTextField *tf_confirm_pwd;
+
+@property (weak, nonatomic) IBOutlet UITextField *nameTxtField;
+@property (weak, nonatomic) IBOutlet UITextField *pswTxtField;
+@property (weak, nonatomic) IBOutlet UITextField *pswConfirmTxtField;
+
 
 @end
