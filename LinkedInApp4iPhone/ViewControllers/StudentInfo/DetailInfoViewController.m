@@ -7,6 +7,7 @@
 //
 
 #import "DetailInfoViewController.h"
+#import "TestImageUtil.h"
 
 @interface DetailInfoViewController ()
 
@@ -99,18 +100,20 @@
  *	@param 	idStr 	id
  */
 - (void)getDetailWithID:(NSString*)idStr
-
 {
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"id":self.typeId} requesId:@"CUSTOMEMEDIODETAILTINFO" messId:idStr success:^(id obj)
                              {
                                  if ([[obj objectForKey:@"rc"]intValue] == 1)
                                  {
+                                     self.resultDict = [NSMutableDictionary dictionaryWithDictionary:obj];
                                      
-                                     self.resultDict = obj;
+                                     [self.resultDict setObject:[TestImageUtil getImageList] forKey:@"pics"];
+                                     
                                      [self.listTableView reloadData];
                                      self.imageArray = [NSMutableArray arrayWithCapacity:0];
                                     
                                      NSArray *pics = self.resultDict[@"pics"];
+                                     
                                      for (int i=0; i<pics.count; i++)
                                      {
                                          [self.imageArray addObject:@""];
@@ -203,7 +206,8 @@
     {
         [view removeFromSuperview];
     }
-     NSArray *pics = self.resultDict[@"pics"];
+    
+    NSArray *pics = self.resultDict[@"pics"];
     
     if (indexPath.row==0)
     {

@@ -10,6 +10,7 @@
 #import "ListCell.h"
 #import "DetailInfoViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "TestImageUtil.h"
 
 @interface MessageListViewController ()
 {
@@ -197,7 +198,8 @@
                                          NSDictionary *temDict = listArray[i];
                                          ProfileModel *model = [[ProfileModel alloc]init];
                                          model.mDesc = temDict[@"preview"];
-                                         model.mImgUrl = temDict[@"pic"];
+                                         //model.mImgUrl = temDict[@"pic"];
+                                         model.mImgUrl = [TestImageUtil getAImage];
                                          model.mId = temDict[@"id"];
                                          model.mTitle = temDict[@"title"];
                                         

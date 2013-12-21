@@ -14,6 +14,7 @@
 		6C1A94E01865F80F0030947D /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94D81865F80F0030947D /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6C1A94E11865F80F0030947D /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94DA1865F80F0030947D /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6C1A94E21865F80F0030947D /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94DD1865F80F0030947D /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6C1A94E5186610370030947D /* TestImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94E4186610370030947D /* TestImageUtil.m */; };
 		8D0FB34C1814CE4400FE9EF7 /* CommitBasicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB34A1814CE4400FE9EF7 /* CommitBasicInfoViewController.m */; };
 		8D0FB34D1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB34B1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib */; };
 		8D12D3AE180E36A8003D09CA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12D3AC180E36A8003D09CA /* ProfileViewController.m */; };
@@ -344,6 +345,8 @@
 		6C1A94DA1865F80F0030947D /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
 		6C1A94DC1865F80F0030947D /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
 		6C1A94DD1865F80F0030947D /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
+		6C1A94E3186610370030947D /* TestImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestImageUtil.h; sourceTree = "<group>"; };
+		6C1A94E4186610370030947D /* TestImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestImageUtil.m; sourceTree = "<group>"; };
 		8D0FB3491814CE4400FE9EF7 /* CommitBasicInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitBasicInfoViewController.h; sourceTree = "<group>"; };
 		8D0FB34A1814CE4400FE9EF7 /* CommitBasicInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitBasicInfoViewController.m; sourceTree = "<group>"; };
 		8D0FB34B1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitBasicInfoViewController.xib; sourceTree = "<group>"; };
@@ -862,6 +865,8 @@
 				CE9DE2EC18138477003D0EAD /* UIImage+Resizeable.m */,
 				8DD5D3171806E7DC00EB446F /* FileManagerUtil.h */,
 				8DD5D3181806E7DC00EB446F /* FileManagerUtil.m */,
+				6C1A94E3186610370030947D /* TestImageUtil.h */,
+				6C1A94E4186610370030947D /* TestImageUtil.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1833,6 +1838,7 @@
 				CE74826A186082DB00C89A26 /* BDViewController.m in Sources */,
 				8DD5D3361806E8F300EB446F /* TBXML+HTTP.m in Sources */,
 				8DD5D3371806E8F300EB446F /* TBXML.m in Sources */,
+				6C1A94E5186610370030947D /* TestImageUtil.m in Sources */,
 				8DD5D3481807C41800EB446F /* RequestModel.m in Sources */,
 				8DF2080A180CE06100FDEABA /* BaseViewController.m in Sources */,
 				8DF2080B180CE06100FDEABA /* LoginViewController.m in Sources */,
