@@ -33,6 +33,7 @@
     self.navigationItem.title = @"设置";
     
     self.listTableView.backgroundView = nil;
+    self.listTableView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning

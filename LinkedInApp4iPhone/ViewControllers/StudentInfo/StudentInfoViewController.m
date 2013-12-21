@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     self.listTableView.backgroundView = nil;
+    self.listTableView.backgroundColor = [UIColor clearColor];
     // Do any additional setup after loading the view from its nib.
     
     self.navigationItem.title = @"校友信息";
@@ -160,11 +161,11 @@
 {
     if (section==0)
     {
-        return self.studentInfoMtbArray.count+1;
+        return (self.studentInfoMtbArray.count>3?3:self.studentInfoMtbArray.count)+1;
     }
     else if(section == 1)
     {
-        return self.noticeInfoMtbArray.count+1;
+        return (self.noticeInfoMtbArray.count>3?3:self.noticeInfoMtbArray.count)+1;
     }
     else if(section == 2)
     {
@@ -197,21 +198,24 @@
 {
     
     static NSString *CellIdentifier = @"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
+    ListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell==Nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    for (UIView *view in cell.contentView.subviews)
-    {
-        [view removeFromSuperview];
-    }
+   
 
     if (indexPath.row == 0) //section组别标题
     {
+        for (UIView *view in cell.contentView.subviews)
+        {
+            [view removeFromSuperview];
+        }
+        
         //左侧标题文字
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 8, 100, 30)];
         titleLabel.backgroundColor = [UIColor clearColor];
@@ -269,6 +273,11 @@
     
     if(indexPath.section == 2)
     {
+        for (UIView *view in cell.contentView.subviews)
+        {
+            [view removeFromSuperview];
+        }
+        
         if (indexPath.row == 1)
         {
             UIButton *leftCardBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -287,14 +296,6 @@
     }
     else
     {
-        static NSString *CellIdentifier = @"CellIdenti";
-        ListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
-        if (cell==Nil)
-        {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
-        }
-         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         ProfileModel *model;
         if (indexPath.section == 0)

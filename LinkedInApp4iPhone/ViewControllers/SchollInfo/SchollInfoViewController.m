@@ -43,6 +43,7 @@
     self.schollImgView.frame =CGRectMake(5, 5, 290, 160);
     
     self.listTableView.backgroundView = nil;
+    self.listTableView.backgroundColor = [UIColor clearColor];
     
     [self getSchollInfoListInfo];
     
@@ -220,7 +221,7 @@
 {
     if (section==0)
     {
-        return self.schoolInfoMtbArray.count;
+        return (self.schoolInfoMtbArray.count>3?3:self.schoolInfoMtbArray.count)+1;
     }
  
     return 2;

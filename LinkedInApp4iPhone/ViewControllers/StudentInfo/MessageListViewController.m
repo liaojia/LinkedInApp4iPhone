@@ -88,6 +88,7 @@
     self.headPageControl.numberOfPages = self.topInfoMtbArray.count;
     self.headPageControl.currentPage = 0;
     self.headPageControl.hidesForSinglePage = YES;
+
     self.headTitleLabel.text =self.topInfoMtbArray[0][@"title"];
     for (int i=0;i<self.topInfoMtbArray.count;i++)
     {
