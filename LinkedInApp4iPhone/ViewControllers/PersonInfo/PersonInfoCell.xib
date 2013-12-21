@@ -62,18 +62,10 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="37">
-                        <rect key="frame" x="117" y="100" width="76" height="25"/>
+                        <rect key="frame" x="217" y="97" width="76" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="修改" backgroundImage="img_school_notice_normal.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="38">
-                        <rect key="frame" x="216" y="100" width="74" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title="删除" backgroundImage="img_school_notice_normal.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -81,7 +73,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="changeBtn" destination="37" id="40"/>
-                <outlet property="deleteBtn" destination="38" id="41"/>
                 <outlet property="headImgView" destination="3" id="42"/>
                 <outlet property="orgLabel" destination="20" id="28"/>
                 <outlet property="placeLabel" destination="22" id="31"/>

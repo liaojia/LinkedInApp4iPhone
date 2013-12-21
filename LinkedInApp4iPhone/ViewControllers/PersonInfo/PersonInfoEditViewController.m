@@ -106,7 +106,7 @@
     //标题
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 100, 30)];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font  = [UIFont boldSystemFontOfSize:18];
+    titleLabel.font  = [UIFont systemFontOfSize:15];
     titleLabel.text = keyArray[indexPath.row];
     [cell.contentView addSubview:titleLabel];
 
