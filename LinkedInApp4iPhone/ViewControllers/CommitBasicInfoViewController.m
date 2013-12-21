@@ -377,6 +377,7 @@
         //标题文字
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 100, 30)];
         titleLabel.backgroundColor = [UIColor clearColor];
+        titleLabel.font = [UIFont systemFontOfSize:15];
         NSArray *array = keyArray[indexPath.section];
         titleLabel.text = indexPath.section ==0?array[indexPath.row-1]:array[indexPath.row];
         [cell.contentView addSubview:titleLabel];
@@ -402,6 +403,7 @@
         {
             UITextView *txtView = [[UITextView alloc] initWithFrame:CGRectMake(90, 5, 200, 30)];
             txtView.delegate = self;
+            txtView.font = [UIFont systemFontOfSize:15];
             txtView.layer.borderColor = [UIColor lightGrayColor].CGColor;
             txtView.font = [UIFont systemFontOfSize:16];
             txtView.layer.borderWidth = 1;

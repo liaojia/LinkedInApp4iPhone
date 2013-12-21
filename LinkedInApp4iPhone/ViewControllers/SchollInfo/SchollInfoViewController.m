@@ -51,10 +51,10 @@
     
     [self getSchollInfoListInfo];
     
-//    if ( IOS7_OR_LATER )
-//    {
-//        self.edgesForExtendedLayout = UIRectEdgeNone;
-//    }
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -414,7 +414,7 @@
         detailLabel.font = [UIFont systemFontOfSize:15];
         detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
         detailLabel.numberOfLines = 6;
-        detailLabel.text = @"detail"; //TODO  增加正文
+        detailLabel.text = @"首都师范大学创建于1954年，是一所包括文、理、工、管、法、教育、外语、艺术等专业的综合性师范大学，是北京市重点投入建设，进入“211工程”的北京市属重点大学。";
         [cell.contentView addSubview:detailLabel];
         
         return cell;

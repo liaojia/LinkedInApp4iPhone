@@ -39,6 +39,8 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(280, 5, 50, 30);
     [button addTarget:self action:@selector(updatePersonalCard) forControlEvents:UIControlEventTouchUpInside];
+    [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_n"] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_s"] forState:UIControlStateHighlighted];
     [button setTitle:@"完成" forState:UIControlStateNormal];
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:button];
@@ -431,6 +433,7 @@
         //标题文字
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 100, 30)];
         titleLabel.backgroundColor = [UIColor clearColor];
+        titleLabel.font = [UIFont systemFontOfSize:15];
         NSArray *array = keyArray[indexPath.section];
         titleLabel.text = indexPath.section ==0?array[indexPath.row-1]:array[indexPath.row];
         [cell.contentView addSubview:titleLabel];
@@ -456,8 +459,8 @@
         {
             UITextView *txtView = [[UITextView alloc] initWithFrame:CGRectMake(90, 5, 200, 30)];
             txtView.delegate = self;
+            txtView.font = [UIFont systemFontOfSize:15];
             txtView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-            txtView.font = [UIFont systemFontOfSize:16];
             txtView.layer.borderWidth = 1;
             txtView.tag = (indexPath.section+1)*100+indexPath.row;
             [cell.contentView addSubview:txtView];
