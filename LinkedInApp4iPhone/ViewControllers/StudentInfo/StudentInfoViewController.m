@@ -203,6 +203,7 @@
     
     if (cell==Nil)
     {
+        NSLog(@"row %d sec %d",indexPath.row,indexPath.section);
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
     }
     
@@ -307,7 +308,8 @@
              model = self.noticeInfoMtbArray[indexPath.row-1];
         }
         
-        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        //[cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        cell.headImgView.image = [UIImage imageNamed:@"image02.jpg"];
         cell.txtLabel.text = model.mTitle;
 
        
