@@ -36,6 +36,10 @@
 		8DB481E51865F3AD0036F390 /* btn_add_n@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB481E11865F3AD0036F390 /* btn_add_n@2.png */; };
 		8DB481E61865F3AD0036F390 /* btn_add_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB481E21865F3AD0036F390 /* btn_add_s.png */; };
 		8DB481E71865F3AD0036F390 /* btn_add_s@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB481E31865F3AD0036F390 /* btn_add_s@2.png */; };
+		8DB481EC1865FE430036F390 /* btn_back_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB481E81865FE430036F390 /* btn_back_n.png */; };
+		8DB481ED1865FE430036F390 /* btn_back_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB481E91865FE430036F390 /* btn_back_n@2x.png */; };
+		8DB481EE1865FE430036F390 /* btn_back_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB481EA1865FE430036F390 /* btn_back_s.png */; };
+		8DB481EF1865FE430036F390 /* btn_back_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB481EB1865FE430036F390 /* btn_back_s@2x.png */; };
 		8DD5D30A1806A1C200EB446F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD5D3091806A1C200EB446F /* Security.framework */; };
 		8DD5D30C1806A1D500EB446F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD5D30B1806A1D500EB446F /* CFNetwork.framework */; };
 		8DD5D31A1806E7DC00EB446F /* FileManagerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5D3181806E7DC00EB446F /* FileManagerUtil.m */; };
@@ -365,6 +369,10 @@
 		8DB481E11865F3AD0036F390 /* btn_add_n@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add_n@2.png"; sourceTree = "<group>"; };
 		8DB481E21865F3AD0036F390 /* btn_add_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_add_s.png; sourceTree = "<group>"; };
 		8DB481E31865F3AD0036F390 /* btn_add_s@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add_s@2.png"; sourceTree = "<group>"; };
+		8DB481E81865FE430036F390 /* btn_back_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_n.png; sourceTree = "<group>"; };
+		8DB481E91865FE430036F390 /* btn_back_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back_n@2x.png"; sourceTree = "<group>"; };
+		8DB481EA1865FE430036F390 /* btn_back_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_s.png; sourceTree = "<group>"; };
+		8DB481EB1865FE430036F390 /* btn_back_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back_s@2x.png"; sourceTree = "<group>"; };
 		8DD5D3091806A1C200EB446F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8DD5D30B1806A1D500EB446F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8DD5D3171806E7DC00EB446F /* FileManagerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManagerUtil.h; sourceTree = "<group>"; };
@@ -942,6 +950,10 @@
 			children = (
 				8D935455181D378000DD4C65 /* icon@2x.png */,
 				8DB481D01865EE780036F390 /* btn_login_n.png */,
+				8DB481E81865FE430036F390 /* btn_back_n.png */,
+				8DB481E91865FE430036F390 /* btn_back_n@2x.png */,
+				8DB481EA1865FE430036F390 /* btn_back_s.png */,
+				8DB481EB1865FE430036F390 /* btn_back_s@2x.png */,
 				8DB481D11865EE780036F390 /* btn_login_n@2.png */,
 				8DB481E01865F3AD0036F390 /* btn_add_n.png */,
 				8DB481E11865F3AD0036F390 /* btn_add_n@2.png */,
@@ -1538,8 +1550,10 @@
 				8DB481D71865EE780036F390 /* btn_login_s@2.png in Resources */,
 				CE67C7E01861ECD2006EA741 /* img_splash_4.png in Resources */,
 				CE67C7E11861ECD2006EA741 /* img_splash_5.png in Resources */,
+				8DB481EE1865FE430036F390 /* btn_back_s.png in Resources */,
 				CE9EB7A91865809F00BC03C1 /* FindClassmateViewController.xib in Resources */,
 				8DF207CC180CE05600FDEABA /* img_card_arrows_normal@2x.png in Resources */,
+				8DB481EF1865FE430036F390 /* btn_back_s@2x.png in Resources */,
 				CE67C80A1861F199006EA741 /* img_edittext_user@2x.png in Resources */,
 				8DF207CD180CE05600FDEABA /* img_card_arrows_pressed@2x.png in Resources */,
 				CEE9826918632FCF00735125 /* img_school_logo.jpg in Resources */,
@@ -1551,6 +1565,7 @@
 				8DF207D0180CE05600FDEABA /* img_card_head_portrait_small@2x.png in Resources */,
 				8DF207D1180CE05600FDEABA /* img_card_list_one@2x.png in Resources */,
 				CE67C7EF1861ECD2006EA741 /* img_splash_19.png in Resources */,
+				8DB481EC1865FE430036F390 /* btn_back_n.png in Resources */,
 				8DF207D2180CE05600FDEABA /* img_card_list_two@2x.png in Resources */,
 				8DB481DC1865EF130036F390 /* btn_register_n.png in Resources */,
 				8DF207D3180CE05600FDEABA /* img_card_node_pressed@2x.png in Resources */,
@@ -1628,6 +1643,7 @@
 				CE7482861860AD8900C89A26 /* img_group_school_normal.png in Resources */,
 				CEE8EAC9180E71E40052E5D8 /* ActivityCell.xib in Resources */,
 				CEE8EACE180E720D0052E5D8 /* ActivityDetailViewController.xib in Resources */,
+				8DB481ED1865FE430036F390 /* btn_back_n@2x.png in Resources */,
 				CED1AA07180EC4D500A4A1A0 /* PersonInfoCell.xib in Resources */,
 				CED1AA09180EC4D500A4A1A0 /* PersonInfoViewController.xib in Resources */,
 				CED1AA0E180EC51B00A4A1A0 /* CommendListViewController.xib in Resources */,
