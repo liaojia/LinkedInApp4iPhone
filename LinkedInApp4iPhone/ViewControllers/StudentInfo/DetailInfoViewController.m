@@ -7,6 +7,7 @@
 //
 
 #import "DetailInfoViewController.h"
+#import "TestImageUtil.h"
 
 @interface DetailInfoViewController ()
 
@@ -38,6 +39,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark-
 #pragma mark--功能函数
 /**
@@ -98,23 +100,26 @@
  *	@param 	idStr 	id
  */
 - (void)getDetailWithID:(NSString*)idStr
-
 {
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"id":self.typeId} requesId:@"CUSTOMEMEDIODETAILTINFO" messId:idStr success:^(id obj)
                              {
                                  if ([[obj objectForKey:@"rc"]intValue] == 1)
                                  {
+                                     self.resultDict = [NSMutableDictionary dictionaryWithDictionary:obj];
                                      
-                                     self.resultDict = obj;
+                                     [self.resultDict setObject:[TestImageUtil getImageList] forKey:@"pics"];
+                                     
                                      [self.listTableView reloadData];
                                      self.imageArray = [NSMutableArray arrayWithCapacity:0];
                                     
                                      NSArray *pics = self.resultDict[@"pics"];
+                                     
                                      for (int i=0; i<pics.count; i++)
                                      {
                                          [self.imageArray addObject:@""];
                                          NSDictionary *dict = pics[i];
                                          NSLog(@"开始下载图片 %@",dict[@"url"]);
+                                        /////////////?
                                         AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:dict[@"url"]]] success:^(UIImage *image) {
                                              
                                               NSLog(@"下载图片完成 %@",dict[@"url"]);
@@ -201,7 +206,8 @@
     {
         [view removeFromSuperview];
     }
-     NSArray *pics = self.resultDict[@"pics"];
+    
+    NSArray *pics = self.resultDict[@"pics"];
     
     if (indexPath.row==0)
     {

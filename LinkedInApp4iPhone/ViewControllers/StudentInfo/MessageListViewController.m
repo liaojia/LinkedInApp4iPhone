@@ -10,6 +10,7 @@
 #import "ListCell.h"
 #import "DetailInfoViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "TestImageUtil.h"
 
 @interface MessageListViewController ()
 {
@@ -197,7 +198,8 @@
                                          NSDictionary *temDict = listArray[i];
                                          ProfileModel *model = [[ProfileModel alloc]init];
                                          model.mDesc = temDict[@"preview"];
-                                         model.mImgUrl = temDict[@"pic"];
+                                         //model.mImgUrl = temDict[@"pic"];
+                                         model.mImgUrl = [TestImageUtil getAImage];
                                          model.mId = temDict[@"id"];
                                          model.mTitle = temDict[@"title"];
                                         
@@ -271,7 +273,9 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     ProfileModel *model = self.listInfoMtbArray[indexPath.row];
-    [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+    //[cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+    [cell.headImgView setPlaceholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+    [cell.headImgView setImageURL:[NSURL URLWithString:model.mImgUrl ]];
     cell.txtLabel.text = model.mTitle;
     
     return cell;

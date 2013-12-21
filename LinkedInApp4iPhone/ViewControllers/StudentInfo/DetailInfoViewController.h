@@ -24,5 +24,5 @@
 @property (strong, nonatomic) NSString *listId;  //前一个页面传过来的列表项的id
 @property (strong, nonatomic) NSString *typeId;  //当前页面的类型
 @property (strong, nonatomic) NSMutableArray *imageArray; //保存下载的图片
-@property (strong, nonatomic) NSDictionary *resultDict;
+@property (strong, nonatomic) NSMutableDictionary *resultDict;
 @end

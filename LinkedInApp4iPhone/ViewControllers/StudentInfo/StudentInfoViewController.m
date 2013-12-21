@@ -11,6 +11,8 @@
 #import "DetailInfoViewController.h"
 #import "SchollCardApplyViewController.h"
 #import "MessageListViewController.h"
+#import "EGOImageView.h"
+#import "TestImageUtil.h"
 
 @interface StudentInfoViewController ()
 
@@ -39,16 +41,16 @@
     [self getListInfoWithType:1];
     [self getListInfoWithType:2];
     
-    if ( IOS7_OR_LATER )
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+//    if ( IOS7_OR_LATER )
+//    {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"++++++++++++++++++++++++");
 }
 
 #pragma mark-
@@ -83,7 +85,8 @@
                                          NSDictionary *temDict = listArray[i];
                                          ProfileModel *model = [[ProfileModel alloc]init];
                                          model.mDesc = temDict[@"preview"];
-                                         model.mImgUrl = temDict[@"pic"];
+                                         //model.mImgUrl = temDict[@"pic"];
+                                         model.mImgUrl = [TestImageUtil getAImage];
                                          model.mId = temDict[@"id"];
                                          model.mTitle = temDict[@"title"];
                                          
@@ -201,14 +204,13 @@
     static NSString *CellIdentifier = @"CellIdentifier";
     ListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell==Nil)
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (cell == nil)
     {
         NSLog(@"row %d sec %d",indexPath.row,indexPath.section);
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
     }
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
    
 
     if (indexPath.row == 0) //section组别标题
@@ -308,7 +310,10 @@
              model = self.noticeInfoMtbArray[indexPath.row-1];
         }
         
-        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        [cell.headImgView setPlaceholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        [cell.headImgView setImageURL:[NSURL URLWithString:model.mImgUrl]];
+        
+//        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         cell.txtLabel.text = model.mTitle;
 
        
