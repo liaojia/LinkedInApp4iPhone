@@ -358,9 +358,12 @@
         if (indexPath.section == 1 && indexPath.row == 0&&[self.personId isEqualToString:@"me"]) {
             //增加
             UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            addBtn.frame = CGRectMake(tableView.frame.size.width -80, 5, 50, 35);
-            [addBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal.png"] forState:UIControlStateNormal];
+            addBtn.frame = CGRectMake(tableView.frame.size.width -100, 8, 65, 21);
+            [addBtn setBackgroundImage:[UIImage imageNamed:@"btn_add_n"] forState:UIControlStateNormal];
+            [addBtn setBackgroundImage:[UIImage imageNamed:@"btn_add_s"] forState:UIControlStateHighlighted];
             [addBtn setTitle:@"增加" forState:UIControlStateNormal];
+            addBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+            addBtn.titleLabel.textColor = RGBCOLOR(29, 60, 229);
             addBtn.tag = 106;
             
             [addBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
@@ -377,8 +380,9 @@
             
             //查看更多
             UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            moreBtn.frame = CGRectMake(tableView.frame.size.width -130, 5, 100, 35);
+            moreBtn.frame = CGRectMake(tableView.frame.size.width -110, 8, 70, 25);
             [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
+            moreBtn.titleLabel.font = [UIFont systemFontOfSize:15];
             moreBtn.tag = 102+indexPath.section;
             [moreBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forState:UIControlStateNormal];
             [moreBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_pressed"] forState:UIControlStateHighlighted];
