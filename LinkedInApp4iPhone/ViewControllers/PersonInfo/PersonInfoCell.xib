@@ -31,7 +31,7 @@
                         <rect key="frame" x="132" y="7" width="166" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.072971676580000006" green="0.093406291449999998" blue="0.97643512229999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.14908542965115054" green="0.29342278118485837" blue="0.88054049744897955" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="未知" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="20">
@@ -62,26 +62,26 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="37">
-                        <rect key="frame" x="117" y="100" width="76" height="25"/>
+<<<<<<< HEAD
+                        <rect key="frame" x="220" y="98" width="65" height="23"/>
+=======
+                        <rect key="frame" x="223" y="97" width="54" height="25"/>
+>>>>>>> 2126a29b937fcc99dd8ead9e3d72ccac8aec4d6b
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title="修改" backgroundImage="img_school_notice_normal.png">
+                        <state key="normal" title="修改" backgroundImage="btn_add_n.png">
+                            <color key="titleColor" red="0.14908542969999999" green="0.29342278119999998" blue="0.88054049739999996" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="38">
-                        <rect key="frame" x="216" y="100" width="74" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title="删除" backgroundImage="img_school_notice_normal.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="selected" backgroundImage="btn_add_s.png">
+                            <color key="titleColor" red="0.14908542969999999" green="0.29342278119999998" blue="0.88054049739999996" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <state key="highlighted" backgroundImage="btn_add_s.png"/>
                     </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="changeBtn" destination="37" id="40"/>
-                <outlet property="deleteBtn" destination="38" id="41"/>
                 <outlet property="headImgView" destination="3" id="42"/>
                 <outlet property="orgLabel" destination="20" id="28"/>
                 <outlet property="placeLabel" destination="22" id="31"/>
@@ -91,8 +91,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="btn_add_n.png" width="65" height="21"/>
+        <image name="btn_add_s.png" width="65" height="21"/>
         <image name="img_card_arrows_normal.png" width="16" height="16"/>
         <image name="img_card_arrows_pressed.png" width="16" height="16"/>
-        <image name="img_school_notice_normal.png" width="60" height="17"/>
     </resources>
 </document>

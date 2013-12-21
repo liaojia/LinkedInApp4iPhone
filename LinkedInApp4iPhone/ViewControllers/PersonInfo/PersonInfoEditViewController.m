@@ -58,7 +58,12 @@
         self.infoModel.mId = idStr;
     }
     
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(updatePersonInfo)];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(280, 5, 50, 30);
+    [button addTarget:self action:@selector(updatePersonInfo) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"完成" forState:UIControlStateNormal];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = item;
 }
 
@@ -106,7 +111,7 @@
     //标题
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 100, 30)];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font  = [UIFont boldSystemFontOfSize:18];
+    titleLabel.font  = [UIFont systemFontOfSize:15];
     titleLabel.text = keyArray[indexPath.row];
     [cell.contentView addSubview:titleLabel];
 

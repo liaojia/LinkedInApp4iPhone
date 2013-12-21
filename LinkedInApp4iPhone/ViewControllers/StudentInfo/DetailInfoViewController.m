@@ -52,7 +52,7 @@
 - (CGRect)getRectWithImage:(UIImage*)image
 
 {
-    CGRect rect = CGRectMake(320, 150, 10, 10);
+    CGRect rect = CGRectMake(150, 150, 10, 10);
     float maxHeight;
     if (image.size.width>image.size.height)
     {
@@ -63,7 +63,7 @@
         maxHeight = 480;
     }
     
-    CGRect frame = CGRectMake(0, 0, 300, maxHeight);
+    CGRect frame = CGRectMake(10, 0, 300, maxHeight);
     //图片尺寸比view小 按原图尺寸显示
     if (image.size.width<frame.size.width&&image.size.height<maxHeight)
     {
@@ -166,12 +166,12 @@
     
     if (indexPath.row == 0)
     {
-        return [StaticTools getLabelHeight:self.resultDict[@"title"] defautWidth:tableView.frame.size.width-10 defautHeight:480 fontSize:17]+40;
+        return [StaticTools getLabelHeight:self.resultDict[@"title"] defautWidth:tableView.frame.size.width-20 defautHeight:480 fontSize:17]+40;
     }
     else if(indexPath.row == pics.count+1) //最后一行 正文
     {
         
-        return [StaticTools getLabelHeight:self.resultDict[@"content"] defautWidth:tableView.frame.size.width-10 defautHeight:480 fontSize:16]+10;
+        return [StaticTools getLabelHeight:self.resultDict[@"content"] defautWidth:tableView.frame.size.width-20 defautHeight:480 fontSize:16]+10;
     }
     
     
@@ -207,7 +207,7 @@
     
     if (indexPath.row==0)
     {
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, tableView.frame.size.width-10, [StaticTools getLabelHeight:self.resultDict[@"title"] defautWidth:tableView.frame.size.width-10 defautHeight:480 fontSize:17])];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width-20, [StaticTools getLabelHeight:self.resultDict[@"title"] defautWidth:tableView.frame.size.width-20 defautHeight:480 fontSize:17])];
         titleLabel.font = [UIFont systemFontOfSize:17];
         titleLabel.textAlignment = UITextAlignmentCenter;
         titleLabel.text = self.resultDict[@"title"];
@@ -224,8 +224,8 @@
     }
     else if(indexPath.row == pics.count+1)
     {
-        UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, tableView.frame.size.width-10, [StaticTools getLabelHeight:self.resultDict[@"content"] defautWidth:tableView.frame.size.width-10 defautHeight:480 fontSize:16])];
-        contentLabel.font = [UIFont systemFontOfSize:16];
+        UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width-20, [StaticTools getLabelHeight:self.resultDict[@"content"] defautWidth:tableView.frame.size.width-20 defautHeight:480 fontSize:16])];
+        contentLabel.font = [UIFont systemFontOfSize:15];
         contentLabel.numberOfLines = 0;
         contentLabel.lineBreakMode = UILineBreakModeWordWrap;
         contentLabel.text = self.resultDict[@"content"];
@@ -238,7 +238,8 @@
         {
            
             imgView.image = self.imageArray[indexPath.row-1];
-            imgView.frame = [self getRectWithImage:self.imageArray[indexPath.row-1]];
+            CGRect rect = [self getRectWithImage:self.imageArray[indexPath.row-1]];
+            imgView.frame = CGRectMake(rect.origin.x+10, rect.origin.y, rect.size.width, rect.size.height);
         }
         [cell.contentView addSubview:imgView];
     }

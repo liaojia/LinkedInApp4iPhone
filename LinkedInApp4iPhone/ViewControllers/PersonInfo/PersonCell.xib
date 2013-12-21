@@ -36,13 +36,17 @@
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7">
-                        <rect key="frame" x="205" y="33" width="69" height="28"/>
+                        <rect key="frame" x="211" y="39" width="65" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title="关注" backgroundImage="img_school_notice_normal.png">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="normal" title="关注" backgroundImage="btn_add_n.png">
+                            <color key="titleColor" red="0.14908542969999999" green="0.29342278119999998" blue="0.88054049739999996" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" backgroundImage="btn_add_s.png">
+                            <color key="titleColor" red="0.1399045559" green="0.48460408719999998" blue="0.62735648779999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="highlighted" backgroundImage="btn_add_s.png"/>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="15">
                         <rect key="frame" x="11" y="5" width="100" height="89"/>
@@ -60,6 +64,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="img_school_notice_normal.png" width="60" height="17"/>
+        <image name="btn_add_n.png" width="65" height="21"/>
+        <image name="btn_add_s.png" width="65" height="21"/>
     </resources>
 </document>

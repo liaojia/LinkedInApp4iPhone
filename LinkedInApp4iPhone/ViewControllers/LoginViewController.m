@@ -70,21 +70,21 @@
     UINavigationController *studentNav = [[UINavigationController alloc]initWithRootViewController:studentInfoController];
     studentInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [studentInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_friend_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_friend_normal"]];
-    studentInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
+    studentInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(25, 22, 13, 22);
     studentInfoController.navigationController.delegate = studentInfoController.navigationController;
         
     SchollInfoViewController *schollInfoController = [[SchollInfoViewController alloc]initWithNibName:@"SchollInfoViewController" bundle:nil];
     UINavigationController *schoolNav = [[UINavigationController alloc]initWithRootViewController:schollInfoController];
     schollInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [schollInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_school_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_school_normal"]];
-     schollInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
+     schollInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(25, 22, 13, 22);
     schollInfoController.navigationController.delegate = schollInfoController.navigationController;
     
     PersonInfoViewController *personalCenterController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:nil];
     UINavigationController *personNav = [[UINavigationController alloc]initWithRootViewController:personalCenterController];
     personalCenterController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [personalCenterController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_profile_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_profile_normal"]];
-     personalCenterController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
+     personalCenterController.tabBarItem.imageInsets = UIEdgeInsetsMake(25, 22, 13, 22);
     personalCenterController.navigationController.delegate = personalCenterController.navigationController;
     
 
@@ -93,7 +93,7 @@
     UINavigationController *setingNav = [[UINavigationController alloc]initWithRootViewController:setingController];
     setingController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [setingController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_setting_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_setting_normal"]];
-     setingController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
+     setingController.tabBarItem.imageInsets = UIEdgeInsetsMake(25, 22, 13, 22);
     setingController.navigationController.delegate = setingController.navigationController;
     
     

@@ -14,6 +14,7 @@
 #import "BDViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FeedOutViewController.h"
+#import "ImageShowView.h"
 
 @interface SchollInfoViewController ()
 {
@@ -39,8 +40,11 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"母校信息";
     
-    self.schollImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image01.jpg"]];
-    self.schollImgView.frame =CGRectMake(5, 5, 290, 160);
+    self.schollImgbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.schollImgbtn setBackgroundImage:[UIImage imageNamed:@"image01.jpg"] forState:UIControlStateNormal];
+    self.schollImgbtn.frame =CGRectMake(5, 5, 290, 160);
+    self.schollImgbtn.tag = 300;
+    [self.schollImgbtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
     
     self.listTableView.backgroundView = nil;
     self.listTableView.backgroundColor = [UIColor clearColor];
@@ -114,11 +118,11 @@
     
     CATransition *transition = [CATransition animation];
 	transition.duration = 0.5;
-	transition.type = kCATransitionPush;
+	transition.type = kCATransitionReveal;
 	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
 	transition.subtype =kCATransitionFromRight;
-    self.schollImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]];
-	[self.schollImgView.layer addAnimation:transition forKey:nil];
+    [self.schollImgbtn setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]] forState:UIControlStateNormal];
+    [self.schollImgbtn.layer addAnimation:transition forKey:nil];
 }
 
 
@@ -205,6 +209,21 @@
             
         }
             break;
+        case 300: //印象首师 图片查看
+        {
+            ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:CGRectMake(0, 0,320,480) image:[UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]]];
+            
+            [self.view.superview.superview addSubview:imageShowView];
+            
+            CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            animation.duration = 0.2;
+            NSMutableArray *values = [NSMutableArray array];
+            [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+            [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+            animation.values = values;
+            [imageShowView.layer addAnimation:animation forKey:nil];
+        }
+            break;
             
         default:
             break;
@@ -277,7 +296,7 @@
         //左侧标题文字
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 8, 100, 30)];
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.font  = [UIFont boldSystemFontOfSize:18];
+        titleLabel.font  = [UIFont boldSystemFontOfSize:16];
         NSString *titleStr;
         NSString *dtailStr = @"查看更多";
         NSString *detailImg;
@@ -315,21 +334,22 @@
         //右侧操作按钮
         
         UIButton *detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        detailBtn.frame = CGRectMake(tableView.frame.size.width-130, 5, 100, 35);
+        detailBtn.frame = CGRectMake(tableView.frame.size.width-120, 13, 70, 25);
         [detailBtn setBackgroundImage:[UIImage imageNamed:detailImg] forState:UIControlStateNormal];
         [detailBtn setBackgroundImage:[UIImage imageNamed:detailPressImg] forState:UIControlStateHighlighted];
+         detailBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         
         
         detailBtn.tag = 100+indexPath.section;
         [detailBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
         [detailBtn setTitle:dtailStr forState:UIControlStateNormal];
         
-        if (indexPath.section==0&&schollInfoTotalCount>3)
+        if ((indexPath.section==0&&schollInfoTotalCount>3)||
+            indexPath.section!=3)
         {
             [cell.contentView addSubview:detailBtn];
         }
         
-        [cell.contentView addSubview:detailBtn]; //TODO 暂时一直放着
         return cell;
     }
     
@@ -351,7 +371,7 @@
     }
     else if(indexPath.section == 1) //印象首师
     {
-        [cell.contentView addSubview:self.schollImgView];
+        [cell.contentView addSubview:self.schollImgbtn];
         return cell;
     }
     else if(indexPath.section == 2) //校友捐赠
@@ -367,6 +387,7 @@
     else if(indexPath.section == 3)
     {
       
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         //学校图片
         UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 70, 90)];
         headImgView.backgroundColor = [UIColor grayColor];

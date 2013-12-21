@@ -36,7 +36,12 @@
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
     
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(updatePersonalCard)];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(280, 5, 50, 30);
+    [button addTarget:self action:@selector(updatePersonalCard) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"完成" forState:UIControlStateNormal];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = item;
     
     imagePicker = [[UIImagePickerController alloc] init];

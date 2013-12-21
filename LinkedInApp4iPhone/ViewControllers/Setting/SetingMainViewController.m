@@ -126,23 +126,24 @@
     
     if (indexPath.section==0)
     {
-        cell.imageView.image = [[UIImage imageNamed:@"img_sys_modify_pwd"] imageByScalingToSize:CGSizeMake(20, 20)];
-        cell.textLabel.text = @"修改密码";
+        cell.imageView.image = [UIImage imageNamed:@"img_sys_modify_pwd"];
+        cell.textLabel.text = @"   修改密码";
     }
     else if (indexPath.section==1)
     {
-        cell.imageView.image = [[UIImage imageNamed:@"img_sys_update"] imageByScalingToSize:CGSizeMake(20, 20)];
-        cell.textLabel.text = @"检查更新";
+        cell.imageView.image = [UIImage imageNamed:@"img_sys_update"];
+        
+        cell.textLabel.text = @"   检查更新";
     }
     else if (indexPath.section==2)
     {
-        cell.imageView.image = [[UIImage imageNamed:@"img_sys_about"] imageByScalingToSize:CGSizeMake(20, 20)];
-        cell.textLabel.text = @"关于";
+        cell.imageView.image = [UIImage imageNamed:@"img_sys_about"];
+        cell.textLabel.text = @"   关于";
     }
     else if (indexPath.section==3)
     {
-        cell.imageView.image = [[UIImage imageNamed:@"img_sys_exit"] imageByScalingToSize:CGSizeMake(20, 20)];
-        cell.textLabel.text = @"退出";
+        cell.imageView.image = [UIImage imageNamed:@"img_sys_exit"];
+        cell.textLabel.text = @"   退出";
     }
     return cell;
 }
