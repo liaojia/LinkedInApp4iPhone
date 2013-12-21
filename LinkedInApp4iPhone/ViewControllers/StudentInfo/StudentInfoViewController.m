@@ -38,10 +38,10 @@
     [self getListInfoWithType:1];
     [self getListInfoWithType:2];
     
-    if ( IOS7_OR_LATER )
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+//    if ( IOS7_OR_LATER )
+//    {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//    }
 }
 
 - (void)didReceiveMemoryWarning
