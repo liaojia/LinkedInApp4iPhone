@@ -271,7 +271,9 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     ProfileModel *model = self.listInfoMtbArray[indexPath.row];
-    [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+    //[cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+    [cell.headImgView setPlaceholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+    [cell.headImgView setImageURL:[NSURL URLWithString:model.mImgUrl ]];
     cell.txtLabel.text = model.mTitle;
     
     return cell;

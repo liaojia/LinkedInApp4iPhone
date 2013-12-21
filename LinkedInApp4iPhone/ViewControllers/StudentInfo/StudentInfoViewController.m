@@ -11,6 +11,7 @@
 #import "DetailInfoViewController.h"
 #import "SchollCardApplyViewController.h"
 #import "MessageListViewController.h"
+#import "EGOImageView.h"
 
 @interface StudentInfoViewController ()
 
@@ -308,6 +309,9 @@
         {
              model = self.noticeInfoMtbArray[indexPath.row-1];
         }
+        
+        [cell.headImgView setPlaceholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        [cell.headImgView setImageURL:[NSURL URLWithString:model.mImgUrl ]];
         
 //        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         cell.txtLabel.text = model.mTitle;

@@ -38,6 +38,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark-
 #pragma mark--功能函数
 /**
@@ -115,6 +116,7 @@
                                          [self.imageArray addObject:@""];
                                          NSDictionary *dict = pics[i];
                                          NSLog(@"开始下载图片 %@",dict[@"url"]);
+                                        /////////////?
                                         AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:dict[@"url"]]] success:^(UIImage *image) {
                                              
                                               NSLog(@"下载图片完成 %@",dict[@"url"]);

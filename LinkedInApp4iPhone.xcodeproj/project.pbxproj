@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		6C1A945B1865CBB00030947D /* img_feedback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C1A945A1865CBB00030947D /* img_feedback.jpg */; };
 		6C1A945D1865CC140030947D /* img_login_top.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C1A945C1865CC140030947D /* img_login_top.jpg */; };
+		6C1A94DE1865F80F0030947D /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94D21865F80F0030947D /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6C1A94DF1865F80F0030947D /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94D51865F80F0030947D /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6C1A94E01865F80F0030947D /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94D81865F80F0030947D /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6C1A94E11865F80F0030947D /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94DA1865F80F0030947D /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6C1A94E21865F80F0030947D /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A94DD1865F80F0030947D /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8D0FB34C1814CE4400FE9EF7 /* CommitBasicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB34A1814CE4400FE9EF7 /* CommitBasicInfoViewController.m */; };
 		8D0FB34D1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB34B1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib */; };
 		8D12D3AE180E36A8003D09CA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12D3AC180E36A8003D09CA /* ProfileViewController.m */; };
@@ -313,6 +318,16 @@
 /* Begin PBXFileReference section */
 		6C1A945A1865CBB00030947D /* img_feedback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_feedback.jpg; sourceTree = "<group>"; };
 		6C1A945C1865CC140030947D /* img_login_top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_login_top.jpg; sourceTree = "<group>"; };
+		6C1A94D11865F80F0030947D /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		6C1A94D21865F80F0030947D /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		6C1A94D41865F80F0030947D /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
+		6C1A94D51865F80F0030947D /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
+		6C1A94D71865F80F0030947D /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
+		6C1A94D81865F80F0030947D /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
+		6C1A94D91865F80F0030947D /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
+		6C1A94DA1865F80F0030947D /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
+		6C1A94DC1865F80F0030947D /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
+		6C1A94DD1865F80F0030947D /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
 		8D0FB3491814CE4400FE9EF7 /* CommitBasicInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitBasicInfoViewController.h; sourceTree = "<group>"; };
 		8D0FB34A1814CE4400FE9EF7 /* CommitBasicInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitBasicInfoViewController.m; sourceTree = "<group>"; };
 		8D0FB34B1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitBasicInfoViewController.xib; sourceTree = "<group>"; };
@@ -733,6 +748,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C1A94CF1865F80F0030947D /* EGOImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				6C1A94D01865F80F0030947D /* EGOCache */,
+				6C1A94D31865F80F0030947D /* EGOImageButton */,
+				6C1A94D61865F80F0030947D /* EGOImageLoader */,
+				6C1A94DB1865F80F0030947D /* EGOImageView */,
+			);
+			path = EGOImageLoader;
+			sourceTree = "<group>";
+		};
+		6C1A94D01865F80F0030947D /* EGOCache */ = {
+			isa = PBXGroup;
+			children = (
+				6C1A94D11865F80F0030947D /* EGOCache.h */,
+				6C1A94D21865F80F0030947D /* EGOCache.m */,
+			);
+			path = EGOCache;
+			sourceTree = "<group>";
+		};
+		6C1A94D31865F80F0030947D /* EGOImageButton */ = {
+			isa = PBXGroup;
+			children = (
+				6C1A94D41865F80F0030947D /* EGOImageButton.h */,
+				6C1A94D51865F80F0030947D /* EGOImageButton.m */,
+			);
+			path = EGOImageButton;
+			sourceTree = "<group>";
+		};
+		6C1A94D61865F80F0030947D /* EGOImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				6C1A94D71865F80F0030947D /* EGOImageLoadConnection.h */,
+				6C1A94D81865F80F0030947D /* EGOImageLoadConnection.m */,
+				6C1A94D91865F80F0030947D /* EGOImageLoader.h */,
+				6C1A94DA1865F80F0030947D /* EGOImageLoader.m */,
+			);
+			path = EGOImageLoader;
+			sourceTree = "<group>";
+		};
+		6C1A94DB1865F80F0030947D /* EGOImageView */ = {
+			isa = PBXGroup;
+			children = (
+				6C1A94DC1865F80F0030947D /* EGOImageView.h */,
+				6C1A94DD1865F80F0030947D /* EGOImageView.m */,
+			);
+			path = EGOImageView;
+			sourceTree = "<group>";
+		};
 		8D152205181426F0006AFC1D /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,6 +837,7 @@
 		8DD5D31B1806E83D00EB446F /* External */ = {
 			isa = PBXGroup;
 			children = (
+				6C1A94CF1865F80F0030947D /* EGOImageLoader */,
 				CECD90721819536F00EB2249 /* CTMbase64 */,
 				8D152205181426F0006AFC1D /* AFNetworking */,
 				CE586EBE1810351000BE7A62 /* StaticTools */,
@@ -1709,6 +1774,7 @@
 				8DF2080B180CE06100FDEABA /* LoginViewController.m in Sources */,
 				8DF2080C180CE06100FDEABA /* RegisterViewController.m in Sources */,
 				8DF20811180CE06E00FDEABA /* ClearTextField.m in Sources */,
+				6C1A94DF1865F80F0030947D /* EGOImageButton.m in Sources */,
 				8DF20814180CE0AF00FDEABA /* UITextField+HideKeyBoard.m in Sources */,
 				8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */,
 				8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */,
@@ -1746,6 +1812,7 @@
 				CE9DE2F11813DF52003D0EAD /* PersonalCardViewController.m in Sources */,
 				CE935F171815566F00DAC626 /* OAuthWebView.m in Sources */,
 				CE935F1C18155B6700DAC626 /* ProfileVC.m in Sources */,
+				6C1A94DE1865F80F0030947D /* EGOCache.m in Sources */,
 				CE935F2118155BA500DAC626 /* StatusCell.m in Sources */,
 				CE7482531860400200C89A26 /* SchollCardApplyViewController.m in Sources */,
 				CE935F2518155C2200DAC626 /* LPBaseCell.m in Sources */,
@@ -1770,6 +1837,7 @@
 				8D15221A181426F0006AFC1D /* AFHTTPRequestOperation.m in Sources */,
 				8D15221B181426F0006AFC1D /* AFImageRequestOperation.m in Sources */,
 				8D15221C181426F0006AFC1D /* AFJSONRequestOperation.m in Sources */,
+				6C1A94E21865F80F0030947D /* EGOImageView.m in Sources */,
 				CE748267186082B800C89A26 /* BDRowInfo.m in Sources */,
 				8D15221D181426F0006AFC1D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				CE610FD4185F38E000D66FE7 /* SetingMainViewController.m in Sources */,
@@ -1777,10 +1845,12 @@
 				8D15221F181426F0006AFC1D /* AFURLConnectionOperation.m in Sources */,
 				8D152220181426F0006AFC1D /* AFXMLRequestOperation.m in Sources */,
 				8D152221181426F0006AFC1D /* UIImageView+AFNetworking.m in Sources */,
+				6C1A94E11865F80F0030947D /* EGOImageLoader.m in Sources */,
 				8D0FB34C1814CE4400FE9EF7 /* CommitBasicInfoViewController.m in Sources */,
 				CE74826F186092EF00C89A26 /* ImageShowView.m in Sources */,
 				CE62E2531816BC7F00F49A43 /* BasicInfoCommitViewController.m in Sources */,
 				CECD90761819536F00EB2249 /* GTMBase64.m in Sources */,
+				6C1A94E01865F80F0030947D /* EGOImageLoadConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1893,7 +1963,7 @@
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "313AA673-8FB4-4308-944F-B2CDCF7B7D1D";
+				PROVISIONING_PROFILE = "25B42774-C8DE-4B9A-BE0C-51C3F8841261";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1907,7 +1977,7 @@
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "313AA673-8FB4-4308-944F-B2CDCF7B7D1D";
+				PROVISIONING_PROFILE = "25B42774-C8DE-4B9A-BE0C-51C3F8841261";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
