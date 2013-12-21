@@ -51,10 +51,10 @@
     
     [self getSchollInfoListInfo];
     
-    if ( IOS7_OR_LATER )
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+//    if ( IOS7_OR_LATER )
+//    {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//    }
 }
 - (void)viewWillAppear:(BOOL)animated
 {

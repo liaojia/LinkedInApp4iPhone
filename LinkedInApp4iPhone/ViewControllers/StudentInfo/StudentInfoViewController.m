@@ -41,10 +41,10 @@
     [self getListInfoWithType:1];
     [self getListInfoWithType:2];
     
-    if ( IOS7_OR_LATER )
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+//    if ( IOS7_OR_LATER )
+//    {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -208,8 +208,8 @@
     
     if (cell == nil)
     {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:self options:nil] objectAtIndex:0];
-        NSLog(@"within");
+        NSLog(@"row %d sec %d",indexPath.row,indexPath.section);
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
     }
    
 
