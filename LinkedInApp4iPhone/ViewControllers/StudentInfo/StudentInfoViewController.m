@@ -308,8 +308,7 @@
              model = self.noticeInfoMtbArray[indexPath.row-1];
         }
         
-        //[cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
-        cell.headImgView.image = [UIImage imageNamed:@"image02.jpg"];
+        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         cell.txtLabel.text = model.mTitle;
 
        
