@@ -203,6 +203,7 @@
 		CE5AFB9318125590007AFC79 /* ActivityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5AFB9118125590007AFC79 /* ActivityListViewController.xib */; };
 		CE5AFB971812C26E007AFC79 /* PersonInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFB951812C26E007AFC79 /* PersonInfoEditViewController.m */; };
 		CE5AFB981812C26E007AFC79 /* PersonInfoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5AFB961812C26E007AFC79 /* PersonInfoEditViewController.xib */; };
+		CE5C8C4F186611EA00DA8B72 /* scollInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE5C8C4E186611EA00DA8B72 /* scollInfo.txt */; };
 		CE610FD4185F38E000D66FE7 /* SetingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610FD2185F38E000D66FE7 /* SetingMainViewController.m */; };
 		CE610FD5185F38E000D66FE7 /* SetingMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE610FD3185F38E000D66FE7 /* SetingMainViewController.xib */; };
 		CE610FDB185F3DC300D66FE7 /* StudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610FD9185F3DC300D66FE7 /* StudentInfoViewController.m */; };
@@ -587,6 +588,7 @@
 		CE5AFB941812C26E007AFC79 /* PersonInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoEditViewController.h; sourceTree = "<group>"; };
 		CE5AFB951812C26E007AFC79 /* PersonInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoEditViewController.m; sourceTree = "<group>"; };
 		CE5AFB961812C26E007AFC79 /* PersonInfoEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoEditViewController.xib; sourceTree = "<group>"; };
+		CE5C8C4E186611EA00DA8B72 /* scollInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scollInfo.txt; sourceTree = "<group>"; };
 		CE610FD1185F38E000D66FE7 /* SetingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetingMainViewController.h; sourceTree = "<group>"; };
 		CE610FD2185F38E000D66FE7 /* SetingMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetingMainViewController.m; sourceTree = "<group>"; };
 		CE610FD3185F38E000D66FE7 /* SetingMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetingMainViewController.xib; sourceTree = "<group>"; };
@@ -1314,6 +1316,7 @@
 				CE67C80C186202A5006EA741 /* FeedOutViewController.h */,
 				CE67C80D186202A5006EA741 /* FeedOutViewController.m */,
 				CE67C80E186202A5006EA741 /* FeedOutViewController.xib */,
+				CE5C8C4E186611EA00DA8B72 /* scollInfo.txt */,
 			);
 			path = SchollInfo;
 			sourceTree = "<group>";
@@ -1597,6 +1600,7 @@
 				8DF207D4180CE05600FDEABA /* img_card_school_logo@2x.png in Resources */,
 				8DF207D5180CE05600FDEABA /* img_clock@2x.png in Resources */,
 				CE67C7F91861ED1C006EA741 /* image03.jpg in Resources */,
+				CE5C8C4F186611EA00DA8B72 /* scollInfo.txt in Resources */,
 				8DF207D6180CE05600FDEABA /* img_list_normal@2x.png in Resources */,
 				8DF207D7180CE05600FDEABA /* img_list_pressed@2x.png in Resources */,
 				8DF207D8180CE05600FDEABA /* img_list_right_normal@2x.png in Resources */,
@@ -1983,8 +1987,8 @@
 		8DEE3E6018044A1C00B4C607 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: hongling sheng (T9JS32ALY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hongling sheng (T9JS32ALY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qing guo (38QYV5Y5RJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qing guo (38QYV5Y5RJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinkedInApp4iPhone/LinkedInApp4iPhone-Prefix.pch";
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
@@ -1998,8 +2002,8 @@
 		8DEE3E6118044A1C00B4C607 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: hongling sheng (T9JS32ALY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hongling sheng (T9JS32ALY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qing guo (38QYV5Y5RJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qing guo (38QYV5Y5RJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinkedInApp4iPhone/LinkedInApp4iPhone-Prefix.pch";
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
