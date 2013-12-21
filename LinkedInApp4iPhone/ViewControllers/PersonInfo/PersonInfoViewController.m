@@ -381,11 +381,8 @@
             
             //查看更多
             UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-<<<<<<< HEAD
             moreBtn.frame = CGRectMake(tableView.frame.size.width -110, 8, 70, 25);
-=======
-            moreBtn.frame = CGRectMake(tableView.frame.size.width -120, 13, 70, 25);
->>>>>>> 2126a29b937fcc99dd8ead9e3d72ccac8aec4d6b
+
             [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
             moreBtn.titleLabel.font = [UIFont systemFontOfSize:15];
             moreBtn.tag = 102+indexPath.section;
