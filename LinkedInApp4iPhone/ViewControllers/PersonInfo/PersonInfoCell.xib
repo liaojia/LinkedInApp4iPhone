@@ -62,7 +62,11 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="37">
+<<<<<<< HEAD
                         <rect key="frame" x="220" y="98" width="65" height="23"/>
+=======
+                        <rect key="frame" x="223" y="97" width="54" height="25"/>
+>>>>>>> 2126a29b937fcc99dd8ead9e3d72ccac8aec4d6b
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="修改" backgroundImage="btn_add_n.png">

@@ -58,7 +58,12 @@
         self.infoModel.mId = idStr;
     }
     
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(updatePersonInfo)];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(280, 5, 50, 30);
+    [button addTarget:self action:@selector(updatePersonInfo) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"完成" forState:UIControlStateNormal];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = item;
 }
 

@@ -387,6 +387,7 @@
     else if(indexPath.section == 3)
     {
       
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         //学校图片
         UIImageView *headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 70, 90)];
         headImgView.backgroundColor = [UIColor grayColor];

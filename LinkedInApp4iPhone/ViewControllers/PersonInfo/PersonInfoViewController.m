@@ -354,6 +354,7 @@
         titleLabel.text =  titleStr;
         titleLabel.textColor = RGBCOLOR(29, 60, 229);
         [cell.contentView addSubview:titleLabel];
+        titleLabel.font = [UIFont systemFontOfSize:16];
         
         if (indexPath.section == 1 && indexPath.row == 0&&[self.personId isEqualToString:@"me"]) {
             //增加
@@ -380,13 +381,18 @@
             
             //查看更多
             UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+<<<<<<< HEAD
             moreBtn.frame = CGRectMake(tableView.frame.size.width -110, 8, 70, 25);
+=======
+            moreBtn.frame = CGRectMake(tableView.frame.size.width -120, 13, 70, 25);
+>>>>>>> 2126a29b937fcc99dd8ead9e3d72ccac8aec4d6b
             [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
             moreBtn.titleLabel.font = [UIFont systemFontOfSize:15];
             moreBtn.tag = 102+indexPath.section;
             [moreBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forState:UIControlStateNormal];
             [moreBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_pressed"] forState:UIControlStateHighlighted];
             [moreBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+            moreBtn.titleLabel.font = [UIFont systemFontOfSize:15];
             
             [cell.contentView addSubview:moreBtn];
             if (indexPath.section == 2) {
@@ -498,7 +504,7 @@
         {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"PersonCell" owner:nil options:nil] objectAtIndex:0];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             PersonCell *pesonCell = (PersonCell*)cell;
             NSArray *tmpArray = nil;
             if (indexPath.section == 2) {
