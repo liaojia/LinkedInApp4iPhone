@@ -202,7 +202,7 @@
     static NSString *CellIdentifier = @"CellIdentifier";
     ListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell==Nil)
+    if (cell== nil)
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
     }
@@ -309,7 +309,7 @@
         }
         
         [cell.headImgView setPlaceholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
-        [cell.headImgView setImageURL:[NSURL URLWithString:model.mImgUrl ]];
+//        [cell.headImgView setImageURL:[NSURL URLWithString:model.mImgUrl ]];
         
 //        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         cell.txtLabel.text = model.mTitle;
