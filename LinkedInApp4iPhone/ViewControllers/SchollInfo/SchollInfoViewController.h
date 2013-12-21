@@ -23,6 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (strong, nonatomic) NSMutableArray *schoolInfoMtbArray; //保存母校动态信息
-@property (strong, nonatomic) UIImageView *schollImgView;  //印象首师显示图片
+@property (strong, nonatomic) UIButton *schollImgbtn;  //印象首师显示图片
 @property (strong, nonatomic) NSTimer *timer;
 @end

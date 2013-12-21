@@ -220,7 +220,7 @@
         //左侧标题文字
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 8, 100, 30)];
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.font  = [UIFont boldSystemFontOfSize:18];
+        titleLabel.font  = [UIFont boldSystemFontOfSize:16];
         NSString *titleStr;
         NSString *dtailStr = @"查看更多";
         NSString *detailImg;
@@ -251,9 +251,10 @@
         //右侧操作按钮
       
         UIButton *detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        detailBtn.frame = CGRectMake(tableView.frame.size.width-130, 5, 100, 35);
+        detailBtn.frame = CGRectMake(tableView.frame.size.width-120, 13, 70, 25);
         [detailBtn setBackgroundImage:[UIImage imageNamed:detailImg] forState:UIControlStateNormal];
         [detailBtn setBackgroundImage:[UIImage imageNamed:detailPressImg] forState:UIControlStateHighlighted];
+        detailBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         
         
         detailBtn.tag = 100+indexPath.section;
@@ -266,10 +267,7 @@
         {
             [cell.contentView addSubview:detailBtn];
         }
-        
-        [cell.contentView addSubview:detailBtn]; //TODO 暂时一直放着
-        
-        
+    
         return cell;
     }
     
