@@ -378,7 +378,7 @@
     {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(5, 5,290, 160);
-        [button setBackgroundImage:[UIImage imageNamed:@"img_feedback"] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"img_feedback.jpg"] forState:UIControlStateNormal];
         [cell.contentView addSubview:button];
         button.tag = 200;
         [button addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
