@@ -9,6 +9,7 @@
 #import "SetingMainViewController.h"
 #import "PassWordChangeViewController.h"
 #import "AboutViewController.h"
+#import "AppDelegate.h"
 
 @interface SetingMainViewController ()
 
@@ -91,7 +92,9 @@
 {
     if (buttonIndex!=alertView.cancelButtonIndex)
     {
-        [self logOut];
+        //[self logOut];
+        AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+         [delegate.rootNavigationController popToRootViewControllerAnimated:YES];
     }
 }
 #pragma mark-
