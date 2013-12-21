@@ -352,6 +352,7 @@
             titleStr = @"关注我的人";
         }
         titleLabel.text =  titleStr;
+        titleLabel.textColor = RGBCOLOR(29, 60, 229);
         [cell.contentView addSubview:titleLabel];
         
         if (indexPath.section == 1 && indexPath.row == 0&&[self.personId isEqualToString:@"me"]) {
@@ -525,10 +526,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.pageType==1)
+    {
+        return;
+    }
     if (indexPath.section == 1&&self.pageType == 0) //进入相关推荐页面
     {
-        
-
+        ProfileModel *model = self.timeLimeArray[indexPath.row-1];
+        CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:nil];
+        commendListController.titleStr = @"推荐列表";
+        commendListController.nodeId = model.mId;
+        [self.navigationController pushViewController:commendListController animated:YES];
 
     }
     else if(indexPath.section == 0) //进入个人名片修改页面
@@ -646,16 +654,15 @@
            
            if ([[obj objectForKey:@"rc"]intValue] == 1)
            {
-               NSDictionary *basicDic = [obj objectForKey:@"basic"];
                
-               [self.model setMAdYear:[basicDic objectForKey:@"adYear"]];
+               [self.model setMAdYear:[obj objectForKey:@"adYear"]];
                NSNumberFormatter *fomatter = [[NSNumberFormatter alloc] init];
-               [self.model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
-               [self.model setMMajor:[basicDic objectForKey:@"major"]];
-               [self.model setMName:[basicDic objectForKey:@"name"]];
-               [self.model setMDept:[basicDic objectForKey:@"dept"]];
-               [self.model setMSchool:[basicDic objectForKey:@"colg"]];
-               [self.model setMImgUrl:[basicDic objectForKey:@"pic"]];
+               [self.model setMGender:[fomatter stringFromNumber:[obj objectForKey:@"gender"]]];
+               [self.model setMMajor:[obj objectForKey:@"major"]];
+               [self.model setMName:[obj objectForKey:@"name"]];
+               [self.model setMDept:[obj objectForKey:@"dept"]];
+               [self.model setMSchool:[obj objectForKey:@"colg"]];
+               [self.model setMImgUrl:[obj objectForKey:@"pic"]];
                
            }
            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];

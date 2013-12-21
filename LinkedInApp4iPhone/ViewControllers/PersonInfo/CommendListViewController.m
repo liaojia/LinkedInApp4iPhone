@@ -97,6 +97,7 @@
     [moreBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:moreBtn];
     self.listTable.tableFooterView = footView;
+    self.listTable.tableFooterView.hidden = YES;
     
     [self refreshData];
 }
@@ -305,6 +306,11 @@
                      if ([[obj objectForKey:@"rc"]intValue] == 1)
                      {
                          int total = [[obj objectForKey:@"total"]intValue];
+                         if (total==0)
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"没有相关推荐人员！"];
+                             return ;
+                         }
                          totalPage = (total + [num intValue] - 1) / [num intValue];
                          [self.listTable.tableFooterView setHidden:(currentPage<totalPage ? NO:YES)];
                          NSArray *list = [obj objectForKey:@"list"];
