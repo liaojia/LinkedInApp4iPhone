@@ -60,6 +60,8 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(280, 5, 50, 30);
+    [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_n"] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_s"] forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(updatePersonInfo) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"完成" forState:UIControlStateNormal];
     
@@ -117,6 +119,8 @@
 
     UITextField *txtField = [[UITextField alloc] initWithFrame:CGRectMake(90, 5, 200, 30)];
     [cell.contentView addSubview:txtField];
+    [txtField setFont:[UIFont systemFontOfSize:15]];
+    txtField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     txtField.borderStyle = UITextBorderStyleLine;
     txtField.delegate = self;
     if (indexPath.row == 0)
