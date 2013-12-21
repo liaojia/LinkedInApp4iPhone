@@ -384,14 +384,14 @@
     }
     
     
-    NSMutableArray *infoMtbDict = [NSMutableDictionary dictionaryWithCapacity:0];
+    NSMutableDictionary *infoMtbDict = [NSMutableDictionary dictionaryWithCapacity:0];
     [infoMtbDict setValue:self.infoModel.mTitle forKey:@"title"];
     [infoMtbDict setValue:self.infoModel.mDesc forKey:@"desc"];
     [infoMtbDict setValue:self.infoModel.mOrg forKey:@"org"];
     [infoMtbDict setValue:self.infoModel.mProvince forKey:@"province"];
     [infoMtbDict setValue:self.infoModel.mCity forKey:@"city"];
-    [infoMtbDict setValue:[self.infoModel.mStime substringToIndex:7] forKey:@"stime"];
-    [infoMtbDict setValue:[self.infoModel.mEtime substringToIndex:7] forKey:@"etime"];
+//    [infoMtbDict setValue:[self.infoModel.mStime substringToIndex:7] forKey:@"stime"];
+//    [infoMtbDict setValue:[self.infoModel.mEtime substringToIndex:7] forKey:@"etime"];
     
     UIImageView *headImgView = (UIImageView*)[self.listTableView.tableHeaderView viewWithTag:Tag_HeadImgView_View];
     [infoMtbDict setValue:[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ] forKey:@"pic"];
@@ -453,12 +453,13 @@
 }
 - (void)hideKeyBoad
 {
-    for (int i=0; i<keyArray.count; i++)
-    {
-        UITableViewCell *cell = [self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        UITextField  *txtfield = (UITextField*)[cell.contentView viewWithTag:100+i ];
-        [txtfield resignFirstResponder];
-    }
+//    for (int i=0; i<keyArray.count; i++)
+//    {
+//        UITableViewCell *cell = [self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+//        UITextField  *txtfield = (UITextField*)[cell.contentView viewWithTag:100+i ];
+//        [txtfield resignFirstResponder];
+//    }
+    [self.view endEditing:YES];
     self.listTableView.contentOffset = CGPointMake(0 , 0);
 }
 @end

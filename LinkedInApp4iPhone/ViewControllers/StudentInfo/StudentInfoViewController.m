@@ -245,7 +245,8 @@
         }
         
         titleLabel.text = titleStr;
- titleLabel.textColor = RGBCOLOR(29, 60, 229);        [cell.contentView addSubview:titleLabel];
+        titleLabel.textColor = RGBCOLOR(29, 60, 229);
+        [cell.contentView addSubview:titleLabel];
         
         //右侧操作按钮
       
@@ -272,7 +273,7 @@
         return cell;
     }
     
-    if(indexPath.section == 2)
+    if(indexPath.section == 2) //校友龙卡
     {
         for (UIView *view in cell.contentView.subviews)
         {
@@ -336,8 +337,8 @@
         model = self.noticeInfoMtbArray[indexPath.row-1];
     }
     
-    DetailInfoViewController *detailController = [[DetailInfoViewController alloc]initWithNibName:@"DetailInfoViewController" bundle:Nil];
-    detailController.listId = model.mId;
+    DetailInfoViewController *detailController = [[DetailInfoViewController alloc]initWithNibName:@"DetailInfoViewController" bundle:[NSBundle mainBundle]];
+    detailController.listId = [NSString stringWithFormat:@"%@",model.mId];
     detailController.typeId = [NSString stringWithFormat:@"%d",(indexPath.section==0?1:2)];
     [self.navigationController pushViewController:detailController animated:YES];
     

@@ -270,6 +270,11 @@
 		CE9DE2F21813DF52003D0EAD /* PersonalCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9DE2F01813DF52003D0EAD /* PersonalCardViewController.xib */; };
 		CE9EB7A81865809F00BC03C1 /* FindClassmateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EB7A61865809F00BC03C1 /* FindClassmateViewController.m */; };
 		CE9EB7A91865809F00BC03C1 /* FindClassmateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9EB7A71865809F00BC03C1 /* FindClassmateViewController.xib */; };
+		CE9EB7B01865B6C600BC03C1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9EB7AF1865B6C600BC03C1 /* XCTest.framework */; };
+		CE9EB7B11865B6C600BC03C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEE3E4118044A1C00B4C607 /* Foundation.framework */; };
+		CE9EB7B21865B6C600BC03C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEE3E3F18044A1C00B4C607 /* UIKit.framework */; };
+		CE9EB7B81865B6C600BC03C1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE9EB7B61865B6C600BC03C1 /* InfoPlist.strings */; };
+		CE9EB7BA1865B6C600BC03C1 /* LinkedInApp4iPhone_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EB7B91865B6C600BC03C1 /* LinkedInApp4iPhone_Tests.m */; };
 		CEAE7A7B180FDC1700ECBD5F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE7A79180FDC1700ECBD5F /* WebViewController.m */; };
 		CEAE7A7C180FDC1700ECBD5F /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */; };
 		CECD90761819536F00EB2249 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD90741819536F00EB2249 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -294,6 +299,16 @@
 		CEE982671863219F00735125 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE982661863219F00735125 /* RegisterViewController.xib */; };
 		CEE9826918632FCF00735125 /* img_school_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEE9826818632FCF00735125 /* img_school_logo.jpg */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE9EB7BC1865B6C600BC03C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DEE3E3418044A1C00B4C607 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DEE3E3B18044A1C00B4C607;
+			remoteInfo = LinkedInApp4iPhone;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8D0FB3491814CE4400FE9EF7 /* CommitBasicInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitBasicInfoViewController.h; sourceTree = "<group>"; };
@@ -641,6 +656,12 @@
 		CE9EB7A51865809F00BC03C1 /* FindClassmateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindClassmateViewController.h; sourceTree = "<group>"; };
 		CE9EB7A61865809F00BC03C1 /* FindClassmateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindClassmateViewController.m; sourceTree = "<group>"; };
 		CE9EB7A71865809F00BC03C1 /* FindClassmateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindClassmateViewController.xib; sourceTree = "<group>"; };
+		CE9EB7AE1865B6C600BC03C1 /* LinkedInApp4iPhone Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LinkedInApp4iPhone Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9EB7AF1865B6C600BC03C1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CE9EB7B51865B6C600BC03C1 /* LinkedInApp4iPhone Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LinkedInApp4iPhone Tests-Info.plist"; sourceTree = "<group>"; };
+		CE9EB7B71865B6C600BC03C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE9EB7B91865B6C600BC03C1 /* LinkedInApp4iPhone_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkedInApp4iPhone_Tests.m; sourceTree = "<group>"; };
+		CE9EB7BB1865B6C600BC03C1 /* LinkedInApp4iPhone Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LinkedInApp4iPhone Tests-Prefix.pch"; sourceTree = "<group>"; };
 		CEAE7A78180FDC1700ECBD5F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		CEAE7A79180FDC1700ECBD5F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -696,6 +717,16 @@
 				8DEE3E4018044A1C00B4C607 /* UIKit.framework in Frameworks */,
 				8DEE3E4218044A1C00B4C607 /* Foundation.framework in Frameworks */,
 				8DEE3E4418044A1C00B4C607 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE9EB7AB1865B6C600BC03C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9EB7B01865B6C600BC03C1 /* XCTest.framework in Frameworks */,
+				CE9EB7B21865B6C600BC03C1 /* UIKit.framework in Frameworks */,
+				CE9EB7B11865B6C600BC03C1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +848,7 @@
 			isa = PBXGroup;
 			children = (
 				8DEE3E4518044A1C00B4C607 /* LinkedInApp4iPhone */,
+				CE9EB7B31865B6C600BC03C1 /* LinkedInApp4iPhone Tests */,
 				8DEE3E3E18044A1C00B4C607 /* Frameworks */,
 				8DEE3E3D18044A1C00B4C607 /* Products */,
 			);
@@ -826,6 +858,7 @@
 			isa = PBXGroup;
 			children = (
 				8DEE3E3C18044A1C00B4C607 /* LinkedInApp4iPhone.app */,
+				CE9EB7AE1865B6C600BC03C1 /* LinkedInApp4iPhone Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -845,6 +878,7 @@
 				8DEE3E3F18044A1C00B4C607 /* UIKit.framework */,
 				8DEE3E4118044A1C00B4C607 /* Foundation.framework */,
 				8DEE3E4318044A1C00B4C607 /* CoreGraphics.framework */,
+				CE9EB7AF1865B6C600BC03C1 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1281,6 +1315,25 @@
 			path = PullToRefresh;
 			sourceTree = "<group>";
 		};
+		CE9EB7B31865B6C600BC03C1 /* LinkedInApp4iPhone Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CE9EB7B91865B6C600BC03C1 /* LinkedInApp4iPhone_Tests.m */,
+				CE9EB7B41865B6C600BC03C1 /* Supporting Files */,
+			);
+			path = "LinkedInApp4iPhone Tests";
+			sourceTree = "<group>";
+		};
+		CE9EB7B41865B6C600BC03C1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE9EB7B51865B6C600BC03C1 /* LinkedInApp4iPhone Tests-Info.plist */,
+				CE9EB7B61865B6C600BC03C1 /* InfoPlist.strings */,
+				CE9EB7BB1865B6C600BC03C1 /* LinkedInApp4iPhone Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		CECD90721819536F00EB2249 /* CTMbase64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1381,6 +1434,24 @@
 			productReference = 8DEE3E3C18044A1C00B4C607 /* LinkedInApp4iPhone.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CE9EB7AD1865B6C600BC03C1 /* LinkedInApp4iPhone Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE9EB7BE1865B6C600BC03C1 /* Build configuration list for PBXNativeTarget "LinkedInApp4iPhone Tests" */;
+			buildPhases = (
+				CE9EB7AA1865B6C600BC03C1 /* Sources */,
+				CE9EB7AB1865B6C600BC03C1 /* Frameworks */,
+				CE9EB7AC1865B6C600BC03C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE9EB7BD1865B6C600BC03C1 /* PBXTargetDependency */,
+			);
+			name = "LinkedInApp4iPhone Tests";
+			productName = "LinkedInApp4iPhone Tests";
+			productReference = CE9EB7AE1865B6C600BC03C1 /* LinkedInApp4iPhone Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1389,6 +1460,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "liao jia";
+				TargetAttributes = {
+					CE9EB7AD1865B6C600BC03C1 = {
+						TestTargetID = 8DEE3E3B18044A1C00B4C607;
+					};
+				};
 			};
 			buildConfigurationList = 8DEE3E3718044A1C00B4C607 /* Build configuration list for PBXProject "LinkedInApp4iPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1403,6 +1479,7 @@
 			projectRoot = "";
 			targets = (
 				8DEE3E3B18044A1C00B4C607 /* LinkedInApp4iPhone */,
+				CE9EB7AD1865B6C600BC03C1 /* LinkedInApp4iPhone Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1602,6 +1679,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE9EB7AC1865B6C600BC03C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9EB7B81865B6C600BC03C1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1699,13 +1784,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE9EB7AA1865B6C600BC03C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9EB7BA1865B6C600BC03C1 /* LinkedInApp4iPhone_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE9EB7BD1865B6C600BC03C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DEE3E3B18044A1C00B4C607 /* LinkedInApp4iPhone */;
+			targetProxy = CE9EB7BC1865B6C600BC03C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8DEE3E4818044A1C00B4C607 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8DEE3E4918044A1C00B4C607 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CE9EB7B61865B6C600BC03C1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE9EB7B71865B6C600BC03C1 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1803,6 +1912,67 @@
 			};
 			name = Release;
 		};
+		CE9EB7BF1865B6C600BC03C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LinkedInApp4iPhone.app/LinkedInApp4iPhone";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LinkedInApp4iPhone Tests/LinkedInApp4iPhone Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "LinkedInApp4iPhone Tests/LinkedInApp4iPhone Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		CE9EB7C01865B6C600BC03C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LinkedInApp4iPhone.app/LinkedInApp4iPhone";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LinkedInApp4iPhone Tests/LinkedInApp4iPhone Tests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "LinkedInApp4iPhone Tests/LinkedInApp4iPhone Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1823,6 +1993,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CE9EB7BE1865B6C600BC03C1 /* Build configuration list for PBXNativeTarget "LinkedInApp4iPhone Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9EB7BF1865B6C600BC03C1 /* Debug */,
+				CE9EB7C01865B6C600BC03C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

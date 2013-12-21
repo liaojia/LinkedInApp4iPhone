@@ -120,9 +120,8 @@
                                               NSLog(@"下载图片完成 %@",dict[@"url"]);
                                              [self.imageArray replaceObjectAtIndex:i withObject:image];
                                              [self.listTableView reloadData];
+                                        
                                          }];
-                                         
-                                       
                                          
                                          [operation start];
                                      }
