@@ -52,7 +52,7 @@
         self.navigationItem.title = @"我的信息";
         
         UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        rightBtn.frame = CGRectMake(280, 5, 80, 21);
+        rightBtn.frame = CGRectMake(280, 5, 80, 35);
         rightBtn.tag = 600;
         [rightBtn setTitle:@"找同学" forState:UIControlStateNormal];
         [rightBtn setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_n"] forState:UIControlStateNormal];
