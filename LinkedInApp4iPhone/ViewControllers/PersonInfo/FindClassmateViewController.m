@@ -9,6 +9,7 @@
 #import "FindClassmateViewController.h"
 #import "PersonCell.h"
 #import "PersonInfoViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface FindClassmateViewController ()
 
