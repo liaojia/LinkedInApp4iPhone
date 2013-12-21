@@ -203,7 +203,7 @@
     static NSString *CellIdentifier = @"CellIdentifier";
     ListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  
     
     if (cell == nil)
     {
@@ -211,7 +211,8 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
     }
    
-
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if (indexPath.row == 0) //section组别标题
     {
         for (UIView *view in cell.contentView.subviews)
