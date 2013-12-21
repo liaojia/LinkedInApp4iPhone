@@ -22,7 +22,7 @@
     if (navigationController.viewControllers.count>1)
     {
         UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        leftBtn.frame = CGRectMake(0, 0, 35, 35);
+        leftBtn.frame = CGRectMake(0, 0, 25, 38);
         [leftBtn setImage:[UIImage imageNamed:@"btn_back_n"] forState:UIControlStateNormal];
         [leftBtn setImage:[UIImage imageNamed:@"btn_back_s"] forState:UIControlStateHighlighted];
         [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
