@@ -62,7 +62,7 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="37">
-                        <rect key="frame" x="217" y="97" width="76" height="25"/>
+                        <rect key="frame" x="223" y="97" width="54" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="修改" backgroundImage="img_school_notice_normal.png">
