@@ -35,15 +35,15 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <view contentMode="scaleToFill" id="Afp-IX-JuA">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Lp8-8m-HoF">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </scrollView>
                 <view contentMode="scaleToFill" id="xug-AL-5kZ">
-                    <rect key="frame" x="0.0" y="129" width="320" height="29"/>
+                    <rect key="frame" x="0.0" y="129" width="320" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V1Q-el-f0y">
@@ -53,20 +53,15 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="buJ-Ay-c9l">
+                            <rect key="frame" x="35" y="13" width="250" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="pageIndicatorTintColor" red="0.0" green="0.54901960780000003" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="currentPageIndicatorTintColor" red="0.83137254900000002" green="0.050980392159999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </pageControl>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.47000000000000003" colorSpace="calibratedRGB"/>
-                </view>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="buJ-Ay-c9l">
-                    <rect key="frame" x="35" y="153" width="250" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="pageIndicatorTintColor" red="0.0" green="0.54901960780000003" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="currentPageIndicatorTintColor" red="0.83137254900000002" green="0.050980392159999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                </pageControl>
-                <view contentMode="scaleToFill" id="5bE-PD-jXd">
-                    <rect key="frame" x="0.0" y="187" width="320" height="1"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

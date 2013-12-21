@@ -43,6 +43,7 @@
     self.schollImgView.frame =CGRectMake(5, 5, 290, 160);
     
     self.listTableView.backgroundView = nil;
+    self.listTableView.backgroundColor = [UIColor clearColor];
     
     [self getSchollInfoListInfo];
     
@@ -144,6 +145,7 @@
                                                      model.mDesc = temDict[@"preview"];
                                                      model.mImgUrl = temDict[@"pic"];
                                                      model.mId = temDict[@"id"];
+                                                     model.mTitle = temDict[@"title"];
                                                      
                                                     
                                                     [self.schoolInfoMtbArray addObject:model];
@@ -220,7 +222,7 @@
 {
     if (section==0)
     {
-        return self.schoolInfoMtbArray.count;
+        return (self.schoolInfoMtbArray.count>3?3:self.schoolInfoMtbArray.count)+1;
     }
  
     return 2;
@@ -307,6 +309,7 @@
         }
         
         titleLabel.text = titleStr;
+        titleLabel.textColor = RGBCOLOR(29, 60, 229);
         [cell.contentView addSubview:titleLabel];
         
         //右侧操作按钮
@@ -332,11 +335,17 @@
     
     if (indexPath.section==0)
     {
-        ListCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
+        static NSString *CellIdentifier = @"CellIdenti";
+        ListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell==Nil)
+        {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         ProfileModel *model = self.schoolInfoMtbArray[indexPath.row];
         [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
-        cell.txtLabel.text = model.mDesc;
+        cell.txtLabel.text = model.mTitle;
 
         return cell;
     }

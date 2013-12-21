@@ -257,21 +257,19 @@
         
          if ([[obj objectForKey:@"rc"]intValue] == 1)
          {
-             NSDictionary *baseDict = obj[@"basic"];
-             self.infoModel.mName = baseDict[@"name"];
-             self.infoModel.mGender = baseDict[@"gender"];
-             self.infoModel.mSchool = baseDict[@"colg"];
-             self.infoModel.mMajor = baseDict[@"major"];
-             self.infoModel.mAdYear = baseDict[@"adYear"];
-             self.infoModel.mGradYear = baseDict[@"gradYear"];
-             self.infoModel.mImgUrl = baseDict[@"pic"];
+             self.infoModel.mName = obj[@"name"];
+             self.infoModel.mGender = obj[@"gender"];
+             self.infoModel.mSchool = obj[@"colg"];
+             self.infoModel.mMajor = obj[@"major"];
+             self.infoModel.mAdYear = obj[@"adYear"];
+             self.infoModel.mGradYear = obj[@"gradYear"];
+             self.infoModel.mImgUrl = obj[@"pic"];
              
-             NSDictionary *extDict = obj[@"ext"];
-             self.infoModel.mBirthday = extDict[@"birthday"];
-             self.infoModel.mBirthplace = extDict[@"birthplace"];
-             self.infoModel.mDesc = extDict[@"desc"];
-             self.infoModel.mNation = extDict[@"nation"];
-             self.infoModel.mTel = extDict[@"tel"];
+             self.infoModel.mBirthday = obj[@"birthday"];
+             self.infoModel.mBirthplace = obj[@"birthplace"];
+             self.infoModel.mDesc = obj[@"desc"];
+             self.infoModel.mNation = obj[@"nation"];
+             self.infoModel.mTel = obj[@"mobile"];
              
              [self.listTableView reloadData];
            
@@ -320,8 +318,8 @@
                                  @"gender": [NSNumber numberWithInt:gender],
 //                                 @"colg":self.infoModel.mSchool,
                                  @"major":self.infoModel.mMajor,
-                                 @"adYear":[self.infoModel.mAdYear substringToIndex:4],
-                                 @"gradYear":[self.infoModel.mGradYear substringToIndex:4],
+                                 @"adYear":self.infoModel.mAdYear,
+                                 @"gradYear":self.infoModel.mGradYear,
                                  @"pic":[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ]};
                               ;
     

@@ -71,7 +71,6 @@
     studentInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [studentInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_friend_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_friend_normal"]];
     studentInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
-    studentInfoController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     studentInfoController.navigationController.delegate = studentInfoController.navigationController;
         
     SchollInfoViewController *schollInfoController = [[SchollInfoViewController alloc]initWithNibName:@"SchollInfoViewController" bundle:nil];
@@ -79,7 +78,6 @@
     schollInfoController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [schollInfoController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_school_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_school_normal"]];
      schollInfoController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
-    schollInfoController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     schollInfoController.navigationController.delegate = schollInfoController.navigationController;
     
     PersonInfoViewController *personalCenterController = [[PersonInfoViewController alloc]initWithNibName:@"PersonInfoViewController" bundle:nil];
@@ -87,7 +85,6 @@
     personalCenterController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [personalCenterController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_profile_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_profile_normal"]];
      personalCenterController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
-    personalCenterController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     personalCenterController.navigationController.delegate = personalCenterController.navigationController;
     
 
@@ -97,7 +94,6 @@
     setingController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [setingController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_setting_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_setting_normal"]];
      setingController.tabBarItem.imageInsets = UIEdgeInsetsMake(20, 20, 13, 20);
-    setingController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     setingController.navigationController.delegate = setingController.navigationController;
     
     

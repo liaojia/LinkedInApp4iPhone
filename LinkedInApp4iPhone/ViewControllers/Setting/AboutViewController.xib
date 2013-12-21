@@ -50,10 +50,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vfc-mz-Yru">
-                    <rect key="frame" x="74" y="288" width="236" height="68"/>
+                    <rect key="frame" x="74" y="294" width="236" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <string key="text">北京市海淀区西三环北路105号
-首都师范大学学校办公室校友汇  </string>
+首都师范大学学校办公室校友汇</string>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="highlightedColor"/>
                 </label>

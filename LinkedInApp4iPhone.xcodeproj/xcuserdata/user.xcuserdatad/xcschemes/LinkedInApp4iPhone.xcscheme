@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE9EB7AD1865B6C600BC03C1"
+               BuildableName = "LinkedInApp4iPhone Tests.xctest"
+               BlueprintName = "LinkedInApp4iPhone Tests"
+               ReferencedContainer = "container:LinkedInApp4iPhone.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

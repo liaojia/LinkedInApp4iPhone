@@ -15,6 +15,7 @@
 #import "ProfileModel.h"
 #import "PersonInfoEditViewController.h"
 #import "PersonalCardViewController.h"
+#import "FindClassmateViewController.h"
 
 #define Tag_DeletePersonInfo_Alert 500
 
@@ -39,12 +40,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+   
+    
     // Do any additional setup after loading the view from its nib.
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
+    
     if (self.pageType == 0)
     {
         self.navigationItem.title = @"我的信息";
+        
+        UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        rightBtn.frame = CGRectMake(280, 5, 80, 30);
+        rightBtn.tag = 600;
+        [rightBtn setTitle:@"找同学" forState:UIControlStateNormal];
+        [rightBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forState:UIControlStateNormal];
+        [rightBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     }
     else
     {
@@ -174,7 +187,12 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-            
+        case 600: //找同学
+        {
+            FindClassmateViewController *findClassMateController = [[FindClassmateViewController alloc]initWithNibName:@"FindClassmateViewController" bundle:nil];
+            [self.navigationController pushViewController:findClassMateController animated:YES];
+        }
+            break;
         default:
             break;
     }
@@ -334,12 +352,14 @@
             titleStr = @"关注我的人";
         }
         titleLabel.text =  titleStr;
+        titleLabel.textColor = RGBCOLOR(29, 60, 229);
         [cell.contentView addSubview:titleLabel];
         
         if (indexPath.section == 1 && indexPath.row == 0&&[self.personId isEqualToString:@"me"]) {
             //增加
-            UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             addBtn.frame = CGRectMake(tableView.frame.size.width -80, 5, 50, 35);
+            [addBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal.png"] forState:UIControlStateNormal];
             [addBtn setTitle:@"增加" forState:UIControlStateNormal];
             addBtn.tag = 106;
             
@@ -507,10 +527,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.pageType==1)
+    {
+        return;
+    }
     if (indexPath.section == 1&&self.pageType == 0) //进入相关推荐页面
     {
-        
-
+        ProfileModel *model = self.timeLimeArray[indexPath.row-1];
+        CommendListViewController *commendListController = [[CommendListViewController alloc]initWithNibName:@"CommendListViewController" bundle:nil];
+        commendListController.titleStr = @"推荐列表";
+        commendListController.nodeId = model.mId;
+        [self.navigationController pushViewController:commendListController animated:YES];
 
     }
     else if(indexPath.section == 0) //进入个人名片修改页面
@@ -628,16 +655,15 @@
            
            if ([[obj objectForKey:@"rc"]intValue] == 1)
            {
-               NSDictionary *basicDic = [obj objectForKey:@"basic"];
                
-               [self.model setMAdYear:[basicDic objectForKey:@"adYear"]];
+               [self.model setMAdYear:[obj objectForKey:@"adYear"]];
                NSNumberFormatter *fomatter = [[NSNumberFormatter alloc] init];
-               [self.model setMGender:[fomatter stringFromNumber:[basicDic objectForKey:@"gender"]]];
-               [self.model setMMajor:[basicDic objectForKey:@"major"]];
-               [self.model setMName:[basicDic objectForKey:@"name"]];
-               [self.model setMDept:[basicDic objectForKey:@"dept"]];
-               [self.model setMSchool:[basicDic objectForKey:@"colg"]];
-               [self.model setMImgUrl:[basicDic objectForKey:@"pic"]];
+               [self.model setMGender:[fomatter stringFromNumber:[obj objectForKey:@"gender"]]];
+               [self.model setMMajor:[obj objectForKey:@"major"]];
+               [self.model setMName:[obj objectForKey:@"name"]];
+               [self.model setMDept:[obj objectForKey:@"dept"]];
+               [self.model setMSchool:[obj objectForKey:@"colg"]];
+               [self.model setMImgUrl:[obj objectForKey:@"pic"]];
                
            }
            [self.listTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];

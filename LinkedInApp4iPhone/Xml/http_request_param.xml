@@ -35,7 +35,7 @@
     <!-- 查看全部个人信息 -->
     <request>
         <requestId>PROFILE_ALL</requestId>
-        <url>/profile/${id}/all</url>
+        <url>/profile/${id}/detail</url>
         <method>GET</method>
     </request>
     
@@ -283,6 +283,13 @@
         <requestId>USERLOGOUT</requestId>
         <url>/logout</url>
         <method>POST</method>
+    </request>
+    
+    <!--用户退出-->
+    <request>
+        <requestId>FINDCLASSMATE</requestId>
+        <url>/friends/search</url>
+        <method>GET</method>
     </request>
 
 
