@@ -21,8 +21,8 @@
 
 - (void)awakeFromNib
 {
-    self.headImg.layer.borderColor = [UIColor grayColor].CGColor;
-    self.headImg.layer.borderWidth = 2;
+//    self.headImg.layer.borderColor = [UIColor grayColor].CGColor;
+//    self.headImg.layer.borderWidth = 2;
     
 }
 

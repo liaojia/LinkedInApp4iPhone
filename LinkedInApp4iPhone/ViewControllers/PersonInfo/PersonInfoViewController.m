@@ -357,8 +357,9 @@
         
         if (indexPath.section == 1 && indexPath.row == 0&&[self.personId isEqualToString:@"me"]) {
             //增加
-            UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             addBtn.frame = CGRectMake(tableView.frame.size.width -80, 5, 50, 35);
+            [addBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal.png"] forState:UIControlStateNormal];
             [addBtn setTitle:@"增加" forState:UIControlStateNormal];
             addBtn.tag = 106;
             

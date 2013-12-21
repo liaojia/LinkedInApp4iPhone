@@ -28,9 +28,9 @@
 }
 - (void)awakeFromNib
 {
-    self.headImgView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.headImgView.layer.borderWidth = 2;
-    
+//    self.headImgView.layer.borderColor = [UIColor grayColor].CGColor;
+//    self.headImgView.layer.borderWidth = 2;
+//    
 }
 
 - (void)initWithMode:(ProfileModel*)tModel{
