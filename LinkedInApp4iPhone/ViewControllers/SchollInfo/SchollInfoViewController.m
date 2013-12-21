@@ -145,6 +145,7 @@
                                                      model.mDesc = temDict[@"preview"];
                                                      model.mImgUrl = temDict[@"pic"];
                                                      model.mId = temDict[@"id"];
+                                                     model.mTitle = temDict[@"title"];
                                                      
                                                     
                                                     [self.schoolInfoMtbArray addObject:model];
@@ -308,6 +309,7 @@
         }
         
         titleLabel.text = titleStr;
+        titleLabel.textColor = RGBCOLOR(29, 60, 229);
         [cell.contentView addSubview:titleLabel];
         
         //右侧操作按钮
@@ -343,7 +345,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         ProfileModel *model = self.schoolInfoMtbArray[indexPath.row];
         [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
-        cell.txtLabel.text = model.mDesc;
+        cell.txtLabel.text = model.mTitle;
 
         return cell;
     }

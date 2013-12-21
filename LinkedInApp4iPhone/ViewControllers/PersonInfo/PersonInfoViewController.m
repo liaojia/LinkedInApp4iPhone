@@ -15,6 +15,7 @@
 #import "ProfileModel.h"
 #import "PersonInfoEditViewController.h"
 #import "PersonalCardViewController.h"
+#import "FindClassmateViewController.h"
 
 #define Tag_DeletePersonInfo_Alert 500
 
@@ -39,12 +40,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+   
+    
     // Do any additional setup after loading the view from its nib.
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
+    
     if (self.pageType == 0)
     {
         self.navigationItem.title = @"我的信息";
+        
+        UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        rightBtn.frame = CGRectMake(280, 5, 80, 30);
+        rightBtn.tag = 600;
+        [rightBtn setTitle:@"找同学" forState:UIControlStateNormal];
+        [rightBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forState:UIControlStateNormal];
+        [rightBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     }
     else
     {
@@ -174,7 +187,12 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-            
+        case 600: //找同学
+        {
+            FindClassmateViewController *findClassMateController = [[FindClassmateViewController alloc]initWithNibName:@"FindClassmateViewController" bundle:nil];
+            [self.navigationController pushViewController:findClassMateController animated:YES];
+        }
+            break;
         default:
             break;
     }

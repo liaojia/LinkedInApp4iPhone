@@ -218,6 +218,7 @@
         timeLabel.font = [UIFont systemFontOfSize:15];
         timeLabel.text = self.resultDict[@"time"];
         timeLabel.textAlignment = UITextAlignmentRight;
+        timeLabel.textColor = RGBCOLOR(29, 60, 229);
         [cell.contentView addSubview:timeLabel];
     }
     else if(indexPath.row == pics.count+1)

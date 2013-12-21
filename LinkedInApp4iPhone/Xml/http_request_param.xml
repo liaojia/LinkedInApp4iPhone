@@ -284,6 +284,13 @@
         <url>/logout</url>
         <method>POST</method>
     </request>
+    
+    <!--用户退出-->
+    <request>
+        <requestId>FINDCLASSMATE</requestId>
+        <url>/friends/search</url>
+        <method>GET</method>
+    </request>
 
 
 

@@ -268,6 +268,8 @@
 		CE9DE2ED18138477003D0EAD /* UIImage+Resizeable.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9DE2EC18138477003D0EAD /* UIImage+Resizeable.m */; };
 		CE9DE2F11813DF52003D0EAD /* PersonalCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9DE2EF1813DF51003D0EAD /* PersonalCardViewController.m */; };
 		CE9DE2F21813DF52003D0EAD /* PersonalCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9DE2F01813DF52003D0EAD /* PersonalCardViewController.xib */; };
+		CE9EB7A81865809F00BC03C1 /* FindClassmateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EB7A61865809F00BC03C1 /* FindClassmateViewController.m */; };
+		CE9EB7A91865809F00BC03C1 /* FindClassmateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9EB7A71865809F00BC03C1 /* FindClassmateViewController.xib */; };
 		CEAE7A7B180FDC1700ECBD5F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE7A79180FDC1700ECBD5F /* WebViewController.m */; };
 		CEAE7A7C180FDC1700ECBD5F /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */; };
 		CECD90761819536F00EB2249 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD90741819536F00EB2249 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -636,6 +638,9 @@
 		CE9DE2EE1813DF51003D0EAD /* PersonalCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCardViewController.h; sourceTree = "<group>"; };
 		CE9DE2EF1813DF51003D0EAD /* PersonalCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCardViewController.m; sourceTree = "<group>"; };
 		CE9DE2F01813DF52003D0EAD /* PersonalCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalCardViewController.xib; sourceTree = "<group>"; };
+		CE9EB7A51865809F00BC03C1 /* FindClassmateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindClassmateViewController.h; sourceTree = "<group>"; };
+		CE9EB7A61865809F00BC03C1 /* FindClassmateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindClassmateViewController.m; sourceTree = "<group>"; };
+		CE9EB7A71865809F00BC03C1 /* FindClassmateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindClassmateViewController.xib; sourceTree = "<group>"; };
 		CEAE7A78180FDC1700ECBD5F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		CEAE7A79180FDC1700ECBD5F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -1307,6 +1312,9 @@
 				CED1AA0A180EC51B00A4A1A0 /* CommendListViewController.h */,
 				CED1AA0B180EC51B00A4A1A0 /* CommendListViewController.m */,
 				CED1AA0C180EC51B00A4A1A0 /* CommendListViewController.xib */,
+				CE9EB7A51865809F00BC03C1 /* FindClassmateViewController.h */,
+				CE9EB7A61865809F00BC03C1 /* FindClassmateViewController.m */,
+				CE9EB7A71865809F00BC03C1 /* FindClassmateViewController.xib */,
 			);
 			path = PersonInfo;
 			sourceTree = "<group>";
@@ -1416,6 +1424,7 @@
 				8DF207CB180CE05600FDEABA /* img_card_announcement@2x.png in Resources */,
 				CE67C7E01861ECD2006EA741 /* img_splash_4.png in Resources */,
 				CE67C7E11861ECD2006EA741 /* img_splash_5.png in Resources */,
+				CE9EB7A91865809F00BC03C1 /* FindClassmateViewController.xib in Resources */,
 				8DF207CC180CE05600FDEABA /* img_card_arrows_normal@2x.png in Resources */,
 				CE67C7FE1861ED2A006EA741 /* img_feedback.png in Resources */,
 				CE67C80A1861F199006EA741 /* img_edittext_user.png in Resources */,
@@ -1648,6 +1657,7 @@
 				CE5AFB9218125590007AFC79 /* ActivityListViewController.m in Sources */,
 				CE5AFB971812C26E007AFC79 /* PersonInfoEditViewController.m in Sources */,
 				CE9DE2ED18138477003D0EAD /* UIImage+Resizeable.m in Sources */,
+				CE9EB7A81865809F00BC03C1 /* FindClassmateViewController.m in Sources */,
 				CE9DE2F11813DF52003D0EAD /* PersonalCardViewController.m in Sources */,
 				CE935F171815566F00DAC626 /* OAuthWebView.m in Sources */,
 				CE935F1C18155B6700DAC626 /* ProfileVC.m in Sources */,
