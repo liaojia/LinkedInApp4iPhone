@@ -203,6 +203,7 @@
     
     if (cell==Nil)
     {
+        NSLog(@"row %d sec %d",indexPath.row,indexPath.section);
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
     }
     
