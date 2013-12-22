@@ -11,6 +11,6 @@
 
 @interface ListCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet EGOImageView *headImgView;
+@property (weak, nonatomic) IBOutlet UIImageView *headImgView;
 @property (weak, nonatomic) IBOutlet UILabel *txtLabel;
 @end

@@ -11,7 +11,6 @@
 #import "DetailInfoViewController.h"
 #import "SchollCardApplyViewController.h"
 #import "MessageListViewController.h"
-#import "EGOImageView.h"
 #import "TestImageUtil.h"
 
 @interface StudentInfoViewController ()
@@ -204,7 +203,7 @@
     static NSString *CellIdentifier = @"CellIdentifier";
     ListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  
     
     if (cell == nil)
     {
@@ -212,7 +211,8 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil] objectAtIndex:0];
     }
    
-
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if (indexPath.row == 0) //section组别标题
     {
         for (UIView *view in cell.contentView.subviews)
@@ -310,10 +310,11 @@
              model = self.noticeInfoMtbArray[indexPath.row-1];
         }
         
-        [cell.headImgView setPlaceholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
-        [cell.headImgView setImageURL:[NSURL URLWithString:model.mImgUrl]];
+        //[cell.headImgView setPlaceholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        //[cell.headImgView setImageURL:[NSURL URLWithString:model.mImgUrl]];
         
-//        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+        NSLog(@"model.mImgUrl %@",model.mImgUrl);
+        [cell.headImgView setImageWithURL:[NSURL URLWithString:model.mImgUrl ] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         cell.txtLabel.text = model.mTitle;
 
        
