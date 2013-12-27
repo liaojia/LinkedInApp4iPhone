@@ -7,9 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController">
             <connections>
+                <outlet property="certificateNum" destination="wBc-7x-khI" id="qgJ-zI-4DG"/>
                 <outlet property="nameTxtField" destination="9v1-ah-yya" id="ICg-bX-fT7"/>
                 <outlet property="pswConfirmTxtField" destination="WA5-ad-cwe" id="Cqo-1W-UHP"/>
                 <outlet property="pswTxtField" destination="c4e-Me-Hd3" id="0C5-05-mDI"/>
+                <outlet property="studentNum" destination="qoT-Ux-Wyj" id="QiC-QY-M61"/>
                 <outlet property="view" destination="1" id="iPE-dD-xIN"/>
             </connections>
         </placeholder>
@@ -38,7 +40,7 @@
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Yuu-ns-sKo">
-                    <rect key="frame" x="41" y="225" width="246" height="44"/>
+                    <rect key="frame" x="41" y="338" width="246" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -85,6 +87,40 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="wn1-Tl-HbP">
+                    <rect key="frame" x="20" y="222" width="278" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="身份证号" minimumFontSize="17" clearButtonMode="whileEditing" id="wBc-7x-khI">
+                    <rect key="frame" x="73" y="228" width="216" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_edittext_pwd.png" id="Qoi-x1-Hh3">
+                    <rect key="frame" x="30" y="228" width="30" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="rnz-0s-Xl0">
+                    <rect key="frame" x="21" y="282" width="278" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="学号（选填）" minimumFontSize="17" clearButtonMode="whileEditing" id="qoT-Ux-Wyj">
+                    <rect key="frame" x="74" y="288" width="216" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_edittext_pwd.png" id="7gh-5J-BE4">
+                    <rect key="frame" x="31" y="288" width="30" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="44" maxX="0.0" maxY="-44"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -93,8 +129,8 @@
     </objects>
     <resources>
         <image name="img_backdrop.png" width="800" height="1270"/>
-        <image name="img_edittext_pwd.png" width="32" height="35"/>
-        <image name="img_edittext_user.png" width="38" height="35"/>
+        <image name="img_edittext_pwd.png" width="16" height="17"/>
+        <image name="img_edittext_user.png" width="19" height="17"/>
         <image name="img_orange_button_normal.9.png" width="115" height="74"/>
         <image name="more_normal.png" width="616" height="64"/>
     </resources>

@@ -29,5 +29,4 @@
 @property (strong, nonatomic) NSMutableArray *imgMtbArray;  //保存下载的照片
 @property (strong, nonatomic) NSMutableArray *items;
 - (void) _demoAsyncDataLoading;
-- (void) buildBarButtons;
 @end
