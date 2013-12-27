@@ -13,9 +13,11 @@
 @interface RegisterViewController : BaseViewController<UITextFieldDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UITextField *nameTxtField;
-@property (weak, nonatomic) IBOutlet UITextField *pswTxtField;
-@property (weak, nonatomic) IBOutlet UITextField *pswConfirmTxtField;
+@property (weak, nonatomic) IBOutlet UITextField *nameTxtField; //姓名
+@property (weak, nonatomic) IBOutlet UITextField *pswTxtField;  //密码
+@property (weak, nonatomic) IBOutlet UITextField *pswConfirmTxtField; //确认密码
+@property (weak, nonatomic) IBOutlet UITextField *certificateNum; //身份证号
+@property (weak, nonatomic) IBOutlet UITextField *studentNum; //学号
 
 
 @end

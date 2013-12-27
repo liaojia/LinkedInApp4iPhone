@@ -63,7 +63,6 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="37">
                         <rect key="frame" x="220" y="98" width="65" height="23"/>
-
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="修改" backgroundImage="btn_add_n.png">
@@ -77,6 +76,7 @@
                     </button>
                 </subviews>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="changeBtn" destination="37" id="40"/>
                 <outlet property="headImgView" destination="3" id="42"/>

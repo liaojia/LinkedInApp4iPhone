@@ -87,6 +87,10 @@
     {
         errStr = @"请确认密码";
     }
+    else if([StaticTools isEmptyString:self.certificateNum.text])
+    {
+        errStr = @"请确认身份证号";
+    }
     else if(![StaticTools isValidateEmail:self.nameTxtField.text])
     {
         errStr = @"请输入一个正确的邮箱作为用户名";
@@ -101,7 +105,7 @@
         return;
     }
 
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"name":self.pswTxtField.text,@"password":self.pswConfirmTxtField.text} requesId:@"REGISTER" messId:nil success:^(id obj)
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"name":self.pswTxtField.text,@"password":self.pswConfirmTxtField.text,@"idCardNo":self.certificateNum.text} requesId:@"REGISTER" messId:nil success:^(id obj)
              {
                  //返回1时表示注册成功 且后台默认为登陆状态  返回sessionid
                  if ([[obj objectForKey:@"rc"]intValue] == 1)
