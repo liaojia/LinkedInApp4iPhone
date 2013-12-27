@@ -138,8 +138,6 @@
 		8DF207FF180CE05600FDEABA /* img_weibo_userinfo_male_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DF207C8180CE05600FDEABA /* img_weibo_userinfo_male_2@2x.png */; };
 		8DF20800180CE05600FDEABA /* img_weibo_userinfo_verifed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DF207C9180CE05600FDEABA /* img_weibo_userinfo_verifed@2x.png */; };
 		8DF2080A180CE06100FDEABA /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20803180CE06100FDEABA /* BaseViewController.m */; };
-		8DF2080B180CE06100FDEABA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20805180CE06100FDEABA /* LoginViewController.m */; };
-		8DF2080C180CE06100FDEABA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20807180CE06100FDEABA /* RegisterViewController.m */; };
 		8DF20811180CE06E00FDEABA /* ClearTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20810180CE06E00FDEABA /* ClearTextField.m */; };
 		8DF20814180CE0AF00FDEABA /* UITextField+HideKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20813180CE0AF00FDEABA /* UITextField+HideKeyBoard.m */; };
 		8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20818180CE0F300FDEABA /* Transfer+ParseXML.m */; };
@@ -249,7 +247,6 @@
 		CE67C7FA1861ED1C006EA741 /* image04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE67C7F41861ED1C006EA741 /* image04.jpg */; };
 		CE67C7FB1861ED1C006EA741 /* image05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE67C7F51861ED1C006EA741 /* image05.jpg */; };
 		CE67C7FC1861ED1C006EA741 /* img_about_top.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE67C7F61861ED1C006EA741 /* img_about_top.jpg */; };
-		CE67C8001861EEE6006EA741 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE67C7FF1861EEE6006EA741 /* LoginViewController.xib */; };
 		CE67C8051861EFFC006EA741 /* img_navbar_button_normal.9.png in Resources */ = {isa = PBXBuildFile; fileRef = CE67C8021861EFFC006EA741 /* img_navbar_button_normal.9.png */; };
 		CE67C8061861EFFC006EA741 /* img_navbar_button_pressed.9.png in Resources */ = {isa = PBXBuildFile; fileRef = CE67C8031861EFFC006EA741 /* img_navbar_button_pressed.9.png */; };
 		CE67C8091861F199006EA741 /* img_edittext_pwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE67C8071861F199006EA741 /* img_edittext_pwd@2x.png */; };
@@ -327,16 +324,19 @@
 		CEE8EACD180E720D0052E5D8 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EACB180E720D0052E5D8 /* ActivityDetailViewController.m */; };
 		CEE8EACE180E720D0052E5D8 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE8EACC180E720D0052E5D8 /* ActivityDetailViewController.xib */; };
 		CEE8EAD1180E776C0052E5D8 /* PersonHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */; };
-		CEE982671863219F00735125 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE982661863219F00735125 /* RegisterViewController.xib */; };
 		CEE9826918632FCF00735125 /* img_school_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEE9826818632FCF00735125 /* img_school_logo.jpg */; };
-		CEF51183186DBE9F00F141DA /* AddRegisterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF51181186DBE9F00F141DA /* AddRegisterInfoViewController.m */; };
-		CEF51184186DBE9F00F141DA /* AddRegisterInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF51182186DBE9F00F141DA /* AddRegisterInfoViewController.xib */; };
-		CEF51187186DC29200F141DA /* StudentInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF51186186DC29200F141DA /* StudentInfoCell.m */; };
-		CEF51189186DC2AC00F141DA /* StudentInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF51188186DC2AC00F141DA /* StudentInfoCell.xib */; };
-		CEF5118C186DC4BF00F141DA /* WorkersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF5118B186DC4BF00F141DA /* WorkersCell.m */; };
-		CEF5118E186DC4D600F141DA /* WorkersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF5118D186DC4D600F141DA /* WorkersCell.xib */; };
-		CEF51191186DC8D200F141DA /* SingleSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF51190186DC8D200F141DA /* SingleSelectCell.m */; };
-		CEF51193186DC8E500F141DA /* SingleSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF51192186DC8E500F141DA /* SingleSelectCell.xib */; };
+		CEF511A7186DF76C00F141DA /* AddRegisterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF51196186DF76C00F141DA /* AddRegisterInfoViewController.m */; };
+		CEF511A8186DF76C00F141DA /* AddRegisterInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF51197186DF76C00F141DA /* AddRegisterInfoViewController.xib */; };
+		CEF511A9186DF76C00F141DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF51199186DF76C00F141DA /* LoginViewController.m */; };
+		CEF511AA186DF76C00F141DA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF5119A186DF76C00F141DA /* LoginViewController.xib */; };
+		CEF511AB186DF76C00F141DA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF5119C186DF76C00F141DA /* RegisterViewController.m */; };
+		CEF511AC186DF76C00F141DA /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF5119D186DF76C00F141DA /* RegisterViewController.xib */; };
+		CEF511AD186DF76C00F141DA /* SingleSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF5119F186DF76C00F141DA /* SingleSelectCell.m */; };
+		CEF511AE186DF76C00F141DA /* SingleSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF511A0186DF76C00F141DA /* SingleSelectCell.xib */; };
+		CEF511AF186DF76C00F141DA /* StudentInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF511A2186DF76C00F141DA /* StudentInfoCell.m */; };
+		CEF511B0186DF76C00F141DA /* StudentInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF511A3186DF76C00F141DA /* StudentInfoCell.xib */; };
+		CEF511B1186DF76C00F141DA /* WorkersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF511A5186DF76C00F141DA /* WorkersCell.m */; };
+		CEF511B2186DF76C00F141DA /* WorkersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF511A6186DF76C00F141DA /* WorkersCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -512,10 +512,6 @@
 		8DF207C9180CE05600FDEABA /* img_weibo_userinfo_verifed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_weibo_userinfo_verifed@2x.png"; sourceTree = "<group>"; };
 		8DF20802180CE06100FDEABA /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8DF20803180CE06100FDEABA /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		8DF20804180CE06100FDEABA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		8DF20805180CE06100FDEABA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		8DF20806180CE06100FDEABA /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		8DF20807180CE06100FDEABA /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		8DF2080F180CE06E00FDEABA /* ClearTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearTextField.h; sourceTree = "<group>"; };
 		8DF20810180CE06E00FDEABA /* ClearTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearTextField.m; sourceTree = "<group>"; };
 		8DF20812180CE0AF00FDEABA /* UITextField+HideKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+HideKeyBoard.h"; sourceTree = "<group>"; };
@@ -660,7 +656,6 @@
 		CE67C7F41861ED1C006EA741 /* image04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image04.jpg; sourceTree = "<group>"; };
 		CE67C7F51861ED1C006EA741 /* image05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image05.jpg; sourceTree = "<group>"; };
 		CE67C7F61861ED1C006EA741 /* img_about_top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_about_top.jpg; sourceTree = "<group>"; };
-		CE67C7FF1861EEE6006EA741 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		CE67C8021861EFFC006EA741 /* img_navbar_button_normal.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_navbar_button_normal.9.png; sourceTree = "<group>"; };
 		CE67C8031861EFFC006EA741 /* img_navbar_button_pressed.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_navbar_button_pressed.9.png; sourceTree = "<group>"; };
 		CE67C8071861F199006EA741 /* img_edittext_pwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_edittext_pwd@2x.png"; sourceTree = "<group>"; };
@@ -772,20 +767,25 @@
 		CEE8EACC180E720D0052E5D8 /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
 		CEE8EACF180E776C0052E5D8 /* PersonHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonHeadView.h; sourceTree = "<group>"; };
 		CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonHeadView.m; sourceTree = "<group>"; };
-		CEE982661863219F00735125 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		CEE9826818632FCF00735125 /* img_school_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_school_logo.jpg; sourceTree = "<group>"; };
-		CEF51180186DBE9F00F141DA /* AddRegisterInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRegisterInfoViewController.h; sourceTree = "<group>"; };
-		CEF51181186DBE9F00F141DA /* AddRegisterInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRegisterInfoViewController.m; sourceTree = "<group>"; };
-		CEF51182186DBE9F00F141DA /* AddRegisterInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRegisterInfoViewController.xib; sourceTree = "<group>"; };
-		CEF51185186DC29200F141DA /* StudentInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentInfoCell.h; sourceTree = "<group>"; };
-		CEF51186186DC29200F141DA /* StudentInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentInfoCell.m; sourceTree = "<group>"; };
-		CEF51188186DC2AC00F141DA /* StudentInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentInfoCell.xib; sourceTree = "<group>"; };
-		CEF5118A186DC4BF00F141DA /* WorkersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkersCell.h; sourceTree = "<group>"; };
-		CEF5118B186DC4BF00F141DA /* WorkersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkersCell.m; sourceTree = "<group>"; };
-		CEF5118D186DC4D600F141DA /* WorkersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkersCell.xib; sourceTree = "<group>"; };
-		CEF5118F186DC8D200F141DA /* SingleSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleSelectCell.h; sourceTree = "<group>"; };
-		CEF51190186DC8D200F141DA /* SingleSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleSelectCell.m; sourceTree = "<group>"; };
-		CEF51192186DC8E500F141DA /* SingleSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleSelectCell.xib; sourceTree = "<group>"; };
+		CEF51195186DF76C00F141DA /* AddRegisterInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRegisterInfoViewController.h; sourceTree = "<group>"; };
+		CEF51196186DF76C00F141DA /* AddRegisterInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRegisterInfoViewController.m; sourceTree = "<group>"; };
+		CEF51197186DF76C00F141DA /* AddRegisterInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRegisterInfoViewController.xib; sourceTree = "<group>"; };
+		CEF51198186DF76C00F141DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CEF51199186DF76C00F141DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CEF5119A186DF76C00F141DA /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		CEF5119B186DF76C00F141DA /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		CEF5119C186DF76C00F141DA /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		CEF5119D186DF76C00F141DA /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		CEF5119E186DF76C00F141DA /* SingleSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleSelectCell.h; sourceTree = "<group>"; };
+		CEF5119F186DF76C00F141DA /* SingleSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleSelectCell.m; sourceTree = "<group>"; };
+		CEF511A0186DF76C00F141DA /* SingleSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleSelectCell.xib; sourceTree = "<group>"; };
+		CEF511A1186DF76C00F141DA /* StudentInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentInfoCell.h; sourceTree = "<group>"; };
+		CEF511A2186DF76C00F141DA /* StudentInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentInfoCell.m; sourceTree = "<group>"; };
+		CEF511A3186DF76C00F141DA /* StudentInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentInfoCell.xib; sourceTree = "<group>"; };
+		CEF511A4186DF76C00F141DA /* WorkersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkersCell.h; sourceTree = "<group>"; };
+		CEF511A5186DF76C00F141DA /* WorkersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkersCell.m; sourceTree = "<group>"; };
+		CEF511A6186DF76C00F141DA /* WorkersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkersCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1194,29 +1194,12 @@
 		8DF20801180CE06100FDEABA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEF51194186DF76C00F141DA /* LoginAndRegister */,
 				CE610FD7185F3DB100D66FE7 /* StudentInfo */,
 				CE610FD6185F3DB100D66FE7 /* SchollInfo */,
 				CE610FD0185F38AB00D66FE7 /* Setting */,
 				8DF20802180CE06100FDEABA /* BaseViewController.h */,
 				8DF20803180CE06100FDEABA /* BaseViewController.m */,
-				8DF20804180CE06100FDEABA /* LoginViewController.h */,
-				8DF20805180CE06100FDEABA /* LoginViewController.m */,
-				CE67C7FF1861EEE6006EA741 /* LoginViewController.xib */,
-				8DF20806180CE06100FDEABA /* RegisterViewController.h */,
-				8DF20807180CE06100FDEABA /* RegisterViewController.m */,
-				CEE982661863219F00735125 /* RegisterViewController.xib */,
-				CEF51180186DBE9F00F141DA /* AddRegisterInfoViewController.h */,
-				CEF51181186DBE9F00F141DA /* AddRegisterInfoViewController.m */,
-				CEF51182186DBE9F00F141DA /* AddRegisterInfoViewController.xib */,
-				CEF51185186DC29200F141DA /* StudentInfoCell.h */,
-				CEF51186186DC29200F141DA /* StudentInfoCell.m */,
-				CEF51188186DC2AC00F141DA /* StudentInfoCell.xib */,
-				CEF5118A186DC4BF00F141DA /* WorkersCell.h */,
-				CEF5118B186DC4BF00F141DA /* WorkersCell.m */,
-				CEF5118D186DC4D600F141DA /* WorkersCell.xib */,
-				CEF5118F186DC8D200F141DA /* SingleSelectCell.h */,
-				CEF51190186DC8D200F141DA /* SingleSelectCell.m */,
-				CEF51192186DC8E500F141DA /* SingleSelectCell.xib */,
 				8D12D3AB180E36A8003D09CA /* ProfileViewController.h */,
 				8D12D3AC180E36A8003D09CA /* ProfileViewController.m */,
 				8D0FB3491814CE4400FE9EF7 /* CommitBasicInfoViewController.h */,
@@ -1591,6 +1574,31 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
+		CEF51194186DF76C00F141DA /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				CEF51198186DF76C00F141DA /* LoginViewController.h */,
+				CEF51199186DF76C00F141DA /* LoginViewController.m */,
+				CEF5119A186DF76C00F141DA /* LoginViewController.xib */,
+				CEF5119B186DF76C00F141DA /* RegisterViewController.h */,
+				CEF5119C186DF76C00F141DA /* RegisterViewController.m */,
+				CEF5119D186DF76C00F141DA /* RegisterViewController.xib */,
+				CEF51195186DF76C00F141DA /* AddRegisterInfoViewController.h */,
+				CEF51196186DF76C00F141DA /* AddRegisterInfoViewController.m */,
+				CEF51197186DF76C00F141DA /* AddRegisterInfoViewController.xib */,
+				CEF5119E186DF76C00F141DA /* SingleSelectCell.h */,
+				CEF5119F186DF76C00F141DA /* SingleSelectCell.m */,
+				CEF511A0186DF76C00F141DA /* SingleSelectCell.xib */,
+				CEF511A1186DF76C00F141DA /* StudentInfoCell.h */,
+				CEF511A2186DF76C00F141DA /* StudentInfoCell.m */,
+				CEF511A3186DF76C00F141DA /* StudentInfoCell.xib */,
+				CEF511A4186DF76C00F141DA /* WorkersCell.h */,
+				CEF511A5186DF76C00F141DA /* WorkersCell.m */,
+				CEF511A6186DF76C00F141DA /* WorkersCell.xib */,
+			);
+			path = LoginAndRegister;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1669,6 +1677,7 @@
 				8DEE3E4A18044A1C00B4C607 /* InfoPlist.strings in Resources */,
 				8DB481F41865FF3D0036F390 /* btn_find_stu_n.png in Resources */,
 				CE67C8051861EFFC006EA741 /* img_navbar_button_normal.9.png in Resources */,
+				CEF511AE186DF76C00F141DA /* SingleSelectCell.xib in Resources */,
 				CE74826C1860852100C89A26 /* placeholder.png in Resources */,
 				8DEE3E5218044A1C00B4C607 /* Default.png in Resources */,
 				8DEE3E5418044A1C00B4C607 /* Default@2x.png in Resources */,
@@ -1701,7 +1710,6 @@
 				8DF207D3180CE05600FDEABA /* img_card_node_pressed@2x.png in Resources */,
 				8DF207D4180CE05600FDEABA /* img_card_school_logo@2x.png in Resources */,
 				8DF207D5180CE05600FDEABA /* img_clock@2x.png in Resources */,
-				CEF5118E186DC4D600F141DA /* WorkersCell.xib in Resources */,
 				CE67C7F91861ED1C006EA741 /* image03.jpg in Resources */,
 				CE5C8C4F186611EA00DA8B72 /* scollInfo.txt in Resources */,
 				8DF207D6180CE05600FDEABA /* img_list_normal@2x.png in Resources */,
@@ -1743,6 +1751,7 @@
 				CE74828B1860B05000C89A26 /* img_backdrop.png in Resources */,
 				CE610FEB185F5C9F00D66FE7 /* DetailInfoViewController.xib in Resources */,
 				8DF207EE180CE05600FDEABA /* img_sina_weibo_64@2x.png in Resources */,
+				CEF511AA186DF76C00F141DA /* LoginViewController.xib in Resources */,
 				CE67C7E51861ECD2006EA741 /* img_splash_9.png in Resources */,
 				CE7482991860B36500C89A26 /* img_sys_update@2x.png in Resources */,
 				8DF207EF180CE05600FDEABA /* img_splash@2x.png in Resources */,
@@ -1755,8 +1764,7 @@
 				CE610FE1185F3DE900D66FE7 /* SchollInfoViewController.xib in Resources */,
 				8DF207F4180CE05600FDEABA /* img_topbar_search_normal@2x.png in Resources */,
 				8DF207F5180CE05600FDEABA /* img_topbar_search_pressed@2x.png in Resources */,
-				CE5C8C5518661FB400DA8B72 /* Default@2x.png in Resources */,
-				CEF51189186DC2AC00F141DA /* StudentInfoCell.xib in Resources */,
+				8D7494BE186684C100E1C480 /* Default@2x.jpg in Resources */,
 				CE67C7FA1861ED1C006EA741 /* image04.jpg in Resources */,
 				8DF207F6180CE05600FDEABA /* img_topbar_searchbox@2x.png in Resources */,
 				8DF207F7180CE05600FDEABA /* img_weibo_comment_dark@2x.png in Resources */,
@@ -1777,6 +1785,7 @@
 				CEE8EAAD180E23030052E5D8 /* HomeViewController.xib in Resources */,
 				CEE8EABD180E65C30052E5D8 /* NoticeListViewController.xib in Resources */,
 				CE67C7E81861ECD2006EA741 /* img_splash_12.png in Resources */,
+				CEF511AC186DF76C00F141DA /* RegisterViewController.xib in Resources */,
 				CE7482861860AD8900C89A26 /* img_group_school_normal.png in Resources */,
 				CEE8EAC9180E71E40052E5D8 /* ActivityCell.xib in Resources */,
 				CEE8EACE180E720D0052E5D8 /* ActivityDetailViewController.xib in Resources */,
@@ -1784,8 +1793,6 @@
 				CED1AA07180EC4D500A4A1A0 /* PersonInfoCell.xib in Resources */,
 				CED1AA09180EC4D500A4A1A0 /* PersonInfoViewController.xib in Resources */,
 				CED1AA0E180EC51B00A4A1A0 /* CommendListViewController.xib in Resources */,
-				CEF51184186DBE9F00F141DA /* AddRegisterInfoViewController.xib in Resources */,
-				CEF51193186DC8E500F141DA /* SingleSelectCell.xib in Resources */,
 				CED1AA10180ED37E00A4A1A0 /* PersonCell.xib in Resources */,
 				CEAE7A7C180FDC1700ECBD5F /* WebViewController.xib in Resources */,
 				CE364D22181181170033EA6B /* NoticeDetailViewController.xib in Resources */,
@@ -1794,6 +1801,7 @@
 				CE7482901860B21100C89A26 /* img_orange_button_pressed.9.png in Resources */,
 				8DB481F71865FF3D0036F390 /* btn_find_stu_s@2.png in Resources */,
 				CE5AFB981812C26E007AFC79 /* PersonInfoEditViewController.xib in Resources */,
+				CEF511A8186DF76C00F141DA /* AddRegisterInfoViewController.xib in Resources */,
 				CE9DE2F21813DF52003D0EAD /* PersonalCardViewController.xib in Resources */,
 				CE935F181815566F00DAC626 /* OAuthWebView.xib in Resources */,
 				CE74825918604A0C00C89A26 /* MessageListViewController.xib in Resources */,
@@ -1803,7 +1811,6 @@
 				CE00A102181615D700253780 /* blueArrow.png in Resources */,
 				CE00A103181615D700253780 /* blueArrow@2x.png in Resources */,
 				CE00A104181615D700253780 /* input_window.png in Resources */,
-				CEE982671863219F00735125 /* RegisterViewController.xib in Resources */,
 				CE67C7E71861ECD2006EA741 /* img_splash_11.png in Resources */,
 				6C1A945D1865CC140030947D /* img_login_top.jpg in Resources */,
 				CE00A105181615D700253780 /* input_window@2x.png in Resources */,
@@ -1811,7 +1818,6 @@
 				CE74828F1860B21100C89A26 /* img_orange_button_normal.9.png in Resources */,
 				8DB481D41865EE780036F390 /* btn_login_n.png in Resources */,
 				8DB481E61865F3AD0036F390 /* btn_add_s.png in Resources */,
-				CE67C8001861EEE6006EA741 /* LoginViewController.xib in Resources */,
 				CE00A107181615D700253780 /* noImage50x118@2x.png in Resources */,
 				CE7482831860AD8900C89A26 /* img_group_friend_pressed.png in Resources */,
 				CE00A108181615D700253780 /* tabbar_greenbtn.png in Resources */,
@@ -1841,6 +1847,7 @@
 				CE7482821860AD8900C89A26 /* img_group_friend_normal.png in Resources */,
 				CE7482791860A69500C89A26 /* AboutViewController.xib in Resources */,
 				CE00A116181615D700253780 /* 240.png in Resources */,
+				CEF511B2186DF76C00F141DA /* WorkersCell.xib in Resources */,
 				CE00A117181615D700253780 /* 24x24.png in Resources */,
 				CE7482881860AD8900C89A26 /* img_group_setting_normal.png in Resources */,
 				CE7482911860B21100C89A26 /* more_normal.png in Resources */,
@@ -1857,6 +1864,7 @@
 				CE00A11D181615D700253780 /* Icon-Small@2x.png in Resources */,
 				CE00A11E181615D700253780 /* icon.jpg in Resources */,
 				CE00A11F181615D700253780 /* loadingImage_50x118.png in Resources */,
+				CEF511B0186DF76C00F141DA /* StudentInfoCell.xib in Resources */,
 				CE67C7E31861ECD2006EA741 /* img_splash_7.png in Resources */,
 				CE7482871860AD8900C89A26 /* img_group_school_pressed.png in Resources */,
 				CE00A120181615D700253780 /* loadingImage_50x118@2x.png in Resources */,
@@ -1908,21 +1916,18 @@
 				CE610FE0185F3DE900D66FE7 /* SchollInfoViewController.m in Sources */,
 				8DD5D3351806E8F300EB446F /* TBXML+Compression.m in Sources */,
 				CE74826A186082DB00C89A26 /* BDViewController.m in Sources */,
-				CEF51191186DC8D200F141DA /* SingleSelectCell.m in Sources */,
 				8DD5D3361806E8F300EB446F /* TBXML+HTTP.m in Sources */,
+				CEF511B1186DF76C00F141DA /* WorkersCell.m in Sources */,
 				8DD5D3371806E8F300EB446F /* TBXML.m in Sources */,
 				6C1A94E5186610370030947D /* TestImageUtil.m in Sources */,
 				8DD5D3481807C41800EB446F /* RequestModel.m in Sources */,
 				8DF2080A180CE06100FDEABA /* BaseViewController.m in Sources */,
-				8DF2080B180CE06100FDEABA /* LoginViewController.m in Sources */,
-				8DF2080C180CE06100FDEABA /* RegisterViewController.m in Sources */,
 				8DF20811180CE06E00FDEABA /* ClearTextField.m in Sources */,
 				6C1A94DF1865F80F0030947D /* EGOImageButton.m in Sources */,
 				8DF20814180CE0AF00FDEABA /* UITextField+HideKeyBoard.m in Sources */,
 				8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */,
 				8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */,
 				8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */,
-				CEF5118C186DC4BF00F141DA /* WorkersCell.m in Sources */,
 				8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */,
 				8D12D3AE180E36A8003D09CA /* ProfileViewController.m in Sources */,
 				8D12D3B4180E7A37003D09CA /* ProfileModel.m in Sources */,
@@ -1931,7 +1936,6 @@
 				CEE8EABC180E65C30052E5D8 /* NoticeListViewController.m in Sources */,
 				CE67C80F186202A5006EA741 /* FeedOutViewController.m in Sources */,
 				CEE8EAC3180E6F490052E5D8 /* UINavigationController_BackButton.m in Sources */,
-				CEF51187186DC29200F141DA /* StudentInfoCell.m in Sources */,
 				CEE8EAC8180E71E40052E5D8 /* ActivityCell.m in Sources */,
 				CEE8EACD180E720D0052E5D8 /* ActivityDetailViewController.m in Sources */,
 				CEE8EAD1180E776C0052E5D8 /* PersonHeadView.m in Sources */,
@@ -1960,14 +1964,15 @@
 				6C1A94DE1865F80F0030947D /* EGOCache.m in Sources */,
 				CE935F2118155BA500DAC626 /* StatusCell.m in Sources */,
 				CE7482531860400200C89A26 /* SchollCardApplyViewController.m in Sources */,
-				CEF51183186DBE9F00F141DA /* AddRegisterInfoViewController.m in Sources */,
 				CE935F2518155C2200DAC626 /* LPBaseCell.m in Sources */,
 				CE7482781860A69500C89A26 /* AboutViewController.m in Sources */,
+				CEF511AD186DF76C00F141DA /* SingleSelectCell.m in Sources */,
 				CE935F371815605400DAC626 /* EGORefreshTableHeaderView.m in Sources */,
 				CE935F381815605400DAC626 /* PullRefreshTableViewController.m in Sources */,
 				CE00A0C71816125600253780 /* NSDictionaryAdditions.m in Sources */,
 				CE00A0C81816125600253780 /* StringUtil.m in Sources */,
 				CE00A0C91816125600253780 /* Status.m in Sources */,
+				CEF511AF186DF76C00F141DA /* StudentInfoCell.m in Sources */,
 				CE00A0CA1816125600253780 /* User.m in Sources */,
 				CE00A0CB1816125600253780 /* CustomScrollView.m in Sources */,
 				CE00A0CC1816125600253780 /* GifView.m in Sources */,
@@ -1985,9 +1990,11 @@
 				8D15221C181426F0006AFC1D /* AFJSONRequestOperation.m in Sources */,
 				6C1A94E21865F80F0030947D /* EGOImageView.m in Sources */,
 				CE748267186082B800C89A26 /* BDRowInfo.m in Sources */,
+				CEF511A7186DF76C00F141DA /* AddRegisterInfoViewController.m in Sources */,
 				8D15221D181426F0006AFC1D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				CE610FD4185F38E000D66FE7 /* SetingMainViewController.m in Sources */,
 				8D15221E181426F0006AFC1D /* AFPropertyListRequestOperation.m in Sources */,
+				CEF511AB186DF76C00F141DA /* RegisterViewController.m in Sources */,
 				8D15221F181426F0006AFC1D /* AFURLConnectionOperation.m in Sources */,
 				8D152220181426F0006AFC1D /* AFXMLRequestOperation.m in Sources */,
 				8D152221181426F0006AFC1D /* UIImageView+AFNetworking.m in Sources */,
@@ -1997,6 +2004,7 @@
 				CE62E2531816BC7F00F49A43 /* BasicInfoCommitViewController.m in Sources */,
 				CECD90761819536F00EB2249 /* GTMBase64.m in Sources */,
 				6C1A94E01865F80F0030947D /* EGOImageLoadConnection.m in Sources */,
+				CEF511A9186DF76C00F141DA /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
