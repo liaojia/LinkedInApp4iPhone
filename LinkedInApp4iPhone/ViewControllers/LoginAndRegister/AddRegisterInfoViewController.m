@@ -169,6 +169,41 @@
     [actionSheet showInView:self.view];
 }
 
+- (BOOL)checkInputValue
+{
+    NSString *errStr  = nil;
+    if ([StaticTools isEmptyString:self.name])
+    {
+        errStr = @"请填写姓名";
+    }
+    else  if ([StaticTools isEmptyString:self.classNum]&&cerType==1)
+    {
+        errStr = @"请填写班级";
+    }
+    else  if ([StaticTools isEmptyString:self.workerNum]&&cerType==0)
+    {
+        errStr = @"请填写职工编号";
+    }
+    else  if ([StaticTools isEmptyString:self.phonenum])
+    {
+        errStr = @"请填写手机号";
+    }
+    else  if ([StaticTools isEmptyString:self.email])
+    {
+        errStr = @"请填写邮箱";
+    }
+    else  if ([StaticTools isEmptyString:self.qqNum])
+    {
+        errStr = @"请填写qq号码";
+    }
+    
+    if (errStr!=nil)
+    {
+        [SVProgressHUD showErrorWithStatus:errStr];
+        return NO;
+    }
+    return YES;
+}
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -253,16 +288,20 @@
 {
     [self.view endEditing:YES];
     
+    if (![self checkInputValue])
+    {
+        return;
+    }
      UIImageView *headImgView = (UIImageView*)[[self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:200];
     NSDictionary *dict = Nil;
     if (cerType==0)
     {
         
-        dict = @{@"name":self.name,@"gender":(sigleCell.leftBtn.selected?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",2],@"org1Id":self.selectFistCompany[@"id"],@"org2Id":self.selectSecCompaye[@"id"],@"empNo":self.workerNum,@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ]};
+        dict = @{@"name":self.name,@"gender":(sigleCell.segControl.selectedSegmentIndex==0?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",2],@"org1Id":self.selectFistCompany[@"id"],@"org2Id":self.selectSecCompaye[@"id"],@"empNo":self.workerNum,@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":selectImg==nil?@"":[GTMBase64 stringByEncodingData: UIImagePNGRepresentation(headImgView.image) ]};
     }
     else
     {
-        dict = @{@"name":self.name,@"gender":(sigleCell.leftBtn.selected?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",1],@"deptId":self.selectDepartment[@"id"],@"majorId":[NSString stringWithFormat:@"%@",self.selectMajor[@"id"]],@"clazz":self.classNum,@"adYear":[NSString stringWithFormat:@"%d",selectYear],@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":@" "};
+        dict = @{@"name":self.name,@"gender":(sigleCell.segControl.selectedSegmentIndex==0?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",1],@"deptId":self.selectDepartment[@"id"],@"majorId":[NSString stringWithFormat:@"%@",self.selectMajor[@"id"]],@"clazz":self.classNum,@"adYear":[NSString stringWithFormat:@"%d",selectYear],@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":selectImg==nil?@"":[GTMBase64 stringByEncodingData: UIImagePNGRepresentation(headImgView.image) ]};
         
     }
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dict requesId:@"ADDREGISTERINFO" messId:nil success:^(id obj)
@@ -371,12 +410,6 @@
                 {
                     [self getDepartMentList];
                 }
-//                if (cerType==1)
-//                {
-//                    return;
-//                }
-                
-                
             }
             else //教工校友
             {
@@ -385,12 +418,6 @@
                 {
                     [self getCompacyList];
                 }
-                
-//                if (cerType==0)
-//                {
-//                    return;
-//                }
-                
             }
             [self.listTableView reloadData];
         }
@@ -459,7 +486,7 @@
         
         [UIView animateWithDuration:0.5 animations:^{
             
-            self.listTableView.contentOffset = CGPointMake(0, rectUpTable.origin.y-50);
+            self.listTableView.contentOffset = CGPointMake(0, rectUpTable.origin.y-100);
         }];
     }
   
@@ -558,7 +585,7 @@
     }
     else
     {
-        return 50;
+        return 44;
     }
     return 0;
 }
@@ -598,10 +625,12 @@
         
         [cell.contentView addSubview:headImgView];
         
-        UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         selectBtn.tag = 1000;
-        selectBtn.frame = CGRectMake(120, 35, 120, 30);
+        selectBtn.frame = CGRectMake(120, 35, 130, 30);
         [selectBtn setTitle:@"从相册选择头像" forState:UIControlStateNormal];
+        [selectBtn setBackgroundImage:[UIImage imageNamed:@"btn_group_n.png"] forState:UIControlStateNormal];
+        [selectBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [selectBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
         [cell.contentView addSubview:selectBtn];
         
@@ -615,16 +644,24 @@
     }
     else if(indexPath.row==3)
     {
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 10, 80, 30)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 80, 30)];
         titleLabel.text = @"身份类型";
         [cell.contentView addSubview:titleLabel];
+        titleLabel.font = [UIFont systemFontOfSize:15];
         
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        button.frame = CGRectMake(100, 10, 150, 30);
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setBackgroundImage:[UIImage imageNamed:@"btn_group_n.png"] forState:UIControlStateNormal];
+        button.frame = CGRectMake(129, 10, 171, 26);
         [button setTitle:cerType==0?@"教工校友":@"学生校友" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         button.tag = 1003;
         [button addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
         [cell.contentView addSubview:button];
+        
+        UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"img_down_arrows.png"]];
+        img.frame = CGRectMake(276, 16, 15, 10);
+        [cell.contentView addSubview:img];
     }
     else if(indexPath.row==4)
     {
@@ -671,15 +708,21 @@
     }
     else
     {
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 10, 80, 30)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 8, 80, 30)];
         [cell.contentView addSubview:titleLabel];
         titleLabel.textAlignment = UITextAlignmentRight;
+        titleLabel.font = [UIFont systemFontOfSize:15];
         
-        UITextField *inputTxtField = [[UITextField alloc]initWithFrame:CGRectMake(120, 10, 200, 30)];
+        UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"btn_group_n.png"]];
+        img.frame = CGRectMake(129, 10, 170, 26);
+        [cell.contentView addSubview:img];
+        
+        UITextField *inputTxtField = [[UITextField alloc]initWithFrame:CGRectMake(130, 8, 170, 30)];
         [cell.contentView addSubview:inputTxtField];
         inputTxtField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         inputTxtField.delegate = self;
         inputTxtField.tag = 100+indexPath.row;
+        inputTxtField.font = [UIFont systemFontOfSize:15];
         
         if (indexPath.row==1)
         {

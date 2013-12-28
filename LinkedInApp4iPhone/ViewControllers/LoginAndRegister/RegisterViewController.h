@@ -21,7 +21,9 @@
 
 
 @interface RegisterViewController : BaseViewController<UITextFieldDelegate>
-
+{
+    CGRect frame;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTxtField; //姓名
 @property (weak, nonatomic) IBOutlet UITextField *pswTxtField;  //密码

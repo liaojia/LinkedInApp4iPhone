@@ -201,6 +201,8 @@
 		CE00A12B181615D700253780 /* tabbar_whitebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE00A101181615D700253780 /* tabbar_whitebtn@2x.png */; };
 		CE364D21181181170033EA6B /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE364D1F181181170033EA6B /* NoticeDetailViewController.m */; };
 		CE364D22181181170033EA6B /* NoticeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE364D20181181170033EA6B /* NoticeDetailViewController.xib */; };
+		CE465AE9186F19560039A184 /* btn_group_n.png in Resources */ = {isa = PBXBuildFile; fileRef = CE465AE7186F19560039A184 /* btn_group_n.png */; };
+		CE465AEA186F19560039A184 /* img_down_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = CE465AE8186F19560039A184 /* img_down_arrows.png */; };
 		CE586ECA1810351000BE7A62 /* StaticDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC01810351000BE7A62 /* StaticDataTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE586ECB1810351000BE7A62 /* StaticFormatTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC21810351000BE7A62 /* StaticFormatTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE586ECC1810351000BE7A62 /* StaticOtherTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC41810351000BE7A62 /* StaticOtherTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -596,6 +598,8 @@
 		CE364D1E181181170033EA6B /* NoticeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
 		CE364D1F181181170033EA6B /* NoticeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
 		CE364D20181181170033EA6B /* NoticeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeDetailViewController.xib; sourceTree = "<group>"; };
+		CE465AE7186F19560039A184 /* btn_group_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_group_n.png; sourceTree = "<group>"; };
+		CE465AE8186F19560039A184 /* img_down_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_down_arrows.png; sourceTree = "<group>"; };
 		CE586EBF1810351000BE7A62 /* StaticDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticDataTools.h; sourceTree = "<group>"; };
 		CE586EC01810351000BE7A62 /* StaticDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticDataTools.m; sourceTree = "<group>"; };
 		CE586EC11810351000BE7A62 /* StaticFormatTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticFormatTools.h; sourceTree = "<group>"; };
@@ -1056,6 +1060,8 @@
 		8DF20792180CE05600FDEABA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CE465AE7186F19560039A184 /* btn_group_n.png */,
+				CE465AE8186F19560039A184 /* img_down_arrows.png */,
 				8D7494B9186684C100E1C480 /* Default-568h@2x.jpg */,
 				8D7494BA186684C100E1C480 /* Default.jpg */,
 				8D7494BB186684C100E1C480 /* Default@2x.jpg */,
@@ -1691,6 +1697,7 @@
 				8DB481EE1865FE430036F390 /* btn_back_s.png in Resources */,
 				CE9EB7A91865809F00BC03C1 /* FindClassmateViewController.xib in Resources */,
 				8DF207CC180CE05600FDEABA /* img_card_arrows_normal@2x.png in Resources */,
+				CE465AEA186F19560039A184 /* img_down_arrows.png in Resources */,
 				8D7494BD186684C100E1C480 /* Default.jpg in Resources */,
 				8DB481EF1865FE430036F390 /* btn_back_s@2x.png in Resources */,
 				CE67C80A1861F199006EA741 /* img_edittext_user@2x.png in Resources */,
@@ -1747,6 +1754,7 @@
 				8DF207EB180CE05600FDEABA /* img_school_card_front@2x.png in Resources */,
 				CE7482741860A3F500C89A26 /* PassWordChangeViewController.xib in Resources */,
 				8DF207EC180CE05600FDEABA /* img_school_notice_normal@2x.png in Resources */,
+				CE465AE9186F19560039A184 /* btn_group_n.png in Resources */,
 				8DF207ED180CE05600FDEABA /* img_school_notice_pressed@2x.png in Resources */,
 				CE74828B1860B05000C89A26 /* img_backdrop.png in Resources */,
 				CE610FEB185F5C9F00D66FE7 /* DetailInfoViewController.xib in Resources */,
@@ -2118,7 +2126,7 @@
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "313AA673-8FB4-4308-944F-B2CDCF7B7D1D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2133,7 +2141,7 @@
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "313AA673-8FB4-4308-944F-B2CDCF7B7D1D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

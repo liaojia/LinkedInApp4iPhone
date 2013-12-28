@@ -18,7 +18,10 @@
     }
     return self;
 }
-
+ - (void)awakeFromNib
+{
+    [self.segControl setSelectedSegmentIndex:0];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
@@ -26,10 +29,5 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)buttonClickHandle:(id)sender
-{
-    UIButton *button = (UIButton*)sender;
-    self.leftBtn.selected = button==self.leftBtn;
-    self.rightBtn.selected = button==self.rightBtn;
-}
+
 @end

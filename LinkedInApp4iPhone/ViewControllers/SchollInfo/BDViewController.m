@@ -22,6 +22,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
     self.navigationItem.title = @"印象首师";
     self.delegate = self;
     
@@ -41,7 +47,7 @@
     self.onSingleTap =  ^(UIView* view, NSInteger viewIndex){
         
         NSDictionary *temDict = self.imgInfoArray[viewIndex];
-             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:CGRectMake(0, 0,320,480) url:temDict[@"thumbnail"]];
+             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:self.view.frame url:temDict[@"thumbnail"]];
             
             [self.view.superview.superview addSubview:imageShowView];
             

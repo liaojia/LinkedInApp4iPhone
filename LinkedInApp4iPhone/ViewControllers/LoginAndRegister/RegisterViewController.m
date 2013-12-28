@@ -34,6 +34,11 @@
     
     self.navigationItem.title = @"注册";
     
+    frame = self.view.frame;
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -76,7 +81,6 @@
     }
     
     
-    
     [UIView animateWithDuration:0.5
                      animations:^{
                          self.view.frame = CGRectMake(0, -distance, 320, self.view.frame.size.height);
@@ -87,14 +91,8 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         self.view.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
-                         
-                     }];
+  
     
-    
-   
 }
 #pragma mark-
 #pragma mark-按钮点击
@@ -102,10 +100,6 @@
 
 -(IBAction)confirmAction:(id)sender
 {
-//    
-//    AddRegisterInfoViewController *addRegisterInfoController =[[AddRegisterInfoViewController alloc]initWithNibName:@"AddRegisterInfoViewController" bundle:nil];
-//    [self.navigationController pushViewController:addRegisterInfoController animated:YES];
-//    return;
     
     NSString *errStr = nil;
     if ([StaticTools isEmptyString:self.nameTxtField.text])
@@ -180,6 +174,13 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                        // self.view.frame = CGRectMake(0, IOS7_OR_LATER?64:0, 320, self.view.frame.size.height);
+                         self.view.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
+                         
+                     }];
 }
 
 @end

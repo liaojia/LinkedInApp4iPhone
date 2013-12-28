@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SingleSelectCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIButton *leftBtn;
-@property (weak, nonatomic) IBOutlet UIButton *rightBtn;
 
-- (IBAction)buttonClickHandle:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
+
 @end
