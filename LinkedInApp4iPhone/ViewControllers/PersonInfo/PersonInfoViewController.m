@@ -370,11 +370,11 @@
             //增加
             UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             addBtn.frame = CGRectMake(tableView.frame.size.width -100, 8, 65, 21);
-            [addBtn setBackgroundImage:[UIImage imageNamed:@"btn_add_n"] forState:UIControlStateNormal];
-            [addBtn setBackgroundImage:[UIImage imageNamed:@"btn_add_s"] forState:UIControlStateHighlighted];
+            [addBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forState:UIControlStateNormal];
+            [addBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_pressed"] forState:UIControlStateHighlighted];
             [addBtn setTitle:@"增加" forState:UIControlStateNormal];
             addBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-            addBtn.titleLabel.textColor = RGBCOLOR(29, 60, 229);
+            addBtn.titleLabel.textColor = [UIColor whiteColor];
             addBtn.tag = 106;
             
             [addBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
@@ -636,7 +636,7 @@
                    ProfileModel *model = [[ProfileModel alloc] init];
                    [model setMTitle:[obj2 objectForKey:@"title"]];
                    [model setMCity:[obj2 objectForKey:@"city"]];
-                   [model setMDesc:[obj2 objectForKey:@"desc"]];
+                   [model setMIndustryId:[obj2 objectForKey:@"industryId"]];
                    [model setMEtime:[obj2 objectForKey:@"etime"]];
                    [model setMStime:[obj2 objectForKey:@"stime"]];
                    [model setMProvince:[obj2 objectForKey:@"province"]];

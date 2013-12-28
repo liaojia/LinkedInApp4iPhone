@@ -11,6 +11,7 @@
 @interface ProfileModel : NSObject
 
 @property(nonatomic, strong)    NSString *mName;
+@property(nonatomic, strong)    NSString *mIndustryId;
 @property(nonatomic, strong)    NSString *mGender;// 性别
 @property(nonatomic, strong)    NSString *mImgUrl;
 @property(nonatomic, strong)    NSString *mCity;

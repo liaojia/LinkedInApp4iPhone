@@ -72,6 +72,9 @@
 		8DD5D34418070CA000EB446F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD5D34318070CA000EB446F /* libz.dylib */; };
 		8DD5D3481807C41800EB446F /* RequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5D3471807C41800EB446F /* RequestModel.m */; };
 		8DD5D34B1807CEAF00EB446F /* http_request_param.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8DD5D34A1807CEAF00EB446F /* http_request_param.xml */; };
+		8DDE0B72186DCD8500ABF9C3 /* AJComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDE0B70186DCD8500ABF9C3 /* AJComboBox.m */; };
+		8DDE0B73186DCD8500ABF9C3 /* combo_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DDE0B71186DCD8500ABF9C3 /* combo_bg.png */; };
+		8DDE0B76186DDE8500ABF9C3 /* KeyValueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDE0B75186DDE8500ABF9C3 /* KeyValueModel.m */; };
 		8DEE3E4018044A1C00B4C607 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEE3E3F18044A1C00B4C607 /* UIKit.framework */; };
 		8DEE3E4218044A1C00B4C607 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEE3E4118044A1C00B4C607 /* Foundation.framework */; };
 		8DEE3E4418044A1C00B4C607 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEE3E4318044A1C00B4C607 /* CoreGraphics.framework */; };
@@ -434,6 +437,11 @@
 		8DD5D3461807C41800EB446F /* RequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestModel.h; sourceTree = "<group>"; };
 		8DD5D3471807C41800EB446F /* RequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestModel.m; sourceTree = "<group>"; };
 		8DD5D34A1807CEAF00EB446F /* http_request_param.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = http_request_param.xml; sourceTree = "<group>"; };
+		8DDE0B6F186DCD8500ABF9C3 /* AJComboBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJComboBox.h; sourceTree = "<group>"; };
+		8DDE0B70186DCD8500ABF9C3 /* AJComboBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJComboBox.m; sourceTree = "<group>"; };
+		8DDE0B71186DCD8500ABF9C3 /* combo_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = combo_bg.png; sourceTree = "<group>"; };
+		8DDE0B74186DDE8500ABF9C3 /* KeyValueModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueModel.h; sourceTree = "<group>"; };
+		8DDE0B75186DDE8500ABF9C3 /* KeyValueModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValueModel.m; sourceTree = "<group>"; };
 		8DEE3E3C18044A1C00B4C607 /* LinkedInApp4iPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkedInApp4iPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DEE3E3F18044A1C00B4C607 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8DEE3E4118044A1C00B4C607 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -952,6 +960,8 @@
 				8DD5D3471807C41800EB446F /* RequestModel.m */,
 				8D12D3B2180E7A37003D09CA /* ProfileModel.h */,
 				8D12D3B3180E7A37003D09CA /* ProfileModel.m */,
+				8DDE0B74186DDE8500ABF9C3 /* KeyValueModel.h */,
+				8DDE0B75186DDE8500ABF9C3 /* KeyValueModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -962,6 +972,16 @@
 				8DD5D34A1807CEAF00EB446F /* http_request_param.xml */,
 			);
 			path = Xml;
+			sourceTree = "<group>";
+		};
+		8DDE0B6E186DCD8500ABF9C3 /* AJComboBox */ = {
+			isa = PBXGroup;
+			children = (
+				8DDE0B6F186DCD8500ABF9C3 /* AJComboBox.h */,
+				8DDE0B70186DCD8500ABF9C3 /* AJComboBox.m */,
+				8DDE0B71186DCD8500ABF9C3 /* combo_bg.png */,
+			);
+			path = AJComboBox;
 			sourceTree = "<group>";
 		};
 		8DEE3E3318044A1B00B4C607 = {
@@ -1205,6 +1225,7 @@
 		8DF2080E180CE06E00FDEABA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8DDE0B6E186DCD8500ABF9C3 /* AJComboBox */,
 				CE74825D1860829600C89A26 /* WaterFlow */,
 				CE935F321815604500DAC626 /* PullToRefresh */,
 				8DF20812180CE0AF00FDEABA /* UITextField+HideKeyBoard.h */,
@@ -1795,6 +1816,7 @@
 				CE00A110181615D700253780 /* timeline_rt_border_t.png in Resources */,
 				CE67C8091861F199006EA741 /* img_edittext_pwd@2x.png in Resources */,
 				8DB481E71865F3AD0036F390 /* btn_add_s@2.png in Resources */,
+				8DDE0B73186DCD8500ABF9C3 /* combo_bg.png in Resources */,
 				CE00A111181615D700253780 /* timeline_rt_border_t@2x.png in Resources */,
 				8DB481DF1865EF130036F390 /* btn_register_s@2.png in Resources */,
 				CE00A112181615D700253780 /* touxiang_40x40.png in Resources */,
@@ -1879,6 +1901,7 @@
 				8DF2080A180CE06100FDEABA /* BaseViewController.m in Sources */,
 				8DF2080B180CE06100FDEABA /* LoginViewController.m in Sources */,
 				8DF2080C180CE06100FDEABA /* RegisterViewController.m in Sources */,
+				8DDE0B72186DCD8500ABF9C3 /* AJComboBox.m in Sources */,
 				8DF20811180CE06E00FDEABA /* ClearTextField.m in Sources */,
 				6C1A94DF1865F80F0030947D /* EGOImageButton.m in Sources */,
 				8DF20814180CE0AF00FDEABA /* UITextField+HideKeyBoard.m in Sources */,
@@ -1910,6 +1933,7 @@
 				CE586ECD1810351000BE7A62 /* StaticTools.m in Sources */,
 				CE586ECE1810351000BE7A62 /* StaticUITools.m in Sources */,
 				CE7482731860A3F500C89A26 /* PassWordChangeViewController.m in Sources */,
+				8DDE0B76186DDE8500ABF9C3 /* KeyValueModel.m in Sources */,
 				CE364D21181181170033EA6B /* NoticeDetailViewController.m in Sources */,
 				CE5AFB9218125590007AFC79 /* ActivityListViewController.m in Sources */,
 				CE5AFB971812C26E007AFC79 /* PersonInfoEditViewController.m in Sources */,

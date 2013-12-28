@@ -32,9 +32,16 @@
 @synthesize mOrg = _mOrg;
 @synthesize mIdCardNo = _mIdCardNo;
 @synthesize mStuNo = _mStuNo;
+@synthesize mIndustryId = _mIndustryId;
 
+
+- (void)setMIndustryId:(NSString *)mIndustryId
+{
+    _mIndustryId = [self checkNullWithString:mIndustryId];
+}
 
 - (void)setMAdYear:(NSString *)mAdYear
+
 {
     _mAdYear = [self checkNullWithString:mAdYear];
 }

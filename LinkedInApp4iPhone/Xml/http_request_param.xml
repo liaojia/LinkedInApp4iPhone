@@ -291,6 +291,13 @@
         <url>/friends/search</url>
         <method>GET</method>
     </request>
+    
+    <!--获取行业列表-->
+    <request>
+        <requestId>CONFIGINDUSTRYLIST</requestId>
+        <url>/config/industry/list</url>
+        <method>GET</method>
+    </request>
 
 
 
