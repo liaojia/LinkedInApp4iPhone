@@ -11,7 +11,7 @@
 #import "ImageShowView.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kOonePageCount 10
+#define kOonePageCount 3
 
 @interface BDViewController (){
 }
@@ -22,62 +22,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
     self.navigationItem.title = @"印象首师";
     self.delegate = self;
     
-    testImgArray = @[@"http://img.my.csdn.net/uploads/201309/01/1378037235_3453.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037235_9280.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037234_3539.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037234_6318.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037194_2965.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037193_1687.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037193_1286.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037192_8379.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037178_9374.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037177_1254.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037177_6203.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037152_6352.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037151_9565.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037151_7904.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037148_7104.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037129_8825.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037128_5291.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037128_3531.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037127_1085.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037095_7515.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037094_8001.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037093_7168.jpg",
-                     @"http://img.my.csdn.net/uploads/201309/01/1378037091_4950.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949643_6410.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949642_6939.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949630_4505.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949630_4593.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949629_7309.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949629_8247.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949615_1986.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949614_8482.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949614_3743.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949614_4199.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949599_3416.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949599_5269.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949598_7858.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949598_9982.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949578_2770.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949578_8744.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949577_5210.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949577_1998.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949482_8813.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949481_6577.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949480_4490.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949455_6792.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949455_6345.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949442_4553.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949441_8987.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949441_5454.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949454_6367.jpg",
-                     @"http://img.my.csdn.net/uploads/201308/31/1377949442_4562.jpg"];
-    
+     
     self.imgMtbArray = [NSMutableArray arrayWithCapacity:0];
     self.items = [NSMutableArray arrayWithCapacity:0];
     self.imgInfoArray = [NSMutableArray arrayWithCapacity:0];
@@ -92,8 +46,8 @@
     
     self.onSingleTap =  ^(UIView* view, NSInteger viewIndex){
         
-            //TODO URL需处理
-             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:CGRectMake(0, 0,320,480) url:testImgArray[viewIndex]];
+        NSDictionary *temDict = self.imgInfoArray[viewIndex];
+             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:self.view.frame url:temDict[@"thumbnail"]];
             
             [self.view.superview.superview addSubview:imageShowView];
             
@@ -107,8 +61,9 @@
     };
 
     
-   [self animateReloadWithPage:1];
-    
+   //[self animateReloadWithPage:1];
+    currentPage=0;
+    [self getImgInfoWithPage:1];
 
 }
 
@@ -166,9 +121,9 @@
     [self reloadData];
     
     for (int i=0; i<kOonePageCount; i++) {
-        //NSDictionary *temDict = self.imgInfoArray[self.imgMtbArray.count+i];
+        NSDictionary *temDict = self.imgInfoArray[kOonePageCount*(page-1)+i ];
         [self.imgMtbArray addObject:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
-        AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:testImgArray[kOonePageCount*(page-1)+i ]]] success:^(UIImage *image) {
+        AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:temDict[@"thumbnail"]]] success:^(UIImage *image) {
             
             
             [self.imgMtbArray replaceObjectAtIndex:kOonePageCount*(page-1)+i withObject:image];
@@ -180,11 +135,18 @@
         [operation start];
     }
     
-    currentPage++; //TODO 从服务器请求图片数据时需去掉
 }
 - (void)shouldUpDragUpdate
 {
-    [self animateReloadWithPage:currentPage+1];
+    if (self.imgInfoArray.count>=listTotalCount)
+    {
+        [SVProgressHUD showErrorWithStatus:@"无更多数据！"];
+    }
+    else
+    {
+       [self animateReloadWithPage:currentPage+1];
+    }
+    
 }
 - (NSUInteger)numberOfViews
 {
@@ -212,8 +174,6 @@
 
 - (void)doUpdateWithIndex:(int)index
 {
-
-  
     UIImageView *imageView = [self.items objectAtIndex:index];
     UIImage *image = [self.imgMtbArray objectAtIndex:index];
     imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
@@ -221,7 +181,6 @@
     [self performSelector:@selector(animateUpdate:)
                withObject:[NSArray arrayWithObjects:imageView, image, nil]
                afterDelay:0.2 + (arc4random()%3) + (arc4random() %10 * 0.1)];
-    
 
 }
 

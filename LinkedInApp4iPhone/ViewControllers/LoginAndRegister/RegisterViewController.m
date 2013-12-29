@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "ClearTextField.h"
 #import "BasicInfoCommitViewController.h"
+#import "AddRegisterInfoViewController.h"
 #define INTERVAL_1 80
 
 @interface RegisterViewController ()
@@ -33,6 +34,12 @@
     
     self.navigationItem.title = @"注册";
     
+    frame = self.view.frame;
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -45,7 +52,7 @@
 {
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    //[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 
@@ -59,14 +66,33 @@
 #pragma mark--UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [super textFieldDidBeginEditing:textField];
+    float distance = 0;
+    if (textField==self.pswConfirmTxtField)
+    {
+       distance =  40;
+    }
+    else if (textField==self.certificateNum)
+    {
+        distance =  140;
+    }
+    else if (textField==self.studentNum)
+    {
+        distance =  160;
+    }
+    
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.view.frame = CGRectMake(0, -distance, 320, self.view.frame.size.height);
+                         
+                     }];
+
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [super textFieldDidEndEditing:textField];
+  
     
-   
 }
 #pragma mark-
 #pragma mark-按钮点击
@@ -74,6 +100,7 @@
 
 -(IBAction)confirmAction:(id)sender
 {
+    
     NSString *errStr = nil;
     if ([StaticTools isEmptyString:self.nameTxtField.text])
     {
@@ -86,6 +113,10 @@
     else if([StaticTools isEmptyString:self.pswConfirmTxtField.text])
     {
         errStr = @"请确认密码";
+    }
+    else if([StaticTools isEmptyString:self.certificateNum.text])
+    {
+        errStr = @"请确认身份证号";
     }
     else if(![StaticTools isValidateEmail:self.nameTxtField.text])
     {
@@ -101,7 +132,7 @@
         return;
     }
 
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"name":self.pswTxtField.text,@"password":self.pswConfirmTxtField.text} requesId:@"REGISTER" messId:nil success:^(id obj)
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"name":self.nameTxtField.text,@"password":self.pswConfirmTxtField.text,@"idCardNo":self.certificateNum.text,@"stuNo":self.studentNum.text} requesId:@"REGISTER" messId:nil success:^(id obj)
              {
                  //返回1时表示注册成功 且后台默认为登陆状态  返回sessionid
                  if ([[obj objectForKey:@"rc"]intValue] == 1)
@@ -115,6 +146,15 @@
                  else if([[obj objectForKey:@"rc"]intValue] == -2)
                  {
                      [SVProgressHUD showErrorWithStatus:@"该账号已被注册过！"];
+                 }
+                 
+                 //无匹配结果，需要填写个人信息
+                 else if([[obj objectForKey:@"rc"]intValue] == 2)
+                 {
+                     [AppDataCenter sharedAppDataCenter].sid = [obj objectForKey:@"sid"];
+                     
+                     AddRegisterInfoViewController *addRegisterInfoController =[[AddRegisterInfoViewController alloc]initWithNibName:@"AddRegisterInfoViewController" bundle:nil];
+                     [self.navigationController pushViewController:addRegisterInfoController animated:YES];
                  }
                  else
                  {
@@ -134,6 +174,13 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                        // self.view.frame = CGRectMake(0, IOS7_OR_LATER?64:0, 320, self.view.frame.size.height);
+                         self.view.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
+                         
+                     }];
 }
 
 @end

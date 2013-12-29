@@ -51,10 +51,10 @@
     
     [self getSchollInfoListInfo];
     
-//    if ( IOS7_OR_LATER )
-//    {
-//        self.edgesForExtendedLayout = UIRectEdgeNone;
-//    }
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -211,7 +211,8 @@
             break;
         case 300: //印象首师 图片查看
         {
-            ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:CGRectMake(0, 0,320,480) image:[UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]]];
+
+            ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:self.view.frame image:[UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]]];
             
             [self.view.superview.superview addSubview:imageShowView];
             

@@ -41,7 +41,10 @@
 {
     [super viewDidLoad];
     
-   
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     // Do any additional setup after loading the view from its nib.
     self.listTableView.backgroundColor = [UIColor clearColor];
