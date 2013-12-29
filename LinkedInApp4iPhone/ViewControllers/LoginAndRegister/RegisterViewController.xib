@@ -73,7 +73,7 @@
                             <rect key="frame" x="30" y="221" width="216" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="8Vz-F9-fdx"/>
                             </connections>

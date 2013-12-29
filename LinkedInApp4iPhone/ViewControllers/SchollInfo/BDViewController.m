@@ -129,7 +129,7 @@
             
             [self doUpdateWithIndex:kOonePageCount*(page-1)+i];
             
-        }];
+        }]; 
         
         [operation start];
     }

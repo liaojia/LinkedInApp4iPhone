@@ -633,8 +633,9 @@
         
         UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         selectBtn.tag = 1000;
-        selectBtn.frame = CGRectMake(120, 35, 130, 30);
+        selectBtn.frame = CGRectMake(129, 35, 130, 30);
         [selectBtn setTitle:@"从相册选择头像" forState:UIControlStateNormal];
+        selectBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [selectBtn setBackgroundImage:[UIImage imageNamed:@"btn_group_n.png"] forState:UIControlStateNormal];
         [selectBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [selectBtn addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
@@ -650,7 +651,7 @@
     }
     else if(indexPath.row==3)
     {
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 80, 30)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(30, 10, 80, 30)];
         titleLabel.text = @"身份类型";
         [cell.contentView addSubview:titleLabel];
         titleLabel.font = [UIFont systemFontOfSize:15];
