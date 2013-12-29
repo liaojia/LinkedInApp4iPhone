@@ -1952,8 +1952,6 @@
 				6C1A94E5186610370030947D /* TestImageUtil.m in Sources */,
 				8DD5D3481807C41800EB446F /* RequestModel.m in Sources */,
 				8DF2080A180CE06100FDEABA /* BaseViewController.m in Sources */,
-				8DF2080B180CE06100FDEABA /* LoginViewController.m in Sources */,
-				8DF2080C180CE06100FDEABA /* RegisterViewController.m in Sources */,
 				8DDE0B72186DCD8500ABF9C3 /* AJComboBox.m in Sources */,
 				8DF20811180CE06E00FDEABA /* ClearTextField.m in Sources */,
 				6C1A94DF1865F80F0030947D /* EGOImageButton.m in Sources */,
@@ -2145,8 +2143,8 @@
 		8DEE3E6018044A1C00B4C607 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: qing guo (38QYV5Y5RJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qing guo (38QYV5Y5RJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: hongling sheng (T9JS32ALY6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hongling sheng (T9JS32ALY6)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinkedInApp4iPhone/LinkedInApp4iPhone-Prefix.pch";
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
@@ -2160,8 +2158,8 @@
 		8DEE3E6118044A1C00B4C607 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: qing guo (38QYV5Y5RJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qing guo (38QYV5Y5RJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: hongling sheng (T9JS32ALY6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hongling sheng (T9JS32ALY6)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinkedInApp4iPhone/LinkedInApp4iPhone-Prefix.pch";
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
