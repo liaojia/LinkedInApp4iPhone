@@ -203,6 +203,12 @@
 		CE364D22181181170033EA6B /* NoticeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE364D20181181170033EA6B /* NoticeDetailViewController.xib */; };
 		CE465AE9186F19560039A184 /* btn_group_n.png in Resources */ = {isa = PBXBuildFile; fileRef = CE465AE7186F19560039A184 /* btn_group_n.png */; };
 		CE465AEA186F19560039A184 /* img_down_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = CE465AE8186F19560039A184 /* img_down_arrows.png */; };
+		CE465AEF186F28820039A184 /* MyCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE465AED186F28820039A184 /* MyCircleViewController.m */; };
+		CE465AF0186F28820039A184 /* MyCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE465AEE186F28820039A184 /* MyCircleViewController.xib */; };
+		CE465AF4186F34B60039A184 /* CircleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE465AF2186F34B60039A184 /* CircleInfoViewController.m */; };
+		CE465AF5186F34B60039A184 /* CircleInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE465AF3186F34B60039A184 /* CircleInfoViewController.xib */; };
+		CE465AF9186F441E0039A184 /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE465AF7186F441E0039A184 /* ReplyViewController.m */; };
+		CE465AFA186F441E0039A184 /* ReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE465AF8186F441E0039A184 /* ReplyViewController.xib */; };
 		CE586ECA1810351000BE7A62 /* StaticDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC01810351000BE7A62 /* StaticDataTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE586ECB1810351000BE7A62 /* StaticFormatTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC21810351000BE7A62 /* StaticFormatTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE586ECC1810351000BE7A62 /* StaticOtherTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CE586EC41810351000BE7A62 /* StaticOtherTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -305,6 +311,12 @@
 		CE9EB7B21865B6C600BC03C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEE3E3F18044A1C00B4C607 /* UIKit.framework */; };
 		CE9EB7B81865B6C600BC03C1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE9EB7B61865B6C600BC03C1 /* InfoPlist.strings */; };
 		CE9EB7BA1865B6C600BC03C1 /* LinkedInApp4iPhone_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EB7B91865B6C600BC03C1 /* LinkedInApp4iPhone_Tests.m */; };
+		CEAAA6FC186FE40E0092A948 /* CircleMemberListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA6FA186FE40E0092A948 /* CircleMemberListViewController.m */; };
+		CEAAA6FD186FE40E0092A948 /* CircleMemberListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA6FB186FE40E0092A948 /* CircleMemberListViewController.xib */; };
+		CEAAA6FF186FF0750092A948 /* img_sys_weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA6FE186FF0750092A948 /* img_sys_weibo.png */; };
+		CEAAA70318701ED40092A948 /* CreateCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA70118701ED40092A948 /* CreateCircleViewController.m */; };
+		CEAAA70418701ED40092A948 /* CreateCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA70218701ED40092A948 /* CreateCircleViewController.xib */; };
+		CEAAA70618702B8A0092A948 /* img_sina_weibo_64.png in Resources */ = {isa = PBXBuildFile; fileRef = CEAAA70518702B8A0092A948 /* img_sina_weibo_64.png */; };
 		CEAE7A7B180FDC1700ECBD5F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE7A79180FDC1700ECBD5F /* WebViewController.m */; };
 		CEAE7A7C180FDC1700ECBD5F /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */; };
 		CECD90761819536F00EB2249 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD90741819536F00EB2249 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -600,6 +612,15 @@
 		CE364D20181181170033EA6B /* NoticeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeDetailViewController.xib; sourceTree = "<group>"; };
 		CE465AE7186F19560039A184 /* btn_group_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_group_n.png; sourceTree = "<group>"; };
 		CE465AE8186F19560039A184 /* img_down_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_down_arrows.png; sourceTree = "<group>"; };
+		CE465AEC186F28820039A184 /* MyCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCircleViewController.h; sourceTree = "<group>"; };
+		CE465AED186F28820039A184 /* MyCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCircleViewController.m; sourceTree = "<group>"; };
+		CE465AEE186F28820039A184 /* MyCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCircleViewController.xib; sourceTree = "<group>"; };
+		CE465AF1186F34B60039A184 /* CircleInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleInfoViewController.h; sourceTree = "<group>"; };
+		CE465AF2186F34B60039A184 /* CircleInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleInfoViewController.m; sourceTree = "<group>"; };
+		CE465AF3186F34B60039A184 /* CircleInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleInfoViewController.xib; sourceTree = "<group>"; };
+		CE465AF6186F441E0039A184 /* ReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
+		CE465AF7186F441E0039A184 /* ReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
+		CE465AF8186F441E0039A184 /* ReplyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplyViewController.xib; sourceTree = "<group>"; };
 		CE586EBF1810351000BE7A62 /* StaticDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticDataTools.h; sourceTree = "<group>"; };
 		CE586EC01810351000BE7A62 /* StaticDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticDataTools.m; sourceTree = "<group>"; };
 		CE586EC11810351000BE7A62 /* StaticFormatTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticFormatTools.h; sourceTree = "<group>"; };
@@ -737,6 +758,14 @@
 		CE9EB7B71865B6C600BC03C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE9EB7B91865B6C600BC03C1 /* LinkedInApp4iPhone_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkedInApp4iPhone_Tests.m; sourceTree = "<group>"; };
 		CE9EB7BB1865B6C600BC03C1 /* LinkedInApp4iPhone Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LinkedInApp4iPhone Tests-Prefix.pch"; sourceTree = "<group>"; };
+		CEAAA6F9186FE40E0092A948 /* CircleMemberListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleMemberListViewController.h; sourceTree = "<group>"; };
+		CEAAA6FA186FE40E0092A948 /* CircleMemberListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleMemberListViewController.m; sourceTree = "<group>"; };
+		CEAAA6FB186FE40E0092A948 /* CircleMemberListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleMemberListViewController.xib; sourceTree = "<group>"; };
+		CEAAA6FE186FF0750092A948 /* img_sys_weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_sys_weibo.png; sourceTree = "<group>"; };
+		CEAAA70018701ED40092A948 /* CreateCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCircleViewController.h; sourceTree = "<group>"; };
+		CEAAA70118701ED40092A948 /* CreateCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCircleViewController.m; sourceTree = "<group>"; };
+		CEAAA70218701ED40092A948 /* CreateCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCircleViewController.xib; sourceTree = "<group>"; };
+		CEAAA70518702B8A0092A948 /* img_sina_weibo_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_sina_weibo_64.png; sourceTree = "<group>"; };
 		CEAE7A78180FDC1700ECBD5F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		CEAE7A79180FDC1700ECBD5F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		CEAE7A7A180FDC1700ECBD5F /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -1060,6 +1089,8 @@
 		8DF20792180CE05600FDEABA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CEAAA70518702B8A0092A948 /* img_sina_weibo_64.png */,
+				CEAAA6FE186FF0750092A948 /* img_sys_weibo.png */,
 				CE465AE7186F19560039A184 /* btn_group_n.png */,
 				CE465AE8186F19560039A184 /* img_down_arrows.png */,
 				8D7494B9186684C100E1C480 /* Default-568h@2x.jpg */,
@@ -1203,6 +1234,7 @@
 				CEF51194186DF76C00F141DA /* LoginAndRegister */,
 				CE610FD7185F3DB100D66FE7 /* StudentInfo */,
 				CE610FD6185F3DB100D66FE7 /* SchollInfo */,
+				CE465AEB186F284E0039A184 /* MyCircle */,
 				CE610FD0185F38AB00D66FE7 /* Setting */,
 				8DF20802180CE06100FDEABA /* BaseViewController.h */,
 				8DF20803180CE06100FDEABA /* BaseViewController.m */,
@@ -1358,6 +1390,28 @@
 				CE00A101181615D700253780 /* tabbar_whitebtn@2x.png */,
 			);
 			path = WeiboImages;
+			sourceTree = "<group>";
+		};
+		CE465AEB186F284E0039A184 /* MyCircle */ = {
+			isa = PBXGroup;
+			children = (
+				CE465AEC186F28820039A184 /* MyCircleViewController.h */,
+				CE465AED186F28820039A184 /* MyCircleViewController.m */,
+				CE465AEE186F28820039A184 /* MyCircleViewController.xib */,
+				CEAAA70018701ED40092A948 /* CreateCircleViewController.h */,
+				CEAAA70118701ED40092A948 /* CreateCircleViewController.m */,
+				CEAAA70218701ED40092A948 /* CreateCircleViewController.xib */,
+				CE465AF1186F34B60039A184 /* CircleInfoViewController.h */,
+				CE465AF2186F34B60039A184 /* CircleInfoViewController.m */,
+				CE465AF3186F34B60039A184 /* CircleInfoViewController.xib */,
+				CEAAA6F9186FE40E0092A948 /* CircleMemberListViewController.h */,
+				CEAAA6FA186FE40E0092A948 /* CircleMemberListViewController.m */,
+				CEAAA6FB186FE40E0092A948 /* CircleMemberListViewController.xib */,
+				CE465AF6186F441E0039A184 /* ReplyViewController.h */,
+				CE465AF7186F441E0039A184 /* ReplyViewController.m */,
+				CE465AF8186F441E0039A184 /* ReplyViewController.xib */,
+			);
+			path = MyCircle;
 			sourceTree = "<group>";
 		};
 		CE586EBE1810351000BE7A62 /* StaticTools */ = {
@@ -1682,6 +1736,7 @@
 			files = (
 				8DEE3E4A18044A1C00B4C607 /* InfoPlist.strings in Resources */,
 				8DB481F41865FF3D0036F390 /* btn_find_stu_n.png in Resources */,
+				CE465AF0186F28820039A184 /* MyCircleViewController.xib in Resources */,
 				CE67C8051861EFFC006EA741 /* img_navbar_button_normal.9.png in Resources */,
 				CEF511AE186DF76C00F141DA /* SingleSelectCell.xib in Resources */,
 				CE74826C1860852100C89A26 /* placeholder.png in Resources */,
@@ -1734,7 +1789,9 @@
 				CE67C7F01861ECD2006EA741 /* img_splash_20.jpg in Resources */,
 				8DF207DD180CE05600FDEABA /* img_login_backdrop@2x.png in Resources */,
 				8DF207DE180CE05600FDEABA /* img_login_btn_normal@2x.png in Resources */,
+				CE465AFA186F441E0039A184 /* ReplyViewController.xib in Resources */,
 				8DF207DF180CE05600FDEABA /* img_login_btn_pressed@2x.png in Resources */,
+				CEAAA6FF186FF0750092A948 /* img_sys_weibo.png in Resources */,
 				8DF207E0180CE05600FDEABA /* img_login_completed_normal@2x.png in Resources */,
 				8DF207E1180CE05600FDEABA /* img_login_completed_pressed@2x.png in Resources */,
 				8DF207E2180CE05600FDEABA /* img_login_edittext_backdrop@2x.png in Resources */,
@@ -1769,6 +1826,7 @@
 				8DF207F3180CE05600FDEABA /* img_topbar_more_pressed@2x.png in Resources */,
 				CE67C7C81861E19F006EA741 /* img_topbar_backdrop.png in Resources */,
 				CE610FD5185F38E000D66FE7 /* SetingMainViewController.xib in Resources */,
+				CE465AF5186F34B60039A184 /* CircleInfoViewController.xib in Resources */,
 				CE610FE1185F3DE900D66FE7 /* SchollInfoViewController.xib in Resources */,
 				8DF207F4180CE05600FDEABA /* img_topbar_search_normal@2x.png in Resources */,
 				8DF207F5180CE05600FDEABA /* img_topbar_search_pressed@2x.png in Resources */,
@@ -1792,6 +1850,7 @@
 				8D12D3B1180E3E1C003D09CA /* img_content_border@2x.png in Resources */,
 				CEE8EAAD180E23030052E5D8 /* HomeViewController.xib in Resources */,
 				CEE8EABD180E65C30052E5D8 /* NoticeListViewController.xib in Resources */,
+				CEAAA70418701ED40092A948 /* CreateCircleViewController.xib in Resources */,
 				CE67C7E81861ECD2006EA741 /* img_splash_12.png in Resources */,
 				CEF511AC186DF76C00F141DA /* RegisterViewController.xib in Resources */,
 				CE7482861860AD8900C89A26 /* img_group_school_normal.png in Resources */,
@@ -1811,6 +1870,7 @@
 				CE5AFB981812C26E007AFC79 /* PersonInfoEditViewController.xib in Resources */,
 				CEF511A8186DF76C00F141DA /* AddRegisterInfoViewController.xib in Resources */,
 				CE9DE2F21813DF52003D0EAD /* PersonalCardViewController.xib in Resources */,
+				CEAAA6FD186FE40E0092A948 /* CircleMemberListViewController.xib in Resources */,
 				CE935F181815566F00DAC626 /* OAuthWebView.xib in Resources */,
 				CE74825918604A0C00C89A26 /* MessageListViewController.xib in Resources */,
 				CE935F1D18155B6700DAC626 /* ProfileVC.xib in Resources */,
@@ -1897,6 +1957,7 @@
 				8DB481D61865EE780036F390 /* btn_login_s.png in Resources */,
 				8D0FB34D1814CE4400FE9EF7 /* CommitBasicInfoViewController.xib in Resources */,
 				CE62E2541816BC7F00F49A43 /* BasicInfoCommitViewController.xib in Resources */,
+				CEAAA70618702B8A0092A948 /* img_sina_weibo_64.png in Resources */,
 				8D935456181D378000DD4C65 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1935,7 +1996,9 @@
 				8DF20814180CE0AF00FDEABA /* UITextField+HideKeyBoard.m in Sources */,
 				8DF2081B180CE0F300FDEABA /* Transfer+ParseXML.m in Sources */,
 				8DF2081C180CE0F300FDEABA /* Transfer.m in Sources */,
+				CEAAA6FC186FE40E0092A948 /* CircleMemberListViewController.m in Sources */,
 				8DF2081F180CE12900FDEABA /* AppDelegate.m in Sources */,
+				CE465AEF186F28820039A184 /* MyCircleViewController.m in Sources */,
 				8DF2082B180D879300FDEABA /* AppDataCenter.m in Sources */,
 				8D12D3AE180E36A8003D09CA /* ProfileViewController.m in Sources */,
 				8D12D3B4180E7A37003D09CA /* ProfileModel.m in Sources */,
@@ -1964,6 +2027,7 @@
 				CE364D21181181170033EA6B /* NoticeDetailViewController.m in Sources */,
 				CE5AFB9218125590007AFC79 /* ActivityListViewController.m in Sources */,
 				CE5AFB971812C26E007AFC79 /* PersonInfoEditViewController.m in Sources */,
+				CEAAA70318701ED40092A948 /* CreateCircleViewController.m in Sources */,
 				CE9DE2ED18138477003D0EAD /* UIImage+Resizeable.m in Sources */,
 				CE9EB7A81865809F00BC03C1 /* FindClassmateViewController.m in Sources */,
 				CE9DE2F11813DF52003D0EAD /* PersonalCardViewController.m in Sources */,
@@ -1974,6 +2038,7 @@
 				CE7482531860400200C89A26 /* SchollCardApplyViewController.m in Sources */,
 				CE935F2518155C2200DAC626 /* LPBaseCell.m in Sources */,
 				CE7482781860A69500C89A26 /* AboutViewController.m in Sources */,
+				CE465AF4186F34B60039A184 /* CircleInfoViewController.m in Sources */,
 				CEF511AD186DF76C00F141DA /* SingleSelectCell.m in Sources */,
 				CE935F371815605400DAC626 /* EGORefreshTableHeaderView.m in Sources */,
 				CE935F381815605400DAC626 /* PullRefreshTableViewController.m in Sources */,
@@ -1997,6 +2062,7 @@
 				8D15221B181426F0006AFC1D /* AFImageRequestOperation.m in Sources */,
 				8D15221C181426F0006AFC1D /* AFJSONRequestOperation.m in Sources */,
 				6C1A94E21865F80F0030947D /* EGOImageView.m in Sources */,
+				CE465AF9186F441E0039A184 /* ReplyViewController.m in Sources */,
 				CE748267186082B800C89A26 /* BDRowInfo.m in Sources */,
 				CEF511A7186DF76C00F141DA /* AddRegisterInfoViewController.m in Sources */,
 				8D15221D181426F0006AFC1D /* AFNetworkActivityIndicatorManager.m in Sources */,

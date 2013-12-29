@@ -60,6 +60,7 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(280, 5, 50, 30);
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
     [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_n"] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_s"] forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(updatePersonInfo) forControlEvents:UIControlEventTouchUpInside];
@@ -67,6 +68,11 @@
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = item;
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -399,8 +405,8 @@
     [infoMtbDict setValue:self.infoModel.mOrg forKey:@"org"];
     [infoMtbDict setValue:self.infoModel.mProvince forKey:@"province"];
     [infoMtbDict setValue:self.infoModel.mCity forKey:@"city"];
-//    [infoMtbDict setValue:[self.infoModel.mStime substringToIndex:7] forKey:@"stime"];
-//    [infoMtbDict setValue:[self.infoModel.mEtime substringToIndex:7] forKey:@"etime"];
+    [infoMtbDict setValue:[self.infoModel.mStime substringToIndex:7] forKey:@"stime"];
+    [infoMtbDict setValue:[self.infoModel.mEtime substringToIndex:7] forKey:@"etime"];
     
     UIImageView *headImgView = (UIImageView*)[self.listTableView.tableHeaderView viewWithTag:Tag_HeadImgView_View];
     [infoMtbDict setValue:[GTMBase64 stringByEncodingData:UIImagePNGRepresentation(headImgView.image) ] forKey:@"pic"];

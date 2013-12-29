@@ -39,6 +39,11 @@
         NSString *str = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"scollInfo" ofType:@"txt" ] encoding:NSUTF8StringEncoding  error:nil];
          self.content =str;
     }
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)didReceiveMemoryWarning

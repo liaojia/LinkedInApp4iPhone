@@ -16,6 +16,7 @@
 #import "PersonInfoEditViewController.h"
 #import "PersonalCardViewController.h"
 #import "FindClassmateViewController.h"
+#import "MyCircleViewController.h"
 
 #define Tag_DeletePersonInfo_Alert 500
 
@@ -55,7 +56,8 @@
         self.navigationItem.title = @"我的信息";
         
         UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        rightBtn.frame = CGRectMake(280, 5, 80, 35);
+        rightBtn.frame = CGRectMake(280, 5, 70, 30);
+        rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         rightBtn.tag = 600;
         [rightBtn setTitle:@"找同学" forState:UIControlStateNormal];
         [rightBtn setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_n"] forState:UIControlStateNormal];
@@ -193,8 +195,14 @@
             break;
         case 600: //找同学
         {
-            FindClassmateViewController *findClassMateController = [[FindClassmateViewController alloc]initWithNibName:@"FindClassmateViewController" bundle:nil];
-            [self.navigationController pushViewController:findClassMateController animated:YES];
+            
+            //TODO
+//            FindClassmateViewController *findClassMateController = [[FindClassmateViewController alloc]initWithNibName:@"FindClassmateViewController" bundle:nil];
+//            [self.navigationController pushViewController:findClassMateController animated:YES];
+            
+            MyCircleViewController *myCircleController = [[MyCircleViewController alloc]initWithNibName:@"MyCircleViewController" bundle:nil];
+            [self.navigationController pushViewController:myCircleController animated:YES];
+            
         }
             break;
         default:
@@ -348,7 +356,7 @@
     }
     if( indexPath.row == 0&&indexPath.section!=0) //title
     {
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 100, 30)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 12, 100, 30)];
         titleLabel.backgroundColor = [UIColor clearColor];
         NSString *titleStr;
         if (indexPath.section == 1)
@@ -394,7 +402,7 @@
             
             //查看更多
             UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            moreBtn.frame = CGRectMake(tableView.frame.size.width -110, 8, 70, 25);
+            moreBtn.frame = CGRectMake(tableView.frame.size.width -100, 12, 70, 25);
 
             [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
             moreBtn.titleLabel.font = [UIFont systemFontOfSize:15];

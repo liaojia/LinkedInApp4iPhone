@@ -63,7 +63,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="37">
                         <rect key="frame" x="220" y="98" width="65" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="修改" backgroundImage="btn_add_n.png">
                             <color key="titleColor" red="0.14908542969999999" green="0.29342278119999998" blue="0.88054049739999996" alpha="1" colorSpace="calibratedRGB"/>

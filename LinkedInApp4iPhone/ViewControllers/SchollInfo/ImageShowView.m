@@ -99,6 +99,15 @@
     imgStartWidth=imageView.frame.size.width;
     imgStartHeight=imageView.frame.size.height;
     
+    
+    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    saveBtn.frame = CGRectMake(120, self.frame.size.height-35, 80, 30);
+    [saveBtn setTitle:@"保存到相册" forState:UIControlStateNormal];
+    [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [saveBtn setBackgroundImage:[UIImage imageNamed:@"btn_login_n.png"] forState:UIControlStateNormal];
+    [saveBtn addTarget:self action:@selector(saveToLocal) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:saveBtn];
+    
 
 }
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -226,5 +235,16 @@
     }
 }
 
+- (void)saveToLocal
+{
+    UIImageWriteToSavedPhotosAlbum([imageView image], nil, nil,nil);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"存储照片成功"
+                                                    message:@"您已将照片存储于图片库中，打开照片程序即可查看。"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
 @end

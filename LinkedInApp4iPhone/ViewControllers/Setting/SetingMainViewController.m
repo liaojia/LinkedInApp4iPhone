@@ -10,6 +10,8 @@
 #import "PassWordChangeViewController.h"
 #import "AboutViewController.h"
 #import "AppDelegate.h"
+#import "ProfileVC.h"
+#import "OAuthWebView.h"
 
 @interface SetingMainViewController ()
 
@@ -35,12 +37,43 @@
     
     self.listTableView.backgroundView = nil;
     self.listTableView.backgroundColor = [UIColor clearColor];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma mark-
+#pragma mark--功能函数
+/**
+ *	@brief	判断微博授权是否授权或授权过期
+ *
+ *	@return
+ */
+-(BOOL)isNeedToRefreshTheToken
+{
+    NSDate *expirationDate = [[NSUserDefaults standardUserDefaults]objectForKey:USER_STORE_EXPIRATION_DATE];
+    if (expirationDate == nil)  return YES;
+    
+    BOOL boolValue1 = !(NSOrderedDescending == [expirationDate compare:[NSDate date]]);
+    BOOL boolValue2 = (expirationDate != nil);
+    
+    return (boolValue1 && boolValue2);
+}
+/**
+ *	@brief	跳转到新浪微博页面
+ */
+- (void)gotoSinaWeiBo
+{
+    ProfileVC *profile = [[ProfileVC alloc]initWithNibName:@"ProfileVC" bundle:nil];
+    profile.userID = [NSString stringWithFormat:@"%@",@"3044034642"];
+    [self.navigationController pushViewController:profile animated:YES];
 }
 
 #pragma mark-
@@ -101,7 +134,7 @@
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -129,21 +162,26 @@
     
     if (indexPath.section==0)
     {
+        cell.imageView.image = [UIImage imageWithImage:[UIImage imageNamed:@"img_sina_weibo_64"] scaledToSize:CGSizeMake(25 , 25)] ;
+        cell.textLabel.text = @" 官方微博";
+    }
+    else if (indexPath.section==1)
+    {
         cell.imageView.image = [UIImage imageNamed:@"img_sys_modify_pwd"];
         cell.textLabel.text = @"   修改密码";
     }
-    else if (indexPath.section==1)
+    else if (indexPath.section==2)
     {
         cell.imageView.image = [UIImage imageNamed:@"img_sys_update"];
         
         cell.textLabel.text = @"   检查更新";
     }
-    else if (indexPath.section==2)
+    else if (indexPath.section==3)
     {
         cell.imageView.image = [UIImage imageNamed:@"img_sys_about"];
         cell.textLabel.text = @"   关于";
     }
-    else if (indexPath.section==3)
+    else if (indexPath.section==4)
     {
         cell.imageView.image = [UIImage imageNamed:@"img_sys_exit"];
         cell.textLabel.text = @"   退出";
@@ -153,21 +191,40 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section ==0) //密码修改
+    if(indexPath.section==0)
+    {
+        
+        //如果未授权或授权过期，则转入授权页面。
+        NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:USER_STORE_ACCESS_TOKEN];
+        if (authToken == nil || [self isNeedToRefreshTheToken])
+        {
+            
+            OAuthWebView *webV = [[OAuthWebView alloc]initWithNibName:@"OAuthWebView" bundle:nil];
+            webV.fatherController = self;
+            [self.navigationController pushViewController:webV animated:NO];
+            
+        }
+        else
+        {
+            [self gotoSinaWeiBo];
+        }
+
+    }
+    else if (indexPath.section ==1) //密码修改
     {
         PassWordChangeViewController *pswChangeController = [[PassWordChangeViewController alloc]init];
         [self.navigationController pushViewController:pswChangeController animated:YES];
     }
-    else if(indexPath.section == 1) //版本跟新
+    else if(indexPath.section == 2) //版本跟新
     {
         [self checkVerson];
     }
-    else if(indexPath.section == 2) //关于
+    else if(indexPath.section == 3) //关于
     {
         AboutViewController *aboutController = [[AboutViewController alloc]init];
         [self.navigationController pushViewController:aboutController animated:YES];
     }
-    else if(indexPath.section == 3) //退出
+    else if(indexPath.section == 4) //退出
     {
         [StaticTools showAlertWithTag:0
                                 title:Nil

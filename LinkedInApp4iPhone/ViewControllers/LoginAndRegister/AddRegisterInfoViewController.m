@@ -37,7 +37,8 @@
     selectYear = 2000;
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(280, 5, 50, 35);
+    rightBtn.frame = CGRectMake(280, 5, 50, 30);
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     rightBtn.tag = 1405;
     [rightBtn setTitle:@"完成" forState:UIControlStateNormal];
     [rightBtn setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_n"] forState:UIControlStateNormal];
@@ -55,6 +56,11 @@
 	imagePicker.delegate = self;
     
     [self getDepartMentList];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 
 }
 
@@ -486,7 +492,7 @@
         
         [UIView animateWithDuration:0.5 animations:^{
             
-            self.listTableView.contentOffset = CGPointMake(0, rectUpTable.origin.y-100);
+            self.listTableView.contentOffset = CGPointMake(0, rectUpTable.origin.y-130);
         }];
     }
   
@@ -577,7 +583,7 @@
     }
     else if(indexPath.row==2) //姓名
     {
-        return 60;
+        return 50;
     }
     else if(indexPath.row==4)
     {
@@ -616,7 +622,7 @@
       
         if (selectImg == nil)
         {
-            //[headImgView setImageWithURL:[NSURL URLWithString:self.infoModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+            headImgView.image = [UIImage imageNamed:@"img_weibo_item_pic_loading"];
         }
         else
         {
@@ -735,6 +741,7 @@
             titleLabel.text = @"手机号";
             inputTxtField.placeholder = @"请输手机号";
             inputTxtField.text = self.phonenum;
+            inputTxtField.keyboardType = UIKeyboardTypeNumberPad;
 
         }
         else if(indexPath.row == 6)
@@ -742,13 +749,14 @@
             titleLabel.text = @"邮箱";
             inputTxtField.placeholder = @"请输入邮箱";
             inputTxtField.text = self.email;
-            
+            inputTxtField.keyboardType = UIKeyboardTypeEmailAddress;
         }
         else if(indexPath.row == 7)
         {
             titleLabel.text = @"QQ号";
             inputTxtField.placeholder = @"请输入QQ号";
             inputTxtField.text = self.qqNum;
+            inputTxtField.keyboardType = UIKeyboardTypeNumberPad;
             
         }
         

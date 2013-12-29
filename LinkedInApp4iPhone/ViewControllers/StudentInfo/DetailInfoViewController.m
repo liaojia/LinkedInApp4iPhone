@@ -32,6 +32,10 @@
     self.listTableView.separatorColor = [UIColor clearColor];
     self.listTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self getDetailWithID:self.listId];
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)didReceiveMemoryWarning

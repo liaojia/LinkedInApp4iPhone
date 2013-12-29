@@ -312,10 +312,79 @@
         <url>/profile/me/create</url>
         <method>GET</method>
     </request>
+    
+    <!--获取我创建的圈子-->
+    <request>
+        <requestId>MYCREATECIRCLE</requestId>
+        <url>/group/my/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!--获取我加入的圈子-->
+    <request>
+        <requestId>MYJOINCIRCLE</requestId>
+        <url>/group/me/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!--获取推荐的圈子-->
+    <request>
+        <requestId>COMMENDCIRCLE</requestId>
+        <url>/group/list</url>
+        <method>GET</method>
+    </request>
+
+    <!--获取圈子发言列表-->
+    <request>
+        <requestId>CIRCLEMESSLIST</requestId>
+        <url>/group/${id}/comment/list</url>
+        <method>GET</method>
+    </request>
+
+
+    <!--圈子发言-->
+    <request>
+        <requestId>CIRCLEREPLY</requestId>
+        <url>/group/${id}/comment/create</url>
+        <method>POST</method>
+    </request>
+    
+    
+    <!--获取圈子成员列表-->
+    <request>
+        <requestId>GETCIRCLEMEMBERLIST</requestId>
+        <url>/group/${id}/participant/list</url>
+        <method>GET</method>
+    </request>
+    
+    <!--新建圈子-->
+    <request>
+        <requestId>CREATECIRCLE</requestId>
+        <url>/group/create</url>
+        <method>POST</method>
+    </request>
+
+    <!--删除圈子-->
+    <request>
+        <requestId>DELETECIRCLE</requestId>
+        <url>/admin/group/${id}/delete</url>
+        <method>POST</method>
+    </request>
+
+    <!--退出圈子-->
+    <request>
+        <requestId>GETOUTOFCIRCLE</requestId>
+        <url>/group/${id}/quit</url>
+        <method>POST</method>
+    </request>
+    
+    <!--加入圈子-->
+    <request>
+        <requestId>JOINCIRCLE</requestId>
+        <url>/group/${id}/join</url>
+        <method>POST</method>
+    </request>
 
 
 
-    
-    
-    
 </root>

@@ -15,6 +15,7 @@
 #import "SchollInfoViewController.h"
 #import "SetingMainViewController.h"
 #import "RegisterViewController.h"
+#import "MyCircleViewController.h"
 
 @interface LoginViewController ()
 
@@ -61,10 +62,10 @@
 - (void)gotoHome
 {
     UITabBarController *tabbar  = [[UITabBarController alloc]init];
-//    if (IOS7_OR_LATER)
-//    {
-//        tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
-//    }
+    if (IOS7_OR_LATER)
+    {
+        tabbar.tabBar.barStyle  = UIBarStyleBlackOpaque;
+    }
     
     StudentInfoViewController *studentInfoController = [[StudentInfoViewController alloc]initWithNibName:@"StudentInfoViewController" bundle:nil];
     UINavigationController *studentNav = [[UINavigationController alloc]initWithRootViewController:studentInfoController];
@@ -101,6 +102,8 @@
     tabbar.viewControllers = @[studentNav,schoolNav,personNav,setingNav];
     
     [self.navigationController pushViewController:tabbar animated:YES];
+    
+  
 }
 #pragma mark-
 #pragma mark--按钮点击事件

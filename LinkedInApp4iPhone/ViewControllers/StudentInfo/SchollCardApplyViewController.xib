@@ -74,7 +74,5 @@
         <image name="btn_login_n.png" width="132" height="35"/>
         <image name="img_backdrop.png" width="800" height="1270"/>
         <image name="more_normal.png" width="616" height="64"/>
-        <image name="more_normal.png" width="616" height="64"/>
-        <image name="more_normal.png" width="616" height="64"/>
     </resources>
 </document>
