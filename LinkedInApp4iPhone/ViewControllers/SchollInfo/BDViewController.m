@@ -111,7 +111,25 @@
  */
 - (void)animateReloadWithPage:(int)page
 {
-    for (int i=0; i < kOonePageCount; i++) {
+    int maxNum = 0;
+    int totalPage = listTotalCount%kOonePageCount==0?listTotalCount/kOonePageCount:listTotalCount/kOonePageCount+1;
+    if (listTotalCount%kOonePageCount==0)
+    {
+        maxNum = kOonePageCount;
+    }
+    else
+    {
+        if (currentPage<totalPage)
+        {
+            maxNum = kOonePageCount;
+        }
+        else
+        {
+            maxNum = listTotalCount%kOonePageCount;
+        }
+        
+    }
+    for (int i=0; i < maxNum; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder"]];
         imageView.frame = CGRectMake(0, 0, 44, 44);
         imageView.clipsToBounds = YES;
@@ -119,7 +137,7 @@
     }
     [self reloadData];
     
-    for (int i=0; i<kOonePageCount; i++) {
+    for (int i=0; i<maxNum; i++) {
         NSDictionary *temDict = self.imgInfoArray[kOonePageCount*(page-1)+i ];
         [self.imgMtbArray addObject:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
         AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:temDict[@"thumbnail"]]] success:^(UIImage *image) {
