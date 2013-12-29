@@ -2209,8 +2209,8 @@
 		8DEE3E6018044A1C00B4C607 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: hongling sheng (T9JS32ALY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hongling sheng (T9JS32ALY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qing guo (38QYV5Y5RJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qing guo (38QYV5Y5RJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinkedInApp4iPhone/LinkedInApp4iPhone-Prefix.pch";
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
@@ -2224,8 +2224,8 @@
 		8DEE3E6118044A1C00B4C607 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: hongling sheng (T9JS32ALY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hongling sheng (T9JS32ALY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qing guo (38QYV5Y5RJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qing guo (38QYV5Y5RJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinkedInApp4iPhone/LinkedInApp4iPhone-Prefix.pch";
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
