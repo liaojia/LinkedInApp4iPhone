@@ -62,7 +62,7 @@
         self.infoModel = [[ProfileModel alloc]init];
         self.infoModel.mId = idStr;
     }
-    
+    selectIndustryId = self.infoModel.mIndustryId;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(280, 5, 50, 30);
     button.titleLabel.font = [UIFont systemFontOfSize:15];
