@@ -78,6 +78,8 @@
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    arr = [[NSMutableArray alloc] init];
+    
 }
 
 - (void)didReceiveMemoryWarning
