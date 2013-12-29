@@ -307,6 +307,7 @@
     }
     else
     {
+        
         dict = @{@"name":self.name,@"gender":(sigleCell.segControl.selectedSegmentIndex==0?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",1],@"deptId":self.selectDepartment[@"id"],@"majorId":[NSString stringWithFormat:@"%@",self.selectMajor[@"id"]],@"clazz":self.classNum,@"adYear":[NSString stringWithFormat:@"%d",selectYear],@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":selectImg==nil?@"":[GTMBase64 stringByEncodingData: UIImagePNGRepresentation(headImgView.image) ]};
         
     }
