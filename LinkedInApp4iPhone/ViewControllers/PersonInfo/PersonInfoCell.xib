@@ -65,8 +65,7 @@
 
 
                         <rect key="frame" x="209" y="98" width="65" height="23"/>
-
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
 
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="修改" backgroundImage="img_school_notice_normal.png">
@@ -94,7 +93,9 @@
     <resources>
         <image name="img_card_arrows_normal.png" width="16" height="16"/>
         <image name="img_card_arrows_pressed.png" width="16" height="16"/>
+        <image name="img_card_arrows_pressed.png" width="16" height="16"/>
         <image name="img_school_notice_normal.png" width="60" height="17"/>
+        <image name="img_school_notice_pressed.png" width="60" height="17"/>
         <image name="img_school_notice_pressed.png" width="60" height="17"/>
     </resources>
 </document>
