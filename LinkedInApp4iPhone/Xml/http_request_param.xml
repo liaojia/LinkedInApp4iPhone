@@ -318,7 +318,7 @@
     <request>
         <requestId>ADDREGISTERINFO</requestId>
         <url>/profile/me/create</url>
-        <method>GET</method>
+        <method>POST</method>
     </request>
     
     <!--获取我创建的圈子-->
