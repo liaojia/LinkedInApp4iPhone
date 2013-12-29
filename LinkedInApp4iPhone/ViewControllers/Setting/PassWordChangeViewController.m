@@ -29,6 +29,11 @@
     
     self.navigationItem.title = @"密码修改";
     // Do any additional setup after loading the view from its nib.
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)didReceiveMemoryWarning

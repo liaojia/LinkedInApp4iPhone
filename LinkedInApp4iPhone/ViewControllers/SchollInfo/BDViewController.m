@@ -47,7 +47,7 @@
     self.onSingleTap =  ^(UIView* view, NSInteger viewIndex){
         
         NSDictionary *temDict = self.imgInfoArray[viewIndex];
-             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:self.view.frame url:temDict[@"thumbnail"]];
+             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:self.view.frame url:temDict[@"pic"]];
             
             [self.view.superview.superview addSubview:imageShowView];
             
@@ -61,7 +61,6 @@
     };
 
     
-   //[self animateReloadWithPage:1];
     currentPage=0;
     [self getImgInfoWithPage:1];
 

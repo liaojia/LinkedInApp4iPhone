@@ -31,4 +31,6 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)initWithMode:(ProfileModel *)tModel;
+
+- (void)adjustControlFrame;
 @end

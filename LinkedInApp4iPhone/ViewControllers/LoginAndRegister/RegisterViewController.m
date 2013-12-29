@@ -80,12 +80,17 @@
         distance =  160;
     }
     
+
     
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         self.view.frame = CGRectMake(0, -distance, 320, self.view.frame.size.height);
-                         
-                     }];
+    if (distance!=0)
+    {
+        self.mainScr.scrollEnabled = NO;
+        self.mainScr.contentSize = CGSizeMake(320, 600);
+        
+        [self.mainScr scrollRectToVisible:CGRectMake(0, 160, self.mainScr.frame.size.width, self.mainScr.frame.size.height) animated:YES];
+    }
+    
+    
 
 }
 
@@ -171,16 +176,13 @@
     
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (IBAction)backClick:(id)sender
 {
     [self.view endEditing:YES];
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                        // self.view.frame = CGRectMake(0, IOS7_OR_LATER?64:0, 320, self.view.frame.size.height);
-                         self.view.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
-                         
-                     }];
+    [self.mainScr scrollRectToVisible:CGRectMake(0, 0, self.mainScr.frame.size.width, self.mainScr.frame.size.height) animated:YES];
+    self.mainScr.scrollEnabled = NO;
 }
+
+
 
 @end

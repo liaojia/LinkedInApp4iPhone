@@ -62,12 +62,9 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="37">
-<<<<<<< HEAD
                         <rect key="frame" x="209" y="98" width="65" height="23"/>
-=======
-                        <rect key="frame" x="220" y="98" width="65" height="23"/>
->>>>>>> 227d39ce0d6162bd5be937ae370bfc1ab9058987
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="修改" backgroundImage="img_school_notice_normal.png">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -38,6 +38,7 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(280, 5, 50, 30);
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
     [button addTarget:self action:@selector(updatePersonalCard) forControlEvents:UIControlEventTouchUpInside];
     [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_n"] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_s"] forState:UIControlStateHighlighted];
@@ -51,6 +52,11 @@
     
     
     [self getPersonalCardInfoWithID:@"me"];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)didReceiveMemoryWarning

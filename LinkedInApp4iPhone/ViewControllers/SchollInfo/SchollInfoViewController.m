@@ -335,7 +335,7 @@
         //右侧操作按钮
         
         UIButton *detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        detailBtn.frame = CGRectMake(tableView.frame.size.width-120, 13, 70, 25);
+        detailBtn.frame = CGRectMake(tableView.frame.size.width-100, 13, 70, 25);
         [detailBtn setBackgroundImage:[UIImage imageNamed:detailImg] forState:UIControlStateNormal];
         [detailBtn setBackgroundImage:[UIImage imageNamed:detailPressImg] forState:UIControlStateHighlighted];
          detailBtn.titleLabel.font = [UIFont systemFontOfSize:15];

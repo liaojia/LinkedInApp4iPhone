@@ -41,6 +41,11 @@
     totalPage = 0;
     self.mArray = [[NSMutableArray alloc] init];
     [self initTableview];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 - (void)viewDidUnload
 {

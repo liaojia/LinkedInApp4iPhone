@@ -45,4 +45,13 @@
     [self.headImgView setImageWithURL:[NSURL URLWithString:tModel.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
 }
 
+- (void)adjustControlFrame
+{
+    self.placeLabel.numberOfLines = 0;
+    self.placeLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+    self.placeLabel.frame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, [StaticTools getLabelHeight:self.placeLabel.text defautWidth:self.placeLabel.frame.size.width defautHeight:480 fontSize:15]+3);
+   
+    self.orgLabel.frame = CGRectMake(self.orgLabel.frame.origin.x, self.placeLabel.frame.origin.y+self.placeLabel.frame.size.height+5, self.orgLabel.frame.size.width, 20);
+    self.changeBtn.frame = CGRectMake(self.changeBtn.frame.origin.x, self.orgLabel.frame.origin.y+self.orgLabel.frame.size.height+5, self.changeBtn.frame.size.width, self.changeBtn.frame.size.height);
+}
 @end

@@ -43,6 +43,11 @@
     [self getTopMediaListInfoe];
     
     [self getListInfoWithPage:1];
+    
+    if ( IOS7_OR_LATER )
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 
 }
 

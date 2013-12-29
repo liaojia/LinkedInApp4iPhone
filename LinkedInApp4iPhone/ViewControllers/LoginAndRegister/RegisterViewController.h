@@ -32,5 +32,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *studentNum; //学号
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScr;
 
+- (IBAction)backClick:(id)sender;
 
 @end

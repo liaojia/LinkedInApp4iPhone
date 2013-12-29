@@ -21,7 +21,7 @@
 
 @interface ImageShowView : UIView
 {
-    UIImageView * imageView;                
+    UIImageView * imageView;
 	
 	CGFloat lastDistance;
 	CGFloat imgStartWidth;
