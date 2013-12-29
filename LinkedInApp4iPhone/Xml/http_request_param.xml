@@ -292,12 +292,11 @@
         <method>GET</method>
     </request>
     
-<<<<<<< HEAD
     <!--获取行业列表-->
     <request>
         <requestId>CONFIGINDUSTRYLIST</requestId>
         <url>/config/industry/list</url>
-=======
+        <method>GET</method>
     <!--获取院系专业双级列表-->
     <request>
         <requestId>GETDEPARTMENTLIST</requestId>

@@ -41,27 +41,27 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="jmu-5N-IQO">
-                            <rect key="frame" x="10" y="228" width="278" height="41"/>
+                            <rect key="frame" x="15" y="215" width="290" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="PS2-R0-d4l">
-                            <rect key="frame" x="10" y="168" width="278" height="41"/>
+                            <rect key="frame" x="15" y="155" width="290" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="6sN-RG-6Ss">
-                            <rect key="frame" x="10" y="288" width="278" height="41"/>
+                            <rect key="frame" x="15" y="275" width="290" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="olR-MF-Cpv">
-                            <rect key="frame" x="10" y="107" width="278" height="41"/>
+                            <rect key="frame" x="15" y="94" width="290" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="OWR-Dr-Wte">
-                            <rect key="frame" x="10" y="43" width="278" height="41"/>
+                            <rect key="frame" x="15" y="30" width="290" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱" minimumFontSize="17" clearButtonMode="whileEditing" id="bMm-ea-Uay">
-                            <rect key="frame" x="27" y="49" width="216" height="30"/>
+                            <rect key="frame" x="27" y="36" width="216" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -70,7 +70,7 @@
                             </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="身份证号" minimumFontSize="17" clearButtonMode="whileEditing" id="gHg-uP-Xdj">
-                            <rect key="frame" x="30" y="234" width="216" height="30"/>
+                            <rect key="frame" x="30" y="221" width="216" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -79,7 +79,7 @@
                             </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" clearButtonMode="whileEditing" id="rCp-SO-JNB">
-                            <rect key="frame" x="27" y="113" width="216" height="30"/>
+                            <rect key="frame" x="27" y="100" width="216" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" secureTextEntry="YES"/>
@@ -88,7 +88,7 @@
                             </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="学号（选填）" minimumFontSize="17" clearButtonMode="whileEditing" id="U9N-gQ-zb6">
-                            <rect key="frame" x="29" y="294" width="216" height="30"/>
+                            <rect key="frame" x="29" y="281" width="216" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -97,7 +97,7 @@
                             </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hkd-ZL-khM">
-                            <rect key="frame" x="26" y="351" width="246" height="44"/>
+                            <rect key="frame" x="15" y="351" width="290" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <state key="normal" title="提交" backgroundImage="btn_login_n.png">
@@ -109,7 +109,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" clearButtonMode="whileEditing" id="5ec-dd-5an">
-                            <rect key="frame" x="27" y="174" width="216" height="30"/>
+                            <rect key="frame" x="27" y="161" width="216" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
