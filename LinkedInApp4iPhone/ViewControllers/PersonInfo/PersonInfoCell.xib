@@ -62,17 +62,20 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="37">
+<<<<<<< HEAD
+                        <rect key="frame" x="209" y="98" width="65" height="23"/>
+=======
                         <rect key="frame" x="220" y="98" width="65" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title="修改" backgroundImage="btn_add_n.png">
-                            <color key="titleColor" red="0.14908542969999999" green="0.29342278119999998" blue="0.88054049739999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="修改" backgroundImage="img_school_notice_normal.png">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="btn_add_s.png">
+                        <state key="selected" backgroundImage="img_school_notice_pressed.png">
                             <color key="titleColor" red="0.14908542969999999" green="0.29342278119999998" blue="0.88054049739999996" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
-                        <state key="highlighted" backgroundImage="btn_add_s.png"/>
+                        <state key="highlighted" backgroundImage="img_school_notice_pressed.png"/>
                     </button>
                 </subviews>
             </tableViewCellContentView>
@@ -88,9 +91,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="btn_add_n.png" width="65" height="21"/>
-        <image name="btn_add_s.png" width="65" height="21"/>
         <image name="img_card_arrows_normal.png" width="16" height="16"/>
         <image name="img_card_arrows_pressed.png" width="16" height="16"/>
+        <image name="img_school_notice_normal.png" width="60" height="17"/>
+        <image name="img_school_notice_pressed.png" width="60" height="17"/>
     </resources>
 </document>

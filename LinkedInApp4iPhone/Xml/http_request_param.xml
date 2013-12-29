@@ -292,6 +292,12 @@
         <method>GET</method>
     </request>
     
+<<<<<<< HEAD
+    <!--获取行业列表-->
+    <request>
+        <requestId>CONFIGINDUSTRYLIST</requestId>
+        <url>/config/industry/list</url>
+=======
     <!--获取院系专业双级列表-->
     <request>
         <requestId>GETDEPARTMENTLIST</requestId>
@@ -310,6 +316,7 @@
     <request>
         <requestId>ADDREGISTERINFO</requestId>
         <url>/profile/me/create</url>
+>>>>>>> 227d39ce0d6162bd5be937ae370bfc1ab9058987
         <method>GET</method>
     </request>
     

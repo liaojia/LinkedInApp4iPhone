@@ -163,6 +163,8 @@
                                  if (self.topInfoMtbArray.count>0)
                                  {
                                      [self freshHeader];
+                                 }else if(self.topInfoMtbArray.count == 0){
+                                     self.listTableView.tableHeaderView = nil;
                                  }
                                 
                              }
@@ -245,8 +247,11 @@
 #pragma mark--UIScorllViewDelegate
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    self.headPageControl.currentPage = self.headSclView.contentOffset.x/320;
-     self.headTitleLabel.text =self.topInfoMtbArray[self.headPageControl.currentPage][@"title"];
+    if ([self.topInfoMtbArray count] > 0) {
+        self.headPageControl.currentPage = self.headSclView.contentOffset.x/320;
+        self.headTitleLabel.text =self.topInfoMtbArray[self.headPageControl.currentPage][@"title"];
+    }
+    
 }
 #pragma mark-
 #pragma mark--TableViewDelegate

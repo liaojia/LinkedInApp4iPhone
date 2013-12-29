@@ -17,16 +17,21 @@
  //
  ----------------------------------------------------------------*/
 #import <UIKit/UIKit.h>
+#import "AJComboBox.h"
 
 @interface PersonInfoEditViewController : UIViewController<UITableViewDataSource,
     UITableViewDelegate,
     UITextFieldDelegate,
     UIScrollViewDelegate,
-    UIImagePickerControllerDelegate>
+    UIImagePickerControllerDelegate,AJComboBoxDelegate>
 {
     NSArray *keyArray;
     UITextField *textfiled;
     UIImagePickerController *imagePicker;
+    NSMutableArray *arr;
+    NSMutableArray *array_key_value;
+    NSString *selectIndustryId;
+
 
 }
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
@@ -35,6 +40,7 @@
 @property (assign, nonatomic)UIViewController *fatherController;
 @property (strong, nonatomic) ProfileModel *infoModel; //保存履历节点信息
 @property (assign, nonatomic) int pageType; //0:节点修改 1：增加节点
+@property (nonatomic, strong) AJComboBox *comboBox;
 
 - (IBAction)buttonClickerHandle:(id)sender;
 

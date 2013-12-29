@@ -9,6 +9,7 @@
 #import "PersonInfoEditViewController.h"
 #import "GTMBase64.h"
 #import <QuartzCore/QuartzCore.h>
+#import "KeyValueModel.h"
 
 #define Tag_PickerCancel_Action 200
 #define Tag_PickerOk_Aciton  201
@@ -21,13 +22,15 @@
 @end
 
 @implementation PersonInfoEditViewController
+@synthesize comboBox;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        keyArray = @[@"身份",@"描述",@"组织",@"省份",@"城市",@"开始时间",@"结束时间"];
+        keyArray = @[@"身份",@"所属行业",@"组织",@"省份",@"城市",@"开始时间",@"结束时间"];
+        array_key_value = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -36,13 +39,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self getIndustryList];
     if (self.pageType == 0)
     {
-        self.navigationItem.title = @"个人履历修改";
+        self.navigationItem.title = @"修改履历";
     }
     else if(self.pageType == 1)
     {
-        self.navigationItem.title = @"个人履历增加";
+        self.navigationItem.title = @"新增个人履历";
     }
     
     [self initTableView];
@@ -64,7 +69,7 @@
     [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_n"] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"btn_find_stu_s"] forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(updatePersonInfo) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"完成" forState:UIControlStateNormal];
+    [button setTitle:@"确定" forState:UIControlStateNormal];
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = item;
@@ -124,7 +129,10 @@
     [cell.contentView addSubview:titleLabel];
 
     UITextField *txtField = [[UITextField alloc] initWithFrame:CGRectMake(90, 5, 200, 30)];
-    [cell.contentView addSubview:txtField];
+    if (indexPath.row != 1) {
+        [cell.contentView addSubview:txtField];
+    }
+    
     [txtField setFont:[UIFont systemFontOfSize:15]];
     txtField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     txtField.borderStyle = UITextBorderStyleLine;
@@ -135,7 +143,13 @@
     }
     else if(indexPath.row == 1)
     {
-        txtField.text = self.infoModel.mDesc;
+//        txtField.text = self.infoModel.mDesc;
+        comboBox = [[AJComboBox alloc] initWithFrame:CGRectMake(90, 5, 200, 30)];
+        [comboBox setLabelText:@"- SELECT -"];
+        [comboBox setDelegate:self];
+        [comboBox setTag:1];
+//        [comboBox setArrayData:arr];
+        [cell.contentView addSubview:comboBox];
     }
     else if(indexPath.row == 2)
     {
@@ -179,7 +193,7 @@
             break;
         case 101:
         {
-            self.infoModel.mDesc = textField.text;
+//            self.infoModel.mDesc = textField.text;
         }
             break;
         case 102:
@@ -369,10 +383,6 @@
     {
         errStr = @"请输入身份信息";
     }
-    else if ([StaticTools isEmptyString:self.infoModel.mDesc])
-    {
-        errStr = @"请输入描述信息";
-    }
     else if ([StaticTools isEmptyString:self.infoModel.mOrg])
     {
         errStr = @"请输入组织信息";
@@ -401,7 +411,7 @@
     
     NSMutableDictionary *infoMtbDict = [NSMutableDictionary dictionaryWithCapacity:0];
     [infoMtbDict setValue:self.infoModel.mTitle forKey:@"title"];
-    [infoMtbDict setValue:self.infoModel.mDesc forKey:@"desc"];
+    [infoMtbDict setValue:selectIndustryId forKey:@"industryId"];
     [infoMtbDict setValue:self.infoModel.mOrg forKey:@"org"];
     [infoMtbDict setValue:self.infoModel.mProvince forKey:@"province"];
     [infoMtbDict setValue:self.infoModel.mCity forKey:@"city"];
@@ -476,5 +486,54 @@
 //    }
     [self.view endEditing:YES];
     self.listTableView.contentOffset = CGPointMake(0 , 0);
+}
+
+#pragma mark -
+#pragma mark AJComboBoxDelegate
+
+-(void)didChangeComboBoxValue:(AJComboBox *)comboBox selectedIndex:(NSInteger)selectedIndex
+{
+    KeyValueModel *model = [array_key_value objectAtIndex:selectedIndex];
+	selectIndustryId = [model getKey];
+}
+
+-(void)getIndustryList{
+    
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"CONFIGINDUSTRYLIST" messId:nil success:^(id obj)
+     {
+         if ([[obj objectForKey:@"rc"]intValue] == 1)
+         {
+             NSArray *listArray = obj[@"list"];
+             int index = 0;
+             for (int i=0; i< listArray.count; i++)
+             {
+                 NSDictionary *temDict = listArray[i];
+                 KeyValueModel *model = [[KeyValueModel alloc]init];
+                 model.key = temDict[@"id"];
+                 if (self.pageType == 0 && [[NSString stringWithFormat:@"%@", temDict[@"id"]] isEqualToString:self.infoModel.mIndustryId]) {
+                     index = i ;
+                 }
+                 model.value = temDict[@"display"];
+                 [array_key_value addObject:model];
+                 [arr addObject:model.value];
+                 
+             }
+             [comboBox setArrayData:arr];
+             
+             [comboBox setSelectedInde:index];
+             
+         }
+         else
+         {
+             [SVProgressHUD showErrorWithStatus:@"获取行业信息失败！"];
+             
+         }
+         
+         
+     } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"正在提交..."
+                                   completeBlock:nil];
 }
 @end

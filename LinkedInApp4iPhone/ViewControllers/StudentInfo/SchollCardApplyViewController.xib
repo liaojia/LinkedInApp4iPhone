@@ -23,15 +23,15 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="lVw-Wo-R2b">
-                    <rect key="frame" x="22" y="37" width="278" height="41"/>
+                    <rect key="frame" x="15" y="37" width="290" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="CgD-sy-EP9">
-                    <rect key="frame" x="22" y="101" width="278" height="41"/>
+                    <rect key="frame" x="15" y="101" width="290" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_normal.png" id="Bd1-IE-zf0">
-                    <rect key="frame" x="22" y="162" width="278" height="41"/>
+                    <rect key="frame" x="15" y="162" width="290" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" minimumFontSize="17" clearButtonMode="always" id="h5b-03-Ei2">
@@ -53,13 +53,15 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fjF-Df-wNE">
-                    <rect key="frame" x="40" y="225" width="246" height="44"/>
+                    <rect key="frame" x="15" y="250" width="290" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <state key="normal" title="提交" backgroundImage="btn_login_n.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" backgroundImage="btn_confirm_s.png"/>
+                    <state key="highlighted" backgroundImage="btn_confirm_s.png"/>
                     <connections>
                         <action selector="buttonClickHandle:" destination="-1" eventType="touchUpInside" id="FCb-CM-UXx"/>
                     </connections>
@@ -71,6 +73,7 @@
         </view>
     </objects>
     <resources>
+        <image name="btn_confirm_s.png" width="278" height="35"/>
         <image name="btn_login_n.png" width="132" height="35"/>
         <image name="img_backdrop.png" width="800" height="1270"/>
         <image name="more_normal.png" width="616" height="64"/>
