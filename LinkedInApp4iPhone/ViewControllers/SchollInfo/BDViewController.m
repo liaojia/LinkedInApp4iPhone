@@ -47,7 +47,16 @@
     self.onSingleTap =  ^(UIView* view, NSInteger viewIndex){
         
         NSDictionary *temDict = self.imgInfoArray[viewIndex];
-             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:self.view.frame url:temDict[@"pic"]];
+        CGRect frame ;
+        if (IOS7_OR_LATER)
+        {
+            frame = self.view.frame;
+        }
+        else
+        {
+            frame = CGRectMake(0, 64, 320, self.view.frame.size.height);
+        }
+             ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:frame url:temDict[@"pic"]];
             
             [self.view.superview.superview addSubview:imageShowView];
             

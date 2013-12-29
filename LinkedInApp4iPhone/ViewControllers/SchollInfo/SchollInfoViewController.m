@@ -212,7 +212,16 @@
         case 300: //印象首师 图片查看
         {
 
-            ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:self.view.frame image:[UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]]];
+            CGRect frame ;
+            if (IOS7_OR_LATER)
+            {
+                frame = self.view.frame;
+            }
+            else
+            {
+                frame = CGRectMake(0, 64, 320, self.view.frame.size.height);
+            }
+            ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:frame image:[UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]]];
             
             [self.view.superview.superview addSubview:imageShowView];
             
