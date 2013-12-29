@@ -298,17 +298,18 @@
     {
         return;
     }
-     UIImageView *headImgView = (UIImageView*)[[self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:200];
+//     UIImageView *headImgView = (UIImageView*)[[self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:200];
     NSDictionary *dict = Nil;
     if (cerType==0)
     {
-        
-        dict = @{@"name":self.name,@"gender":(sigleCell.segControl.selectedSegmentIndex==0?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",2],@"org1Id":self.selectFistCompany[@"id"],@"org2Id":self.selectSecCompaye[@"id"],@"empNo":self.workerNum,@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":selectImg==nil?@"":[GTMBase64 stringByEncodingData: UIImagePNGRepresentation(headImgView.image) ]};
+        selectImg = [UIImage imageWithImage:selectImg scaledToSize:CGSizeMake(100 , 100)];
+        dict = @{@"name":self.name,@"gender":(sigleCell.segControl.selectedSegmentIndex==0?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",2],@"org1Id":self.selectFistCompany[@"id"],@"org2Id":self.selectSecCompaye[@"id"],@"empNo":self.workerNum,@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":selectImg==nil?@"":[GTMBase64 stringByEncodingData: UIImagePNGRepresentation(selectImg) ]};
     }
     else
     {
-        
-        dict = @{@"name":self.name,@"gender":(sigleCell.segControl.selectedSegmentIndex==0?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",1],@"deptId":self.selectDepartment[@"id"],@"majorId":[NSString stringWithFormat:@"%@",self.selectMajor[@"id"]],@"clazz":self.classNum,@"adYear":[NSString stringWithFormat:@"%d",selectYear],@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":selectImg==nil?@"":[GTMBase64 stringByEncodingData: UIImagePNGRepresentation(headImgView.image) ]};
+     
+        selectImg = [UIImage imageWithImage:selectImg scaledToSize:CGSizeMake(100 , 100)];
+        dict = @{@"name":self.name,@"gender":(sigleCell.segControl.selectedSegmentIndex==0?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",1],@"deptId":self.selectDepartment[@"id"],@"majorId":[NSString stringWithFormat:@"%@",self.selectMajor[@"id"]],@"clazz":self.classNum,@"adYear":[NSString stringWithFormat:@"%d",selectYear],@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":selectImg==nil?@"":[GTMBase64 stringByEncodingData: UIImagePNGRepresentation(selectImg) ]};
         
     }
     AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dict requesId:@"ADDREGISTERINFO" messId:nil success:^(id obj)
