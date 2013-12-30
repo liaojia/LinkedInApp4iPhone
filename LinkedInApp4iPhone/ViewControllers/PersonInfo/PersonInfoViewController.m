@@ -197,11 +197,12 @@
         {
             
             //TODO
-//            FindClassmateViewController *findClassMateController = [[FindClassmateViewController alloc]initWithNibName:@"FindClassmateViewController" bundle:nil];
-//            [self.navigationController pushViewController:findClassMateController animated:YES];
+            FindClassmateViewController *findClassMateController = [[FindClassmateViewController alloc]initWithNibName:@"FindClassmateViewController" bundle:nil];
+            [self.navigationController pushViewController:findClassMateController animated:YES];
             
-            MyCircleViewController *myCircleController = [[MyCircleViewController alloc]initWithNibName:@"MyCircleViewController" bundle:nil];
-            [self.navigationController pushViewController:myCircleController animated:YES];
+            //圈子
+//            MyCircleViewController *myCircleController = [[MyCircleViewController alloc]initWithNibName:@"MyCircleViewController" bundle:nil];
+//            [self.navigationController pushViewController:myCircleController animated:YES];
             
         }
             break;
