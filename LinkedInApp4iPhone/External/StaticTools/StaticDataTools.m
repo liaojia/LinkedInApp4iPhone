@@ -182,7 +182,7 @@
  */
 + (BOOL)isEmptyString:(NSString *)string
 {
-    if (string == nil)
+    if (string == nil||[string isEqual:[NSNull null]])
     {
         return YES;
     }

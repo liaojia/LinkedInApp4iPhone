@@ -105,13 +105,18 @@
         [button addTarget:self action:@selector(buttonClickHandle:) forControlEvents:UIControlEventTouchUpInside];
         [self.headSclView addSubview:button];
         
-        AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:dict[@"pic"]]] success:^(UIImage *image) {
+        if (![StaticTools isEmptyString:dict[@"pic"]])
+        {
+            AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:dict[@"pic"]]] success:^(UIImage *image) {
+                
+                NSLog(@"下载图片完成 %@",dict[@"pic"]);
+                [button setImage:image forState:UIControlStateNormal];
+            }];
             
-            NSLog(@"下载图片完成 %@",dict[@"pic"]);
-            [button setImage:image forState:UIControlStateNormal];
-        }];
-        
-        [operation start];
+            [operation start];
+
+        }
+       
     }
 }
 
