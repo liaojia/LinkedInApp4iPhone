@@ -334,6 +334,7 @@
 #pragma mark - scrolling
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
+    NSLog(@"scrollView.contentOffset.y %f  scrollView.contentSize.height %f  scrollView.frame.size.height %f",scrollView.contentOffset.y,scrollView.contentSize.height,scrollView.frame.size.height);
     float yMargin = scrollView.contentOffset.y + scrollView.frame.size.height - scrollView.contentSize.height;
     if (yMargin>50)
     {

@@ -11,7 +11,7 @@
 #import "ImageShowView.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kOonePageCount 3
+#define kOonePageCount 10
 
 @interface BDViewController (){
 }
@@ -128,7 +128,7 @@
     }
     else
     {
-        if (currentPage<totalPage)
+        if (page<totalPage)
         {
             maxNum = kOonePageCount;
         }
@@ -160,7 +160,6 @@
         
         [operation start];
     }
-    
 }
 - (void)shouldUpDragUpdate
 {
