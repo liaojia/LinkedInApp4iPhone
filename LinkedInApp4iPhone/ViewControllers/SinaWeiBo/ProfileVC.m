@@ -145,6 +145,7 @@
     
     NSMutableDictionary     *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:authToken,@"access_token",nil];
     [params setObject:uid forKey:@"uid"];
+    
     NSLog(@"uid = %@",uid);
     if (sinceID >= 0) {
         NSString *tempString = [NSString stringWithFormat:@"%lld",sinceID];

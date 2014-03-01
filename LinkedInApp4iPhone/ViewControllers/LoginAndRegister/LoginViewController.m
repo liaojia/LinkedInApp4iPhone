@@ -102,7 +102,7 @@
     UINavigationController *circleNav = [[UINavigationController alloc]initWithRootViewController:myCircelController];
     myCircelController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
     [myCircelController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_circle_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_circle_nomal"]];
-    myCircelController.tabBarItem.imageInsets = UIEdgeInsetsMake(25, 22, 13, 22);
+    myCircelController.tabBarItem.imageInsets = UIEdgeInsetsMake(25, 22, 11, 22);
     myCircelController.navigationController.delegate = myCircelController.navigationController;
     
     if (APPTYPE == kAppTypeHaveCircle)

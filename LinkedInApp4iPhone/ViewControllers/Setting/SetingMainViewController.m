@@ -72,7 +72,7 @@
 - (void)gotoSinaWeiBo
 {
     ProfileVC *profile = [[ProfileVC alloc]initWithNibName:@"ProfileVC" bundle:nil];
-    profile.userID = [NSString stringWithFormat:@"%@",@"3044034642"];
+    profile.userID = [NSString stringWithFormat:@"%@",@"2091014467"];
     [self.navigationController pushViewController:profile animated:YES];
 }
 
