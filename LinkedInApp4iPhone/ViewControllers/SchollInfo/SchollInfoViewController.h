@@ -25,4 +25,6 @@
 @property (strong, nonatomic) NSMutableArray *schoolInfoMtbArray; //保存母校动态信息
 @property (strong, nonatomic) UIButton *schollImgbtn;  //印象首师显示图片
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) NSMutableArray *imgInfoArray; //印象首页图片地址数据
+@property (strong, nonatomic) NSMutableArray *imgArray; //印象首师图片数据
 @end

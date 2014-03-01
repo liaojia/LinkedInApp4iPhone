@@ -30,6 +30,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        self.imgArray = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -50,6 +52,8 @@
     self.listTableView.backgroundColor = [UIColor clearColor];
     
     [self getSchollInfoListInfo];
+    
+    [self getImgInfo];
     
     if ( IOS7_OR_LATER )
     {
@@ -109,8 +113,13 @@
  */
 - (void)changePic
 {
+    if (self.imgArray.count==0)
+    {
+        return;
+    }
+    
     currentPicIndex++;
-    if(currentPicIndex>5)
+    if(currentPicIndex>self.imgArray.count)
     {
         currentPicIndex=1;
     }
@@ -121,7 +130,7 @@
 	transition.type = kCATransitionReveal;
 	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
 	transition.subtype =kCATransitionFromRight;
-    [self.schollImgbtn setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]] forState:UIControlStateNormal];
+    [self.schollImgbtn setBackgroundImage:self.imgArray[currentPicIndex-1] forState:UIControlStateNormal];
     [self.schollImgbtn.layer addAnimation:transition forKey:nil];
 }
 
@@ -175,6 +184,55 @@
                                           prompt:@"加载中..."
                                    completeBlock:nil];
 }
+
+/**
+ *  获取印象首师第一页的图片列表
+ *
+ *  @param page
+ */
+- (void)getImgInfo
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:@{@"page":[NSString stringWithFormat:@"%d",1],@"num":[NSString stringWithFormat:@"%d",10]} requesId:@"GETPHOTOLIST" messId:nil success:^(id obj)
+             {
+                 if ([[obj objectForKey:@"rc"]intValue] == 1)
+                 {
+                     
+                     NSArray *listArray = obj[@"list"];
+                     
+                     self.imgInfoArray = [NSMutableArray arrayWithArray:listArray];
+                     for (int i=0;i<self.imgInfoArray.count;i++)
+                     {
+                         NSDictionary *dict = self.imgInfoArray[i];
+//                         [self.imgArray addObject:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
+                         AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:dict[@"thumbnail"]]] success:^(UIImage *image) {
+                             
+                             [self.imgArray addObject:image];
+                             [self changePic];
+                         }]; 
+                         
+                         [operation start];
+                         
+                     }
+                    
+                     
+                 }
+                 else if([[obj objectForKey:@"rc"]intValue] == -1)
+                 {
+                     [SVProgressHUD showErrorWithStatus:@"印象首师图片数据加载失败！"];
+                 }
+                 else
+                 {
+                     [SVProgressHUD showErrorWithStatus:@"印象首师图片数据加载失败！"];
+                 }
+                 
+                 
+             } failure:nil];
+
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:nil
+                                   completeBlock:nil];
+    
+}
 #pragma mark-
 #pragma mark--按钮点击事件
 - (void)buttonClickHandle:(id)sender
@@ -212,6 +270,11 @@
         case 300: //印象首师 图片查看
         {
 
+            if (self.imgInfoArray.count<currentPicIndex)
+            {
+                return;
+            }
+            
             CGRect frame ;
             if (IOS7_OR_LATER)
             {
@@ -221,7 +284,8 @@
             {
                 frame = CGRectMake(0, 64, 320, self.view.frame.size.height);
             }
-            ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:frame image:[UIImage imageNamed:[NSString stringWithFormat:@"image0%d.jpg",currentPicIndex]]];
+            NSDictionary *temDict = self.imgInfoArray[currentPicIndex-1];
+            ImageShowView * imageShowView  = [[ImageShowView alloc]initWithFrame:frame url:temDict[@"pic"]];;
             
             [self.view.superview.superview addSubview:imageShowView];
             

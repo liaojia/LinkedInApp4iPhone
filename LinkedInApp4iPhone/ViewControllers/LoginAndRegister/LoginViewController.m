@@ -98,8 +98,23 @@
     setingController.navigationController.delegate = setingController.navigationController;
     
     
+    MyCircleViewController *myCircelController = [[MyCircleViewController alloc]initWithNibName:@"MyCircleViewController" bundle:nil];
+    UINavigationController *circleNav = [[UINavigationController alloc]initWithRootViewController:myCircelController];
+    myCircelController.tabBarItem = [[UITabBarItem alloc]initWithTitle:nil image:nil tag:0];
+    [myCircelController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"img_group_circle_pressed"] withFinishedUnselectedImage:[UIImage imageNamed:@"img_group_circle_nomal"]];
+    myCircelController.tabBarItem.imageInsets = UIEdgeInsetsMake(25, 22, 13, 22);
+    myCircelController.navigationController.delegate = myCircelController.navigationController;
     
-    tabbar.viewControllers = @[studentNav,schoolNav,personNav,setingNav];
+    if (APPTYPE == kAppTypeHaveCircle)
+    {
+        tabbar.viewControllers = @[studentNav,schoolNav,personNav,circleNav,setingNav];
+    }
+    else
+    {
+        tabbar.viewControllers = @[studentNav,schoolNav,personNav,setingNav];
+    }
+    
+    
     
     [self.navigationController pushViewController:tabbar animated:YES];
     

@@ -17,6 +17,7 @@
 #import "PersonalCardViewController.h"
 #import "FindClassmateViewController.h"
 #import "MyCircleViewController.h"
+#import "AddRegisterInfoViewController.h"
 
 #define Tag_DeletePersonInfo_Alert 500
 
@@ -381,10 +382,10 @@
         if (indexPath.section == 1 && indexPath.row == 0&&[self.personId isEqualToString:@"me"]) {
             //增加
             UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            addBtn.frame = CGRectMake(tableView.frame.size.width -100, 8, 65, 21);
+            addBtn.frame = CGRectMake(tableView.frame.size.width -120, 8, 85, 21);
             [addBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_normal"] forState:UIControlStateNormal];
             [addBtn setBackgroundImage:[UIImage imageNamed:@"img_school_notice_pressed"] forState:UIControlStateHighlighted];
-            [addBtn setTitle:@"增加" forState:UIControlStateNormal];
+            [addBtn setTitle:@"增加履历" forState:UIControlStateNormal];
             addBtn.titleLabel.font = [UIFont systemFontOfSize:15];
             addBtn.titleLabel.textColor = [UIColor whiteColor];
             addBtn.tag = 106;
@@ -571,9 +572,12 @@
     }
     else if(indexPath.section == 0) //进入个人名片修改页面
     {
-        PersonalCardViewController *personalCardController = [[PersonalCardViewController alloc]initWithNibName:@"PersonalCardViewController" bundle:[NSBundle mainBundle]];
-        personalCardController.fatherContrller = self;
-        [self.navigationController pushViewController:personalCardController animated:YES];
+//        PersonalCardViewController *personalCardController = [[PersonalCardViewController alloc]initWithNibName:@"PersonalCardViewController" bundle:[NSBundle mainBundle]];
+//        personalCardController.fatherContrller = self;
+        
+        AddRegisterInfoViewController *addRegisterInfoController = [[AddRegisterInfoViewController alloc]    initWithNibName:@"AddRegisterInfoViewController" bundle:nil];
+        addRegisterInfoController.pageType = 1;
+        [self.navigationController pushViewController:addRegisterInfoController animated:YES];
     }
     else if(indexPath.section == 2||indexPath.section == 3)
     {

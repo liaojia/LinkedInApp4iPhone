@@ -342,6 +342,8 @@
 		CEE8EACE180E720D0052E5D8 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE8EACC180E720D0052E5D8 /* ActivityDetailViewController.xib */; };
 		CEE8EAD1180E776C0052E5D8 /* PersonHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */; };
 		CEE9826918632FCF00735125 /* img_school_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEE9826818632FCF00735125 /* img_school_logo.jpg */; };
+		CEECBF6B18C2022F00719133 /* img_group_circle_nomal.png in Resources */ = {isa = PBXBuildFile; fileRef = CEECBF6918C2022F00719133 /* img_group_circle_nomal.png */; };
+		CEECBF6C18C2022F00719133 /* img_group_circle_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = CEECBF6A18C2022F00719133 /* img_group_circle_pressed.png */; };
 		CEF511A7186DF76C00F141DA /* AddRegisterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF51196186DF76C00F141DA /* AddRegisterInfoViewController.m */; };
 		CEF511A8186DF76C00F141DA /* AddRegisterInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF51197186DF76C00F141DA /* AddRegisterInfoViewController.xib */; };
 		CEF511A9186DF76C00F141DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF51199186DF76C00F141DA /* LoginViewController.m */; };
@@ -809,6 +811,8 @@
 		CEE8EACF180E776C0052E5D8 /* PersonHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonHeadView.h; sourceTree = "<group>"; };
 		CEE8EAD0180E776C0052E5D8 /* PersonHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonHeadView.m; sourceTree = "<group>"; };
 		CEE9826818632FCF00735125 /* img_school_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_school_logo.jpg; sourceTree = "<group>"; };
+		CEECBF6918C2022F00719133 /* img_group_circle_nomal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_group_circle_nomal.png; sourceTree = "<group>"; };
+		CEECBF6A18C2022F00719133 /* img_group_circle_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_group_circle_pressed.png; sourceTree = "<group>"; };
 		CEF51195186DF76C00F141DA /* AddRegisterInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRegisterInfoViewController.h; sourceTree = "<group>"; };
 		CEF51196186DF76C00F141DA /* AddRegisterInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRegisterInfoViewController.m; sourceTree = "<group>"; };
 		CEF51197186DF76C00F141DA /* AddRegisterInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRegisterInfoViewController.xib; sourceTree = "<group>"; };
@@ -1109,6 +1113,8 @@
 		8DF20792180CE05600FDEABA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CEECBF6918C2022F00719133 /* img_group_circle_nomal.png */,
+				CEECBF6A18C2022F00719133 /* img_group_circle_pressed.png */,
 				CEAAA70518702B8A0092A948 /* img_sina_weibo_64.png */,
 				CEAAA6FE186FF0750092A948 /* img_sys_weibo.png */,
 				CE465AE7186F19560039A184 /* btn_group_n.png */,
@@ -1875,6 +1881,7 @@
 				CE67C7E81861ECD2006EA741 /* img_splash_12.png in Resources */,
 				CEF511AC186DF76C00F141DA /* RegisterViewController.xib in Resources */,
 				CE7482861860AD8900C89A26 /* img_group_school_normal.png in Resources */,
+				CEECBF6B18C2022F00719133 /* img_group_circle_nomal.png in Resources */,
 				CEE8EAC9180E71E40052E5D8 /* ActivityCell.xib in Resources */,
 				CEE8EACE180E720D0052E5D8 /* ActivityDetailViewController.xib in Resources */,
 				8DB481ED1865FE430036F390 /* btn_back_n@2x.png in Resources */,
@@ -1924,6 +1931,7 @@
 				CE7482971860B36500C89A26 /* img_sys_exit@2x.png in Resources */,
 				8DB481F51865FF3D0036F390 /* btn_find_stu_n@2.png in Resources */,
 				CE00A110181615D700253780 /* timeline_rt_border_t.png in Resources */,
+				CEECBF6C18C2022F00719133 /* img_group_circle_pressed.png in Resources */,
 				CE67C8091861F199006EA741 /* img_edittext_pwd@2x.png in Resources */,
 				8DB481E71865F3AD0036F390 /* btn_add_s@2.png in Resources */,
 				8DDE0B73186DCD8500ABF9C3 /* combo_bg.png in Resources */,
@@ -2209,14 +2217,14 @@
 		8DEE3E6018044A1C00B4C607 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: hongling sheng (T9JS32ALY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hongling sheng (T9JS32ALY6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: qiao chen (5TKDA7U54H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: qiao chen (5TKDA7U54H)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinkedInApp4iPhone/LinkedInApp4iPhone-Prefix.pch";
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F6D0A5E4-6767-4E9B-BE38-E84B6924C51F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2224,14 +2232,14 @@
 		8DEE3E6118044A1C00B4C607 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: hongling sheng (T9JS32ALY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hongling sheng (T9JS32ALY6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: qiao chen (5TKDA7U54H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: qiao chen (5TKDA7U54H)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LinkedInApp4iPhone/LinkedInApp4iPhone-Prefix.pch";
 				INFOPLIST_FILE = "LinkedInApp4iPhone/LinkedInApp4iPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F6D0A5E4-6767-4E9B-BE38-E84B6924C51F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

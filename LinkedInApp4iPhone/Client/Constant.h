@@ -6,7 +6,14 @@
 //  Copyright (c) 2013 DHC. All rights reserved.
 //
 
+typedef enum
+{
+    
+    kAppTypeHaveCircle,  //有圈子模块
+    kAppTypeNoCircel     //没有圈子模块
+}kAPPTYPE;
 
+#define APPTYPE kAppTypeHaveCircle
 
 //#define DEMO                          1
 

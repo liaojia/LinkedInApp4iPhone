@@ -55,7 +55,10 @@
     imagePicker = [[UIImagePickerController alloc] init];
 	imagePicker.delegate = self;
     
+    
     [self getDepartMentList];
+    [self getCompacyList];
+    
     
     if ( IOS7_OR_LATER )
     {
@@ -231,10 +234,23 @@
                                                  
                                                  [self.departments addObjectsFromArray:listArray];
                                                 
-                                                  self.selectDepartment = [NSMutableDictionary dictionaryWithDictionary:self.departments[0]];
-                                                 [self.selectDepartment setValue:[NSNumber numberWithInt:0] forKey:@"INDEX"];
+                                                 if (self.pageType==0) //完善信息
+                                                 {
+                                                     self.selectDepartment = [NSMutableDictionary dictionaryWithDictionary:self.departments[0]];
+                                                     [self.selectDepartment setValue:[NSNumber numberWithInt:0] forKey:@"INDEX"];
+                                                     
+                                                     self.selectMajor =[NSMutableDictionary dictionaryWithDictionary: self.departments[[self.selectDepartment[@"INDEX"] intValue]][@"list"][0]];
+                                                 }
+                                                 else //修改个人名片
+                                                 {
+                                                     
+                                                     if (self.companys.count!=0)
+                                                     {
+                                                         [self getPersonalCardInfo];
+                                                     }
+                                                 }
                                                  
-                                                  self.selectMajor =[NSMutableDictionary dictionaryWithDictionary: self.departments[[self.selectDepartment[@"INDEX"] intValue]][@"list"][0]];
+                                                 
                                                  [self.listTableView reloadData];
                                                  
                                             }
@@ -265,11 +281,21 @@
                                                  
                                                  [self.companys addObjectsFromArray:listArray];
                                                  
-                                                
-                                                 self.selectFistCompany = [NSMutableDictionary dictionaryWithDictionary:self.departments[0]];
-                                                 [self.selectFistCompany setValue:[NSNumber numberWithInt:0] forKey:@"INDEX"];
+                                                 if (self.pageType==0) //完善个人信息
+                                                 {
+                                                     self.selectFistCompany = [NSMutableDictionary dictionaryWithDictionary:self.departments[0]];
+                                                     [self.selectFistCompany setValue:[NSNumber numberWithInt:0] forKey:@"INDEX"];
+                                                     
+                                                     self.selectSecCompaye =[NSMutableDictionary dictionaryWithDictionary: self.companys[[self.selectFistCompany[@"INDEX"] intValue]][@"list"][0]];
+                                                 }
+                                                 else
+                                                 {
+                                                     if (self.departments.count!=0)
+                                                     {
+                                                         [self getPersonalCardInfo];
+                                                     }
+                                                 }
                                                  
-                                                 self.selectSecCompaye =[NSMutableDictionary dictionaryWithDictionary: self.companys[[self.selectFistCompany[@"INDEX"] intValue]][@"list"][0]];
                                                  
                                                  [self.listTableView reloadData];
                                              }
@@ -288,7 +314,7 @@
 }
 
 /**
- *  提交个人信息
+ *  完善个人信息提交
  */
 - (void)commitInfo
 {
@@ -312,29 +338,176 @@
         dict = @{@"name":self.name,@"gender":(sigleCell.segControl.selectedSegmentIndex==0?@"1":@"0"),@"type":[NSString stringWithFormat:@"%d",1],@"deptId":self.selectDepartment[@"id"],@"majorId":[NSString stringWithFormat:@"%@",self.selectMajor[@"id"]],@"clazz":self.classNum,@"adYear":[NSString stringWithFormat:@"%d",selectYear],@"mobile":self.phonenum,@"email":self.email,@"qq":self.qqNum,@"pic":selectImg==nil?@"":[GTMBase64 stringByEncodingData: UIImagePNGRepresentation(selectImg) ]};
         
     }
-    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dict requesId:@"ADDREGISTERINFO" messId:nil success:^(id obj)
-                                         {
-                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
-                                             {
-                                                [SVProgressHUD showErrorWithStatus:@"信息提交成功，正在等待审核"];
-                                             }
-                                             else if ([[obj objectForKey:@"rc"]intValue] == -2)
-                                             {
-                                                 [SVProgressHUD showErrorWithStatus:@"已提交过个人信息"];
-                                             }
-                                             else
-                                             {
-                                                 [SVProgressHUD showErrorWithStatus:@"信息提交失败"];
-                                             }
-                                             
-                                             
-                                         } failure:nil];
+    
+    AFHTTPRequestOperation *operation ;
+    
+    if (self.pageType==0) //完善个人信息
+    {
+        operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dict requesId:@"ADDREGISTERINFO" messId:nil success:^(id obj)
+                     {
+                         if ([[obj objectForKey:@"rc"]intValue] == 1)
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"信息提交成功，正在等待审核"];
+                         }
+                         else if ([[obj objectForKey:@"rc"]intValue] == -2)
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"已提交过个人信息"];
+                         }
+                         else
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"信息提交失败"];
+                         }
+                         
+                         
+                     } failure:nil];
+    }
+    else //修改个人名片
+    {
+        operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:dict requesId:@"PROFILE_UPDATE" messId:nil success:^(id obj)
+                     {
+                         if ([[obj objectForKey:@"rc"]intValue] == 1)
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"个人名片更新成功"];
+                         }
+                        
+                         else
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"个人名片更新失败"];
+                         }
+                         
+                         
+                     } failure:nil];
+    }
     
     [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
                                           prompt:@"加载中..."
                                    completeBlock:nil];
 }
 
+
+/**
+ *	@brief	获取个人名片信息
+ *
+ *	@param
+ */
+- (void)getPersonalCardInfo
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"PROFILE_ALL" messId:@"me" success:^(id obj)
+                     {
+                         
+                         if ([[obj objectForKey:@"rc"]intValue] == 1)
+                         {
+                             self.name  = obj[@"name"];
+                             self.gedar = [obj[@"gender"] intValue];
+                             
+                             self.phonenum  = obj[@"mobile"];
+                             self.email = obj[@"email"];
+                             self.qqNum = obj[@"qq"];
+                             self.headImgUrl = obj[@"pic"];
+                             //下载头像数据
+                             if (![StaticTools isEmptyString:self.headImgUrl])
+                             {
+                                 AFImageRequestOperation* operation = [AFImageRequestOperation imageRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.headImgUrl]] success:^(UIImage *image) {
+                                     
+                                     UIImageView *headImgView = (UIImageView*)[[self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:200];
+                                     headImgView.image = image;
+                                     selectImg = image;
+                                    
+                                     
+                                 }];
+                                 
+                                 [operation start];
+
+                             }
+                             
+                             if ([obj[@"type"] intValue]==1) //学生校友
+                             {
+                                 cerType = 1;
+                                 int deptId = [obj[@"deptId"] intValue]; //院系id
+                                 int majorId = [obj[@"majorId"] intValue]; //专业id
+                                 self.classNum = obj[@"clazz"];
+                                 selectYear = [obj[@"adYear"] intValue]; //入学年份
+                                 
+                                 //根据后台返回的院系id和专业id查找相应的院系名称和专业名称
+                                 for (int i=0;i<self.departments.count;i++)
+                                 {
+                                     NSDictionary *dict = self.departments[i];
+                                     if ([dict[@"id"] intValue] ==deptId)
+                                     {
+                                          self.selectDepartment = [NSMutableDictionary dictionaryWithDictionary:self.departments[i]] ;
+                                         [self.selectDepartment setValue:[NSNumber numberWithInt:i] forKey:@"INDEX"];
+                                         
+                                         NSArray *majars = dict[@"list"];
+                                         for (int i=0; i<majars.count; i++)
+                                         {
+                                             NSDictionary *dict = majars[i];
+                                             if ([dict[@"id"] intValue] ==majorId)
+                                             {
+                                                 self.selectMajor = [NSMutableDictionary dictionaryWithDictionary:dict];
+                                                 break;
+                                             }
+
+                                         }
+                                         break;
+
+                                     }
+                                 }
+                                 
+                             }
+                             else
+                             {
+                                 cerType = 0;
+                                 
+                                 int org1Id = [obj[@"org1Id"] intValue]; //一级id
+                                 int org2Id = [obj[@"org2Id"] intValue]; //二级id
+                                 self.workerNum = obj[@"empNo"]; //工号
+                                 
+                                 //根据后台返回的一级id和二级id查找相应的组织名称
+                                 for (int i=0;i<self.companys.count;i++)
+                                 {
+                                     NSDictionary *dict = self.companys[i];
+                                     if ([dict[@"id"] intValue] == org1Id)
+                                     {
+                                         self.selectFistCompany = [NSMutableDictionary dictionaryWithDictionary:self.companys[i]] ;
+                                         [self.selectFistCompany setValue:[NSNumber numberWithInt:i] forKey:@"INDEX"];
+                                         
+                                         NSArray *majars = dict[@"list"];
+                                         for (int i=0; i<majars.count; i++)
+                                         {
+                                             NSDictionary *dict = majars[i];
+                                             if ([dict[@"id"]intValue] ==org2Id)
+                                             {
+                                                 self.selectSecCompaye = [NSMutableDictionary dictionaryWithDictionary:dict];
+                                                 break;
+                                             }
+                                             
+                                         }
+                                         break;
+                                         
+                                     }
+                                 }
+                             }
+                             
+                             
+                             [self.listTableView reloadData];
+                             
+                         }
+                         else if([[obj objectForKey:@"rc"]intValue] == -1)
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"个人Id不存在！"];
+                         }
+                         else
+                         {
+                             [SVProgressHUD showErrorWithStatus:@"个人信息加载失败！"];
+                         }
+                         
+                         
+                     } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
 
 #pragma mark-
 #pragma mark--按钮点击事件
@@ -414,19 +587,33 @@
             if (buttonIndex==0) //学生校友
             {
                 cerType = 1;
-                if (self.departments.count==0)
-                {
-                    [self getDepartMentList];
-                }
+//                if (self.departments.count==0)
+//                {
+//                    [self getDepartMentList];
+//                }
+               
+                self.selectDepartment = [NSMutableDictionary dictionaryWithDictionary:self.departments[0]];
+                [self.selectDepartment setValue:[NSNumber numberWithInt:0] forKey:@"INDEX"];
+                
+                self.selectMajor =[NSMutableDictionary dictionaryWithDictionary: self.departments[[self.selectDepartment[@"INDEX"] intValue]][@"list"][0]];
+                
             }
             else //教工校友
             {
                 cerType = 0;
-                if (self.companys.count==0)
-                {
-                    [self getCompacyList];
-                }
+//                if (self.companys.count==0)
+//                {
+//                    [self getCompacyList];
+//                }
+               
+                self.selectFistCompany = [NSMutableDictionary dictionaryWithDictionary:self.companys[0]];
+                [self.selectFistCompany setValue:[NSNumber numberWithInt:0] forKey:@"INDEX"];
+                
+                self.selectSecCompaye =[NSMutableDictionary dictionaryWithDictionary: self.companys[[self.selectFistCompany[@"INDEX"] intValue]][@"list"][0]];
+                
             }
+            
+            
             [self.listTableView reloadData];
         }
             break;
@@ -525,6 +712,19 @@
     else if (textField.tag == 111) //员工编号
     {
         self.workerNum = textField.text;
+    }
+}
+
+- (void)semengtValueChange:(id)sender
+{
+    UISegmentedControl *seg = (UISegmentedControl*)sender;
+    if (seg.selectedSegmentIndex==0)
+    {
+        self.gedar = 1;
+    }
+    else
+    {
+        self.gedar=0;
     }
 }
 #pragma mark-
@@ -649,6 +849,11 @@
     {
         sigleCell = [[[NSBundle mainBundle] loadNibNamed:@"SingleSelectCell" owner:nil options:nil] objectAtIndex:0];
         sigleCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [sigleCell.segControl addTarget:self action:@selector(semengtValueChange:) forControlEvents:UIControlEventValueChanged];
+        if (self.pageType==1)
+        {
+            sigleCell.segControl.selectedSegmentIndex = self.gedar==1?0:1;
+        }
         return sigleCell;
     }
     else if(indexPath.row==3)

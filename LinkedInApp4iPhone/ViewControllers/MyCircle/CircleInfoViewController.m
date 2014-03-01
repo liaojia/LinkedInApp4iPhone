@@ -429,14 +429,14 @@
         
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 80, 30)];
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.font = [UIFont systemFontOfSize:15];
+        titleLabel.font = [UIFont systemFontOfSize:14];
         [cell.contentView addSubview:titleLabel];
         
         UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 0, 220, 44)];
         detailLabel.backgroundColor = [UIColor clearColor];
         detailLabel.numberOfLines = 2;
         detailLabel.lineBreakMode = UILineBreakModeTailTruncation;
-        detailLabel.font = [UIFont systemFontOfSize:15];
+        detailLabel.font = [UIFont systemFontOfSize:14];
         [cell.contentView addSubview:detailLabel];
         
         if (indexPath.row==0)
