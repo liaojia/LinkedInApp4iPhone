@@ -26,8 +26,8 @@ typedef enum
 //#define LKCOLOR  ([UIColor colorWithRed:98/225.0f green:160/225.0f blue:220/225.0f alpha:1.0f])
 #define LKCOLOR  ([UIColor colorWithRed:46/225.0f green:137/225.0f blue:224/225.0f alpha:1.0f])
 
-//#define DEFAULTHOST                     @"http://115.47.56.228:8080"
-#define DEFAULTHOST                     @"http://xy.cnu.edu.cn"
+#define DEFAULTHOST                     @"http://115.47.56.228:8080"
+//#define DEFAULTHOST                     @"http://xy.cnu.edu.cn"
 
 #define kEVERLaunched                   @"everLaunched"
 #define kFIRSTLaunched                  @"firstLaunched"
