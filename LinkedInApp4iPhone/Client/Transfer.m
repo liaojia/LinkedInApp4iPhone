@@ -283,10 +283,17 @@ static NSString *totalSize = nil;
        [Transfer sharedClient].parameterEncoding = AFJSONParameterEncoding;
     
 
-    if (messId!=nil) //需要填充id 将id字段替换
+    if (messId!=nil&&[messId rangeOfString:@"###"].location==NSNotFound) //需要填充id 将id字段替换
     {
         requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:messId];
         requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${nodeID}" withString:messId];
+    }
+    else if(messId!=nil&&[messId rangeOfString:@"###"].location!=NSNotFound)
+        //以前的接口都只有一个需要填充的字段 但是圈子踢人字段有两个  所以加个判断 还是传一个字符 但是用两个值###分开
+    {
+        NSArray *ids = [messId componentsSeparatedByString:@"###"];
+         requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:ids[0]];
+        requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${personId}" withString:ids[1]];
     }
     NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
     

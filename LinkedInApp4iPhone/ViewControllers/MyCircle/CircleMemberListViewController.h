@@ -26,4 +26,5 @@
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (strong, nonatomic) NSMutableArray *resultMtbArray;
 @property (strong, nonatomic) NSString *circleId;
+@property (assign, nonatomic) int pageType; //0:我创建的圈子 1：我加入的圈子 2：推荐的圈子
 @end

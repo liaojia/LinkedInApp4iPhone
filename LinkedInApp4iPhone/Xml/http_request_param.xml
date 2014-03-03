@@ -393,6 +393,26 @@
         <method>POST</method>
     </request>
 
+    <!--获取我的权限-->
+    <request>
+        <requestId>GETMYAUTHORITY</requestId>
+        <url>/profile/me/config</url>
+        <method>GET</method>
+    </request>
+    
+    <!--修改我的权限-->
+    <request>
+        <requestId>CHANGEMYAUTHORITY</requestId>
+        <url>/profile/me/config/update</url>
+        <method>POST</method>
+    </request>
+    
+    <!--圈子踢人-->
+    <request>
+        <requestId>MOVEMYCIRCLEMENBER</requestId>
+        <url>/group/${id}/kick/${personId}</url>
+        <method>POST</method>
+    </request>
 
 
 </root>

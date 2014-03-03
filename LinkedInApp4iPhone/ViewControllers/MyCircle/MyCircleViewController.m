@@ -226,12 +226,12 @@
     }
     else if(indexPath.row==0)
     {
-        float height =  [StaticTools getLabelHeight:dict[@"name"] defautWidth:220 defautHeight:480 fontSize:15];
+        float height =  [StaticTools getLabelHeight:dict[@"name"] defautWidth:220 defautHeight:480 fontSize:14];
         return height<35?35:height+10;
     }
     else if(indexPath.row == 1)
     {
-        float height =  [StaticTools getLabelHeight:dict[@"desc"] defautWidth:220 defautHeight:480 fontSize:15];
+        float height =  [StaticTools getLabelHeight:dict[@"desc"] defautWidth:220 defautHeight:480 fontSize:14];
         return height<35?35:height+10;
 
     }
@@ -266,14 +266,14 @@
     
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 80, 25)];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont systemFontOfSize:16];
+    titleLabel.font = [UIFont systemFontOfSize:14];
     [cell.contentView addSubview:titleLabel];
     
     UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 5, 220, 25)];
     detailLabel.backgroundColor = [UIColor clearColor];
     detailLabel.numberOfLines = 0;
     detailLabel.lineBreakMode = UILineBreakModeCharacterWrap;
-    detailLabel.font = [UIFont systemFontOfSize:16];
+    detailLabel.font = [UIFont systemFontOfSize:14];
     [cell.contentView addSubview:detailLabel];
     
     NSDictionary *dict = self.resultMtbArray[indexPath.section];
@@ -287,7 +287,7 @@
     {
         titleLabel.text = @"圈子简介";
         detailLabel.text = dict[@"desc"];
-        detailLabel.frame = CGRectMake(90, 5, 220, [StaticTools getLabelHeight:dict[@"desc"] defautWidth:220 defautHeight:480 fontSize:15]);
+        detailLabel.frame = CGRectMake(90, 5, 220, [StaticTools getLabelHeight:dict[@"desc"] defautWidth:220 defautHeight:480 fontSize:14]);
     }
     else if(indexPath.row == 2)
     {

@@ -78,6 +78,12 @@
 {
     [self getCircleMemberListWithPage:currentPage+1];
 }
+- (void)moveBtnClick:(UIButton*)button
+{
+     ProfileModel *model = self.resultMtbArray[button.tag-100];
+    [self moveMenberWithId:model.mId];
+    
+}
 #pragma mark-
 #pragma mark--发送http请求
 /**
@@ -109,6 +115,7 @@
                                                      model.mProvince = dict[@"province"];
                                                      model.mCity = dict[@"city"];
                                                      model.mImgUrl = dict[@"pic"];
+                                                     model.mId = dict[@"id"];
                                                      [self.resultMtbArray addObject:model];
                                                      
                                                  }
@@ -141,7 +148,51 @@
                                    completeBlock:nil];
 }
 
+/**
+ *  移除某个人
+ *
+ *  @param idStr 要移除成员的id
+ */
+- (void)moveMenberWithId:(NSString*)idStr
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"MOVEMYCIRCLEMENBER" messId:[NSString stringWithFormat:@"%@###%@",self.circleId,idStr] success:^(id obj)
+                                         {
+                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
+                                             {
+                                                 [SVProgressHUD showSuccessWithStatus:@"移除成功!"];
+                                                 
+                                                 currentPage=0;
+                                                 [self getCircleMemberListWithPage:1];
+                                                 [self.resultMtbArray removeAllObjects];
+                                                 [self.listTableView reloadData];
+                                                 
+                                                
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"圈子id不存在！"];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -2)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"成员id不存在！"];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -3)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"改人员不是圈子成员！"];
+                                             }
+                                             else
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"移除失败！"];
+                                             }
+                                             
+                                             
+                                         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
 
+}
 #pragma mark-
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -171,7 +222,19 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    cell.changeBtn.hidden = YES;
+    if (self.pageType==0)
+    {
+        cell.changeBtn.hidden = NO;
+        cell.changeBtn.frame = CGRectMake(250, 30, 60, 30);
+        cell.changeBtn.tag = indexPath.row+100;
+        [cell.changeBtn setTitle:@"移除" forState:UIControlStateNormal];
+        [cell.changeBtn addTarget:self action:@selector(moveBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+         cell.changeBtn.hidden = YES;
+    }
+   
     cell.recommendButton.hidden = YES;
     cell.recommendButton.hidden = YES;
     

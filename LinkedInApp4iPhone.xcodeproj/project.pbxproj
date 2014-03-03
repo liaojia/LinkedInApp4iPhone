@@ -202,6 +202,9 @@
 		CE00A129181615D700253780 /* statusbar_background.png in Resources */ = {isa = PBXBuildFile; fileRef = CE00A0FF181615D700253780 /* statusbar_background.png */; };
 		CE00A12A181615D700253780 /* tabbar_whitebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE00A100181615D700253780 /* tabbar_whitebtn.png */; };
 		CE00A12B181615D700253780 /* tabbar_whitebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE00A101181615D700253780 /* tabbar_whitebtn@2x.png */; };
+		CE33184B18C4D38600A55E25 /* AuthoritySetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE33184918C4D38600A55E25 /* AuthoritySetViewController.m */; };
+		CE33184C18C4D38600A55E25 /* AuthoritySetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE33184A18C4D38600A55E25 /* AuthoritySetViewController.xib */; };
+		CE33185318C4D7D300A55E25 /* icon_authority.png in Resources */ = {isa = PBXBuildFile; fileRef = CE33185218C4D7D300A55E25 /* icon_authority.png */; };
 		CE364D21181181170033EA6B /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE364D1F181181170033EA6B /* NoticeDetailViewController.m */; };
 		CE364D22181181170033EA6B /* NoticeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE364D20181181170033EA6B /* NoticeDetailViewController.xib */; };
 		CE465AE9186F19560039A184 /* btn_group_n.png in Resources */ = {isa = PBXBuildFile; fileRef = CE465AE7186F19560039A184 /* btn_group_n.png */; };
@@ -617,6 +620,10 @@
 		CE00A0FF181615D700253780 /* statusbar_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusbar_background.png; sourceTree = "<group>"; };
 		CE00A100181615D700253780 /* tabbar_whitebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_whitebtn.png; sourceTree = "<group>"; };
 		CE00A101181615D700253780 /* tabbar_whitebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_whitebtn@2x.png"; sourceTree = "<group>"; };
+		CE33184818C4D38600A55E25 /* AuthoritySetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthoritySetViewController.h; sourceTree = "<group>"; };
+		CE33184918C4D38600A55E25 /* AuthoritySetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthoritySetViewController.m; sourceTree = "<group>"; };
+		CE33184A18C4D38600A55E25 /* AuthoritySetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthoritySetViewController.xib; sourceTree = "<group>"; };
+		CE33185218C4D7D300A55E25 /* icon_authority.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_authority.png; sourceTree = "<group>"; };
 		CE364D1E181181170033EA6B /* NoticeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
 		CE364D1F181181170033EA6B /* NoticeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
 		CE364D20181181170033EA6B /* NoticeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeDetailViewController.xib; sourceTree = "<group>"; };
@@ -1113,6 +1120,7 @@
 		8DF20792180CE05600FDEABA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CE33185218C4D7D300A55E25 /* icon_authority.png */,
 				CEECBF6918C2022F00719133 /* img_group_circle_nomal.png */,
 				CEECBF6A18C2022F00719133 /* img_group_circle_pressed.png */,
 				CEAAA70518702B8A0092A948 /* img_sina_weibo_64.png */,
@@ -1471,6 +1479,9 @@
 				CE7482751860A69500C89A26 /* AboutViewController.h */,
 				CE7482761860A69500C89A26 /* AboutViewController.m */,
 				CE7482771860A69500C89A26 /* AboutViewController.xib */,
+				CE33184818C4D38600A55E25 /* AuthoritySetViewController.h */,
+				CE33184918C4D38600A55E25 /* AuthoritySetViewController.m */,
+				CE33184A18C4D38600A55E25 /* AuthoritySetViewController.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1846,6 +1857,7 @@
 				CEF511AA186DF76C00F141DA /* LoginViewController.xib in Resources */,
 				CE67C7E51861ECD2006EA741 /* img_splash_9.png in Resources */,
 				CE7482991860B36500C89A26 /* img_sys_update@2x.png in Resources */,
+				CE33184C18C4D38600A55E25 /* AuthoritySetViewController.xib in Resources */,
 				8DF207EF180CE05600FDEABA /* img_splash@2x.png in Resources */,
 				8DF207F0180CE05600FDEABA /* img_timeline_node@2x.png in Resources */,
 				8DF207F1180CE05600FDEABA /* img_timeline_vertical@2x.png in Resources */,
@@ -1966,6 +1978,7 @@
 				CE67C7E31861ECD2006EA741 /* img_splash_7.png in Resources */,
 				CE7482871860AD8900C89A26 /* img_group_school_pressed.png in Resources */,
 				CE00A120181615D700253780 /* loadingImage_50x118@2x.png in Resources */,
+				CE33185318C4D7D300A55E25 /* icon_authority.png in Resources */,
 				CE00A121181615D700253780 /* LOGO_16x16.png in Resources */,
 				CE00A122181615D700253780 /* LOGO_24x24.png in Resources */,
 				CE00A123181615D700253780 /* LOGO_32x32.png in Resources */,
@@ -2008,6 +2021,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DEE3E4C18044A1C00B4C607 /* main.m in Sources */,
+				CE33184B18C4D38600A55E25 /* AuthoritySetViewController.m in Sources */,
 				8DD5D31A1806E7DC00EB446F /* FileManagerUtil.m in Sources */,
 				8DD5D3261806E83D00EB446F /* MProgressAlertView.m in Sources */,
 				8DD5D3271806E83D00EB446F /* Reachability.m in Sources */,

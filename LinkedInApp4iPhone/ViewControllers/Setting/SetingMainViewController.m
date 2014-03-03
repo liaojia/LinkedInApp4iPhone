@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "ProfileVC.h"
 #import "OAuthWebView.h"
+#import "AuthoritySetViewController.h"
 
 @interface SetingMainViewController ()
 
@@ -134,7 +135,7 @@
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -172,16 +173,22 @@
     }
     else if (indexPath.section==2)
     {
+        cell.imageView.image = [UIImage imageWithImage:[UIImage imageNamed:@"icon_authority"] scaledToSize:CGSizeMake(20 , 20)] ;
+        cell.textLabel.text = @"  权限设置";
+    }
+    
+    else if (indexPath.section==3)
+    {
         cell.imageView.image = [UIImage imageNamed:@"img_sys_update"];
         
         cell.textLabel.text = @"   检查更新";
     }
-    else if (indexPath.section==3)
+    else if (indexPath.section==4)
     {
         cell.imageView.image = [UIImage imageNamed:@"img_sys_about"];
         cell.textLabel.text = @"   关于";
     }
-    else if (indexPath.section==4)
+    else if (indexPath.section==5)
     {
         cell.imageView.image = [UIImage imageNamed:@"img_sys_exit"];
         cell.textLabel.text = @"   退出";
@@ -210,21 +217,26 @@
         }
 
     }
+    else if (indexPath.section ==2) //权限设置
+    {
+        AuthoritySetViewController *authoritySetContoller = [[AuthoritySetViewController alloc]initWithNibName:@"AuthoritySetViewController" bundle:nil];
+        [self.navigationController pushViewController:authoritySetContoller animated:YES];
+    }
     else if (indexPath.section ==1) //密码修改
     {
         PassWordChangeViewController *pswChangeController = [[PassWordChangeViewController alloc]init];
         [self.navigationController pushViewController:pswChangeController animated:YES];
     }
-    else if(indexPath.section == 2) //版本跟新
+    else if(indexPath.section == 3) //版本跟新
     {
         [self checkVerson];
     }
-    else if(indexPath.section == 3) //关于
+    else if(indexPath.section == 4) //关于
     {
         AboutViewController *aboutController = [[AboutViewController alloc]init];
         [self.navigationController pushViewController:aboutController animated:YES];
     }
-    else if(indexPath.section == 4) //退出
+    else if(indexPath.section == 5) //退出
     {
         [StaticTools showAlertWithTag:0
                                 title:Nil

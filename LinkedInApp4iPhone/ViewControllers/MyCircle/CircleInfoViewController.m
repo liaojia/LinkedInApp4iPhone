@@ -284,6 +284,7 @@
         case 100: //成员列表
         {
             CircleMemberListViewController *memberListContorller = [[CircleMemberListViewController alloc]initWithNibName:@"CircleMemberListViewController" bundle:nil];
+            memberListContorller.pageType = self.circleType;
             memberListContorller.circleId =  [NSString stringWithFormat:@"%@",self.infoDict[@"id"]];
             [self.navigationController pushViewController:memberListContorller animated:YES];
         }
@@ -354,7 +355,7 @@
     }
     
     NSDictionary *dict = self.resultMtbArray[indexPath.row];
-    return 90+[StaticTools getLabelHeight:dict[@"content"] defautWidth:145 defautHeight:480 fontSize:15];
+    return 90+[StaticTools getLabelHeight:dict[@"content"] defautWidth:145 defautHeight:480 fontSize:14];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
