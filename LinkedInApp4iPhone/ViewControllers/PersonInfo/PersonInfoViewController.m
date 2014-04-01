@@ -199,6 +199,7 @@
             
             //TODO
             FindClassmateViewController *findClassMateController = [[FindClassmateViewController alloc]initWithNibName:@"FindClassmateViewController" bundle:nil];
+            findClassMateController.fatherViewController = self;
             [self.navigationController pushViewController:findClassMateController animated:YES];
             
             //圈子

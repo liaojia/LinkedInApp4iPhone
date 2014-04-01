@@ -195,12 +195,17 @@ static NSString *totalSize = nil;
        tmp = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:replaceId];
         tmp = [tmp stringByReplacingOccurrencesOfString:@"${nodeID}" withString:replaceId];
     }
-    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", replaceId ? tmp:requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
+    //@"/alumni/service%@?v=%@&cid=%@&sid=%@"
+    NSString *path = [NSString stringWithFormat:@"service%@?v=%@&cid=%@&sid=%@", replaceId ? tmp:requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
     
     NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:reqDic];
 
     [request setTimeoutInterval:20];
     NSLog(@"request: %@", request.URL);
+    if (reqDic!=nil)
+    {
+        NSLog(@"requestDict: %@",reqDic);
+    }
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
@@ -295,7 +300,8 @@ static NSString *totalSize = nil;
          requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${id}" withString:ids[0]];
         requestModel.url = [requestModel.url stringByReplacingOccurrencesOfString:@"${personId}" withString:ids[1]];
     }
-    NSString *path = [NSString stringWithFormat:@"/alumni/service%@?v=%@&cid=%@&sid=%@", requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
+    ///alumni/service%@?v=%@&cid=%@&sid=%@"
+    NSString *path = [NSString stringWithFormat:@"service%@?v=%@&cid=%@&sid=%@", requestModel.url, [AppDataCenter sharedAppDataCenter].version, [AppDataCenter sharedAppDataCenter].clientId,[AppDataCenter sharedAppDataCenter].sid];
     
     NSMutableURLRequest *request = [client requestWithMethod:requestModel.method path:path parameters:reqDic];
     [request setTimeoutInterval:20];

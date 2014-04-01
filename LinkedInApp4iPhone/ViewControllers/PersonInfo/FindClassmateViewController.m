@@ -91,8 +91,26 @@
 {
     [self getClassmateWithPage:currentPage+1];
 }
+
+/**
+ *  关注操作
+ *
+ *  @param sender
+ */
+- (void)getNotice:(id)sender
+{
+    UIButton *button = (UIButton*)sender;
+    ProfileModel *model = self.resultMtbArray[button.tag];
+    [self addNoticeWithId:model.mId];
+
+}
 #pragma mark-
 #pragma mark-发送http请求
+/**
+ *  搜索同学
+ *
+ *  @param page 
+ */
 - (void)getClassmateWithPage:(int)page
 {
     
@@ -130,6 +148,14 @@
                                  [model setMGender:[obj2 objectForKey:@"gender"]];
                                  [model setMId:[obj2 objectForKey:@"id"]];
                                  [model setMImgUrl:[obj2 objectForKey:@"pic"]];
+                                 if ([StaticTools isEmptyString:[obj2 objectForKey:@"pic"]])
+                                 {
+                                     [model setMFlag:@"2"];
+                                 }
+                                 else
+                                 {
+                                     [model setMFlag:[obj2 objectForKey:@"pic"]];
+                                 }
                                  [self.resultMtbArray addObject:model];
                              }
                              if (self.resultMtbArray.count<total)
@@ -161,6 +187,43 @@
                                    completeBlock:nil];
 }
 
+/**
+ *	@brief	加关注
+ *
+ *	@param 	personId 	人员ID（必填项）
+ */
+-(void)addNoticeWithId:(NSString *)personId
+
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] sendRequestWithRequestDic:nil requesId:@"ADD_ATTENTION" messId:personId success:^(id obj)
+                                         {
+                                             if ([[obj objectForKey:@"rc"]intValue] == 1)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"关注成功！"];
+                                                 [self.fatherViewController performSelector:@selector(getMyNoticeList) withObject:nil];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -1)
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"id不存在！"];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -2){
+                                                 [SVProgressHUD showErrorWithStatus:@"已经关注过此人！"];
+                                             }
+                                             else if([[obj objectForKey:@"rc"]intValue] == -3){
+                                                 [SVProgressHUD showErrorWithStatus:@"关注对象非法！"];
+                                             }
+                                             else
+                                             {
+                                                 [SVProgressHUD showErrorWithStatus:@"加载失败！"];
+                                             }
+                                             
+                                             
+                                         } failure:nil];
+    
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"数据加载中..."
+                                   completeBlock:nil];
+}
 #pragma mark-
 #pragma mark--TableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -196,7 +259,7 @@
     cell.sexLabel.text = model.mGender;
     [cell.headImg setImageWithURL:[NSURL URLWithString:model.mImgUrl] placeholderImage:[UIImage imageNamed:@"img_weibo_item_pic_loading"]];
     cell.placeLabel.text = [NSString stringWithFormat:@"%@--%@", model.mProvince, model.mCity];
-    cell.actionBtn.hidden = YES;
+    [cell.actionBtn addTarget:self action:@selector(getNotice:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }

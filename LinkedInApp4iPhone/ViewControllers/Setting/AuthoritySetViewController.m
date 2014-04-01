@@ -31,6 +31,9 @@
     
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundView = nil;
+    self.qqAuth = @"0";
+    self.emailAuth = @"0";
+    self.phoneAuth = @"0";
     // Do any additional setup after loading the view from its nib.
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -27,4 +27,5 @@
 @property (weak, nonatomic)IBOutlet UITableView *listTableView;
 @property (weak, nonatomic)IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *resultMtbArray;
+@property (assign, nonatomic) UIViewController *fatherViewController;
 @end

@@ -28,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = self.pageType==0? @"申请校友龙卡":@"申请捐赠";
+    
+    [self getProfileWithId:@"me"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +78,9 @@
 }
 #pragma mark-
 #pragma mark--发送http请求
+/**
+ *  申请校友卡||申请捐赠
+ */
 - (void)appForSchollCard
 {
     
@@ -103,6 +108,34 @@
                                           prompt:@"加载中..."
                                    completeBlock:nil];
 
+}
+
+/**
+ *	@brief	获取个人信息
+ */
+-(void)getProfileWithId:(NSString*)personId
+{
+    AFHTTPRequestOperation *operation = [[Transfer sharedTransfer] TransferWithRequestDic:nil
+                                                                                 requesId:@"PROFILE_BASIC"
+                                                                                   prompt:@"prompt"
+                                                                                replaceId:personId
+                                                                                  success:^(id obj) {
+          
+          if ([[obj objectForKey:@"rc"]intValue] == 1)
+          {
+              
+              self.nameTxtField.text = obj[@"name"];
+              self.emailTxtField.text = obj[@"email"];
+              self.phoneTextField.text = obj[@"mobile"];
+              
+          }
+      }
+                                                                                  failure:^(NSString *errMsg) {
+                                                                                      
+                                                                                  }];
+    [[Transfer sharedTransfer] doQueueByTogether:[NSArray arrayWithObjects:operation, nil]
+                                          prompt:@"正在获取个人信息..."
+                                   completeBlock:nil];
 }
 #pragma mark-
 #pragma mark--按钮点击事件

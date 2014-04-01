@@ -178,11 +178,11 @@
                                              }
                                              else if([[obj objectForKey:@"rc"]intValue] == -3)
                                              {
-                                                 [SVProgressHUD showErrorWithStatus:@"改人员不是圈子成员！"];
+                                                 [SVProgressHUD showErrorWithStatus:@"该人员不是圈子成员！"];
                                              }
                                              else
                                              {
-                                                 [SVProgressHUD showErrorWithStatus:@"移除失败！"];
+                                                 [SVProgressHUD showErrorWithStatus:@"删除除失败！"];
                                              }
                                              
                                              
@@ -225,9 +225,9 @@
     if (self.pageType==0)
     {
         cell.changeBtn.hidden = NO;
-        cell.changeBtn.frame = CGRectMake(250, 30, 60, 30);
+        cell.changeBtn.frame = CGRectMake(250, 40, 60, 30);
         cell.changeBtn.tag = indexPath.row+100;
-        [cell.changeBtn setTitle:@"移除" forState:UIControlStateNormal];
+        [cell.changeBtn setTitle:@"删除" forState:UIControlStateNormal];
         [cell.changeBtn addTarget:self action:@selector(moveBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     else

@@ -171,6 +171,11 @@
 {
     _mTel  = [self checkNullWithString:mTel];
 }
+- (void)setMFlag:(NSString *)mFlag
+{
+    _mFlag = [self checkNullWithString:mFlag];
+}
+
 - (NSString *)checkNullWithString:(NSString *)str
 {
     if ([str isKindOfClass:[NSNumber class]])
